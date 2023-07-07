@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Manage mentors and ECTs",
+        href: "/participants"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Early career teacher</span>
+    <h1 class="govuk-heading-l">{{ teacher.name }}</h1>
+
+    {% set tagText = "No longer being trained" %}
+    {% set statusText = "They left your school" %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: teacher.name
+          }
+        },
+        {
+          key: {
+            text: "TRN"
+          },
+          value: {
+            text: teacher.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            html: (teacher.dateOfBirth | govukDate)
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: teacher.emailAddress
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: "<p class=\"govuk-body\"><span class=\"govuk-tag govuk-tag--grey\">" + tagText + "</span></p><p class=\"govuk-body\">" + statusText + "</p>"
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            html: "Ambition Institute"
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            html: "Bosco LLC"
+          }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            html: "Alban Teaching School Hub"
+          }
+        }
+
+      ]
+    }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

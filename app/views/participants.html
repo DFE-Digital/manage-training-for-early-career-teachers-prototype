@@ -1,0 +1,197 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Manage mentors and ECTs" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {{ govukButton({ text: "Add ECT or mentor" }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+
+  <div style="background-color: #f3f2f1; padding: 20px;">
+    <form method="get" action="/participants">
+      {{ govukCheckboxes({
+        name: "show",
+        classes: "govuk-checkboxes--small",
+        values: data.show,
+        fieldset: {
+          legend: {
+            text: "Show",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "training",
+            text: "Currently training (7)"
+          },
+          {
+            value: "completed-induction",
+            text: "Completed induction (3)"
+          },
+          {
+            value: "no-longer-training",
+            text: "No longer training (1)"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Filter", classes: "xgovuk-button--secondary" }) }}
+    </form>
+  </div>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data.show and data.show | includes("training") %}
+
+      {% if data.teachersWithoutMentors | length > 0 %}
+
+        {{ govukWarningText({ text: "You need to assign a mentor to these ECTs:",
+        classes: "govuk-!-margin-bottom-3" }) }}
+
+        <ul class="govuk-list govuk-!-margin-bottom-6">
+        {% for teacher in data.teachersWithoutMentors %}
+          <li><a href="/teachers-without-mentors/{{ teacher.id }}">{{ teacher.name }}</a></li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% for mentor in data.mentors %}
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__content">
+
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Mentor</h2>
+
+            {% set mentorStatusHtml %}
+              {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
+            {% endset %}
+
+            {{ govukSummaryList({
+              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
+              rows: [
+                {
+                  key: {
+                    html: "<a href=\"/mentors/" + mentor.id + "\">" + mentor.name + "</a>",
+                    classes: "govuk-!-font-weight-regular"
+                  },
+                  value: {
+                    html: mentorStatusHtml
+                  }
+                }
+              ]
+            }) }}
+
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">ECTs</h2>
+
+            {% set rows = [] %}
+
+            {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
+
+              {% set key = {html: "<a href=\"/early-career-teachers/" + earlyCareerTeacher.id + "\">" + earlyCareerTeacher.name + "</a>", classes: "govuk-!-font-weight-regular"} %}
+
+              {% set valueHtml %}
+                {% if earlyCareerTeacher.inductionStartDate %}
+                  {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+
+                {% else %}
+                  {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
+                {% endif %}
+              {% endset %}
+
+              {% set value = {html: valueHtml} %}
+              {% set rows = (rows.push({key: key, value: value}), rows) %}
+            {% endfor %}
+
+            {% set mentorStatusHtml %}
+              {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
+            {% endset %}
+
+            {{ govukSummaryList({
+              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
+              rows: rows
+            }) }}
+
+          </div>
+        </div>
+
+      {% endfor %}
+    {% endif %}
+
+    {% if data.show and data.show | includes("completed-induction") %}
+
+      <h2 class="govuk-heading-m">Teachers who have completed their induction</h2>
+
+      {% for teacher in data.completedInduction %}
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+            <h2 class="govuk-summary-card__title"><a href="/completed/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular">{{ teacher.name }}</a></h2>
+          </div>
+          <div class="govuk-summary-card__content">
+             {{ govukSummaryList({
+              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+              rows: [
+                {
+                  key: {
+                    text: "Completed",
+                    classes: "xgovuk-!-font-weight-regular"
+                  },
+                  value: {
+                    text: (teacher.completedDate | govukDate)
+                  }
+                }
+              ]
+            }) }}
+
+          </div>
+        </div>
+
+      {% endfor %}
+
+    {% endif %}
+
+    {% if data.show and data.show | includes("no-longer-training") %}
+       <h2 class="govuk-heading-m">Not mentoring or being mentored</h2>
+
+      {% set rows = [] %}
+
+      {% for teacher in data.noLongerTraining %}
+        {% set valueHtml %}
+          {{ govukTag({ text: "No longer training", classes: "govuk-tag--grey" })}}
+        {% endset %}
+        {% set rows = (rows.push({key: {html: "<a href=\"/no-longer-training/" + teacher.id + "\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
+      {% endfor %}
+
+      {{ govukSummaryList({
+        rows: rows
+      }) }}
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

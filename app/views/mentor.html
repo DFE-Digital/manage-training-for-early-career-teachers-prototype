@@ -1,0 +1,127 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Manage mentors and ECTs",
+        href: "/participants"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Mentor</span>
+    <h1 class="govuk-heading-l">{{ mentor.name }}</h1>
+
+    {% set teachersBeingMentored %}
+      <ul class="govuk-list">
+        {% for teacher in mentor.earlyCareerTeachers %}
+          <li><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: mentor.name
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "TRN"
+          },
+          value: {
+            text: mentor.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            html: (mentor.dateOfBirth | govukDate)
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: mentor.emailAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: "<p class=\"govuk-body\"><span class=\"govuk-tag govuk-tag--turquoise\">Mentoring</span></p>"
+          }
+        },
+        {
+          key: {
+            text: "Teachers they are mentoring"
+          },
+          value: {
+            html: teachersBeingMentored
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            html: "Ambition Institute"
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            html: "Bosco LLC"
+          }
+        }
+
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

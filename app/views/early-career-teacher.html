@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Manage mentors and ECTs",
+        href: "/participants"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Early career teacher</span>
+    <h1 class="govuk-heading-l">{{ teacher.name }}</h1>
+
+    {% set tagText = "Training" if teacher.inductionStartDate else "Eligible for training" %}
+    {% set statusText = "Their induction started on <span style=\"white-space: nowrap;\">" + (teacher.inductionStartDate | govukDate) + "</span>" if teacher.inductionStartDate else "We’ve confirmed the participant is eligible for this programme." %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: teacher.name
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "TRN"
+          },
+          value: {
+            text: teacher.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            html: (teacher.dateOfBirth | govukDate)
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: teacher.emailAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentor"
+          },
+          value: {
+            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "Not yet assigned"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: "<p class=\"govuk-body\"><span class=\"govuk-tag govuk-tag--turquoise\">" + tagText + "</span></p><p class=\"govuk-body\">" + statusText + "</p>"
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            html: "Ambition Institute"
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            html: "Bosco LLC"
+          }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            html: "Alban Teaching School Hub"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">No longer training?</h2>
+
+    <p class="govuk-body">Tell us if <a href="#" class="govuk-link">{{ teacher.name }} is transferring to another school</a></p>
+
+    <p class="govuk-body">Contact your training provider if you wish to remove this participant.</p>
+
+
+  </div>
+</div>
+
+{% endblock %}
