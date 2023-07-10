@@ -156,6 +156,13 @@ module.exports = {
       trn: "7456735",
       dateOfBirth: "1989-11-13",
       emailAddress: "freya.nineton@plymouth-primary.sch.uk"
+    },
+    {
+      id: "82NYFK3",
+      name: "Muhammed Faisal",
+      trn: "9473525",
+      dateOfBirth: "1989-11-13",
+      emailAddress: "muhammed.faisal@plymouth-primary.sch.uk"
     }
   ]
 }

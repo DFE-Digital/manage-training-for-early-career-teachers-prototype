@@ -52,7 +52,7 @@
           },
           {
             value: "no-longer-training",
-            text: "No longer training (1)"
+            text: "No longer training (2)"
           }
         ]
       }) }}
@@ -74,103 +74,107 @@
 
         <ul class="govuk-list govuk-!-margin-bottom-6">
         {% for teacher in data.teachersWithoutMentors %}
-          <li><a href="/teachers-without-mentors/{{ teacher.id }}">{{ teacher.name }}</a></li>
+          <li><a href="/teachers-without-mentors/{{ teacher.id }}" class="govuk-link--no-visited-state">{{ teacher.name }}</a></li>
         {% endfor %}
         </ul>
       {% endif %}
 
-      {% for mentor in data.mentors %}
+      <div class="govuk-!-margin-bottom-8">
+        {% for mentor in data.mentors %}
 
-        <div class="govuk-summary-card">
-          <div class="govuk-summary-card__content">
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__content">
 
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Mentor</h2>
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Mentor</h2>
 
-            {% set mentorStatusHtml %}
-              {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
-            {% endset %}
-
-            {{ govukSummaryList({
-              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
-              rows: [
-                {
-                  key: {
-                    html: "<a href=\"/mentors/" + mentor.id + "\">" + mentor.name + "</a>",
-                    classes: "govuk-!-font-weight-regular"
-                  },
-                  value: {
-                    html: mentorStatusHtml
-                  }
-                }
-              ]
-            }) }}
-
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">ECTs</h2>
-
-            {% set rows = [] %}
-
-            {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
-
-              {% set key = {html: "<a href=\"/early-career-teachers/" + earlyCareerTeacher.id + "\">" + earlyCareerTeacher.name + "</a>", classes: "govuk-!-font-weight-regular"} %}
-
-              {% set valueHtml %}
-                {% if earlyCareerTeacher.inductionStartDate %}
-                  {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
-
-                {% else %}
-                  {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
-                {% endif %}
+              {% set mentorStatusHtml %}
+                {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
               {% endset %}
 
-              {% set value = {html: valueHtml} %}
-              {% set rows = (rows.push({key: key, value: value}), rows) %}
-            {% endfor %}
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
+                rows: [
+                  {
+                    key: {
+                      html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link--no-visited-state\">" + mentor.name + "</a>",
+                      classes: "govuk-!-font-weight-regular"
+                    },
+                    value: {
+                      html: mentorStatusHtml
+                    }
+                  }
+                ]
+              }) }}
 
-            {% set mentorStatusHtml %}
-              {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
-            {% endset %}
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">ECTs</h2>
 
-            {{ govukSummaryList({
-              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
-              rows: rows
-            }) }}
+              {% set rows = [] %}
 
+              {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
+
+                {% set key = {html: "<a href=\"/early-career-teachers/" + earlyCareerTeacher.id + "\" class=\"govuk-link--no-visited-state\">" + earlyCareerTeacher.name + "</a>", classes: "govuk-!-font-weight-regular"} %}
+
+                {% set valueHtml %}
+                  {% if earlyCareerTeacher.inductionStartDate %}
+                    {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+
+                  {% else %}
+                    {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
+                  {% endif %}
+                {% endset %}
+
+                {% set value = {html: valueHtml} %}
+                {% set rows = (rows.push({key: key, value: value}), rows) %}
+              {% endfor %}
+
+              {% set mentorStatusHtml %}
+                {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
+              {% endset %}
+
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+                rows: rows
+              }) }}
+
+            </div>
           </div>
-        </div>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
     {% endif %}
 
     {% if data.show and data.show | includes("completed-induction") %}
 
-      <h2 class="govuk-heading-m">Teachers who have completed their induction</h2>
+      <div class="govuk-!-margin-bottom-8">
+        <h2 class="govuk-heading-m">Teachers who have completed their induction</h2>
 
-      {% for teacher in data.completedInduction %}
+        {% for teacher in data.completedInduction %}
 
-        <div class="govuk-summary-card">
-          <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
-            <h2 class="govuk-summary-card__title"><a href="/completed/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular">{{ teacher.name }}</a></h2>
-          </div>
-          <div class="govuk-summary-card__content">
-             {{ govukSummaryList({
-              classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
-              rows: [
-                {
-                  key: {
-                    text: "Completed",
-                    classes: "xgovuk-!-font-weight-regular"
-                  },
-                  value: {
-                    text: (teacher.completedDate | govukDate)
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+              <h2 class="govuk-summary-card__title"><a href="/completed/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
+            </div>
+            <div class="govuk-summary-card__content">
+               {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+                rows: [
+                  {
+                    key: {
+                      text: "Completed",
+                      classes: "xgovuk-!-font-weight-regular"
+                    },
+                    value: {
+                      text: (teacher.completedDate | govukDate)
+                    }
                   }
-                }
-              ]
-            }) }}
+                ]
+              }) }}
 
+            </div>
           </div>
-        </div>
 
-      {% endfor %}
+        {% endfor %}
+      </div>
 
     {% endif %}
 
@@ -183,11 +187,12 @@
         {% set valueHtml %}
           {{ govukTag({ text: "No longer training", classes: "govuk-tag--grey" })}}
         {% endset %}
-        {% set rows = (rows.push({key: {html: "<a href=\"/no-longer-training/" + teacher.id + "\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
+        {% set rows = (rows.push({key: {html: "<a href=\"/no-longer-training/" + teacher.id + "\" class=\"govuk-link--no-visited-state\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
       {% endfor %}
 
       {{ govukSummaryList({
-        rows: rows
+        rows: rows,
+        classes: "govuk-!-margin-bottom-8"
       }) }}
     {% endif %}
 
