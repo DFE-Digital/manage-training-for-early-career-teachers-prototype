@@ -7,6 +7,21 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 
+router.get('/participants', (req, res) => {
+
+  // Check all options if none are checked
+  let show = req.session.data.show
+  if (show === undefined || show === [] || show === ['_unchecked']) {
+    req.session.data.show = [
+      'training', 'completed-induction', 'no-longer-training'
+    ]
+    res.redirect('/participants')
+  }  else {
+    res.render('participants')
+  }
+
+})
+
 router.get('/early-career-teachers/:id', (req, res) => {
   const { id } = req.params
 

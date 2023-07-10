@@ -26,7 +26,7 @@
     <h1 class="govuk-heading-l">{{ teacher.name }}</h1>
 
     {% set tagText = "Training" if teacher.inductionStartDate else "Eligible for training" %}
-    {% set statusText = "Their induction started on <span style=\"white-space: nowrap;\">" + (teacher.inductionStartDate | govukDate) + "</span>" if teacher.inductionStartDate else "We’ve confirmed the participant is eligible for this programme." %}
+    {% set statusText = "Their induction started on <span style=\"white-space: nowrap;\">" + (teacher.inductionStartDate | govukDate) + "</span>" if teacher.inductionStartDate else "We’ve confirmed the participant is eligible for this programme.</p><p class=\"govuk-body\">Alban Teaching School Hub needs to confirm their induction start date." %}
 
     {{ govukSummaryList({
       rows: [
@@ -42,6 +42,7 @@
               {
                 href: "#",
                 text: "Change",
+                classes: "govuk-link--no-visited-state",
                 visuallyHiddenText: "name"
               }
             ]
@@ -75,6 +76,7 @@
               {
                 href: "#",
                 text: "Change",
+                classes: "govuk-link--no-visited-state",
                 visuallyHiddenText: "contact details"
               }
             ]
@@ -85,17 +87,18 @@
             text: "Mentor"
           },
           value: {
-            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "Not yet assigned"
+            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "<div class=\"govuk-summary-list__missing\" ><div class=\"govuk-summary-list__missing-heading\">No mentor assigned</div><a href=\"#\" class=\"govuk-link--no-visited-state\">Assign a mentor</a></div>"
           },
           actions: {
             items: [
               {
                 href: "#",
                 text: "Change",
+                classes: "govuk-link--no-visited-state",
                 visuallyHiddenText: "contact details"
               }
             ]
-          }
+          } if mentor
         },
         {
           key: {
@@ -133,6 +136,7 @@
               {
                 href: "#",
                 text: "Change",
+                classes: "govuk-link--no-visited-state",
                 visuallyHiddenText: "contact details"
               }
             ]

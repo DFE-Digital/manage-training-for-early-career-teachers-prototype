@@ -1,6 +1,17 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
 // Add extra styles here
+
+
+.govuk-summary-list__missing {
+  border-left: 10px solid govuk-colour("blue");
+  padding-left: 15px;
+}
+
+
+.govuk-summary-list__missing-heading {
+  margin-bottom: 10px;
+}
