@@ -30,10 +30,10 @@
 
   <div style="border: #f3f2f1 4px solid; padding: 20px;">
     <form method="get" action="/participants">
-      {{ govukCheckboxes({
+      {{ govukRadios({
         name: "show",
-        classes: "govuk-checkboxes--small",
-        values: data.show,
+        classes: "govuk-radios--small",
+        value: data.show,
         fieldset: {
           legend: {
             text: "Show",
@@ -65,7 +65,7 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data.show and data.show | includes("training") %}
+    {% if data.show and data.show == "training" %}
 
       {% if data.teachersWithoutMentors | length > 0 %}
 
@@ -141,9 +141,8 @@
 
         {% endfor %}
       </div>
-    {% endif %}
 
-    {% if data.show and data.show | includes("completed-induction") %}
+    {% elseif data.show == "completed-induction" %}
 
       <div class="govuk-!-margin-bottom-8">
         <h2 class="govuk-heading-m">Teachers who have completed their induction</h2>
@@ -176,9 +175,7 @@
         {% endfor %}
       </div>
 
-    {% endif %}
-
-    {% if data.show and data.show | includes("no-longer-training") %}
+    {% elseif data.show == "no-longer-training" %}
        <h2 class="govuk-heading-m">Not mentoring or being mentored</h2>
 
       {% set rows = [] %}
