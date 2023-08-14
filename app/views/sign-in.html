@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Sign in" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <form action="/check-email" method="post">
+
+      {{ govukInput({
+        label: {
+          text: "Email address"
+        },
+        id: "email",
+        name: "email",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false
+      }) }}
+
+      {{ govukButton({ text: "Sign in"}) }}
+
+    </form>
+
+    <p class="govuk-body">Or <a class="govuk-link govuk-link--no-visited-state" href="/request-access">request access to the service</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

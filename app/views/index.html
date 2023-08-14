@@ -7,7 +7,34 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <p class="govuk-body"><a href="/participants?show=training" class="govuk-link">Manage mentors and ECTs</a></p>
+    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+
+    <p class="govuk-body">Use this service to set up ECF-based training for your early career teachers (ECTs) or tell us about a change at your school.</p>
+
+    <h2 class="govuk-heading-m">Set up and manage your training</h2>
+
+    <p class="govuk-body">Tell us:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>how you want to run your training</li>
+        <li>which accredited materials or training provider you’ll use</li>
+        <li>which ECTs and mentors will take part</li>
+    </ul>
+
+    <p class="govuk-body">Your school must complete these steps before your ECTs can start their statutory induction programme.</p>
+
+    <h2 class="govuk-heading-m">Tell us about changes at your school</h2>
+
+    <p class="govuk-body">Tell us about any changes, for example, nominating a new induction tutor.</p>
+
+
+    <div class="govuk-button-group govuk-body govuk-!-margin-top-7">
+      {{ govukButton({text: "Sign in", href: "/sign-in" }) }}
+
+        <span class="govuk-!-margin-right-2">or</span>
+
+        <a class="govuk-link govuk-link--no-visited-state" href="/request-access">request access to the service</a>
+    </div>
 
   </div>
 </div>

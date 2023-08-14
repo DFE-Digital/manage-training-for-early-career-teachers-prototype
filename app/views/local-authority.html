@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What’s your school’s local authority?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/school-name" method="post">
+
+      {{ govukInput({
+        name: "localAuthority",
+        value: data.localAuthority,
+        label: {
+          text: pageName,
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        hint: {
+          text: "This is the local authority or council in your area."
+        }
+
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

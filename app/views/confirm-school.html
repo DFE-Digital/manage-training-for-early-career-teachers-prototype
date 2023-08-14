@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Confirm this is your school" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data.schoolName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/local-authority",
+                  text: "Change",
+                  visuallyHiddenText: "school name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "URN"
+            },
+            value: {
+              text: "185634"
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: "Dover Street<br>Ryde<br>Isle of Wight<br>PO33 2BN"
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/check-school-email" method="post" novalidate>
+
+      <p>We will send an email to p************t@{{ data.schoolName | lower | slugify }}.sch.uk with a link to access the service.</p>
+
+      {{ govukButton({
+        text: "Confirm and send"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
