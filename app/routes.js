@@ -9,16 +9,44 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('/participants', (req, res) => {
 
-  // Check all options if none are checked
-  let show = req.session.data.show
-  if (show === undefined || show === [] || show === ['_unchecked']) {
-    req.session.data.show = [
-      'training', 'completed-induction', 'no-longer-training'
-    ]
-    res.redirect('/participants')
-  }  else {
-    res.render('participants')
+  let ectsBeingTrained = []
+
+  for (mentor of req.session.data.mentors) {
+    for (teacher of mentor.earlyCareerTeachers) {
+
+      teacher.mentor = {
+        name: mentor.name,
+        id: mentor.id
+      }
+      ectsBeingTrained.push(teacher)
+    }
+
+
   }
+
+  ectsBeingTrained.push(req.session.data.teachersWithoutMentors)
+
+  ectsBeingTrained = ectsBeingTrained.flat()
+
+  ectsBeingTrained = ectsBeingTrained.sort(function(teacherA, teacherB) {
+    if (!teacherA.inductionStartDate) {
+      return -1
+    }
+
+    if (!teacherB.inductionStartDate) {
+      return 1
+    }
+
+    if (teacherA.inductionStartDate > teacherB.inductionStartDate) {
+      return -1
+    } else {
+      return 1
+    }
+  })
+
+  res.render('participants', {
+    ectsBeingTrained
+  })
 
 })
 
