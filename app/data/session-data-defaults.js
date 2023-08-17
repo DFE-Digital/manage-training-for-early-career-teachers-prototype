@@ -98,7 +98,7 @@ module.exports = {
           trn: "6254724",
           dateOfBirth: "1989-11-13",
           emailAddress: "lillian.solis@plymouth-primary.sch.uk",
-          inductionStartDate: "2022-09-03"
+          inductionStartDate: "2021-09-03"
         }
       ]
     },

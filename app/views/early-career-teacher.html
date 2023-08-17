@@ -20,13 +20,29 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
     <span class="govuk-caption-l">Early career teacher</span>
     <h1 class="govuk-heading-l">{{ teacher.name }}</h1>
 
     {% set tagText = "Training" if teacher.inductionStartDate else "Eligible for training" %}
-    {% set statusText = "Their induction started on <span style=\"white-space: nowrap;\">" + (teacher.inductionStartDate | govukDate) + "</span>" if teacher.inductionStartDate else "We’ve confirmed the participant is eligible for this programme.</p><p class=\"govuk-body\">Alban Teaching School Hub needs to confirm their induction start date." %}
+
+    {% set statusText %}
+      {% if teacher.inductionStartDate %}
+        Induction started on <span style="white-space: nowrap;">{{ teacher.inductionStartDate | govukDate }}</span>
+
+        {% if teacher.inductionStartDate < "2021-09-30" %}
+          <p class="govuk-body">Alban Teaching School Hub will record the induction completed date when {{ teacher.name }} has passed their induction.</p>
+
+          <p class="govuk-body">There may be a delay before this information is updated here.</p>
+        {% endif %}
+      {% else %}
+        We’ve confirmed the participant is eligible for this programme</p>
+
+        <p class="govuk-body">Alban Teaching School Hub needs to confirm their induction start date.
+      {% endif %}
+    {% endset %}
+
 
     {{ govukSummaryList({
       rows: [
