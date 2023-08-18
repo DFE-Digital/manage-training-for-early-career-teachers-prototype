@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Manage mentors and ECTs",
+        href: "/participants?show=training"
+      },
+      {
+        text: teacher.name,
+        href: "/early-career-teachers/" + teacher.id
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">St Mary’s Primary School</span>
+    <h1 class="govuk-heading-l">Check your answers</h1>
+
+    {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: teacher.name
+            }
+          },
+          {
+            key: {
+              text: "Leaving date"
+            },
+            value: {
+              text: (data.transferDate | isoDateFromDateInput | govukDate)
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer-date",
+                  text: "Change",
+                  visuallyHiddenText: "leaving date"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="/early-career-teachers/{{ teacher.id }}/transfer-confirmed" method="post">
+      {{ govukButton({ text: "Confirm and continue"}) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

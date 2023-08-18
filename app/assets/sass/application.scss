@@ -15,3 +15,16 @@
 .govuk-summary-list__missing-heading {
   margin-bottom: 10px;
 }
+
+// This is an invisible-looking link which is only used for research
+// purposes where we want to direct participants to click some text without
+// it looking like a link.
+.govuk-link--hidden,
+.govuk-link--hidden:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.govuk-link--hidden:hover {
+  text-decoration: underline;
+}

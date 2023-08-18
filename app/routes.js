@@ -72,12 +72,18 @@ router.get('/early-career-teachers/:id', (req, res) => {
   })
 })
 
-router.get('/teachers-without-mentors/:id', (req, res) => {
+router.get('/early-career-teachers/:id', (req, res) => {
   const { id } = req.params
 
-  const mentor = null
+  const mentor = req.session.data.mentors.find(function(mentor) {
+    return mentor.earlyCareerTeachers.find(function(teacher) {
+      return teacher.id === id
+    })
+  })
 
-  const teacher = req.session.data.teachersWithoutMentors.find(function(teacher) {
+  const teacher = req.session.data.mentors.map(function(mentor) {
+    return mentor.earlyCareerTeachers
+  }).flat().find(function(teacher) {
     return teacher.id === id
   })
 
@@ -87,6 +93,67 @@ router.get('/teachers-without-mentors/:id', (req, res) => {
     mentor
   })
 })
+
+router.get('/early-career-teachers/:id/transfer', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.mentors.map(function(mentor) {
+    return mentor.earlyCareerTeachers
+  }).flat().find(function(teacher) {
+    return teacher.id === id
+  })
+
+  res.render('transfer', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/transfer-date', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.mentors.map(function(mentor) {
+    return mentor.earlyCareerTeachers
+  }).flat().find(function(teacher) {
+    return teacher.id === id
+  })
+
+  res.render('transfer-date', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/transfer-check', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.mentors.map(function(mentor) {
+    return mentor.earlyCareerTeachers
+  }).flat().find(function(teacher) {
+    return teacher.id === id
+  })
+
+  res.render('transfer-check', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.mentors.map(function(mentor) {
+    return mentor.earlyCareerTeachers
+  }).flat().find(function(teacher) {
+    return teacher.id === id
+  })
+
+  res.render('transfer-confirmed', {
+    id,
+    teacher
+  })
+})
+
 
 router.get('/mentors/:id', (req, res) => {
   const { id } = req.params

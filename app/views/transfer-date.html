@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/early-career-teachers/" + teacher.id + "/transfer"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">St Mary’s Primary School</span>
+
+    <form action="/early-career-teachers/{{ teacher.id }}/transfer-check" method="post">
+
+      {{ govukDateInput({
+        id: "transfer-date",
+        fieldset: {
+          legend: {
+            text: "When is " + teacher.name + " leaving your school?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "For example, 14 7 2023"
+        },
+        items: [{
+          classes: "govuk-input--width-2",
+          label: "Day",
+          name: "transferDate[day]",
+          value: data.transferDate.day
+        }, {
+          classes: "govuk-input--width-2",
+          label: "Month",
+          name: "transferDate[month]",
+          value: data.transferDate.month
+        }, {
+          classes: "govuk-input--width-4",
+          label: "Year",
+          name: "transferDate[year]",
+          value: data.transferDate.year
+        }]
+      }) }}
+
+      {{ govukButton({ text: "Continue"}) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

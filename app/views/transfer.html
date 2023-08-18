@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/early-career-teachers/" + teacher.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">St Mary’s Primary School</span>
+    <h1 class="govuk-heading-l">Is {{ teacher.name }} transferring to another school to continue training?</h1>
+
+
+    <p>If they are leaving your school for any other reason, contact your training provider instead.</p>
+
+    {{ govukButton({ text: "Yes, they are transferring", href: "/early-career-teachers/" + teacher.id + "/transfer-date"}) }}
+
+  </div>
+</div>
+
+{% endblock %}
