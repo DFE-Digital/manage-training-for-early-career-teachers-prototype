@@ -1,0 +1,12 @@
+// This is an invisible-looking link which is only used for research
+// purposes where we want to direct participants to click some text without
+// it looking like a link.
+.app-link--hidden,
+.app-link--hidden:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-link--hidden:hover {
+  text-decoration: underline;
+}

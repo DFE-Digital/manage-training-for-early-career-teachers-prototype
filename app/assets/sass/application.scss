@@ -4,27 +4,8 @@
 //
 
 // Add extra styles here
+@import "filter";
+@import "summary-list";
+@import "link";
 
 
-.govuk-summary-list__missing {
-  border-left: 10px solid govuk-colour("blue");
-  padding-left: 15px;
-}
-
-
-.govuk-summary-list__missing-heading {
-  margin-bottom: 10px;
-}
-
-// This is an invisible-looking link which is only used for research
-// purposes where we want to direct participants to click some text without
-// it looking like a link.
-.govuk-link--hidden,
-.govuk-link--hidden:visited {
-  text-decoration: none;
-  color: inherit;
-}
-
-.govuk-link--hidden:hover {
-  text-decoration: underline;
-}

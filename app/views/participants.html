@@ -28,7 +28,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
 
-  <div style="border: #f3f2f1 4px solid; padding: 20px; margin-bottom: 20px;">
+  <div class="app-filter">
     <form method="get" action="/participants">
       {{ govukRadios({
         name: "show",
@@ -100,8 +100,8 @@
                 {% if teacher.mentor %}
                   <a href="/mentors/{{ teacher.mentor.id }}" class="govuk-link">{{ teacher.mentor.name }}</a>
                 {% else %}
-                  <div class="govuk-summary-list__missing">
-                    <div class="govuk-summary-list__missing-heading">No mentor assigned</div>
+                  <div class="app-summary-list__missing">
+                    <div class="app-summary-list__missing-heading">No mentor assigned</div>
                     <a href="#" class="govuk-link--no-visited-state">Assign a mentor</a>
                   </div>
                 {% endif %}
