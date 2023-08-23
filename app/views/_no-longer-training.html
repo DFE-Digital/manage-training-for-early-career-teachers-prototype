@@ -3,11 +3,11 @@
 
 {% set rows = [] %}
 
-{% for teacher in data.noLongerTraining %}
+{% for teacher in ectsNoLongerTraining %}
   {% set valueHtml %}
     {{ govukTag({ text: "No longer training", classes: "govuk-tag--grey" })}}
   {% endset %}
-  {% set rows = (rows.push({key: {html: "<a href=\"/no-longer-training/" + teacher.id + "\" class=\"govuk-link--no-visited-state\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
+  {% set rows = (rows.push({key: {html: "<a href=\"/early-career-teachers/" + teacher.id + "\" class=\"govuk-link--no-visited-state\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
 {% endfor %}
 
 {{ govukSummaryList({

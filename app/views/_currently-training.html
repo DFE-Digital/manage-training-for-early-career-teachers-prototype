@@ -11,7 +11,7 @@
 
     {% for teacher in ectsBeingTrained %}
 
-       <div class="govuk-summary-card">
+      <div class="govuk-summary-card">
       <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
         <h2 class="govuk-summary-card__title"><a href="/{{ "early-career-teachers" if teacher.mentor else "teachers-without-mentors" }}/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
       </div>
@@ -69,20 +69,20 @@
     {% endfor %}
   {% else %}
 
-    {% if data.teachersWithoutMentors | length > 0 %}
+    {% if teachersWithoutMentors | length > 0 %}
 
       {{ govukWarningText({ text: "You need to assign a mentor to these ECTs:",
       classes: "govuk-!-margin-bottom-3" }) }}
 
       <ul class="govuk-list govuk-!-margin-bottom-6">
-      {% for teacher in data.teachersWithoutMentors %}
-        <li><a href="/early-careeer-teachers/{{ teacher.id }}" class="govuk-link--no-visited-state">{{ teacher.name }}</a></li>
+      {% for teacher in teachersWithoutMentors %}
+        <li><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link--no-visited-state">{{ teacher.name }}</a></li>
       {% endfor %}
       </ul>
     {% endif %}
 
 
-    {% for mentor in data.mentors | sort(false, false, "name") %}
+    {% for mentor in mentors | sort(false, false, "name") %}
 
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__content">
