@@ -9,24 +9,33 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('/participants', (req, res) => {
 
-  let ectsBeingTrained = []
+  let mentors = JSON.parse(JSON.stringify(req.session.data.mentors))
+  let teachers = JSON.parse(JSON.stringify(req.session.data.teachers))
 
-  for (mentor of req.session.data.mentors) {
-    for (teacher of mentor.earlyCareerTeachers) {
+  let ectsBeingTrained = teachers.filter((teacher) => (!teacher.completedDate && !teacher.noLongerTraining))
+  let ectsCompleted = teachers.filter((teacher) => teacher.completedDate)
+  let ectsNoLongerTraining = teachers.filter((teacher) => teacher.noLongerTraining)
 
-      teacher.mentor = {
-        name: mentor.name,
-        id: mentor.id
-      }
-      ectsBeingTrained.push(teacher)
+  let teachersWithoutMentors = ectsBeingTrained.filter((teacher) => !teacher.mentorId)
+
+  for (mentor of mentors) {
+    mentor.earlyCareerTeachers = []
+
+    for (teacher of req.session.data.teachers.filter((teacher) =>
+      teacher.mentorId === mentor.id &&
+      !teacher.completedDate &&
+      !teacher.noLongerTraining
+    )) {
+      mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
     }
-
-
   }
 
-  ectsBeingTrained.push(req.session.data.teachersWithoutMentors)
+  for (teacher of ectsBeingTrained) {
+    if (teacher.mentorId) {
+      teacher.mentor = JSON.parse(JSON.stringify(mentors.find((mentor) => mentor.id === teacher.mentorId)))
+    }
+  }
 
-  ectsBeingTrained = ectsBeingTrained.flat()
 
   ectsBeingTrained = ectsBeingTrained.sort(function(teacherA, teacherB) {
     if (!teacherA.inductionStartDate) {
@@ -45,7 +54,11 @@ router.get('/participants', (req, res) => {
   })
 
   res.render('participants', {
-    ectsBeingTrained
+    ectsBeingTrained,
+    ectsCompleted,
+    ectsNoLongerTraining,
+    mentors,
+    teachersWithoutMentors
   })
 
 })
@@ -53,39 +66,12 @@ router.get('/participants', (req, res) => {
 router.get('/early-career-teachers/:id', (req, res) => {
   const { id } = req.params
 
-  const mentor = req.session.data.mentors.find(function(mentor) {
-    return mentor.earlyCareerTeachers.find(function(teacher) {
-      return teacher.id === id
-    })
-  })
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
-
-  res.render('early-career-teacher', {
-    id,
-    teacher,
-    mentor
-  })
-})
-
-router.get('/early-career-teachers/:id', (req, res) => {
-  const { id } = req.params
-
-  const mentor = req.session.data.mentors.find(function(mentor) {
-    return mentor.earlyCareerTeachers.find(function(teacher) {
-      return teacher.id === id
-    })
-  })
-
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
+  let mentor = null
+  if (teacher.mentorId) {
+    mentor = req.session.data.mentors.find((mentor) => mentor.id === teacher.mentorId)
+  }
 
   res.render('early-career-teacher', {
     id,
@@ -158,9 +144,19 @@ router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {
 router.get('/mentors/:id', (req, res) => {
   const { id } = req.params
 
-  const mentor = req.session.data.mentors.find(function(mentor) {
+  let mentor = JSON.parse(JSON.stringify(req.session.data.mentors.find(function(mentor) {
     return mentor.id === id
-  })
+  })))
+
+  mentor.earlyCareerTeachers = []
+
+  for (teacher of req.session.data.teachers.filter((teacher) =>
+      teacher.mentorId === mentor.id &&
+      !teacher.completedDate &&
+      !teacher.noLongerTraining
+    )) {
+      mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+    }
 
   res.render('mentor', {
     id,
@@ -168,28 +164,3 @@ router.get('/mentors/:id', (req, res) => {
   })
 })
 
-router.get('/completed/:id', (req, res) => {
-  const { id } = req.params
-
-  const teacher = req.session.data.completedInduction.find(function(teacher) {
-    return teacher.id === id
-  })
-
-  res.render('completed', {
-    id,
-    teacher
-  })
-})
-
-router.get('/no-longer-training/:id', (req, res) => {
-  const { id } = req.params
-
-  const teacher = req.session.data.noLongerTraining.find(function(teacher) {
-    return teacher.id === id
-  })
-
-  res.render('no-longer-training', {
-    id,
-    teacher
-  })
-})

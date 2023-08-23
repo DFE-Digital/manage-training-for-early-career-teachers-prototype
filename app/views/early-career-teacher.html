@@ -25,23 +25,37 @@
     <span class="govuk-caption-l">Early career teacher</span>
     <h1 class="govuk-heading-l">{{ teacher.name }}</h1>
 
-    {% set tagText = "Training" if teacher.inductionStartDate else "Eligible for training" %}
-
-    {% set statusText %}
-      {% if teacher.inductionStartDate %}
-        Induction started on <span style="white-space: nowrap;">{{ teacher.inductionStartDate | govukDate }}</span>
-
-        {% if teacher.inductionStartDate < "2021-09-30" %}
-          <p class="govuk-body">Alban Teaching School Hub will record the induction completed date when {{ teacher.name }} has passed their induction.</p>
-
-          <p class="govuk-body">There may be a delay before this information is updated here.</p>
-        {% endif %}
-      {% else %}
+    {% if teacher.noLongerTraining %}
+      {% set tagText = "No longer being trained" %}
+      {% set tagClass = "govuk-tag--grey" %}
+      {% set statusText = "They left your school" %}
+    {% elseif not teacher.inductionStartDate %}
+      {% set tagText = "Eligible for training" %}
+      {% set tagClass = "govuk-tag--green" %}
+      {% set statusText %}
         We’ve confirmed the participant is eligible for this programme</p>
 
         <p class="govuk-body">Alban Teaching School Hub needs to confirm their induction start date.
-      {% endif %}
-    {% endset %}
+      {% endset %}
+    {% elseif teacher.completedDate %}
+      {% set tagText = "Induction completed" %}
+      {% set tagClass = "govuk-tag--green" %}
+      {% set statusText %}
+        Completed on {{ teacher.completedDate | govukDate }}
+      {% endset %}
+    {% else %}
+      {% set tagText = "Training" %}
+      {% set tagClass = "govuk-tag--green" %}
+      {% set statusText %}
+          Induction started on <span style="white-space: nowrap;">{{ teacher.inductionStartDate | govukDate }}</span>
+
+          {% if teacher.inductionStartDate < "2021-09-30" %}
+            <p class="govuk-body">Alban Teaching School Hub will record the induction completed date when {{ teacher.name }} has passed their induction.</p>
+
+            <p class="govuk-body">There may be a delay before this information is updated here.</p>
+          {% endif %}
+      {% endset %}
+    {% endif %}
 
 
     {{ govukSummaryList({
@@ -62,7 +76,7 @@
                 visuallyHiddenText: "name"
               }
             ]
-          }
+          }  if not teacher.noLongerTraining
         },
         {
           key: {
@@ -96,14 +110,14 @@
                 visuallyHiddenText: "contact details"
               }
             ]
-          }
+          } if not teacher.noLongerTraining
         },
         {
           key: {
             text: "Mentor"
           },
           value: {
-            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "<div class=\"govuk-summary-list__missing\" ><div class=\"govuk-summary-list__missing-heading\">No mentor assigned</div><a href=\"#\" class=\"govuk-link--no-visited-state\">Assign a mentor</a></div>"
+            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "<div class=\"app-summary-list__missing\" ><div class=\"app-summary-list__missing-heading\">No mentor assigned</div><a href=\"#\" class=\"govuk-link--no-visited-state\">Assign a mentor</a></div>"
           },
           actions: {
             items: [
@@ -114,14 +128,14 @@
                 visuallyHiddenText: "contact details"
               }
             ]
-          } if mentor
+          } if mentor and not teacher.noLongerTraining
         },
         {
           key: {
             text: "Status"
           },
           value: {
-            html: "<p class=\"govuk-body\"><span class=\"govuk-tag govuk-tag--turquoise\">" + tagText + "</span></p><p class=\"govuk-body\">" + statusText + "</p>"
+            html: "<p class=\"govuk-body\"><span class=\"govuk-tag " + tagClass + "\">" + tagText + "</span></p><p class=\"govuk-body\">" + statusText + "</p>"
           }
         },
         {
@@ -156,15 +170,18 @@
                 visuallyHiddenText: "contact details"
               }
             ]
-          }
+          } if not teacher.noLongerTraining
         }
 
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Are they transferring to another school?</h2>
+    {% if not teacher.completedDate and not teacher.noLongerTraining %}
 
-    <p class="govuk-body">Tell us if <a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">{{ teacher.name }} is transferring to another school</a></p>
+      <h2 class="govuk-heading-m">Are they transferring to another school?</h2>
+
+      <p class="govuk-body">Tell us if <a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">{{ teacher.name }} is transferring to another school</a></p>
+    {% endif %}
 
 
   </div>
