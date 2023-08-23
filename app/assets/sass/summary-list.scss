@@ -1,0 +1,12 @@
+// Missing information within a summary list
+//
+// This draws attention to missing information by adding some content
+// with a heading, and indenting it with a blue border.
+.app-summary-list__missing {
+  border-left: 10px solid govuk-colour("blue");
+  padding-left: 15px;
+}
+
+.app-summary-list__missing-heading {
+  margin-bottom: 10px;
+}
