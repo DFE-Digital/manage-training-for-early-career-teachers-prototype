@@ -1,0 +1,31 @@
+
+<div class="govuk-!-margin-bottom-8">
+  <h2 class="govuk-heading-m">Teachers who have completed their induction</h2>
+
+  {% for teacher in data.completedInduction %}
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+        <h2 class="govuk-summary-card__title"><a href="/completed/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
+      </div>
+      <div class="govuk-summary-card__content">
+         {{ govukSummaryList({
+          classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+          rows: [
+            {
+              key: {
+                text: "Completed",
+                classes: "xgovuk-!-font-weight-regular"
+              },
+              value: {
+                text: (teacher.completedDate | govukDate)
+              }
+            }
+          ]
+        }) }}
+
+      </div>
+    </div>
+
+  {% endfor %}
+</div>
