@@ -49,7 +49,7 @@
 
       <form action="/check-school-email" method="post" novalidate>
 
-      <p>We will send an email to p************t@{{ data.schoolName | lower | slugify }}.sch.uk with a link to access the service.</p>
+      <p>We’ll email an access link to p************t@{{ data.schoolName | lower | slugify }}.sch.uk</p>
 
       {{ govukButton({
         text: "Confirm and send"

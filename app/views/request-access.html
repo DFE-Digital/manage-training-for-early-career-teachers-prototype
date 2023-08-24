@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Send your school a link to use this service" %}
+{% set pageName="Request access to this service" %}
 
 {% block beforeContent %}
   {{ govukBackLink({href: "/"}) }}
@@ -13,12 +13,11 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">We need some information to help us find your school in the Get Information about Schools (GIAS) register.</p>
+    <p class="govuk-body">We’ll email an access link to your school. For security, we’ll send a link to the email address held in the Get Information about Schools (GIAS) register.</p>
 
-    <p class="govuk-body">We’ll then send a link to the email address held in the register.</p>
     <p class="govuk-body govuk-!-margin-bottom-7 govuk-inset-text">
         You can
-        <a class="govuk-link govuk-link govuk-link--no-visited-state" href="https://services.signin.education.gov.uk/">sign in to the DfE</a>
+        <a class="govuk-link govuk-link govuk-link--no-visited-state" href="https://services.signin.education.gov.uk/">use DfE Sign-in</a>
          to check that your school’s email address is up to date before you start.
     </p>
 
