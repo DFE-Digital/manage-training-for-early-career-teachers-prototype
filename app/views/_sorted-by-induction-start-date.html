@@ -1,0 +1,59 @@
+
+{% for teacher in ectsBeingTrained %}
+
+  <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+    <h2 class="govuk-summary-card__title"><a href="/{{ "early-career-teachers" if teacher.mentor else "teachers-without-mentors" }}/{{ teacher.id }}" class="govuk-link govuk-!-font-weight-regular govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
+  </div>
+  <div class="govuk-summary-card__content">
+
+    {% set status %}
+    {% if teacher.inductionStartDate %}
+      {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+
+      <p class="govuk-body govuk-!-margin-top-2">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+
+    {% else %}
+      {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
+    {% endif %}
+    {% endset %}
+
+    {% set mentor %}
+      {% if teacher.mentor %}
+        <a href="/mentors/{{ teacher.mentor.id }}" class="govuk-link">{{ teacher.mentor.name }}</a>
+      {% else %}
+        <div class="app-summary-list__missing">
+          <div class="app-summary-list__missing-heading">No mentor assigned</div>
+          <a href="#" class="govuk-link--no-visited-state">Assign a mentor</a>
+        </div>
+      {% endif %}
+    {% endset %}
+
+     {{ govukSummaryList({
+      classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+      rows: [
+        {
+          key: {
+            text: "Status",
+            classes: "xgovuk-!-font-weight-regular"
+          },
+          value: {
+            html: status
+          }
+        },
+        {
+          key: {
+            text: "Mentor",
+            classes: "xgovuk-!-font-weight-regular"
+          },
+          value: {
+            html: mentor
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endfor %}
