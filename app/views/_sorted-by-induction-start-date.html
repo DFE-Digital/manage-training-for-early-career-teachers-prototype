@@ -20,7 +20,7 @@
 
     {% set mentor %}
       {% if teacher.mentor %}
-        <a href="/mentors/{{ teacher.mentor.id }}" class="govuk-link">{{ teacher.mentor.name }}</a>
+        {{ teacher.mentor.name }}
       {% else %}
         <div class="app-summary-list__missing">
           <div class="app-summary-list__missing-heading">No mentor assigned</div>
