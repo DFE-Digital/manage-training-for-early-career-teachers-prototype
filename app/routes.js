@@ -83,11 +83,7 @@ router.get('/early-career-teachers/:id', (req, res) => {
 router.get('/early-career-teachers/:id/transfer', (req, res) => {
   const { id } = req.params
 
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
   res.render('transfer', {
     id,
@@ -95,14 +91,22 @@ router.get('/early-career-teachers/:id/transfer', (req, res) => {
   })
 })
 
+router.post('/early-career-teachers/:id/transfer-reason', (req, res) => {
+  const { id } = req.params
+  const { transferReason } = req.body
+
+  if (transferReason === "england-transfer") {
+    res.redirect(`/early-career-teachers/${id}/transfer-date`);
+  } else {
+    res.redirect(`/early-career-teachers/${id}/transfer-contact`);
+  }
+
+})
+
 router.get('/early-career-teachers/:id/transfer-date', (req, res) => {
   const { id } = req.params
 
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
   res.render('transfer-date', {
     id,
@@ -113,13 +117,20 @@ router.get('/early-career-teachers/:id/transfer-date', (req, res) => {
 router.get('/early-career-teachers/:id/transfer-check', (req, res) => {
   const { id } = req.params
 
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
   res.render('transfer-check', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/transfer-contact', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('transfer-contact', {
     id,
     teacher
   })
@@ -128,11 +139,7 @@ router.get('/early-career-teachers/:id/transfer-check', (req, res) => {
 router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {
   const { id } = req.params
 
-  const teacher = req.session.data.mentors.map(function(mentor) {
-    return mentor.earlyCareerTeachers
-  }).flat().find(function(teacher) {
-    return teacher.id === id
-  })
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
   res.render('transfer-confirmed', {
     id,

@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Contact Ambition Institute" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/early-career-teachers/" + teacher.id + "/transfer" }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">You need to contact the training provider to let them know that {{ teacher.name }} is no longer at the school.</p>
+
+    <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}">Return to {{ teacher.name }}’s profile</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

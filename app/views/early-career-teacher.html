@@ -178,9 +178,8 @@
 
     {% if not teacher.completedDate and not teacher.noLongerTraining %}
 
-      <h2 class="govuk-heading-m">Are they transferring to another school?</h2>
 
-      <p class="govuk-body">Tell us if <a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">{{ teacher.name }} is transferring to another school</a></p>
+      <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">Report that {{ teacher.name }} has left Plymouth Primary School</a></p>
     {% endif %}
 
 
