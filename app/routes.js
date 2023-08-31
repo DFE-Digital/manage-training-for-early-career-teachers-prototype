@@ -136,6 +136,19 @@ router.get('/early-career-teachers/:id/transfer-contact', (req, res) => {
   })
 })
 
+router.post('/early-career-teachers/:id/confirm-transfer', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  teacher.noLongerTraining = true
+  teacher.leftSchoolOn = req.session.data.transferDate
+
+  req.session.data.transferDate = {}
+
+  res.redirect(`/early-career-teachers/${id}/transfer-confirmed`)
+})
+
 router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {
   const { id } = req.params
 
@@ -146,7 +159,6 @@ router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {
     teacher
   })
 })
-
 
 router.get('/mentors/:id', (req, res) => {
   const { id } = req.params

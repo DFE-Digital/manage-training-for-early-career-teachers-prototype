@@ -116,6 +116,7 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "freya.nineton@plymouth-primary.sch.uk",
       noLongerTraining: true,
+      leftSchoolOn: {"year": "2022", "month": "08", "day": "02"},
       mentorId: "ABC123"
     },
     {
@@ -125,6 +126,7 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "muhammed.faisal@plymouth-primary.sch.uk",
       noLongerTraining: true,
+      leftSchoolOn: {"year": "2021", "month": "08", "day": "12"},
       mentorId: "ABC123"
     }
   ],

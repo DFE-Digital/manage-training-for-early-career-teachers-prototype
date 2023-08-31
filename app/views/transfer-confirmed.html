@@ -28,8 +28,7 @@
       classes: "govuk-!-margin-bottom-7"
     }) }}
 
-    <p class="govuk-body">You’ve confirmed that  {{ teacher.name }} is leaving St Mary’s Primary School on <span style="white-space: nowrap;">{{ data.transferDate | isoDateFromDateInput | govukDate }}</span>.</p>
-
+    <p class="govuk-body">You’ve confirmed that  {{ teacher.name }} is leaving St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
 
     <h2 class="govuk-heading-m">What happens next</h2>
     <p class="govuk-body">We’ll tell {{ teacher.name }} that you’ve reported their transfer.</p>

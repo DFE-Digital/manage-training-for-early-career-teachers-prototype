@@ -6,6 +6,12 @@
 {% for teacher in ectsNoLongerTraining %}
   {% set valueHtml %}
     {{ govukTag({ text: "No longer training", classes: "govuk-tag--grey" })}}
+
+      <p class="govuk-body govuk-!-margin-top-2">They left your school
+      {% if teacher.leftSchoolOn %}
+       on {{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}
+      {% endif %}
+      </p>
   {% endset %}
   {% set rows = (rows.push({key: {html: "<a href=\"/early-career-teachers/" + teacher.id + "\" class=\"govuk-link--no-visited-state\">" + teacher.name + "</a>", classes: "govuk-!-font-weight-regular"}, value: {html: valueHtml} }), rows) %}
 {% endfor %}

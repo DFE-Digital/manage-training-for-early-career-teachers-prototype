@@ -13,7 +13,7 @@
 
 
 {% for mentor in mentors | sort(false, false, "name") %}
-
+  {% if mentor.earlyCareerTeachers | length > 0 %}
   <div class="govuk-summary-card">
     <div class="govuk-summary-card__content">
 
@@ -72,5 +72,5 @@
 
     </div>
   </div>
-
+  {% endif %}
 {% endfor %}

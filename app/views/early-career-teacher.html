@@ -29,6 +29,9 @@
       {% set tagText = "No longer being trained" %}
       {% set tagClass = "govuk-tag--grey" %}
       {% set statusText = "They left your school" %}
+      {% if teacher.leftSchoolOn %}
+        {% set statusText = statusText + " on " + (teacher.leftSchoolOn | isoDateFromDateInput | govukDate) %}
+      {% endif %}
     {% elseif not teacher.inductionStartDate %}
       {% set tagText = "Eligible for training" %}
       {% set tagClass = "govuk-tag--green" %}

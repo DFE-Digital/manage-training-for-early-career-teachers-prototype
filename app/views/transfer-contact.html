@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Contact Ambition Institute" %}
+{% set pageName="Contact the training provider" %}
 
 {% block beforeContent %}
   {{ govukBackLink({ href: "/early-career-teachers/" + teacher.id + "/transfer" }) }}
@@ -13,7 +13,12 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">You need to contact the training provider to let them know that {{ teacher.name }} is no longer at the school.</p>
+    <p class="govuk-body">You should report that {{ teacher.name }} has left the school to:</p>
+
+    <ol class="govuk-list govuk-list--bullet">
+      <li>Alban Teaching School Hub</li>
+      <li>Ambition Institute</li>
+    </ol>
 
     <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}">Return to {{ teacher.name }}’s profile</a></p>
 
