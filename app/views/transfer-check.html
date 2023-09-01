@@ -2,6 +2,9 @@
 
 {% set pageName="Home" %}
 
+{% set transferDate = data.transferDate | isoDateFromDateInput %}
+{% set dateToday = "today" | duration(0)  %}
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     items: [
@@ -29,6 +32,22 @@
     <span class="govuk-caption-l">St Mary’s Primary School</span>
     <h1 class="govuk-heading-l">Check your answers</h1>
 
+    {% set typeText %}
+      {% if transferDate > dateToday  %}
+        {% if data.transferReason == "permanent"  %}
+            Permanently leaving
+          {% else %}
+            Temporarily leaving
+          {% endif %}
+        {% else %}
+          {% if data.transferReason == "permanent"  %}
+            Permanently left
+          {% else %}
+            Temporarily left
+          {% endif %}
+        {% endif %}
+      {% endset %}
+
     {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -50,9 +69,26 @@
             actions: {
               items: [
                 {
-                  href:  "/early-career-teachers/" + teacher.id + "/transfer-date",
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer",
                   text: "Change",
                   visuallyHiddenText: "leaving date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Type"
+            },
+            value: {
+              text: typeText
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer-reason",
+                  text: "Change",
+                  visuallyHiddenText: "type of leaving"
                 }
               ]
             }

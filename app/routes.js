@@ -91,24 +91,12 @@ router.get('/early-career-teachers/:id/transfer', (req, res) => {
   })
 })
 
-router.post('/early-career-teachers/:id/transfer-reason', (req, res) => {
-  const { id } = req.params
-  const { transferReason } = req.body
-
-  if (transferReason === "england-transfer") {
-    res.redirect(`/early-career-teachers/${id}/transfer-date`);
-  } else {
-    res.redirect(`/early-career-teachers/${id}/transfer-contact`);
-  }
-
-})
-
-router.get('/early-career-teachers/:id/transfer-date', (req, res) => {
+router.get('/early-career-teachers/:id/transfer-reason', (req, res) => {
   const { id } = req.params
 
   const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-  res.render('transfer-date', {
+  res.render('transfer-reason', {
     id,
     teacher
   })
@@ -138,15 +126,32 @@ router.get('/early-career-teachers/:id/transfer-contact', (req, res) => {
 
 router.post('/early-career-teachers/:id/confirm-transfer', (req, res) => {
   const { id } = req.params
+  const { transferReason, transferDate } = req.session.data
+  const dateNow = new Date()
+  console.log(transferDate)
+
+  const transferDateAsDate = new Date(transferDate.year, transferDate.month, transferDate.day)
 
   const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-  teacher.noLongerTraining = true
   teacher.leftSchoolOn = req.session.data.transferDate
-
   req.session.data.transferDate = {}
 
-  res.redirect(`/early-career-teachers/${id}/transfer-confirmed`)
+  if ( transferDateAsDate < new Date ) {
+    teacher.noLongerTraining = true
+  }
+
+  if (transferReason === "temporary") {
+    teacher.temporarilyLeft = true
+  }
+
+  if (transferReason === "permanent") {
+    res.redirect(`/early-career-teachers/${id}/transfer-confirmed`)
+  } else {
+    res.redirect(`/early-career-teachers/${id}/transfer-contact`)
+  }
+
+
 })
 
 router.get('/early-career-teachers/:id/transfer-confirmed', (req, res) => {

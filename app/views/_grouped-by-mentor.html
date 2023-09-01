@@ -52,6 +52,10 @@
 
             <p class="govuk-body govuk-!-margin-top-2">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
 
+           {% if earlyCareerTeacher.leftSchoolOn %}
+              <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ earlyCareerTeacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+            {% endif %}
+
           {% else %}
             {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
           {% endif %}

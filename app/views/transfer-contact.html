@@ -1,9 +1,27 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Contact the training provider" %}
+
+{% set dateToday = "today" | duration(0)  %}
+
+{% if (teacher.leftSchoolOn | isoDateFromDateInput ) < dateToday  %}
+  {% set pageName = "You’ve told us that " + teacher.name + " has temporarily left your school" %}
+{% else %}
+  {% set pageName = "You’ve told us that " + teacher.name + " is temporarily leaving your school" %}
+{% endif %}
 
 {% block beforeContent %}
-  {{ govukBackLink({ href: "/early-career-teachers/" + teacher.id + "/transfer" }) }}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Manage mentors and ECTs",
+        href: "/participants?show=training"
+      }
+    ]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -11,16 +29,37 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">You should report that {{ teacher.name }} has left the school to:</p>
+    {{ govukPanel({
+      titleText: pageName,
+      classes: "govuk-!-margin-bottom-7"
+    }) }}
 
-    <ol class="govuk-list govuk-list--bullet">
-      <li>Alban Teaching School Hub</li>
-      <li>Ambition Institute</li>
-    </ol>
+    {% if (teacher.leftSchoolOn | isoDateFromDateInput) < dateToday  %}
+      <p class="govuk-body">You’ve told us that  {{ teacher.name }} temporarily left St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
+    {% else %}
+      <p class="govuk-body">You’ve told us that  {{ teacher.name }} is temporarily leaving St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
+    {% endif %}
 
-    <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}">Return to {{ teacher.name }}’s profile</a></p>
+    <p class="govuk-body">We’ll email {{ teacher.name }} to let them know you’ve reported this.</p>
+
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">You must report this information to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Alban Teaching School Hub – their appropriate body</li>
+      <li>Ambition Institute – their training provider</li>
+    </ul>
+
+    <p class="govuk-body">You must also tell them when {{ teacher.name }} returns to your school.</p>
+
+    {% if (teacher.leftSchoolOn | isoDateFromDateInput) > dateToday  %}
+      <p class="govuk-body">{{ teacher.name }} should continue their early career training until they leave your school.</p>
+    {% endif %}
+
+    <p class="govuk-body"><a class="govuk-link govuk-link govuk-link--no-visited-state" href="/participants?show=training">View your ECTs and mentors</a></p>
 
   </div>
 </div>

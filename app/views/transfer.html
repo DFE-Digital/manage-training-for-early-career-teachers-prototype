@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Why has " + teacher.name + " left the school?" %}
+{% set pageName="What’s " + teacher.name + "’s leaving date?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,39 +14,47 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <span class="govuk-caption-l">St Mary’s Primary School</span>
 
     <form action="/early-career-teachers/{{ teacher.id }}/transfer-reason" method="post">
-      {{ govukRadios({
-        name: "transferReason",
+
+      {{ govukDateInput({
+        id: "transfer-date",
         fieldset: {
           legend: {
             text: pageName,
-            classes: "govuk-fieldset__legend--l",
-            isPageHeading: true
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
           }
         },
-        items: [
-          {
-            value: "england-transfer",
-            text: "They have transferred to another school in England to continue their induction"
-          },
-          {
-            value: "transfer-outside-england",
-            text: "They have transferred to a school outside of England"
-          },
-          {
-            value: "left-teaching",
-            text: "They have left teaching"
-          }
-        ]
-
+        hint: {
+          text: "For example, 14 7 2023"
+        },
+        items: [{
+          classes: "govuk-input--width-2",
+          label: "Day",
+          name: "transferDate[day]",
+          value: data.transferDate.day
+        }, {
+          classes: "govuk-input--width-2",
+          label: "Month",
+          name: "transferDate[month]",
+          value: data.transferDate.month
+        }, {
+          classes: "govuk-input--width-4",
+          label: "Year",
+          name: "transferDate[year]",
+          value: data.transferDate.year
+        }]
       }) }}
 
-      {{ govukButton({ text: "Continue" }) }}
+      {{ govukButton({ text: "Continue"}) }}
     </form>
 
   </div>
 </div>
 
 {% endblock %}
+
+
+

@@ -39,6 +39,10 @@
         We’ve confirmed the participant is eligible for this programme</p>
 
         <p class="govuk-body">Alban Teaching School Hub needs to confirm their induction start date.
+
+        {% if teacher.leftSchoolOn %}
+          <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+        {% endif %}
       {% endset %}
     {% elseif teacher.completedDate %}
       {% set tagText = "Induction completed" %}
@@ -56,6 +60,10 @@
             <p class="govuk-body">Alban Teaching School Hub will record the induction completed date when {{ teacher.name }} has passed their induction.</p>
 
             <p class="govuk-body">There may be a delay before this information is updated here.</p>
+          {% endif %}
+
+          {% if teacher.leftSchoolOn %}
+            <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
           {% endif %}
       {% endset %}
     {% endif %}
@@ -179,10 +187,9 @@
       ]
     }) }}
 
-    {% if not teacher.completedDate and not teacher.noLongerTraining %}
+    {% if not teacher.completedDate and not teacher.noLongerTraining and not teacher.leftSchoolOn %}
 
-
-      <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">Report that {{ teacher.name }} has left Plymouth Primary School</a></p>
+      <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">Report that {{ teacher.name }} is leaving Plymouth Primary School or taking a leave of absence</a></p>
     {% endif %}
 
 
