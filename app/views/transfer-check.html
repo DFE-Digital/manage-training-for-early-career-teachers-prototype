@@ -35,18 +35,28 @@
     {% set typeText %}
       {% if transferDate > dateToday  %}
         {% if data.transferReason == "permanent"  %}
-            Permanently leaving
-          {% else %}
-            Temporarily leaving
-          {% endif %}
+          Permanently leaving
         {% else %}
-          {% if data.transferReason == "permanent"  %}
-            Permanently left
-          {% else %}
-            Temporarily left
-          {% endif %}
+          Temporarily leaving
         {% endif %}
-      {% endset %}
+      {% else %}
+        {% if data.transferReason == "permanent"  %}
+          Permanently left
+        {% else %}
+          Temporarily left
+        {% endif %}
+      {% endif %}
+    {% endset %}
+
+    {% set movingWhereHtml %}
+      {% if data.movingToAnotherSchool === "yes" %}
+        {{ data.school }}
+      {% elif data.movingToAnotherSchool === "no" %}
+        No
+      {% elif data.movingToAnotherSchool === "dontknow" %}
+        I don’t know
+      {% endif %}
+    {% endset %}
 
     {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -92,7 +102,24 @@
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Moving to another school in England?"
+            },
+            value: {
+              html: movingWhereHtml
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer-where",
+                  text: "Change",
+                  visuallyHiddenText: "where they are moving to"
+                }
+              ]
+            }
+          } if data.transferReason === "permanent"
         ]
       }) }}
 

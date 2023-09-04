@@ -124,6 +124,29 @@ router.get('/early-career-teachers/:id/transfer-contact', (req, res) => {
   })
 })
 
+router.post('/early-career-teachers/:id/answer-transfer-reason', (req, res) => {
+  const { id } = req.params
+  const { transferReason } = req.session.data
+
+  if (transferReason === "permanent") {
+    res.redirect(`/early-career-teachers/${id}/transfer-where`)
+  } else {
+    res.redirect(`/early-career-teachers/${id}/transfer-check`)
+  }
+
+})
+
+router.get('/early-career-teachers/:id/transfer-where', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('transfer-where', {
+    id,
+    teacher
+  })
+})
+
 router.post('/early-career-teachers/:id/confirm-transfer', (req, res) => {
   const { id } = req.params
   const { transferReason, transferDate } = req.session.data

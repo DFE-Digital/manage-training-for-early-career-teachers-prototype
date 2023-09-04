@@ -27,7 +27,7 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/early-career-teachers/{{ teacher.id }}/transfer-check" method="post">
+    <form action="/early-career-teachers/{{ teacher.id }}/answer-transfer-reason" method="post">
       {{ govukRadios({
         name: "transferReason",
         value: data.transferReason,
