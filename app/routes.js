@@ -128,7 +128,6 @@ router.post('/early-career-teachers/:id/confirm-transfer', (req, res) => {
   const { id } = req.params
   const { transferReason, transferDate } = req.session.data
   const dateNow = new Date()
-  console.log(transferDate)
 
   const transferDateAsDate = new Date(transferDate.year, transferDate.month, transferDate.day)
 
