@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="When is " + data.name + " moving to your school?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-ect/trn"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-ect/continuing-programme" method="post">
+      {{ govukDateInput({
+        name: "startingOn",
+        id: "startingOn",
+        fieldset: {
+          legend: {
+            text: pageName,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          }
+        },
+        hint: {
+          text: "For example, 14 7 2023"
+        },
+        items: [
+          {
+            name: "startingOn[day]",
+            label: "Day",
+            value: data.startingOn.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "startingOn[month]",
+            label: "Month",
+            value: data.startingOn.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "startingOn[year]",
+            label: "Year",
+            value: data.startingOn.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

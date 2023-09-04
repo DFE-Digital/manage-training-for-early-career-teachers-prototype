@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="New training programme" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-ect/continuing-programme"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-ect/answer-new-programme" method="post">
+
+    {{ govukRadios({
+      name: "newProvider",
+      value: data.newProvider,
+      fieldset: {
+        legend: {
+          text: "Who will " + data.name + "’s new training provider be?",
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          value: "ambition-with-selby",
+          text: "Ambition Institute with Selby Teaching School Hub"
+        },
+        {
+          value: "niot-with-northamptonshire",
+          text: "National Institute of Teaching with Northamptonshire Teaching School Hub"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "other",
+          text: "Another training provider or programme"
+        }
+      ]
+    }) }}
+
+      {{ govukButton({ text: "Continue "}) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What’s " + data.name + " date of birth?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-ect/trn"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-ect/moving" method="post">
+      {{ govukDateInput({
+        name: "dob",
+        id: "dob",
+        fieldset: {
+          legend: {
+            text: pageName,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          }
+        },
+        hint: {
+          text: "For example, 27 3 1998"
+        },
+        items: [
+          {
+            name: "dob[day]",
+            label: "Day",
+            value: data.dob.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "dob[month]",
+            label: "Month",
+            value: data.dob.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "dob[year]",
+            label: "Year",
+            value: data.dob.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
