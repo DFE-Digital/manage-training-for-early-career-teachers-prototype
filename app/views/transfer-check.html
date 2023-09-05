@@ -37,13 +37,13 @@
         {% if data.transferReason == "permanent"  %}
           Permanently leaving
         {% else %}
-          Temporarily leaving
+          Temporary leave of absence
         {% endif %}
       {% else %}
         {% if data.transferReason == "permanent"  %}
           Permanently left
         {% else %}
-          Temporarily left
+          Temporary leave of absence
         {% endif %}
       {% endif %}
     {% endset %}
@@ -54,7 +54,7 @@
       {% elif data.movingToAnotherSchool === "no" %}
         No
       {% elif data.movingToAnotherSchool === "dontknow" %}
-        I don’t know
+        I do not know
       {% endif %}
     {% endset %}
 
@@ -88,7 +88,7 @@
           },
           {
             key: {
-              text: "Type"
+              text: "Reason"
             },
             value: {
               text: typeText
@@ -115,7 +115,7 @@
                 {
                   href:  "/early-career-teachers/" + teacher.id + "/transfer-where",
                   text: "Change",
-                  visuallyHiddenText: "where they are moving to"
+                  visuallyHiddenText: "where they're moving to"
                 }
               ]
             }

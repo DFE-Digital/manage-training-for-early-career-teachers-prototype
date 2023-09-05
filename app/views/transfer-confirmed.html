@@ -38,7 +38,7 @@
     {% if (teacher.leftSchoolOn | isoDateFromDateInput) < dateToday  %}
       <p class="govuk-body">You’ve told us that  {{ teacher.name }} permanently left St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
     {% else %}
-      <p class="govuk-body">You’ve told us that  {{ teacher.name }} is permanently leaving St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
+      <p class="govuk-body">You’ve told us that  {{ teacher.name }} will permanently leave St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
     {% endif %}
 
     <p class="govuk-body">We’ll email {{ teacher.name }} to let them know you’ve reported this.</p>
@@ -54,7 +54,7 @@
     </ul>
 
     {% if (teacher.leftSchoolOn | isoDateFromDateInput) > dateToday  %}
-      <p class="govuk-body">{{ teacher.name }} should continue their early career training until they leave your school.</p>
+      <p class="govuk-body">{{ teacher.name }} should continue their ECF-based induction and training until they leave your school.</p>
     {% endif %}
 
     <p class="govuk-body"><a class="govuk-link govuk-link govuk-link--no-visited-state" href="/participants?show=training">View your ECTs and mentors</a></p>
