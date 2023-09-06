@@ -7,10 +7,10 @@
 
 {% if transferDate > dateToday  %}
   {% set pageName="Is " + teacher.name + " leaving the school permanently?" %}
-  {% set temporaryReasonText = "No, they're taking a temporary leave of absence" %}
+  {% set temporaryReasonText = "No, they’re taking a temporary leave of absence" %}
 {% else %}
   {% set pageName="Has " + teacher.name + " left the school permanently?" %}
-  {% set temporaryReasonText = "No, they've taken a temporary leave of absence" %}
+  {% set temporaryReasonText = "No, they’ve taken a temporary leave of absence" %}
 {% endif %}
 
 {% block beforeContent %}
