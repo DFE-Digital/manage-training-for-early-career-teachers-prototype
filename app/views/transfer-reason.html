@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set permanentReasonText = "Yes" %}
+
+{% set transferDate = data.transferDate | isoDateFromDateInput %}
+{% set dateToday = "today" | duration(0)  %}
+
+{% if transferDate > dateToday  %}
+  {% set pageName="Is " + teacher.name + " leaving the school permanently?" %}
+  {% set temporaryReasonText = "No, they’re taking a temporary leave of absence" %}
+{% else %}
+  {% set pageName="Has " + teacher.name + " left the school permanently?" %}
+  {% set temporaryReasonText = "No, they’ve taken a temporary leave of absence" %}
+{% endif %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/early-career-teachers/" + teacher.id + "/transfer"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/early-career-teachers/{{ teacher.id }}/answer-transfer-reason" method="post">
+      {{ govukRadios({
+        name: "transferReason",
+        value: data.transferReason,
+        fieldset: {
+          legend: {
+            text: pageName,
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        },
+        items: [
+          {
+            value: "permanent",
+            text: permanentReasonText
+          },
+          {
+            value: "temporary",
+            text: temporaryReasonText,
+            hint: {
+              text: "For example, parental leave"
+            }
+          }
+        ]
+
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

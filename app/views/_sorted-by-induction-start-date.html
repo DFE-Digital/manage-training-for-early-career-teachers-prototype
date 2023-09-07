@@ -3,7 +3,7 @@
 
   <div class="govuk-summary-card">
   <div class="govuk-summary-card__title-wrapper govuk-!-padding-top-2 govuk-!-padding-bottom-2">
-    <h2 class="govuk-summary-card__title"><a href="/{{ "early-career-teachers" if teacher.mentor else "teachers-without-mentors" }}/{{ teacher.id }}" class="govuk-link govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
+    <h2 class="govuk-summary-card__title"><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link govuk-link--no-visited-state">{{ teacher.name }}</a></h2>
   </div>
   <div class="govuk-summary-card__content">
 
@@ -12,6 +12,10 @@
       {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
 
       <p class="govuk-body govuk-!-margin-top-2">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+
+      {% if teacher.leftSchoolOn %}
+        <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+      {% endif %}
 
     {% else %}
       {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}

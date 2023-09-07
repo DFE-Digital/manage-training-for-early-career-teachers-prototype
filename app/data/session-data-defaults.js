@@ -22,7 +22,7 @@ module.exports = {
       trn: "7452745",
       dateOfBirth: "1985-05-06",
       emailAddress: "jonathan.paul@plymouth-primary.sch.uk",
-      inductionStartDate: null,
+      inductionStartDate: "2023-04-20",
       mentorId: "ABC123"
     },
     {
@@ -58,7 +58,7 @@ module.exports = {
       trn: "6638462",
       dateOfBirth: "1989-11-13",
       emailAddress: "hadley.dickerson@plymouth-primary.sch.uk",
-      inductionStartDate: null,
+      inductionStartDate: "2023-04-20",
       mentorId: "NDY639"
     },
     {
@@ -116,6 +116,7 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "freya.nineton@plymouth-primary.sch.uk",
       noLongerTraining: true,
+      leftSchoolOn: {"year": "2022", "month": "08", "day": "02"},
       mentorId: "ABC123"
     },
     {
@@ -125,6 +126,7 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "muhammed.faisal@plymouth-primary.sch.uk",
       noLongerTraining: true,
+      leftSchoolOn: {"year": "2021", "month": "08", "day": "12"},
       mentorId: "ABC123"
     }
   ],

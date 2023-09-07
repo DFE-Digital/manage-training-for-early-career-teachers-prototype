@@ -29,6 +29,9 @@
       {% set tagText = "No longer being trained" %}
       {% set tagClass = "govuk-tag--grey" %}
       {% set statusText = "They left your school" %}
+      {% if teacher.leftSchoolOn %}
+        {% set statusText = statusText + " on " + (teacher.leftSchoolOn | isoDateFromDateInput | govukDate) %}
+      {% endif %}
     {% elseif not teacher.inductionStartDate %}
       {% set tagText = "Eligible for training" %}
       {% set tagClass = "govuk-tag--green" %}
@@ -36,6 +39,10 @@
         We’ve confirmed the participant is eligible for this programme</p>
 
         <p class="govuk-body">Alban Teaching School Hub needs to confirm their induction start date.
+
+        {% if teacher.leftSchoolOn %}
+          <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+        {% endif %}
       {% endset %}
     {% elseif teacher.completedDate %}
       {% set tagText = "Induction completed" %}
@@ -57,6 +64,10 @@
 
             <p class="govuk-body">You do not need to take any action.</p>
 
+          {% endif %}
+
+          {% if teacher.leftSchoolOn %}
+            <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
           {% endif %}
       {% endset %}
     {% endif %}
@@ -180,11 +191,9 @@
       ]
     }) }}
 
-    {% if not teacher.completedDate and not teacher.noLongerTraining %}
+    {% if not teacher.completedDate and not teacher.noLongerTraining and not teacher.leftSchoolOn %}
 
-      <h2 class="govuk-heading-m">Are they transferring to another school?</h2>
-
-      <p class="govuk-body">Tell us if <a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">{{ teacher.name }} is transferring to another school</a></p>
+      <p class="govuk-body"><a href="/early-career-teachers/{{ teacher.id }}/transfer" class="govuk-link">Report that {{ teacher.name }} is leaving your school or taking a leave of absence</a></p>
     {% endif %}
 
 

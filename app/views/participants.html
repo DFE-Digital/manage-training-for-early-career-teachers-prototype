@@ -44,15 +44,15 @@
         items: [
           {
             value: "training",
-            text: "Currently training (9)"
+            text: "Currently training (" + (ectsBeingTrained | length) + ")"
           },
           {
             value: "completed-induction",
-            text: "Completed induction (3)"
+            text: "Completed induction (" + (ectsCompleted | length) + ")"
           },
           {
             value: "no-longer-training",
-            text: "No longer training (2)"
+            text: "Left the school (" + (ectsNoLongerTraining | length) + ")"
           }
         ]
       }) }}

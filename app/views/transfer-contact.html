@@ -4,9 +4,9 @@
 {% set dateToday = "today" | duration(0)  %}
 
 {% if (teacher.leftSchoolOn | isoDateFromDateInput ) < dateToday  %}
-  {% set pageName = "You’ve confirmed that " + teacher.name + " has left your school" %}
+  {% set pageName = "You’ve told us that " + teacher.name + " has temporarily left your school" %}
 {% else %}
-  {% set pageName = "You’ve confirmed that " + teacher.name + " is leaving your school" %}
+  {% set pageName = "You’ve told us that " + teacher.name + " is temporarily leaving your school" %}
 {% endif %}
 
 {% block beforeContent %}
@@ -36,9 +36,9 @@
     }) }}
 
     {% if (teacher.leftSchoolOn | isoDateFromDateInput) < dateToday  %}
-      <p class="govuk-body">You’ve told us that  {{ teacher.name }} permanently left St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
+      <p class="govuk-body">You’ve told us that  {{ teacher.name }} temporarily left St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
     {% else %}
-      <p class="govuk-body">You’ve told us that  {{ teacher.name }} will permanently leave St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
+      <p class="govuk-body">You’ve told us that  {{ teacher.name }} will temporarily leave St Mary’s Primary School on <span style="white-space: nowrap;">{{ teacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span>.</p>
     {% endif %}
 
     <p class="govuk-body">We’ll email {{ teacher.name }} to let them know you’ve reported this.</p>
@@ -52,6 +52,8 @@
       <li>Alban Teaching School Hub – their appropriate body</li>
       <li>Ambition Institute – their training provider</li>
     </ul>
+
+    <p class="govuk-body">You must also tell them when {{ teacher.name }} returns to your school.</p>
 
     {% if (teacher.leftSchoolOn | isoDateFromDateInput) > dateToday  %}
       <p class="govuk-body">{{ teacher.name }} should continue their ECF-based induction and training until they leave your school.</p>

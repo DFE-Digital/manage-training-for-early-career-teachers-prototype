@@ -2,6 +2,9 @@
 
 {% set pageName="Home" %}
 
+{% set transferDate = data.transferDate | isoDateFromDateInput %}
+{% set dateToday = "today" | duration(0)  %}
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     items: [
@@ -29,6 +32,32 @@
     <span class="govuk-caption-l">St Mary’s Primary School</span>
     <h1 class="govuk-heading-l">Check your answers</h1>
 
+    {% set typeText %}
+      {% if transferDate > dateToday  %}
+        {% if data.transferReason == "permanent"  %}
+          Permanently leaving
+        {% else %}
+          Temporary leave of absence
+        {% endif %}
+      {% else %}
+        {% if data.transferReason == "permanent"  %}
+          Permanently left
+        {% else %}
+          Temporary leave of absence
+        {% endif %}
+      {% endif %}
+    {% endset %}
+
+    {% set movingWhereHtml %}
+      {% if data.movingToAnotherSchool === "yes" %}
+        {{ data.school }}
+      {% elif data.movingToAnotherSchool === "no" %}
+        No
+      {% elif data.movingToAnotherSchool === "dontknow" %}
+        I do not know
+      {% endif %}
+    {% endset %}
+
     {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -50,17 +79,51 @@
             actions: {
               items: [
                 {
-                  href:  "/early-career-teachers/" + teacher.id + "/transfer-date",
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer",
                   text: "Change",
                   visuallyHiddenText: "leaving date"
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Reason"
+            },
+            value: {
+              text: typeText
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer-reason",
+                  text: "Change",
+                  visuallyHiddenText: "type of leaving"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Moving to another school in England?"
+            },
+            value: {
+              html: movingWhereHtml
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/" + teacher.id + "/transfer-where",
+                  text: "Change",
+                  visuallyHiddenText: "where they’re moving to"
+                }
+              ]
+            }
+          } if data.transferReason === "permanent"
         ]
       }) }}
 
-    <form action="/early-career-teachers/{{ teacher.id }}/transfer-confirmed" method="post">
+    <form action="/early-career-teachers/{{ teacher.id }}/confirm-transfer" method="post">
       {{ govukButton({ text: "Confirm and continue"}) }}
     </form>
 

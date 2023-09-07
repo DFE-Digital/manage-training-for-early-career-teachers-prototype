@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageName="What’s " + teacher.name + "’s leaving date?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,14 +15,46 @@
   <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">St Mary’s Primary School</span>
-    <h1 class="govuk-heading-l">Is {{ teacher.name }} transferring to another school to continue training?</h1>
 
+    <form action="/early-career-teachers/{{ teacher.id }}/transfer-reason" method="post">
 
-    <p>If they are leaving your school for any other reason, contact your training provider instead.</p>
+      {{ govukDateInput({
+        id: "transfer-date",
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "For example, 14 7 2023"
+        },
+        items: [{
+          classes: "govuk-input--width-2",
+          label: "Day",
+          name: "transferDate[day]",
+          value: data.transferDate.day
+        }, {
+          classes: "govuk-input--width-2",
+          label: "Month",
+          name: "transferDate[month]",
+          value: data.transferDate.month
+        }, {
+          classes: "govuk-input--width-4",
+          label: "Year",
+          name: "transferDate[year]",
+          value: data.transferDate.year
+        }]
+      }) }}
 
-    {{ govukButton({ text: "Yes, they are transferring", href: "/early-career-teachers/" + teacher.id + "/transfer-date"}) }}
+      {{ govukButton({ text: "Continue"}) }}
+    </form>
 
   </div>
 </div>
 
 {% endblock %}
+
+
+
