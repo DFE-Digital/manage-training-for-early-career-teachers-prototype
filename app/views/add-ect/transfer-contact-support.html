@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Contact support" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-ect/new-programme"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Contact <a href="#" class="govuk-link">continuing-professional-development@digital.education.gov.uk</a> if you need to transfer {{ data.name }} to a different provider or training programme.</p>
+
+
+  </div>
+</div>
+
+{% endblock %}

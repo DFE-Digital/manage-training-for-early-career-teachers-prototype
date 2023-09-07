@@ -1,0 +1,44 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Who do you want to add?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/participants"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-ect/what-we-need" method="post">
+      {{ govukRadios({
+        name: "type",
+        fieldset: {
+          legend: {
+            text: pageName,
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        },
+        items: [
+          {
+            value: "ect",
+            text: "Early career teacher"
+          },
+          {
+            value: "mentor",
+            text: "Mentor"
+          }
+        ]
+
+      }) }}
+
+        {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

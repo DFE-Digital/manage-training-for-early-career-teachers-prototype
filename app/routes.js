@@ -210,3 +210,15 @@ router.get('/mentors/:id', (req, res) => {
   })
 })
 
+
+router.post('/add-ect/answer-new-programme', (req, res) => {
+
+  const newProvider = req.session.data.newProvider
+
+  if (newProvider === "other") {
+    res.redirect('/add-ect/transfer-contact-support')
+  } else {
+    res.redirect('/add-ect/check')
+  }
+
+})
