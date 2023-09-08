@@ -13,18 +13,22 @@
 
 
 {% for mentor in mentors | sort(false, false, "name") %}
-  {% if mentor.earlyCareerTeachers | length > 0 %}
+  {% if not mentor.leftSchoolOn %}
   <div class="govuk-summary-card">
     <div class="govuk-summary-card__content">
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-0">Mentor</h2>
 
       {% set mentorStatusHtml %}
-        {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
+        {% if mentor.earlyCareerTeachers | length > 0 %}
+          {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
+        {% else %}
+          {{ govukTag({ text: "Not mentoring", classes: "govuk-tag--purple" }) }}
+        {% endif %}
       {% endset %}
 
       {{ govukSummaryList({
-        classes: "govuk-summary-list--no-border govuk-!-margin-bottom-4",
+        classes: "govuk-summary-list--no-border " + ("govuk-!-margin-bottom-4" if mentor.earlyCareerTeachers | length > 0),
         rows: [
           {
             key: {
@@ -38,41 +42,46 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-0">ECTs</h2>
+      {% if mentor.earlyCareerTeachers | length > 0 %}
 
-      {% set rows = [] %}
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-0">ECTs</h2>
 
-      {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
+        {% set rows = [] %}
 
-        {% set key = {html: "<a href=\"/early-career-teachers/" + earlyCareerTeacher.id + "\" class=\"govuk-link--no-visited-state\">" + earlyCareerTeacher.name + "</a>", classes: "govuk-!-font-weight-regular"} %}
+        {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
 
-        {% set valueHtml %}
-          {% if earlyCareerTeacher.inductionStartDate %}
-            {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+          {% set key = {html: "<a href=\"/early-career-teachers/" + earlyCareerTeacher.id + "\" class=\"govuk-link--no-visited-state\">" + earlyCareerTeacher.name + "</a>", classes: "govuk-!-font-weight-regular"} %}
 
-            <p class="govuk-body govuk-!-margin-top-2">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+          {% set valueHtml %}
+            {% if earlyCareerTeacher.inductionStartDate %}
+              {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
 
-           {% if earlyCareerTeacher.leftSchoolOn %}
-              <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ earlyCareerTeacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+              <p class="govuk-body govuk-!-margin-top-2">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+
+             {% if earlyCareerTeacher.leftSchoolOn %}
+                <p class="govuk-body">They’re leaving the school on <span style="white-space: nowrap;">{{ earlyCareerTeacher.leftSchoolOn | isoDateFromDateInput | govukDate }}</span></p>
+              {% endif %}
+
+            {% else %}
+              {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
             {% endif %}
+          {% endset %}
 
-          {% else %}
-            {{ govukTag({ text: "Eligible for training", classes: "govuk-tag--turquoise" }) }}
-          {% endif %}
+          {% set value = {html: valueHtml} %}
+          {% set rows = (rows.push({key: key, value: value}), rows) %}
+        {% endfor %}
+
+        {% set mentorStatusHtml %}
+          {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
         {% endset %}
 
-        {% set value = {html: valueHtml} %}
-        {% set rows = (rows.push({key: key, value: value}), rows) %}
-      {% endfor %}
 
-      {% set mentorStatusHtml %}
-        {{ govukTag({ text: "Mentoring", classes: "govuk-tag--turquoise" }) }}
-      {% endset %}
+        {{ govukSummaryList({
+          classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+          rows: rows
+        }) }}
 
-      {{ govukSummaryList({
-        classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
-        rows: rows
-      }) }}
+      {% endif %}
 
     </div>
   </div>
