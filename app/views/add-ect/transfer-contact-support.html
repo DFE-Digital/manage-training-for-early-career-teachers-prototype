@@ -14,8 +14,41 @@
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">Contact <a href="#" class="govuk-link">continuing-professional-development@digital.education.gov.uk</a> if you need to transfer {{ data.name }} to a different provider or training programme.</p>
+    <p class="govuk-body">You must contact support to register {{ data.name }} with a different training provider or programme.</p>
 
+    <p class="govuk-body">These details will be included automatically:</p>
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: { text: "Name"},
+        value: { text: data.name }
+      },
+      {
+        key: { text: "Teacher reference number"},
+        value: { text: data.trn }
+      }
+    ]
+    }) }}
+
+    <form action="/support-contacted" method="post">
+
+      {{ govukTextarea({
+        name: "additionalInformation",
+        label: {
+          text: "Additional information",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For example, the training provider you would like them registered with."
+        }
+
+      }) }}
+
+      <p class="govuk-body">You will receive a response by email.</p>
+
+      {{ govukButton({ text: "Send message to support" }) }}
+    </form>
 
   </div>
 </div>
