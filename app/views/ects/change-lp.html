@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Contact support" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/early-career-teachers/" + id}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Contact the support team if you need to change {{ teacher.name }}’s lead provider.</p>
+
+    <p class="govuk-body">These details will be included automatically:</p>
+
+    {% set schoolHtml %}
+      Plymouth Primary School <br>
+      <span class="app-id">URN 85646573</span>
+    {% endset %}
+
+    {% set teacherHtml %}
+      {{ data.name }}<br>
+      <span class="app-id">TRN {{ data.trn }}</span>
+    {% endset %}
+
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: { text: "School"},
+        value: { html: schoolHtml }
+      },
+      {
+        key: { text: "Teacher" },
+        value: { html: teacherHtml }
+      }
+    ]
+    }) }}
+
+    <form action="/support-contacted" method="post">
+
+      {{ govukTextarea({
+        name: "additionalInformation",
+        label: {
+          text: "Additional information",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For example, the lead provider they should be training with"
+        }
+
+      }) }}
+
+      <p class="govuk-body">You will receive a response by email.</p>
+
+      {{ govukButton({ text: "Send message to support" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

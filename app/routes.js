@@ -80,6 +80,51 @@ router.get('/early-career-teachers/:id', (req, res) => {
   })
 })
 
+router.get('/early-career-teachers/:id/change-trn', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('ects/change-trn', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/change-dob', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('ects/change-dob', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/change-dp', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('ects/change-dp', {
+    id,
+    teacher
+  })
+})
+
+router.get('/early-career-teachers/:id/change-lp', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('ects/change-lp', {
+    id,
+    teacher
+  })
+})
+
+
 router.get('/early-career-teachers/:id/transfer', (req, res) => {
   const { id } = req.params
 
