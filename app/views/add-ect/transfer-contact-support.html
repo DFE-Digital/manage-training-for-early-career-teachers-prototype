@@ -18,15 +18,26 @@
 
     <p class="govuk-body">These details will be included automatically:</p>
 
+    {% set schoolHtml %}
+      Plymouth Primary School <br>
+      <span class="app-id">URN 85646573</span>
+    {% endset %}
+
+    {% set teacherHtml %}
+      {{ data.name }}<br>
+      <span class="app-id">TRN {{ data.trn }}</span>
+    {% endset %}
+
+
     {{ govukSummaryList({
     rows: [
       {
-        key: { text: "Name"},
-        value: { text: data.name }
+        key: { text: "School"},
+        value: { html: schoolHtml }
       },
       {
-        key: { text: "Teacher reference number"},
-        value: { text: data.trn }
+        key: { text: "Teacher" },
+        value: { html: teacherHtml }
       }
     ]
     }) }}
