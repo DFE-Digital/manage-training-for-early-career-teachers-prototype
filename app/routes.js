@@ -102,23 +102,12 @@ router.get('/early-career-teachers/:id/change-dob', (req, res) => {
   })
 })
 
-router.get('/early-career-teachers/:id/change-dp', (req, res) => {
+router.get('/early-career-teachers/:id/change-dp-lp', (req, res) => {
   const { id } = req.params
 
   const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-  res.render('ects/change-dp', {
-    id,
-    teacher
-  })
-})
-
-router.get('/early-career-teachers/:id/change-lp', (req, res) => {
-  const { id } = req.params
-
-  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
-
-  res.render('ects/change-lp', {
+  res.render('ects/change-dp-lp', {
     id,
     teacher
   })
