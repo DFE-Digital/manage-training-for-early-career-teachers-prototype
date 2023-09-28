@@ -14,9 +14,9 @@
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">Contact the support team if {{ teacher.name }}’s date of birth is incorrect.</p>
+    <p class="govuk-body">Complete this form to request a change to {{ teacher.name }}’s date of birth.</p>
 
-    <p class="govuk-body">These details will be included automatically:</p>
+    <p class="govuk-body">We’ll automatically include these details for you: </p>
 
     {% set schoolHtml %}
       Plymouth Primary School <br>
@@ -42,16 +42,15 @@
     ]
     }) }}
 
-    <form action="/support-contacted" method="post">
+    <p class="govuk-body">Tell us their correct date of birth.</p>
+
+    <form action="/early-career-teachers/{{ id }}/support-contacted"" method="post">
 
       {{ govukTextarea({
         name: "additionalInformation",
         label: {
-          text: "Additional information",
+          text: "Your message",
           classes: "govuk-label--s"
-        },
-        hint: {
-          text: "For example, include their correct date of birth"
         }
 
       }) }}
