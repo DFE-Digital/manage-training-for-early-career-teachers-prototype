@@ -3,7 +3,7 @@
 {% set pageName="Contact support" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-ect/new-programme"}) }}
+  {{ govukBackLink({href: "/early-career-teachers/" + id}) }}
 {% endblock %}
 
 {% block content %}
@@ -14,9 +14,9 @@
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">You must contact support to register {{ data.name }} with a different training provider or programme.</p>
+    <p class="govuk-body">Complete this form to request a change to {{ teacher.name }}’s registered training provider.</p>
 
-    <p class="govuk-body">These details will be included automatically:</p>
+    <p class="govuk-body">We’ll automatically include these details for you: </p>
 
     {% set schoolHtml %}
       Plymouth Primary School <br>
@@ -24,8 +24,7 @@
     {% endset %}
 
     {% set teacherHtml %}
-      {{ data.name }}<br>
-      <span class="app-id">TRN {{ data.trn }}</span>
+      {{ teacher.name }}
     {% endset %}
 
 
@@ -42,21 +41,24 @@
     ]
     }) }}
 
-    <form action="/support-contacted" method="post">
+    <form action="/early-career-teachers/{{ id }}/support-contacted"" method="post">
+
+    <p class="govuk-body">Tell us:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>which training provider they’ll work with instead</li>
+      <li>the date they’ll start training with the new provider</li>
+      <li>the reason for this change</li>
+    </ul>
 
       {{ govukTextarea({
         name: "additionalInformation",
         label: {
-          text: "Additional information",
+          text: "Your message",
           classes: "govuk-label--s"
-        },
-        hint: {
-          text: "For example, the training provider you would like them registered with."
         }
 
       }) }}
-
-      <p class="govuk-body">You will receive a response by email.</p>
 
       {{ govukButton({ text: "Send message to support" }) }}
     </form>

@@ -1,0 +1,25 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Your support request has been submitted" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Our support team will reply by email as soon as possible. They may need more information from you.</p>
+
+    <p class="govuk-body">You must report this change to {{ teacher.name }}’s current training provider, and their new provider too.</p>
+
+    <p class="govuk-body"><a href="/participants" class="govuk-link">Return to Manage mentors and ECTs</a></p>
+
+
+  </div>
+</div>
+
+{% endblock %}

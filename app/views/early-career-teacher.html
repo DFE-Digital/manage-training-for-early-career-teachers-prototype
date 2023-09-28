@@ -99,7 +99,17 @@
           },
           value: {
             text: teacher.trn
-          }
+          },
+          actions: {
+            items: [
+              {
+                href: "/early-career-teachers/" + teacher.id + "/change-trn",
+                text: "Change",
+                classes: "govuk-link--no-visited-state",
+                visuallyHiddenText: "teacher reference number"
+              }
+            ]
+          } if not teacher.noLongerTraining
         },
         {
           key: {
@@ -107,7 +117,17 @@
           },
           value: {
             html: (teacher.dateOfBirth | govukDate)
-          }
+          },
+          actions: {
+            items: [
+              {
+                href: "/early-career-teachers/" + teacher.id + "/change-dob",
+                text: "Change",
+                classes: "govuk-link--no-visited-state",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          } if not teacher.noLongerTraining
         },
         {
           key: {
@@ -159,7 +179,17 @@
           },
           value: {
             html: "Ambition Institute"
-          }
+          },
+          actions: {
+            items: [
+              {
+                href: "/early-career-teachers/" + teacher.id + "/change-dp-lp",
+                text: "Change",
+                classes: "govuk-link--no-visited-state",
+                visuallyHiddenText: "lead provider"
+              }
+            ]
+          } if not teacher.noLongerTraining
         },
         {
           key: {
@@ -167,7 +197,17 @@
           },
           value: {
             html: "Bosco LLC"
-          }
+          },
+          actions: {
+            items: [
+              {
+                href: "/early-career-teachers/" + teacher.id + "/change-dp-lp",
+                text: "Change",
+                classes: "govuk-link--no-visited-state",
+                visuallyHiddenText: "delivery partner"
+              }
+            ]
+          } if not teacher.noLongerTraining
         },
         {
           key: {
