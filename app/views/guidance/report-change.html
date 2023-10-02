@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Report if something changes for an ECT or mentor
+{% endset %}
+
+{% set currentPage = "/guidance/report-change" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Your school’s registered induction tutor should <a href="/guidance/report-to-dfe">sign in to the Manage training for early career teachers service</a> to report if:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a new ECT or mentor begins their induction or ECF-based training part-way through the year</li>
+        <li>an ECT or mentor transfers to your school, or moves to another school, part-way through their induction or ECF-based training</li>
+        <li>you no longer expect any ECTs to start their statutory induction at your school that year</li>
+        <li>the headteacher wants someone else to be registered as your school’s <a href="/guidance/induction-tutor">induction tutor</a> instead (it’s important to do this before you leave your role or the school)</li>
+        <li>an ECT or mentor’s name or email address changes</li>
+      </ul>
+
+      <p>If your school works with a training provider, contact them directly to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>tell them you want to work with a different training provider instead (they’ll report this to us)</li>
+        <li>withdraw or defer an ECT or mentor who has left teaching, is taking a break, or takes a teaching job outside of England (for ECTs, you must report this to their appropriate body too)</li>
+        <li>reinstate an ECT or mentor who was previously withdrawn from training</li>
+      </ul>
+
+      <p>Contact the DfE support team if you:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>want to change your <a href="/guidance/training-options">ECF-based training option</a></li>
+        <li>want to change your <a href="/guidance/training-options#deliver-your-own-training">DfE-accredited training materials</a></li>
+      </ul>
+
+      <p>Email: <a href="mailto:continuing-professional-development@digital.education.gov.uk">continuing-professional-development@digital.education.gov.uk</a>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

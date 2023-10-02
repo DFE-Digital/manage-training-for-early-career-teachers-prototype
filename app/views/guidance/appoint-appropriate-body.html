@@ -1,0 +1,97 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Appoint an appropriate body
+{% endset %}
+
+{% set currentPage = "/guidance/appoint-appropriate-body" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Early career teachers (ECTs) cannot start their induction until you’ve appointed an appropriate body.</p>
+
+      <h2 class="govuk-heading-m">What an appropriate body does</h2>
+
+      <p>Appropriate bodies quality assure the induction of ECTs. For example, they:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check that your ECTs receive their statutory entitlements, such as <a href="/guidance/mentoring">mentoring</a> throughout their 2 year induction period</li>
+        <li>make sure <a href="/guidance/observation-and-assessment">formal assessments</a> conducted by your induction tutor are fair and appropriate</li>
+      </ul>
+
+      <p>Unless you use a <a href="/guidance/training-options">training provider</a> to deliver your training, your appropriate body will also check that your training covers the full depth of the <a href="https://www.gov.uk/government/publications/early-career-framework">early career framework</a>.</p>
+
+      <p>Your appropriate body can also give advice if your ECTs are serving a reduced or part time induction. They’ll need to agree to any reduction to the induction period.</p>
+
+      <p>You must provide each ECT with contact information for their appropriate body.</p>
+
+      <h2 class="govuk-heading-m">Find an appropriate body</h2>
+
+      <p><a href="https://www.gov.uk/government/publications/statutory-teacher-induction-appropriate-bodies/find-an-appropriate-body">Find an appropriate body</a> and contact them to appoint them.</p>
+
+      <h2 class="govuk-heading-m">Who you can and cannot appoint</h2>
+
+      <p>You can appoint one appropriate body for all of your ECTs, but you may need or choose to appoint different ones.</p>
+
+      <p>You may have previously used a local authority as an appropriate body. From September 2023, you cannot use a local authority for new inductions, so you’ll need to choose another appropriate body for any new ECTs.</p>
+
+      <p>If an ECT did their initial teacher training (ITT) through an accredited ITT provider who is also an appropriate body, you cannot appoint that appropriate body for that teacher.</p>
+
+      <p>ECTs may be serving their induction at an appropriate body. For example, they may work at a teaching school hub that is also an appropriate body. If this is the case, you cannot appoint that appropriate body for that teacher.</p>
+
+      <p>Learn more about who you can and cannot appoint in section 2 of the <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england">statutory guidance on induction for early career teachers</a>.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    </div>
+
+  </main>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

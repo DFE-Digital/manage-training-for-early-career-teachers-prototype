@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Manage statutory induction and training for ECTs
+{% endset %}
+
+{% set currentPage = "/guidance/observation-and-assessment" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Throughout statutory induction you must:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>arrange for each ECT’s teaching to be observed at regular intervals
+        make sure ECTs and mentors have adequate time off timetable to participate fully in ECF-based training and mentoring</li>
+        <li>following any other instructions from your [appropriate body](/appoint-appropriate-body) or [training provider](/training-option#use-a-lead-provider)</li>
+      </ul>
+
+      <p>In terms 1, 2, 4 and 5 of a standard 2-year induction, you must arrange progress reviews against the [Teachers’ Standards](https://www.gov.uk/government/publications/teachers-standards) for each ECT.</p>
+
+      <p>In terms 3 and 6 of a standard 2-year induction, you must arrange for each ECT to be formally assessed by your school’s [induction tutor](/induction-tutor) or headteacher.</p>
+
+      <p>See section 2 of the statutory guidance for information on how to complete these tasks.</p>
+
+      <h2 class="govuk-heading-m">Adapting training and induction for ECTs working part time, or completing a reduced induction</h2>
+
+      <p>If any ECTs are serving a reduced or part-time induction at your school, your headteacher and appropriate body should decide on the best ECF-based training, progress review and assessment schedule for them. This must also be shared with your training provider if you work with one.</p>
+
+      <p>See guidance on [proportionate funding](/funding-eligibility#proportionate-funding) for these ECTs.</p>
+
+      <h2 class="govuk-heading-m">For ECTs completing their induction and ECF-based training, follow:</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your appropriate body’s instructions to submit a final assessment for each ECT</li>
+        <li>any other instructions from your appropriate body or training provider</li>
+      </ul>
+
+      <p>You do not need to withdraw or delete their information from the [DfE service](/report-to-dfe). Your training provider and appropriate body will confirm that they’ve completed training and induction, and we’ll update their records for you.
+
+      <p>Your training provider and appropriate body will confirm that they’ve completed training and induction, and we’ll update their records for you.</p>
+
+      <h2 class="govuk-heading-m">For ECTs starting their induction and ECF-based training in the next academic year:</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/guidance/appoint-appropriate-body">appoint an appropriate body</a> for each ECT</li>
+        <li>if you want to work with a training provider, [contact them](/training-options#use-a-lead-provider) to confirm their availability</li>
+      </ul>
+
+      <p>Then <a href="/guidance/report-to-dfe">sign in to the Manage training for early career teachers service</a> to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>tell us how your school will <a href="/guidance/training-options">deliver ECF-based training</a> in the next academic year </li>
+        <li><a href="/guidance/register-ects-and-mentors">register ECTs</a> starting their statutory induction and ECF-based training at your school</li>
+        <li><a href="/guidance/register-ects-and-mentors">register mentors</a> starting their ECF-based training at your school</li>
+        <li>assign each ECT a mentor</li>
+      </ul>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% set pages = [
+  {title: "How the ECF supports induction", href: "/"},
+  {title: "Eligibility for funding", href: "/guidance/funding-eligibility"},
+  {title: "Appoint an appropriate body", href: "/guidance/appoint-appropriate-body"},
+  {title: "Choose or change the registered induction tutor for your school", href: "/guidance/induction-tutor"},
+  {title: "Choose how to provide ECF-based training at your school", href: "/guidance/training-options"},
+  {title: "Arrange mentoring", href: "/guidance/mentoring"},
+  {title: "Report your training information to DfE", href: "/guidance/report-to-dfe"},
+  {title: "Register ECTs and mentors", href: "/guidance/register-ects-and-mentors"},
+  {title: "Manage statutory induction and training for ECTs, including non-standard or part time inductions", href: "/guidance/observation-and-assessment"},
+  {title: "Report if something changes for an ECT or mentor", href: "/guidance/report-change"}
+] %}
+
+{% for page in pages %}
+  {% if page.href == currentPage %}
+
+    {% set previous = pages[loop.index0 - 1] %}
+    {% set next = pages[loop.index0 + 1] %}
+
+    {{ govukPagination({
+      previous: {
+        labelText: previous.title,
+        href: previous.href
+      } if previous,
+      next: {
+        labelText: next.title,
+        href: next.href
+      } if next
+    }) }}
+
+  {% endif %}
+{% endfor %}

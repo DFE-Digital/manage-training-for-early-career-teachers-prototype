@@ -1,0 +1,100 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Arrange mentoring
+{% endset %}
+
+{% set currentPage = "/guidance/mentoring" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Early career teachers (ECTs) are entitled to mentor support throughout their 2-year induction period. </p>
+
+      <p>Mentors will only be eligible for <a href="/guidance/funding-eligibility">funded training and time off timetable</a> once they’re assigned to an ECT in the DfE service. Find out <a href="/guidance/register-ects-and-mentors">how to register and assign mentors</a>.</p>
+
+      <h2 class="govuk-heading-m">What mentors do</h2>
+
+      <p>Mentors make sure that your ECTs receive a high quality induction. They:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>meet regularly with ECTs to provide support and feedback</li>
+        <li>take prompt, appropriate action if their ECT is experiencing difficulties</li>
+      </ul>
+
+      <p>If you <a href="/guidance/training-options">use a provider</a> to deliver your training, mentors may also be asked to observe your ECTs. This is for professional development purposes and must not be used for formal assessment.</p>
+
+      <p>Read about the role and responsibilities of mentors in section 5 of the statutory guidance on induction for early career teachers.</p>
+
+      <p>Share the guidance for mentors to help them understand their role.</p>
+
+      <h2 class="govuk-heading-m">Who to choose as a mentor</h2>
+
+      <p>Choose mentors who have the skills to provide mentoring for specific phases and subject areas. This will normally be someone who has qualified teacher status (QTS).</p>
+
+      <p>If you choose someone who does not have qualified teacher status, you should check this decision with your <a href="/guidance/appropriate-body">appropriate body</a>.</p>
+
+      <p>Try to choose someone who is not also the induction tutor. The 2 roles have separate and different responsibilities.</p>
+
+      <h2 class="govuk-heading-m">Manage mentor time</h2>
+
+      <p>Timetable mentor sessions during teaching hours wherever possible.</p>
+
+      <p>Make sure your mentors have enough time to meet with their ECTs regularly.</p>
+
+      <p>Schools receive funding to cover mentor time off timetable.</p>
+
+      <h2 class="govuk-heading-m">Mentor training</h2>
+
+      <p>If you use a training provider to deliver training for your ECTs, mentors will be given 36 hours of training over 2 years.</p>
+
+      <p>Schools receive funding for 36 hours of mentor time off timetable if mentors attend this training. <a href="/guidance/funding-eligibility">Learn more about funding</a>.</p>
+
+      <p>Mentors can only do this training and receive funded time off timetable for this training once. However, they can keep being a mentor as many times as they like.</p>
+
+      <p>Mentors can continue their training even if their ECT leaves your school or withdraws part way through their induction.</p>
+
+      <h2 class="govuk-heading-m">Mentor concerns</h2>
+
+      <p>If a mentor has concerns or difficulties, they should contact your school’s induction tutor.</p>
+
+      <p>If a mentor does not have the time or ability to carry out their role effectively, talk to your appropriate body.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

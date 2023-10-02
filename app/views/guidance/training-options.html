@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Choose how to provide ECF-based training at your school
+{% endset %}
+
+{% set currentPage = "/guidance/training-options" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+
+      <p>Early career teachers (ECTs) are entitled to 2 years of training based on the early career framework (ECF). </p>
+
+      <h2 class="govuk-heading-m">Option 1: use a lead provider</h2>
+
+      <p>Lead providers work with delivery partners such as trusts, teaching school hubs and universities to deliver training directly to your ECTs and their mentors.</p>
+
+      <p>This is fully funded by the Department for Education (DfE), so there’s no cost for eligible schools. Learn about <a href="/guidance/funding-eligibility">funding for training based on the early career framework</a>. </p>
+
+      <p>Providers may need to use face to face sessions as part of their training, so contact them to check where they’re based before signing up.</p>
+
+      <p>To sign up with a lead provider, contact them:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="https://www.ambition.org.uk/programmes/early-career-teachers/?utm_source=dfe&utm_medium=pr%2Fwebsite&utm_content=NRO+announcement&utm_campaign=ECT-Marketing-2021">Ambition Institute</a></li>
+        <li><a href="https://www.bestpracticenet.co.uk/early-career-framework">Best Practice Network (home of Outstanding Leaders Partnership)</a></li>
+        <li><a href="https://www.educationdevelopmenttrust.com">Education Development Trust</a></li>
+        <li><a href="https://niot.org.uk/programmes/ECF">National Institute of Teaching, founded by the School-Led Development Trust</a></li>
+        <li><a href="https://www.teachfirst.org.uk">Teach First</a></li>
+        <li><a href="https://www.ucl.ac.uk/ioe/departments-and-centres/departments/learning-and-leadership/early-career-framework">UCL Institute of Education</a></li>
+      </ul>
+
+      <p>If you choose to use a lead provider, your registered induction tutor will need to report this through the <a href="/guidance/report-to-dfe">Manage training for early career teachers</a> service.</p>
+
+      <h2 class="govuk-heading-m">Option 2: deliver your own training using DfE-accredited materials</h2>
+
+      <p>DfE-accredited materials include mentor session guidelines and self-directed study materials.</p>
+
+      <p>Create a ‘<a href="https://support-for-early-career-teachers.education.gov.uk/users/sign-up">Support for early career teachers</a>’ account to see what materials are available.</p>
+
+      <p>You can choose materials from one of the following suppliers:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Ambition Institute</li>
+        <li>Education Development Trust</li>
+        <li>Teach First</li>
+        <li>UCL Early Career Teacher Consortium</li>
+      </ul>
+
+      <p>If you choose to deliver your own training using DfE-accredited materials, your registered induction tutor will need to report this through the <a href="/guidance/report-to-dfe">Manage training for early career teachers</a> service.</p>
+
+      <p>Your <a href="/guidance/appoint-appropriate-body">appropriate body</a> will check your programme to make sure it covers the full depth of the early career framework.</p>
+
+      <h2 class="govuk-heading-m">Option 3: design and deliver your own training</h2>
+
+      <p>You can design and deliver your own 2-year training programme covering every ‘learn that’ and ‘learn how to’ statement in the ECF.</p>
+
+      <p>You can use DfE-accredited training materials for reference. These include mentor session guidelines and self-directed study materials.</p>
+
+      <p>Create a ‘Support for early career teachers’ account to see what materials are available.</p>
+
+      <p>Talk to your <a href="/guidance/appropriate-body">appropriate body</a> for advice on next steps.</p>
+
+      <p>Your appropriate body will check your programme to make sure it covers the early career framework.</p>
+
+      <p>Avoid changing your training option part way through induction.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

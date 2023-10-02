@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Report your training information to the Department for Education (DfE)
+{% endset %}
+
+{% set currentPage = "/guidance/report-to-dfe" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Use the Manage training for early career teachers service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check if early career teachers (ECTs) are eligible to serve statutory induction, and receive <a href="/guidance/funding-eligibility">DfE funding for training and support</a> based on the early career framework (ECF)</li>
+        <li>check if mentors working with ECTs are eligible for <a href="/guidance/funding-eligibility">DfE funding for ECF-based training and time off timetable</a></li>
+        <li>get access to ECF-based training materials for ECTs and their mentors </li>
+      </ul>
+
+      <p>Schools in England must use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/guidance/induction-tutor">nominate one person</a> as their registered user (or 'induction tutor')</li>
+        <li>report how they'll <a href="/guidance/training-options">provide ECF-based training</a> for ECTs each academic year</li>
+        <li>register each ECT and their mentor</li>
+        <li>report which <a href="/guidance/mentoring">mentor</a> each ECT will work with to ensure the correct funding is paid</li>
+        <li>report if a registered ECT or mentor <a href="/guidance/report-change">transfers to another school</a> in England during their ECF-based induction or training</li>
+      </ul>
+
+      <p>Your schools will need to provide some of this information to your <a href="/guidance/appropriate-body">appropriate body</a> and <a href="/guidance/training-option">training provider</a> too, if you work with one.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "/sign-in",
+        isStartButton: true
+      }) }}
+
+      <p>If you have problems accessing or using the service, email <a href="#">continuing-professional-development@digital.education.gov.uk</a> for help.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

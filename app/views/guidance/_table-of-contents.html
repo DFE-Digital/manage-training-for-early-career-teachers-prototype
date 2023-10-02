@@ -1,0 +1,33 @@
+{% set pages = [
+  {title: "How the ECF supports induction", href: "/"},
+  {title: "Eligibility for funding", href: "/guidance/funding-eligibility"},
+  {title: "Appoint an appropriate body", href: "/guidance/appoint-appropriate-body"},
+  {title: "Choose or change the registered induction tutor for your school", href: "/guidance/induction-tutor"},
+  {title: "Choose how to provide ECF-based training at your school", href: "/guidance/training-options"},
+  {title: "Arrange mentoring", href: "/guidance/mentoring"},
+  {title: "Report your training information to DfE", href: "/guidance/report-to-dfe"},
+  {title: "Register ECTs and mentors", href: "/guidance/register-ects-and-mentors"},
+  {title: "Manage statutory induction and training for ECTs, including non-standard or part time inductions", href: "/guidance/observation-and-assessment"},
+  {title: "Report if something changes for an ECT or mentor", href: "/guidance/report-change"}
+] %}
+
+<aside class="govuk-prototype-kit-common-templates-mainstream-guide-contents-list" role="complementary">
+  <nav class="govuk-prototype-kit-common-templates-contents-list" aria-label="Pages in this guide" role="navigation">
+    <h2 class="govuk-prototype-kit-common-templates-contents-list__title">
+      Contents
+    </h2>
+    <ol class="govuk-prototype-kit-common-templates-contents-list__list">
+      {% for page in pages %}
+        <li {% if page.href == currentPage %}aria-current="true"{%endif %}class="govuk-prototype-kit-common-templates-contents-list__list-item govuk-prototype-kit-common-templates-contents-list__list-item--dashed govuk-prototype-kit-common-templates-contents-list__list-item--active">
+        {% if page.href == currentPage %}
+          {{ page.title }}
+        {% else %}
+          <a href="{{ page.href }}">
+            {{ page.title }}
+          </a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </nav>
+</aside>

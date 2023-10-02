@@ -1,0 +1,267 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Eligibility for funded ECF-based training and support
+{% endset %}
+
+{% set currentPage = "/guidance/funding-eligibility" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>The Department for Education (DfE) supports schools with additional funding for ECF-based training. This is paid directly to schools and covers:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>5% off timetable for early career teachers (ECTs) in year 2 of induction, for induction activities including ECF-based training and mentor sessions</li>
+        <li>a dedicated mentor for each ECT, based on 20 hours of mentoring in year 2 of induction</li>
+      </ul>
+
+      <p>If your school <a href="/guidance/traning-options">uses a training provider</a>, we also fund:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>training delivered to ECTs by the lead provider or delivery partner, paid directly to lead providers</li>
+        <li>training delivered to mentors by the lead provider or delivery partner, paid directly to lead providers</li>
+        <li>36 hours of mentor time off timetable for training over 2 years, paid directly to schools</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Year 1 funding for ECF-based training</h2>
+
+      <p>Schools receive their core funding through the <a href="https://www.gov.uk/government/collections/local-authorities-pre-16-schools-funding#dedicated-schools-grant">dedicated schools grant (DSG)</a>. We calculate this using the <a href="https://www.gov.uk/government/publications/national-funding-formula-for-schools-and-high-needs">national funding formula (NFF)</a>. This funding is primarily based on pupil numbers and characteristics and is allocated by the local authority.</p>
+
+      <p>Funding is not ‘earmarked’ for statutory induction. It’s up to headteachers to manage the funding they receive.</p>
+
+      <p>Headteachers should use core funding to cover the cost of 10% off timetable for ECTs in year 1 of induction.</p>
+
+      <h2 class="govuk-heading-m">Year 2 funding for ECF-based training</h2>
+
+      <p>We pay this funding directly to schools in the summer of year 2. It covers the cost of giving each ECT:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>5% off timetable in year 2 of induction</li>
+        <li>20 hours of mentor support in year 2 of induction</li>
+      </ul>
+
+      <p>We calculate funding using the average hourly rate for mentors and early career teachers, split by region.</p>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Year 2 funding"
+          },
+          {
+            text: "England (excluding the London Area)",
+            format: "numeric",
+            classes: "govuk-!-width-one-quarter"
+          },
+          {
+            text: "Inner London Area",
+            format: "numeric",
+            classes: "govuk-!-width-one-quarter"
+          },
+          {
+            text: "Outer London Area",
+            format: "numeric",
+            classes: "govuk-!-width-one-quarter"
+          },
+          {
+            text: "Fringe Area",
+            format: "numeric",
+            classes: "govuk-!-width-one-quarter"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Rounded cost per ECT"
+            },
+            {
+              text: "£1,400",
+              format: "numeric"
+            },
+            {
+              text: "£1,700",
+              format: "numeric"
+            },
+            {
+              text: "£1,600",
+              format: "numeric"
+            },
+            {
+              text: "£1,500",
+              format: "numeric"
+            }
+          ],
+          [
+            {
+              text: "Rounded cost per mentor"
+            },
+            {
+              text: "£1,000",
+              format: "numeric"
+            },
+            {
+              text: "£1,200",
+              format: "numeric"
+            },
+            {
+              text: "£1,000",
+              format: "numeric"
+            },
+            {
+              text: "£1,000",
+              format: "numeric"
+            }
+          ],
+          [
+            {
+              text: "Total"
+            },
+            {
+              text: "£2,400",
+              format: "numeric"
+            },
+            {
+              text: "£2,900",
+              format: "numeric"
+            },
+            {
+              text: "£2,600",
+              format: "numeric"
+            },
+            {
+              text: "£2,500",
+              format: "numeric"
+            }
+          ]
+        ]
+      }) }}
+
+      <p>Read more about <a href="https://www.gov.uk/government/publications/funding-for-time-off-timetable-for-early-career-teachers-and-mentors-who-participated-in-the-national-roll-out-of-the-early-career-framework-reforms">funding for time off timetable for ECTs and mentors</a>.</p>
+
+      <p>We collect data on ECTs and mentors through the <a href="https://www.gov.uk/guidance/school-workforce-census">school workforce census</a> to minimise the administrative burden on schools.</p>
+
+      <h2 class="govuk-heading-m">Backfill payments for mentor training</h2>
+
+      <p>Read the separate guidance document on backfill payments for time off timetable for ECF mentor training.</p>
+
+      <h2 class="govuk-heading-m">Proportionate funding</h2>
+
+      <p>DfE makes proportionate funding payments for ECTs who:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>are on a reduced induction period</li>
+        <li>are serving a part-time induction</li>
+        <li>move to a new school or withdraw from induction during year 2</li>
+        <li>take parental leave</li>
+      </ul>
+
+      <p>We’ll identify these ECTs using school workforce census data collections over the period.</p>
+
+      <h2 class="govuk-heading-m">Eligibility for funded ECF-based training</h2>
+
+      <h3 class="govuk-heading-s">Eligible schools and establishments</h3>
+
+      <p>Schools and establishments eligible for DfE funding include:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>state-funded schools, colleges, sixth forms, children’s centres and nurseries</li>
+        <li>maintained and non-maintained special schools</li>
+        <li>independent schools that receive Section 41 funding</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Eligible early career teachers (ECTs)</h3>
+
+      <p>ECTs should be eligible for DfE funding if they both:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>hold qualified teacher status (QTS)</li>
+        <li>start their induction on or after 1 September 2021</li>
+      </ul>
+
+      <p>ECTs who started their 1-year induction before 1 September 2021 and did not complete it by 31 August 2023 are now required to serve a 2-year induction. They’re eligible for DfE-funded training and mentor support for the remainder of their induction period.</p>
+
+      <p>ECTs with qualified teacher learning and skills status (QTLS) are not eligible for DfE funding, because they’re exempt from statutory induction.</p>
+
+      <h3 class="govuk-heading-s">Schools that are not eligible for funded training</h3>
+
+      <p>If your school is not eligible for funding, you can choose to <a href="/guidance/traning-options">deliver your own training using DfE-accredited materials</a>. You must report this through the DfE’s <a href="/guidance/report-to-dfe">Manage training for early career teachers</a> service, and <a href="/guidance/register-ects-and-mentors">register each ECT and mentor</a> who takes part.</p>
+
+      <p>Or, you can choose to arrange an ECF-based training programme directly with a <a href="/guidance/traning-options">lead provider</a>. Your school will need to fund the programme. You do not need to report this through the DfE’s service, or register your ECTs and mentors with the DfE.</p>
+
+      <h3 class="govuk-heading-s">How DfE checks the eligibility of ECTs and mentors</h3>
+
+      <p>If your school uses a training provider or accredited materials, we have to make sure that everyone taking part is eligible for funding and access to materials.</p>
+
+      <p>When your school’s registered induction tutor <a href="/guidance/register-ects-and-mentors">register ECTs and mentors with DfE</a>, we check the teacher’s details in the Teaching Regulation Agency (TRA) records.</p>
+
+      <p>We check that the ECT:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>holds qualified teacher status (QTS)</li>
+        <li>has not completed statutory induction before</li>
+        <li>has not started an induction before 1 September 2021</li>
+      </ul>
+
+      <p>We check that the mentor:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>does not have any prohibitions, sanctions or restrictions on their record</li>
+        <li>has not received funded training for ECF-based mentoring before</li>
+      </ul>
+
+      <p>Your school’s <a href="/guidance/induction-tutor">registered induction tutor</a> can <a href="/guidance/report-to-dfe">sign into DfE’s service</a> to see the status of these eligibility checks.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    </div>
+
+  </main>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

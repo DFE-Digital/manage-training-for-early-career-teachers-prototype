@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Choose or change the registered induction tutor for your school
+{% endset %}
+
+{% set currentPage = "/guidance/induction-tutor" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Induction tutors <a href="/guidance/observation-and-assessment">monitor and support</a> your early career teachers (ECTs). They conduct: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>regular progress reviews</li>
+        <li>2 formal assessment meetings with early career teachers during the 2-year induction period - one midway through and one at the end</li>
+      </ul>
+
+      <p>Read about the roles and responsibilities of induction tutors in section 5 of the statutory guidance on induction for early career teachers.</p>
+
+      <p> Your school may have several people performing this role, but only one can be registered to report information to the Department for Education (DfE) using the Manage training for early career teachers service.</p>
+
+      <p>Find out how to <a href="/guidance/report-to-dfe">report information to the DfE</a>.</p>
+
+      <h2 class="govuk-heading-m">Who to nominate</h2>
+
+      <p>Choose someone who:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>holds qualified teacher status</li>
+        <li>can assess early career teachers’ progress against the teachers’ standards</li>
+      </ul>
+
+      <p>Schools commonly choose someone in a senior leadership position, such as an assistant head.</p>
+
+      <p>Try to choose someone who is not also a mentor. The 2 roles have separate and different responsibilities.</p>
+
+      <h2 class="govuk-heading-m">Nominate your first registered induction tutor</h2>
+
+      <p>Use the <a href="#">Manage training for early career teachers</a> service to do this.</p>
+
+      <p>DfE will send an access link to the email address your school provided to the <a href="https://get-information-schools.service.gov.uk">Get Information About Schools (GIAS)</a> register.</p>
+
+      <h2 class="govuk-heading-m">Change your current registered induction tutor</h2>
+
+      <p>If your current induction tutor is leaving your school, or will no longer be acting as your induction tutor, they should sign into the <a href="/guidance/report-to-dfe">Manage training for early career teachers service</a>, select the ‘Change’ link next to their name, and nominate someone else to report information to DfE instead.</p>
+
+      <p>They’ll be signed out of the service immediately and their access will be removed. We’ll email the new registered induction tutor with information about how to access and use the DfE service for your school.</p>
+
+      <h2 class="govuk-heading-m">If your registered induction tutor has left your school, or cannot access the service</h2>
+
+      <p>If no one at your school can access the Manage training for early career teachers service to change your induction tutor, you can <a href="#">request an access link for your school</a>.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

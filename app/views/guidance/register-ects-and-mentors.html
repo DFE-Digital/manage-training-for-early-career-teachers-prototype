@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% set pageTitle %}
+  Register ECTs and mentors
+{% endset %}
+
+{% set currentPage = "/guidance/register-ects-and-mentors" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "guidance/_breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        How to manage induction, training and support for early career teachers (ECTs)
+      </h1>
+
+      {% include "guidance/_table-of-contents.html" %}
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        {{ pageTitle }}
+      </h1>
+
+      <p>Early career teachers (ECTs) and <a href="/guidance/mentoring">mentors</a> taking part in ECF-based training must be registered with the Department for Education (DfE) if your school: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>uses a training provider funded by the DfE </li>
+        <li>delivers your own training using DfE-accredited materials </li>
+      </ul>
+
+      <p>We need this information to confirm their <a href="/guidance/funding-eligibility">eligibility for funding</a>, and arrange access to training and materials.</p>
+
+      <p>Your school does not need to register ECTs and mentors with the DfE if you choose to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>design and deliver your own training</li>
+        <li>work with a training provider funded directly by your school (if your school is <a href="/guidance/funding-eligibility">not eligible for DfE-funded training</a>, for example)</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">How to register an ECT or mentor with the DfE</h2>
+
+      <p>Your school’s <a href="/guidance/induction-tutor">registered induction tutor</a> must <a href="/guidance/report-to-dfe">sign into the Manage training for early career teachers service</a> to register each ECT and mentor.</p>
+
+      <p>You’ll be asked to enter their:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>full name</li>
+        <li><a href="https://www.gov.uk/guidance/teacher-reference-number-trn">teacher reference number</a></li>
+        <li>date of birth</li>
+        <li>email address (personal or school)</li>
+        <li>start date at your school, if they’re moving from another school</li>
+      </ul>
+
+      <p>If your school does not have this information, contact the person directly to ask for it.</p>
+
+      <h2 class="govuk-heading-m">Assign each ECT a mentor</h2>
+
+      <p>Your school’s registered induction tutor must also use the <a href="/guidance/report-to-dfe">Manage training for early career teachers service</a> to tell us which mentor will work with each ECT.</p>
+
+      <p>Find out <a href="/guidance/mentoring">how mentoring ECTs works</a>.</p>
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,42 +1,140 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageTitle %}
+  How to manage induction, training and support for early career teachers (ECTs)
+{% endset %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% set currentPage = "/" %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+      <h1 class="govuk-heading-xl">
+        {{ pageTitle }}
+      </h1>
 
-    <p class="govuk-body">Use this service to set up ECF-based training for your early career teachers (ECTs) or tell us about a change at your school.</p>
+      {% include "guidance/_table-of-contents.html" %}
 
-    <h2 class="govuk-heading-m">Set up and manage your training</h2>
-
-    <p class="govuk-body">Tell us:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-        <li>how you want to run your training</li>
-        <li>which accredited materials or training provider you’ll use</li>
-        <li>which ECTs and mentors will take part</li>
-    </ul>
-
-    <p class="govuk-body">Your school must complete these steps before your ECTs can start their statutory induction programme.</p>
-
-    <h2 class="govuk-heading-m">Tell us about changes at your school</h2>
-
-    <p class="govuk-body">Tell us about any changes, for example, nominating a new induction tutor.</p>
-
-
-    <div class="govuk-button-group govuk-body govuk-!-margin-top-7">
-      {{ govukButton({text: "Sign in", href: "/sign-in" }) }}
-
-        <span class="govuk-!-margin-right-2">or</span>
-
-        <a class="govuk-link govuk-link--no-visited-state" href="/request-access">Request access to this service</a>
     </div>
 
   </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-prototype-kit-common-templates-mainstream-guide-body">
+
+      <h1 class="govuk-heading-l">
+        How the ECF supports induction
+      </h1>
+
+      <p>The ECF is a framework for the professional development of early career teachers (ECTs). ECF-based training is part of their 2-year inductions, but is not assessed.
+
+      <p>The ECF is designed to help ECTs succeed at the start of their teaching careers.</p>
+
+      <p>The framework sets out what all ECTs should learn about, and learn how to do, including:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>setting high expectations </li>
+        <li>promoting good progress </li>
+        <li>demonstrating good subject and curriculum knowledge </li>
+        <li>planning and teaching well-structured lessons </li>
+        <li>adapting teaching </li>
+        <li>making accurate and productive use of assessment </li>
+        <li>managing behaviour effectively </li>
+        <li>fulfilling wider professional responsibilities </li>
+      </ul>
+
+      <p>The training ECTs receive as part of their 2-year induction should be based on this framework. It’s known as ‘ECF-based training’. </p>
+
+      <p>You can find the full description of the framework in the <a href="https://www.gov.uk/government/publications/early-career-framework">ECF policy paper</a>.</p>
+
+      <p>The ECF and the evidence for the framework have been independently assessed and endorsed by the <a href="https://educationendowmentfoundation.org.uk">Education Endowment Foundation (EEF)</a>.</p>
+
+      <h2 class="govuk-heading-m">ECF-based training is part of induction</h2>
+
+      <p>ECTs serving a 2-year induction are entitled to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a 2-year programme of ECF-based training</li>
+        <li>support from a dedicated mentor</li>
+        <li>time off timetable for induction activities, including ECF-based training and mentor</li> sessions
+        <li>regular progress reviews and 2 formal assessments against the <a href="https://www.gov.uk/government/publications/teachers-standards">Teachers’ Standards</a></li>
+      </ul>
+
+      <p>Schools can offer their ECTs extra training and support in addition to ECF-based training, but not instead of ECF-based training.</p>
+
+      <p>Read an <a href="https://www.gov.uk/guidance/changes-to-statutory-induction-for-early-career-teachers-ects">overview of the 2-year ECT induction</a>.</p>
+
+      <h2 class="govuk-heading-m">ECF-based training is not an assessment tool</h2>
+
+      <p>ECF-based training is separate from the formal assessment of an ECT’s performance against the <a href="https://www.gov.uk/government/publications/teachers-standards">Teachers’ Standards</a>.</p>
+
+      <p>ECTs must not be assessed:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>against the knowledge, skills and working habits described in the <a href="https://www.gov.uk/government/publications/early-career-framework">ECF policy paper</a></li>
+        <li>on the activities or assignments from their ECF-based training</li>
+      </ul>
+
+      <p> ECTs can use documentation from ECF-based training to help prove they have met the teachers’ standards, but they:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>cannot fail any part of their ECF-based training</li>
+        <li>do not need to fully complete their ECF-based training to pass induction</li>
+      </ul>
+
+      <p>You can read more about how to assess ECTs in section 2 of the <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england">statutory guidance on ECT induction</a>.</p>
+
+      <p>Share guidance on induction and training with <a href="https://www.gov.uk/guidance/guidance-for-early-career-teachers-ects-ecf-based-training">ECTs</a> and their <a href="https://www.gov.uk/guidance/guidance-for-mentors-how-to-support-ecf-based-training">mentors</a>.</p>
+
+
+      {% include "guidance/_pagination.html" %}
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    </div>
+
+  </main>
 </div>
+
+
+
+
+
+    </div>
+  </div>
 
 {% endblock %}
