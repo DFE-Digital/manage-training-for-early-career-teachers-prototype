@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Users" %}
+{% set currentPage = "/organisations" %}
+
+{% block bodyStart %}
+  {% include "_one-login-header.html" %}
+  {% include "_schools-account-header.html" %}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+  {{ govukBackLink({ href: "/organisations" }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Barbara Brown</h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            text: "Kent Multi-Academy Trust"
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: "barbara.brown@school.sch.uk"
+          }
+        },
+        {
+          key: {
+            text: "Role"
+          },
+          value: {
+            text: "User"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "role"
+              }
+            ]
+          }
+        }]
+    }) }}
+
+    <h2 class="govuk-heading-m">Services they can access</h2>
+
+    {{ govukButton({ text: "Add service" }) }}
+
+    {% set serviceNames = ["Manage early career teachers", "Teaching Vacancies", "Multiplication tables check", "Get Information About Schools"] %}
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Service</th>
+              <th scope="col" class="govuk-table__header"></th>
+          </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for serviceName in serviceNames %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ serviceName }}
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#">Remove access</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}

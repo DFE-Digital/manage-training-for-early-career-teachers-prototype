@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Your services" %}
+
+{% block bodyStart %}
+  {{ govukHeader({
+    productName: "One Login",
+    classes: "app-header--no-blue-border"
+  }) }}
+{% endblock %}
+
+{% block header %}
+{{ xGovukPrimaryNavigation({
+  classes: "app-primary-navigation--no-margin-left",
+  visuallyHiddenTitle: "Navigation",
+  items: [{
+    text: "Your services",
+    href: "/your-services",
+    current: true
+  }, {
+    text: "Security",
+    href: "/security"
+  }, {
+    text: "Sign out",
+    href: "#"
+  }]
+}) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+    <p>You’re signed in as <b>head@school.name.sch.uk</b></p>
+
+    <h2 class="govuk-heading-m">Your accounts</h2>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">DfE schools account</h2>
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="/schools-account">
+            Manage <span class="govuk-visually-hidden"> DfE schools account</span>
+          </a>
+        </li>
+      </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p>Access services from the Department for Education for your school</p>
+        <ul class="govuk-list">
+          <li><a href="/manage">Manage early career teachers</a></li>
+          <li><a href="#">Submit learner data</a></li>
+          <li><a href="#">Teaching vacancies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">Ofsted</h2>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p>Manage your school inspection reports</p>
+        <ul class="govuk-list">
+          <li><a href="#">Find an inspection report</a></li>
+          <li><a href="#">Complain about an inspection report</a></li>
+        </ul>
+        <p class="govuk-hint">Last used: 4 June 2023</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

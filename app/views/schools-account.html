@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Services" %}
+{% set currentPage = "/schools-account" %}
+
+{% block bodyStart %}
+  {% include "_one-login-header.html" %}
+  {% include "_schools-account-header.html" %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+
+    {{ govukButton({text: "Add a service" }) }}
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header width-35">Service</th>
+              <th scope="col" class="govuk-table__header width-65">Description</th>
+          </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <p class="service-link">
+              <a href="/manage" class="govuk-link">Manage early career teachers</a>
+            </p>
+          </td>
+          <td class="govuk-table__cell">
+            <p>Manage the induction and training of early career teachers</p>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <p class="service-link">
+              <a href="#" class="govuk-link">Submit learner data</a>
+            </p>
+          </td>
+          <td class="govuk-table__cell">
+            <p>Validate and submit individualised learner records (ILR) and funding claims</p>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <p class="service-link">
+              <a href="#" class="govuk-link">Teaching Vacancies</a>
+            </p>
+          </td>
+          <td class="govuk-table__cell">
+            <p>Post jobs and manage applications</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}

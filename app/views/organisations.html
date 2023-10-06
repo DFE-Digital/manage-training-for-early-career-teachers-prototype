@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Users" %}
+{% set currentPage = "/organisations" %}
+
+{% block bodyStart %}
+  {% include "_one-login-header.html" %}
+  {% include "_schools-account-header.html" %}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Kent Multi-Academy Trust</h1>
+
+    {{ govukButton({ text: "Add a user" }) }}
+
+    {% set otherUsers = ["John Pascoe", "Barbara Brown", "Mohammed Khan", "Jemima Bishop"] %}
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">User</th>
+              <th scope="col" class="govuk-table__header">Role</th>
+              <th scope="col" class="govuk-table__header"></th>
+          </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="#">Jane Doe (you)</a>
+          </td>
+          <td class="govuk-table__cell">
+            Admin
+          </td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">
+            <a href="/account-permissions">Change permissions</a>
+          </td>
+        </tr>
+
+        {% for user in otherUsers %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              {{ user }}
+            </td>
+            <td class="govuk-table__cell">
+              User
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              <a href="/account-permissions" class="govuk-link">Change permissions</a>
+            </td>
+          </tr>
+        {% endfor %}
+
+
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+{% endblock %}

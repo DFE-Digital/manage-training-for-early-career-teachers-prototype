@@ -1,0 +1,91 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Search results (1)" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/add" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% set teachers = [{trn: "6282452", dob: (data | isoDateFromDateInput("dateOfBirth") | govukDate), firstName: "Barbara", lastName: data.lastName }] %}
+
+    {% for teacher in teachers %}
+      <div class="app-list__item">
+
+        <h2 class="govuk-heading-s">
+          <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+        </h2>
+
+        {% set restrictions %}
+          <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
+            {% for restriction in teacher.restrictions %}
+              <li>
+                {{restriction.type.label}}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endset %}
+
+        {% if teacher.hasProhibitions == 'Yes' %}
+          {{ govukTag({
+            text: teacher.status,
+            classes: teacher.status | statusClass
+          }) }}
+        {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border app-summary-list--compact',
+          rows: [
+            {
+              key: {
+                text: "TRN"
+              },
+              value: {
+                text: teacher.trn
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: teacher.dob
+              }
+            },
+            {
+              key: {
+                text: "Restrictions"
+              },
+              value: {
+                html: restrictions
+              }
+            } if teacher.restrictions.length
+          ]
+        }) }}
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

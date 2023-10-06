@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Your profile" %}
+{% set currentPage = "/profile" %}
+
+{% block bodyStart %}
+  {% include "_one-login-header.html" %}
+  {% include "_schools-account-header.html" %}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <h2 class="govuk-heading-m">DfE schools account details</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            text: "Kent Multi-Academy Trust"
+          }
+        },
+        {
+          key: {
+            text: "Role"
+          },
+          value: {
+            text: "Admin"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "role"
+              }
+            ]
+          }
+        }]
+    }) }}
+
+    <h2 class="govuk-heading-m">Sign in details</h2>
+
+    <p class="govuk-body">You use your GOV.UK One Login to sign in to DfE schools account.</p>
+
+    <p class="govuk-body">You can change these details in your GOV.UK One Login:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>email address</li>
+      <li>password</li>
+      <li>how you get security codes to sign in</li>
+    </ul>
+
+    <p class="govuk-body"><a href="/security" class="govuk-link">Change your sign in details in your GOV.UK One Login</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

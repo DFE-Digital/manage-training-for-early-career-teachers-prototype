@@ -1,0 +1,49 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your phone" %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {{ govukInsetText({ html: "We have sent a code to your phone number ending with <strong>842</strong>" }) }}
+
+    <p class="govuk-body">It might take a few minutes to arrive. The code will expire after 15 minutes.</p>
+
+    <form action="/your-services" method="post" novalidate>
+
+      {{ govukInput({
+        label: {
+          text: "Enter the 6 digit security code"
+        },
+        id: "2fa",
+        name: "2fa",
+        type: "text",
+        classes: "govuk-input--width-10 govuk-!-font-weight-bold",
+        spellcheck: false
+      }) }}
+
+      {{ govukButton({ text: "Continue"}) }}
+
+    </form>
+
+    {{ govukDetails({
+      summaryText: "Problems with your code?"
+    }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

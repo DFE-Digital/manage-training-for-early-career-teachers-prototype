@@ -1,0 +1,145 @@
+{% extends "layouts/main.html" %}
+
+{% set title = "Security" %}
+
+{% block bodyStart %}
+  {{ govukHeader({
+    productName: "One Login",
+    classes: "app-header--no-blue-border"
+  }) }}
+{% endblock %}
+
+{% block header %}
+{{ xGovukPrimaryNavigation({
+  classes: "app-primary-navigation--no-margin-left",
+  visuallyHiddenTitle: "Navigation",
+  items: [{
+    text: "Your services",
+    href: "/your-services"
+  }, {
+    text: "Security",
+    href: "/security",
+    current: true
+  }, {
+    text: "Sign out",
+    href: "#"
+  }]
+}) }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "_your-services-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      <div class="summary-list-container">
+        <div class="summary-list-container__context">
+          <h2 class="govuk-heading-m">Your sign in details</h2>
+        </div>
+
+
+
+
+
+
+
+  <dl class="govuk-summary-list govuk-summary-list--security">
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            frankie@frankieroberto.com
+          </dd>
+
+            <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link" href="/enter-password?type=changeEmail">
+                Change<span class="govuk-visually-hidden"> Email address</span>
+                </a>
+
+            </dd>
+
+        </div>
+
+
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-border">
+          <dt class="govuk-summary-list__key">
+            Password
+          </dt>
+          <dd class="govuk-summary-list__value">
+            ••••••••••••••••
+          </dd>
+
+            <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link" href="/enter-password?type=changePassword">
+                Change<span class="govuk-visually-hidden"> Password</span>
+                </a>
+
+            </dd>
+
+        </div>
+
+
+  </dl>
+
+      </div>
+      <div class="summary-list-container">
+        <div class="summary-list-container__context">
+          <h2 class="govuk-heading-m">How you get security codes</h2>
+          <p class="govuk-body">We use security codes to make sure it’s you when you sign in.</p>
+        </div>
+
+
+
+
+
+
+  <dl class="govuk-summary-list govuk-summary-list--security" data-test-id="mfa-summary-list">
+
+
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-border">
+          <dt class="govuk-summary-list__key">
+            Text message
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Phone number ending with 9875
+          </dd>
+
+            <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link" href="/enter-password?type=changePhoneNumber" data-test-id="change-phone-number">
+                Change<span class="govuk-visually-hidden"> Phone number</span>
+                </a>
+
+            </dd>
+
+        </div>
+
+
+  </dl>
+
+
+      </div>
+
+      <div class="summary-list-container">
+        <h2 class="govuk-heading-m">Delete your GOV.UK One Login</h2>
+        <p class="govuk-body">This will permanently delete your GOV.UK One Login. You’ll no longer be able to access the services you’ve used with it.</p>
+        <p class="govuk-body"><a href="/enter-password?type=deleteAccount" class="govuk-link">Delete your GOV.UK One Login</a></p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}
