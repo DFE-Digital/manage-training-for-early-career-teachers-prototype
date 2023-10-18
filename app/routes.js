@@ -267,3 +267,28 @@ router.post('/add-ect/answer-new-programme', (req, res) => {
   }
 
 })
+
+
+router.post('/answer-add-participant-type', (req, res) => {
+
+  const answer = req.body.participantType
+  if (answer === "mentor") {
+    res.redirect('/add-mentor/what-we-need')
+  } else if (answer === "ect") {
+    res.redirect('/add-ect/what-we-need')
+  } else {
+    res.redirect('/add-participant-type')
+  }
+})
+
+router.post('/add-mentor/answer-training-provider', (req, res) => {
+
+  const provider = req.session.data.trainingProvider
+
+  if (provider === "other") {
+    res.redirect('/add-mentor/contact-support')
+  } else {
+    res.redirect('/add-mentor/check')
+  }
+
+})

@@ -13,9 +13,10 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-ect/what-we-need" method="post">
+    <form action="/answer-add-participant-type" method="post">
       {{ govukRadios({
-        name: "type",
+        name: "participantType",
+        value: data.participantType,
         fieldset: {
           legend: {
             text: pageName,

@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What’s " + data.name + "’s email address?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-mentor/dob"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-mentor/training-provider" method="post">
+      {{ govukInput({
+        name: "email",
+        id: "email",
+        value: data.email,
+        type: "email",
+        autocomplete: "off",
+        spellcheck: false,
+        label: {
+          text: pageName,
+          classes: "govuk-label--l",
+          isPageHeading: true
+        }
+
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

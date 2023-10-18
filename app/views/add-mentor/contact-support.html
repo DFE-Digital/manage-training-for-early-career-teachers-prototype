@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Contact support" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-mentor/training-provider"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">You must contact support to register {{ data.name }} for mentor training with a different training provider.</p>
+
+    <p class="govuk-body">We’ll automatically include these details for you: </p>
+
+    {% set schoolHtml %}
+      Plymouth Primary School <br>
+      <span class="app-id">URN 85646573</span>
+    {% endset %}
+
+    {% set mentorHtml %}
+      {{ data.name }}
+    {% endset %}
+
+
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: { text: "School"},
+        value: { html: schoolHtml }
+      },
+      {
+        key: { text: "Mentor" },
+        value: { text: data.name }
+      }
+    ]
+    }) }}
+
+    <p class="govuk-body">Tell us which training provider they’ll do their mentor training with.</p>
+
+    <form action="/add-mentor/contact-support" method="post">
+
+      {{ govukTextarea({
+        name: "additionalInformation",
+        label: {
+          text: "Your message",
+          classes: "govuk-label--s"
+        }
+
+      }) }}
+
+      {{ govukButton({ text: "Send message to support" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
