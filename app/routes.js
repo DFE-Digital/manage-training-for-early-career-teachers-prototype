@@ -267,3 +267,16 @@ router.post('/add-ect/answer-new-programme', (req, res) => {
   }
 
 })
+
+
+router.post('/ects/answer-training-programme', (req, res) => {
+
+  const answer = req.body.trainingProgramme
+
+  if (answer === "fip") {
+    res.redirect('/ects/provider')
+  } else {
+    res.redirect('/ects/appropriate-body')
+  }
+
+})

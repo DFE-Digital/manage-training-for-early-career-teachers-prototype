@@ -1,0 +1,105 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "When are they starting?" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/which-school" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+{% set ectStartDateHtml %}
+  {{ govukDateInput({
+    id: "startDate",
+    fieldset: {
+      legend: {
+        text: "Date they are starting"
+      }
+    },
+    hint: {
+      text: "For example, 27 7 2024"
+    },
+    items: [
+      {
+        name: "startDate[day]",
+        label: "Day",
+        value: data.startDate.day,
+        classes: "govuk-input--width-2"
+      },
+      {
+        name: "startDate[month]",
+        label: "Month",
+        value: data.startDate.month,
+        classes: "govuk-input--width-2"
+      },
+      {
+        name: "startDate[year]",
+        label: "Year",
+        value: data.startDate.year,
+        classes: "govuk-input--width-4"
+      }
+    ]
+  }) }}
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/ects/training-programme" method="post">
+      {{ govukRadios({
+        name: "startTerm",
+        value: data.startTerm,
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "Start of the Autumn 2023 term",
+            text: "Start of the Autumn 2023 term"
+          },
+          {
+            value: "Start of the Spring 2024 term",
+            text: "Start of the Spring 2024 term"
+          },
+          {
+            value: "Start of the Summer 2024 term",
+            text: "Start of the Summer 2024 term"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "other",
+            text: "Another date",
+            conditional: {
+              html: ectStartDateHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

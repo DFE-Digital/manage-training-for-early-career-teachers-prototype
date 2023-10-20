@@ -1,0 +1,61 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "What type of training programme will they do?" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/start-date" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/ects/answer-training-programme" method="post">
+      {{ govukRadios({
+        name: "trainingProgramme",
+        value: data.trainingProgramme,
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "fip",
+            text: "A training course with a provider funded by the DfE (full induction programme)"
+          },
+          {
+            value: "cip",
+            text: "Our own programme using DfE accredited materials"
+          },
+          {
+            value: "diy",
+            text: "Our own programme based on the Early Career Framework (ECF)"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

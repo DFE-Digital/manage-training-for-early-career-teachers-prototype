@@ -33,25 +33,8 @@
       <div class="app-list__item">
 
         <h2 class="govuk-heading-s">
-          <a class="govuk-link--no-visited-state" href="/teachers/{{teacher.id}}">{{teacher.firstName}} {{teacher.lastName}}</a>
+          <a class="govuk-link--no-visited-state" href="/ects/search-result">{{teacher.firstName}} {{teacher.lastName}}</a>
         </h2>
-
-        {% set restrictions %}
-          <ul class="govuk-list govuk-list--spaced govuk-!-font-size-16">
-            {% for restriction in teacher.restrictions %}
-              <li>
-                {{restriction.type.label}}
-              </li>
-            {% endfor %}
-          </ul>
-        {% endset %}
-
-        {% if teacher.hasProhibitions == 'Yes' %}
-          {{ govukTag({
-            text: teacher.status,
-            classes: teacher.status | statusClass
-          }) }}
-        {% endif %}
 
         {{ govukSummaryList({
           classes: 'govuk-summary-list--no-border app-summary-list--compact',
@@ -71,15 +54,7 @@
               value: {
                 text: teacher.dob
               }
-            },
-            {
-              key: {
-                text: "Restrictions"
-              },
-              value: {
-                html: restrictions
-              }
-            } if teacher.restrictions.length
+            }
           ]
         }) }}
       </div>

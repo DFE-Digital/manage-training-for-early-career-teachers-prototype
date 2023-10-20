@@ -1,0 +1,169 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Appropriate body" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/provider" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Appropriate bodies quality assure the induction of early career teachers.</p>
+
+    <p class="govuk-body">For example, they:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>check ECTS receive their statutory entitlements, such as mentoring</li>
+      <li>make sure formal assessments are fair and appropriate</li>
+    </ul>
+
+    <form action="/ects/induction-tutor" method="post">
+
+      {% set teachingSchoolHubHTML %}
+        {{ xGovukAutocomplete({
+          id: "teaching-school-hub",
+          name: "teachingSchoolHub",
+          allowEmpty: false,
+          autocomplete: "off",
+          selected: data.teachingSchoolHub,
+          label: {
+            classes: "govuk-label--s",
+            text: "Teaching school hub"
+          },
+          items: [
+            { text: "DRET Teaching School Hub"},
+            { text: "Exchange Teaching School Hub"},
+            { text: "Flying High Teaching School Hub"},
+            { text: "L.E.A.D. Teaching School Hub Lincolnshire"},
+            { text: "Leicester & Leicestershire TSH"},
+            { text: "Leicestershire & Rutland TS Hub"},
+            { text: "Potentia TSH"},
+            { text: "Redhill Teaching Hub"},
+            { text: "South Yorkshire Teaching Hub"},
+            { text: "Spencer Teaching School Hub"},
+            { text: "The Vantage Teaching School Hub North Humber"},
+            { text: "Alpha Teaching School Hub"},
+            { text: "Cambridgeshire and Peterborough Teaching School Hub"},
+            { text: "Chafford Hundred Teaching School Hub"},
+            { text: "East London Teaching School Hub"},
+            { text: "Inspiration Teaching School Hub"},
+            { text: "London District East Teaching School Hub"},
+            { text: "North East London Teaching School Hub"},
+            { text: "Saffron Teaching School Hub"},
+            { text: "The Julian Teaching School Hub"},
+            { text: "Unity Teaching School Hub"},
+            { text: "Exceed Teaching School Hub"},
+            { text: "Bright Futures Teaching School Hub - Manchester & Stockport"},
+            { text: "Bright Futures Teaching School Hub - Salford & Trafford"},
+            { text: "Calderdale and Kirklees Teaching School Hub"},
+            { text: "Embrace Teaching School Hub (SW Lancashire)"},
+            { text: "Exchange Teaching School Hub"},
+            { text: "Generate Teaching Hub"},
+            { text: "Inspire Learning Teaching School Hub NW"},
+            { text: "Leeds Teaching School Hub"},
+            { text: "Rainbow Teaching School Hub"},
+            { text: "Star Teaching School Hub Bolton, Bury, Rochdale"},
+            { text: "Star Teaching School Hub North West Lancashire"},
+            { text: "Star Teaching School Hub Pennine Lancashire"},
+            { text: "The East Manchester Teaching Hub"},
+            { text: "NELTSH Teaching School Hub"},
+            { text: "Northern Lights TSH: South Tyne & Wear"},
+            { text: "One Cumbria Teaching School Hub"},
+            { text: "Pathfinder Teaching School Hub"},
+            { text: "Red Kite Teaching School Hub"},
+            { text: "Tees Valley Teaching School Hub"},
+            { text: "The Three Rivers Teaching School Hub"},
+            { text: "Alban Teaching School Hub"},
+            { text: "Astra Teaching School Hub, Buckinghamshire"},
+            { text: "Central London Teaching School Hub"},
+            { text: "Chiltern Teaching School Hub"},
+            { text: "North West London Teaching School Hub (NWLTSH)"},
+            { text: "Northamptonshire Teaching School Hub"},
+            { text: "Oxfordshire Teaching School Hub"},
+            { text: "Teach West London"},
+            { text: "TSH Berkshire"},
+            { text: "GLF West Sussex Teaching School Hub"},
+            { text: "Harris City Academy Crystal Palace Teaching School Hub"},
+            { text: "HISP Teaching School Hub"},
+            { text: "Kent Teaching School hub"},
+            { text: "London South Teaching School Hub"},
+            { text: "SFET Teaching School Hub"},
+            { text: "STEP Ahead Teaching School Hub"},
+            { text: "Thames Gateway Teaching School Hub"},
+            { text: "Thames South Teaching School Hub"},
+            { text: "Wandle Teaching School Hub"},
+            { text: "Xavier Teaching School Hub"},
+            { text: "Balcarras"},
+            { text: "Colyton Teaching School Hub"},
+            { text: "Five Counties Teaching School Hub - South Gloucestershire and Bath and North East Somerset"},
+            { text: "Five Counties Teaching School Hubs Alliance (Bristol/North Somerset)*"},
+            { text: "Five Counties Teaching School Hubs Alliance (Somerset)"},
+            { text: "Kingsbridge Teaching School Hub"},
+            { text: "Odyssey Teaching School Hub"},
+            { text: "One Cornwall Teaching School Hub (East Cornwall)"},
+            { text: "One Cornwall Teaching School Hub (West)"},
+            { text: "South Central Teaching School Hub"},
+            { text: "Swindon and Wiltshire Teaching School Hub"},
+            { text: "Ark Teaching School Hub"},
+            { text: "Arthur Terry Teaching School Hub - North Birmingham"},
+            { text: "Cheshire Teaching School Hub"},
+            { text: "Coventry and Central Warwickshire Teaching School Hub"},
+            { text: "Haybridge Teaching School Hub"},
+            { text: "John Taylor Teaching School Hub"},
+            { text: "Manor Teaching School Hub"},
+            { text: "Prince Henry’s Teaching School Hub"}
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "trainingProgramme",
+        fieldset: {
+          legend: {
+            text: "Who will be the appropriate body for " + data.lastName + "?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            text: "Independent Schools Teacher Induction Panel (IStip)",
+            value: "Independent Schools Teacher Induction Panel (IStip)"
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: "A teaching school hub",
+            value: "A teaching school hub",
+            conditional: {
+              html: teachingSchoolHubHTML
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

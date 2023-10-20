@@ -1,0 +1,210 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Check your answers" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">These details will be stored on the record held by the Teaching Regulation Agency (TRA).</p>
+
+    <h2 class="govuk-heading-m">Teacher details</h2>
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: data.lastName
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-ect/name",
+                text: "Change",
+                visuallyHiddenText: " name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Teacher reference number"
+          },
+          value: {
+            text: data.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: (data.dob | isoDateFromDateInput | govukDate )
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Induction</h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            text: ""
+          },
+          actions: {
+              items: [
+              {
+                href:  "/ects/which-school",
+                text: "Change",
+                visuallyHiddenText: " school"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date their induction starts"
+          },
+          value: {
+            text: (data.startDate | isoDateFromDateInput | govukDate )
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/start-date",
+                text: "Change",
+                visuallyHiddenText: " induction start date"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Induction tutor"
+          },
+          value: {
+            text: data.inductionTutor
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/induction-tutor",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Training</h2>
+
+    {% set trainingProviderText %}
+      {% if data.continueWithProgramme == "yes" %}
+        Best Practice Network
+      {% elif data.newProvider === "ambition-with-selby" %}
+        Ambition Institute
+      {% elif data.newProvider === "niot-with-northamptonshire" %}
+        National Institute of Teaching
+      {% endif %}
+    {% endset %}
+
+    {% set deliveryPartnerText %}
+      {% if data.continueWithProgramme == "yes" %}
+        West LLC
+      {% elif data.newProvider === "ambition-with-selby" %}
+        Selby Teaching School Hub
+      {% elif data.newProvider === "niot-with-northamptonshire" %}
+        Northamptonshire Teaching School Hub
+      {% endif %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Training programme"
+          },
+          value: {
+            text: ""
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/training-programme",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            text: trainingProviderText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-ect/continuing-programme",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            text: deliveryPartnerText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-ect/continuing-programme",
+                text: "Change",
+                visuallyHiddenText: " delivery partner"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    {{ govukButton({ text: "Confirm and continue", href: "#"}) }}
+
+  </div>
+</div>
+
+{% endblock %}

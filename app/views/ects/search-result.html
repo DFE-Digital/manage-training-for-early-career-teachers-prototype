@@ -1,0 +1,100 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set teacher = {
+  trn: "6282452",
+  dob: (data | isoDateFromDateInput("dateOfBirth") | govukDate),
+  firstName: "Barbara",
+  lastName: data.lastName,
+  qts: {
+    status: "Qualified",
+    dateAwarded: "6 July 2023"
+  }
+} %}
+{% set pageName = teacher.firstName + " " + teacher.lastName %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/teacher-records" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <form action="/ects/which-school" method="post">
+      {{ govukButton({
+        text: "Add teacher to your organisation"
+      }) }}
+    </form>
+
+    <h2 class="govuk-heading-m">
+      Personal details
+    </h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: teacher.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: teacher.dob
+          }
+        }
+      ]
+    }) }}
+
+      <h2 class="govuk-heading-m">
+        Qualified teacher status (QTS)
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "QTS"
+            },
+            value: {
+              text: teacher.qts.status
+            }
+          },
+          {
+            key: {
+              text: "Date awarded"
+            },
+            value: {
+              text: teacher.qts.dateAwarded
+            }
+          }
+        ]
+      }) }}
+
+</div>
+
+{% endblock %}

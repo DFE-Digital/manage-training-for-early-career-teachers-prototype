@@ -1,0 +1,86 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Induction tutor" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/provider" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Induction tutors monitor and support your early career teachers.</p>
+
+    <p class="govuk-body">They do:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>regular progress reviews</li>
+      <li>2 formal assessment meetings, one midway through and one at the end</li>
+    </ul>
+
+    <form action="/ects/mentor" method="post">
+
+      {% set someoneElseHtml %}
+        {{ govukInput({
+          id: "other-induction-tutor",
+          name: "otherInductionTutorName",
+          allowEmpty: false,
+          autocomplete: "off",
+          selected: data.otherInductionTutorName,
+          label: {
+            classes: "govuk-label--s",
+            text: "Name of induction tutor"
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "trainingProgramme",
+        fieldset: {
+          legend: {
+            text: "Who will be the induction tutor for " + data.lastName + "?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            text: "Me (Jane Deborah)",
+            value: "Jane Deborah"
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: "Someone else",
+            value: "Someone else",
+            conditional: {
+              html: someoneElseHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Mentor" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/provider" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Mentors make sure that your early career teachers receive a high quality induction.</p>
+
+    <p class="govuk-body">They:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>meet regularly to provide support and feedback</li>
+      <li>take action if the early career teacher is experiencing difficulties</li>
+    </ul>
+
+    <form action="/ects/review" method="post">
+
+      {% set someoneElseHtml %}
+        {{ govukInput({
+          id: "other-mentor",
+          name: "otherMentorName",
+          allowEmpty: false,
+          autocomplete: "off",
+          selected: data.otherMentorName,
+          label: {
+            classes: "govuk-label--s",
+            text: "Name of mentor"
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "trainingProgramme",
+        fieldset: {
+          legend: {
+            text: "Who will be the mentor for " + data.lastName + "?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            text: "Jason Smith",
+            value: "Jason Smith"
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: "Someone else",
+            value: "Someone else",
+            conditional: {
+              html: someoneElseHtml
+            }
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: "I’m not sure yet – I’ll assign a mentor later",
+            value: "not-sure"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

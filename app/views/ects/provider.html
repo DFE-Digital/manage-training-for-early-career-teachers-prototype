@@ -1,0 +1,72 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Training provider" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/manage",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/start-date" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">There are 6 lead providers you can choose from.</p>
+
+    <p class="govuk-body">You should have an agreement with one of the providers before answering this question.</p>
+
+
+    <form action="/ects/answer-training-programme" method="post">
+
+      {% set leadProviders = [
+        {name: "Ambition Institute"},
+        {name: "Best Practice Network", hint: "Home of Outstanding Leaders Partnership"},
+        {name: "Education Development Trust"},
+        {name: "National Institute of Teaching", hint: "Founded by the School-Led Development Trust"},
+        {name: "Teach First"},
+        {name: "UCL Institute of Education"}
+      ] %}
+
+      {% set items = [] %}
+      {% for leadProvider in leadProviders %}
+        {% if leadProvider.hint %}
+          {% set items = (items.push({value: leadProvider.name, text: leadProvider.name, hint: {text: leadProvider.hint } } ), items) %}
+        {% else %}
+          {% set items = (items.push({value: leadProvider.name, text: leadProvider.name}), items) %}
+        {% endif %}
+      {% endfor %}
+
+
+      {{ govukRadios({
+        name: "trainingProgramme",
+        fieldset: {
+          legend: {
+            text: "Which lead provider will they be training with?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: items
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
