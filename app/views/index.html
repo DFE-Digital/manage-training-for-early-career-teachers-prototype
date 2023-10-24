@@ -1,42 +1,87 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% block pageTitle %}
+  Related navigation page template – {{ serviceName }} – GOV.UK Prototype Components
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Education, training and skills",
+      href: "#"
+    },
+    {
+      text: "Teaching and leadership",
+      href: "#"
+    },
+    {
+      text: "Teacher training and professional development",
+      href: "#"
+    }
+  ]
+}) }}
+{% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-caption-l">Guidance</div>
+      <h1 class="govuk-heading-l">
+        Heading goes here
+      </h1>
 
-    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+      <p class="govuk-body-l govuk-!-margin-bottom-2">Description of page goes here</p>
 
-    <p class="govuk-body">Use this service to set up ECF-based training for your early career teachers (ECTs) or tell us about a change at your school.</p>
+    </div>
+  </div>
 
-    <h2 class="govuk-heading-m">Set up and manage your training</h2>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <p class="govuk-body">Tell us:</p>
+  <div class="govuk-grid-row govuk-!-margin-bottom-8">
+    <div class="govuk-grid-column-two-thirds">
 
-    <ul class="govuk-list govuk-list--bullet">
-        <li>how you want to run your training</li>
-        <li>which accredited materials or training provider you’ll use</li>
-        <li>which ECTs and mentors will take part</li>
-    </ul>
+      <p class="govuk-body-s govuk-!-margin-bottom-1">From: <a href="#"><b>Department for Education</b></a></p>
+      <p class="govuk-body-s govuk-!-margin-bottom-1">Published XX Month YYY</p>
+      <p class="govuk-body-s govuk-!-margin-bottom-1">Last updated XX Month YYY</p>
 
-    <p class="govuk-body">Your school must complete these steps before your ECTs can start their statutory induction programme.</p>
-
-    <h2 class="govuk-heading-m">Tell us about changes at your school</h2>
-
-    <p class="govuk-body">Tell us about any changes, for example, nominating a new induction tutor.</p>
+    </div>
+  </div>
 
 
-    <div class="govuk-button-group govuk-body govuk-!-margin-top-7">
-      {{ govukButton({text: "Sign in", href: "/sign-in" }) }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-        <span class="govuk-!-margin-right-2">or</span>
+      <div class="govuk-body" style="background-color: #f3f2f1; padding: 20px 30px; font-weight: bold;">Applies to England</div>
 
-        <a class="govuk-link govuk-link--no-visited-state" href="/request-access">Request access to this service</a>
+
+      <p>Content goes here.</p>
     </div>
 
+    <div class="govuk-grid-column-one-third">
+      {{ xGovukRelatedNavigation({
+        sections: [{
+          items: [{
+            text: "Related link",
+            href: "#"
+          }, {
+            text: "Related link",
+            href: "#"
+          }],
+          subsections: [{
+            title: "Subsection",
+            items: [{
+              text: "Related link",
+              href: "#"
+            }]
+          }]
+        }]
+      }) }}
+    </div>
   </div>
-</div>
-
 {% endblock %}
