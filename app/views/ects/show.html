@@ -1,0 +1,195 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Check your answers" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/ects",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% set pageName = ect.firstName + " " + ect.lastName %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/ects"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <h2 class="govuk-heading-m">Teacher details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: ect.firstName + " " + ect.lastName
+          }
+        },
+        {
+          key: {
+            text: "TRN"
+          },
+          value: {
+            text: ect.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            html: (ect.dob | isoDateFromDateInput | govukDate)
+          }
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Induction</h2>
+
+    {% set mentorText %}
+      {% for mentor in ect.mentors %}
+        <a href="/mentors/{{ mentor.mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
+      {% endfor %}
+    {% endset %}
+
+    {% set statusHtml %}
+      {{ govukTag({ text: "Started", classes: "govuk-tag--turquoise" }) }}
+
+      <p class="govuk-body govuk-!-margin-top-2">Started {{ ect.inductionStartDate | isoDateFromDateInput | govukDate }}</p>
+    {% endset %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            text: statusHtml | safe
+          },
+          actions: {
+              items: [
+              {
+                href:  "/ects/" + ect.trn + "/change-status",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            text: ect.schoolName
+          },
+          actions: {
+              items: [
+              {
+                href:  "/ects/" + ect.trn + "/change-school",
+                text: "Change",
+                visuallyHiddenText: " school"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Induction tutor"
+          },
+          value: {
+            text: ect.inductionTutor
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/" + ect.trn + "/change-induction-tutor",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            text: ect.appropriateBody
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/" + ect.trn + "/change-appropriate-body",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentor"
+          },
+          value: {
+            text: mentorText | safe
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/" + ect.trn + "/change-mentor",
+                text: "Change"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Training</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            html: ect.leadProvider
+          },
+          actions: {
+            items: [
+              {
+                href: "/ects/" + ect.trn + "/change-lead-provider",
+                text: "Change",
+                classes: "govuk-link--no-visited-state",
+                visuallyHiddenText: "lead provider"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

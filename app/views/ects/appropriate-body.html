@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -41,6 +41,7 @@
         {{ xGovukAutocomplete({
           id: "teaching-school-hub",
           name: "teachingSchoolHub",
+          value: data.teachingSchoolHub,
           allowEmpty: false,
           autocomplete: "off",
           selected: data.teachingSchoolHub,
@@ -135,7 +136,8 @@
       {% endset %}
 
       {{ govukRadios({
-        name: "trainingProgramme",
+        name: "appropriateBody",
+        value: data.appropriateBody,
         fieldset: {
           legend: {
             text: "Who will be the appropriate body for " + data.lastName + "?",

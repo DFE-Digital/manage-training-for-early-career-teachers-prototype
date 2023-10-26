@@ -1,0 +1,158 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set pageName = "Early career teachers" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/ects",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {{ govukButton({ text: "Add early career teacher", href: "/ects/add" }) }}
+
+  </div>
+</div>
+
+{% if data.ects | length > 0 %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <div class="app-filter">
+        <form method="get" action="/ects">
+          {{ govukRadios({
+            name: "show",
+            classes: "govuk-radios--small",
+            value: (data.show or "training"),
+            fieldset: {
+              legend: {
+                text: "Status",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "training",
+                text: "Currently training (" + (ectsBeingTrained | length) + ")"
+              },
+              {
+                value: "completed-induction",
+                text: "Completed induction (" + (ectsCompleted | length) + ")"
+              },
+              {
+                value: "no-longer-training",
+                text: "Left the school (" + (ectsNoLongerTraining | length) + ")"
+              }
+            ]
+          }) }}
+
+          {{ govukCheckboxes({
+            name: "showSchools",
+            classes: "govuk-checkboxes--small",
+            value: (data.showSchools),
+            fieldset: {
+              legend: {
+                text: "School",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "Elmstone Primary Academy School",
+                text: "Elmstone Primary Academy School"
+              },
+              {
+                value: "Marley Primary Academy School",
+                text: "Marley Primary Academy School"
+              },
+              {
+                value: "Ripple Primary Academy School",
+                text: "Ripple Primary Academy School"
+              },
+              {
+                value: "West Studdal Primary Academy School",
+                text: "West Studdal Primary Academy School"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({ text: "Apply", classes: "govuk-button--secondary" }) }}
+        </form>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      {% for ect in data.ects %}
+
+        {% set titleHtml %}
+          <a href="/ects/{{ ect.trn }}/show" class="govuk-link">{{ ect.firstName }} {{ ect.lastName }}</a>
+        {% endset %}
+
+        {% set statusHtml %}
+          {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+
+          <p class="govuk-body govuk-!-margin-top-2">Induction started {{ ect.inductionStartDate | isoDateFromDateInput | govukDate }}</p>
+        {% endset %}
+
+        {% set mentorHtml %}
+          {% for mentor in ect.mentors %}
+            {{ mentor.mentor.name }}
+          {% endfor %}
+        {% endset %}
+
+        {{ govukSummaryList({
+          classes: "govuk-summary-list--no-border govuk-!-margin-bottom-0",
+          card: {
+            title: {
+              html: titleHtml
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Status"
+              },
+              value: {
+                html: statusHtml
+              }
+            },
+            {
+              key: {
+                text: "School"
+              },
+              value: {
+                html: ect.schoolName
+              }
+            },
+            {
+              key: {
+                text: "Mentor"
+              },
+              value: {
+                html: mentorHtml
+              }
+            }
+          ]
+        }) }}
+
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

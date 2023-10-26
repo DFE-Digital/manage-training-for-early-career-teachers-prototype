@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -16,7 +16,7 @@
 %}
 
 {% block beforeContent %}
-  {{ govukBackLink({ href: "/manage" }) }}
+  {{ govukBackLink({ href: "/ects" }) }}
 {% endblock %}
 
 
@@ -35,18 +35,38 @@
         },
         classes: "govuk-input--width-20",
         id: "last-name",
-        name: "lastName"
+        name: "lastName",
+        value: data.lastName
       }) }}
 
       {{ govukDateInput({
-        id: "date-of-birth",
-        namePrefix: "dateOfBirth",
+        id: "dob",
         fieldset: {
           legend: {
             text: "Date of birth",
             classes: "govuk-fieldset__legend--s"
           }
-        }
+        },
+        items: [
+          {
+            name: "dob[day]",
+            label: "Day",
+            value: data.dob.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "dob[month]",
+            label: "Month",
+            value: data.dob.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "dob[year]",
+            label: "Year",
+            value: data.dob.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
       }) }}
 
       {{ govukButton({ text: "Find record" }) }}

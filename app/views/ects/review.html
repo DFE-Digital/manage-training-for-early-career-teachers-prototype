@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -33,12 +33,12 @@
             text: "Name"
           },
           value: {
-            text: data.lastName
+            text: data.firstName + " " + data.lastName
           },
           actions: {
             items: [
               {
-                href:  "/add-ect/name",
+                href:  "/ects/add",
                 text: "Change",
                 visuallyHiddenText: " name"
               }
@@ -66,6 +66,27 @@
 
     <h2 class="govuk-heading-m">Induction</h2>
 
+    {% set startDateText %}
+      {% if data.startTerm == "other" %}
+        {{ data.startDate | isoDateFromDateInput | govukDate }}
+      {% else %}
+        {{ data.startTerm }}
+      {% endif %}
+    {% endset %}
+
+    {% set appropriateBodyText %}
+      {% if data.appropriateBody == "A teaching school hub" %}
+        {{ data.teachingSchoolHub }}
+      {% else %}
+        {{ data.appropriateBody }}
+      {% endif %}
+    {% endset %}
+
+    {% set mentorText %}
+      {{ data.mentor }}
+    {% endset %}
+
+
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
       rows: [
@@ -74,7 +95,7 @@
             text: "School"
           },
           value: {
-            text: ""
+            text: data.schoolName
           },
           actions: {
               items: [
@@ -91,7 +112,7 @@
             text: "Date their induction starts"
           },
           value: {
-            text: (data.startDate | isoDateFromDateInput | govukDate )
+            text: startDateText
           },
           actions: {
             items: [
@@ -119,31 +140,59 @@
               }
             ]
           }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            text: appropriateBodyText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/appropriate-body",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentor"
+          },
+          value: {
+            text: mentorText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/mentor",
+                text: "Change"
+              }
+            ]
+          }
         }
       ]
     }) }}
 
     <h2 class="govuk-heading-m">Training</h2>
 
-    {% set trainingProviderText %}
-      {% if data.continueWithProgramme == "yes" %}
-        Best Practice Network
-      {% elif data.newProvider === "ambition-with-selby" %}
-        Ambition Institute
-      {% elif data.newProvider === "niot-with-northamptonshire" %}
-        National Institute of Teaching
+    {% set trainingProgrammeText %}
+      {% if data.trainingProgramme == "fip" %}
+        Training provider funded by Department for Education
+      {% elif data.trainingProgramme == "cip" %}
+        Our own programme using DfE accredited materials
+      {% elif data.trainingProgramme == "diy" %}
+        Our own programme based on the Early Career Framework (ECF)
       {% endif %}
     {% endset %}
 
-    {% set deliveryPartnerText %}
-      {% if data.continueWithProgramme == "yes" %}
-        West LLC
-      {% elif data.newProvider === "ambition-with-selby" %}
-        Selby Teaching School Hub
-      {% elif data.newProvider === "niot-with-northamptonshire" %}
-        Northamptonshire Teaching School Hub
-      {% endif %}
+    {% set leadProviderText %}
+      {{ data.leadProvider }}
     {% endset %}
+
 
     {{ govukSummaryList({
       classes: 'govuk-!-margin-bottom-9',
@@ -153,7 +202,7 @@
             text: "Training programme"
           },
           value: {
-            text: ""
+            text: trainingProgrammeText
           },
           actions: {
             items: [
@@ -169,31 +218,14 @@
             text: "Lead provider"
           },
           value: {
-            text: trainingProviderText
+            text: leadProviderText
           },
           actions: {
             items: [
               {
-                href:  "/add-ect/continuing-programme",
+                href:  "/ects/provider",
                 text: "Change",
                 visuallyHiddenText: " training provider"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Delivery partner"
-          },
-          value: {
-            text: deliveryPartnerText
-          },
-          actions: {
-            items: [
-              {
-                href:  "/add-ect/continuing-programme",
-                text: "Change",
-                visuallyHiddenText: " delivery partner"
               }
             ]
           }
@@ -201,8 +233,9 @@
       ]
     }) }}
 
-
-    {{ govukButton({ text: "Confirm and continue", href: "#"}) }}
+    <form action="/ects/confirm" method="post">
+      {{ govukButton({ text: "Confirm and continue"}) }}
+    </form>
 
   </div>
 </div>

@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -16,7 +16,7 @@
 %}
 
 {% block beforeContent %}
-  {{ govukBackLink({ href: "/ects/start-date" }) }}
+  {{ govukBackLink({ href: "/ects/training-programme" }) }}
 {% endblock %}
 
 
@@ -53,7 +53,8 @@
 
 
       {{ govukRadios({
-        name: "trainingProgramme",
+        name: "leadProvider",
+        value: data.leadProvider,
         fieldset: {
           legend: {
             text: "Which lead provider will they be training with?",

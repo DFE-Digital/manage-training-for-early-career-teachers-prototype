@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -16,7 +16,7 @@
 %}
 
 {% block beforeContent %}
-  {{ govukBackLink({ href: "/ects/provider" }) }}
+  {{ govukBackLink({ href: "/ects/appropriate-body" }) }}
 {% endblock %}
 
 
@@ -52,7 +52,8 @@
       {% endset %}
 
       {{ govukRadios({
-        name: "trainingProgramme",
+        name: "inductionTutor",
+        value: data.inductionTutor,
         fieldset: {
           legend: {
             text: "Who will be the induction tutor for " + data.lastName + "?",

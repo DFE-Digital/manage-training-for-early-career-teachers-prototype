@@ -1,6 +1,6 @@
 {% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
 
-{% set pageName = "Mentor" %}
+{% set pageName = "Who will their new mentor be?" %}
 
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
@@ -16,7 +16,7 @@
 %}
 
 {% block beforeContent %}
-  {{ govukBackLink({ href: "/ects/induction-tutor" }) }}
+  {{ govukBackLink({ href: "/ects/" + ect.trn + "/change-mentor" }) }}
 {% endblock %}
 
 
@@ -24,16 +24,6 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">{{ pageName }}</h1>
-
-    <p class="govuk-body">Mentors make sure that your early career teachers receive a high quality induction.</p>
-
-    <p class="govuk-body">They:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>meet regularly to provide support and feedback</li>
-      <li>take action if the early career teacher is experiencing difficulties</li>
-    </ul>
 
     <form action="/ects/review" method="post">
 
@@ -56,14 +46,15 @@
         value: data.mentor,
         fieldset: {
           legend: {
-            text: "Who will be the mentor for "+ data.firstName + " " + data.lastName + "?",
-            classes: "govuk-fieldset__legend--m"
+            text: pageName,
+            classes: "govuk-fieldset__legend--l",
+            isPageTitle: true
           }
         },
         items: [
           {
-            text: "Jason Smith",
-            value: "Jason Smith"
+            text: "Alisa Jones",
+            value: "Alisa Jones"
           },
           {
             divider: "or"

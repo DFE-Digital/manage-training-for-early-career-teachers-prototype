@@ -5,7 +5,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -27,7 +27,7 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    {% set teachers = [{trn: "6282452", dob: (data | isoDateFromDateInput("dateOfBirth") | govukDate), firstName: "Barbara", lastName: data.lastName }] %}
+    {% set teachers = [{trn: "6282452", dob: (data.dob | isoDateFromDateInput | govukDate), firstName: "Barbara", lastName: data.lastName }] %}
 
     {% for teacher in teachers %}
       <div class="app-list__item">

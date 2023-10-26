@@ -2,7 +2,7 @@
 
 {% set teacher = {
   trn: "6282452",
-  dob: (data | isoDateFromDateInput("dateOfBirth") | govukDate),
+  dob: (data.dob | isoDateFromDateInput | govukDate),
   firstName: "Barbara",
   lastName: data.lastName,
   qts: {
@@ -15,7 +15,7 @@
 {% set activeLinkId = "ects" %}
 {% set navigationItems = [
   {
-    href: "/manage",
+    href: "/ects",
     text: 'Early career teachers',
     id: 'ects'
   },{
@@ -38,6 +38,8 @@
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
     <form action="/ects/which-school" method="post">
+      <input type="hidden" name="trn" value="{{ teacher.trn }}">
+      <input type="hidden" name="firstName" value="{{ teacher.firstName }}">
       {{ govukButton({
         text: "Add teacher to your organisation"
       }) }}
