@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Who will " + data.name + " do their mentor training with?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-mentor/email"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+
+    <form action="/add-mentor/answer-training-provider" method="post">
+
+    {{ govukRadios({
+      name: "trainingProvider",
+      value: data.trainingProvider,
+      fieldset: {
+        legend: {
+          text: pageName,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      },
+      items: [
+        {
+          value: "ambition-with-selby",
+          text: "Ambition Institute with Selby Teaching School Hub"
+        },
+        {
+          value: "niot-with-northamptonshire",
+          text: "National Institute of Teaching with Northamptonshire Teaching School Hub"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "other",
+          text: "Another training provider"
+        }
+      ]
+    }) }}
+
+      {{ govukButton({ text: "Continue "}) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What we need to know about this mentor" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-participant-type"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">You must tell us their:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>full name</li>
+      <li>teacher reference number (TRN)</li>
+      <li>date of birth</li>
+      <li>email address (personal or school)</li>
+      <li>start date at your school, if they’re moving from another school</li>
+    </ul>
+
+    <p class="govuk-body">
+      We use this information to check their details in the Teaching Regulation Agency (TRA) records. This is to make sure they’re eligible for DfE funding.
+    </p>
+
+    {% call govukDetails({summaryText: "Tell your mentor about this use of their data" }) %}
+
+      <p>You should let them know that we:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>use their personal data to arrange DfE funding</li>
+        <li>need to share this data with training providers and other organisations involved in ECT induction and ECF-based training</li>
+      </ul>
+      <p class="govuk-body">
+        <a class="govuk-link govuk-link--no-visited-state" href="#">Read our privacy policy</a>
+      </p>
+
+    {% endcall %}
+
+    {{ govukButton({ text: "Continue", href: "/add-mentor/name" }) }}
+  </div>
+</div>
+
+{% endblock %}

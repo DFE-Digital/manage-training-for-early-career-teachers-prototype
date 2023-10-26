@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Teacher reference number (TRN)" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/add-ect/name"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">These usually contain 7 digits and are sometimes called a QTS, GTC, DfE, DfES or DCSF number.</p>
+
+    <p class="govuk-body">If the mentor does not know their TRN, ask them to use the <a href="https://find-a-lost-trn.education.gov.uk/start" class="govuk-link">Find a lost teacher reference number (TRN)</a> service.</p>
+
+    <p class="govuk-body">If the mentor does not have a TRN, ask them to <a href="#" class="govuk-link">get a teacher reference number (opens in a new tab)</a>.</p>
+
+
+    <form action="/add-mentor/dob" method="post">
+
+      {{ govukInput({
+        name: "trn",
+        id: "trn",
+        value: data.trn,
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "For example, 4567814 or RP99/12345"
+        },
+        label: {
+          text: "What’s " + data.name + "’s TRN?",
+          classes: "govuk-label--m"
+        }
+      }) }}
+
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

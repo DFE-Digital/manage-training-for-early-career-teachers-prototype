@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your answers" %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">St Mary’s Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <h2 class="govuk-heading-m">Mentor details</h2>
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: data.name
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/name",
+                text: "Change",
+                visuallyHiddenText: " name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Teacher reference number"
+          },
+          value: {
+            text: data.trn
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/trn",
+                text: "Change",
+                visuallyHiddenText: " teacher reference number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: (data.dob | isoDateFromDateInput | govukDate )
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/dob",
+                text: "Change",
+                visuallyHiddenText: " date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: (data.email )
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/email",
+                text: "Change",
+                visuallyHiddenText: " email address"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Mentor training</h2>
+
+    {% set trainingProviderText %}
+      {% if data.trainingProvider === "ambition-with-selby" %}
+        Ambition Institute
+      {% elif data.trainingProvider === "niot-with-northamptonshire" %}
+        National Institute of Teaching
+      {% endif %}
+    {% endset %}
+
+    {% set deliveryPartnerText %}
+      {% if data.trainingProvider === "ambition-with-selby" %}
+        Selby Teaching School Hub
+      {% elif data.trainingProvider === "niot-with-northamptonshire" %}
+        Northamptonshire Teaching School Hub
+      {% endif %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            text: trainingProviderText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/training-provider",
+                text: "Change",
+                visuallyHiddenText: " training provider"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            text: deliveryPartnerText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/add-mentor/training-provider",
+                text: "Change",
+                visuallyHiddenText: " delivery partner"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+
+    {{ govukButton({ text: "Confirm and continue", href: "#"}) }}
+
+  </div>
+</div>
+
+{% endblock %}
