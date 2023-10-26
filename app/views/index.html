@@ -4,6 +4,12 @@
   Related navigation page template – {{ serviceName }} – GOV.UK Prototype Components
 {% endblock %}
 
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
   items: [
@@ -36,7 +42,7 @@
         How to manage induction, training and support for early career teachers (ECTs)
       </h1>
 
-      <p class="govuk-body-l govuk-!-margin-bottom-2">Information on setting up and managing the 2-year induction for ECTs, 
+      <p class="govuk-body-l govuk-!-margin-bottom-2">Information on setting up and managing the 2-year induction for ECTs,
         and the DfE-funded training based on the early career framework (ECF) that’s now part of statutory induction.</p>
 
     </div>
@@ -62,48 +68,48 @@
 
 
  <p class="govuk-body-s">Contents</p>
-    
-    <ul class="govuk-list">
+
+    <ul class="govuk-list govuk-!-margin-bottom-9">
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#choose-or-change-the-registered-induction-tutor-for-your-school">Choose or change the registered induction tutor for your school</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#choose-or-change-the-registered-induction-tutor-for-your-school">Choose or change the registered induction tutor for your school</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">Choose or change how to provide ECF-based training at your school</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">Choose or change how to provide ECF-based training at your school</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#appoint-an-appropriate-body">Appoint an appropriate body</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#appoint-an-appropriate-body">Appoint an appropriate body</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#arrange-mentoring">Arrange mentoring</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#arrange-mentoring">Arrange mentoring</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#report-your-training-information-to-the-DfE">Report your training information to the DfE</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#report-your-training-information-to-the-DfE">Report your training information to the DfE</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#register-ECT-and-mentors">Register ECTs and mentors</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#register-ECT-and-mentors">Register ECTs and mentors</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#manage-statutory-induction-and-training-for-ECTs">Manage statutory induction and training for ECTs, including non-standard and part time inductions</a></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#manage-statutory-induction-and-training-for-ECTs">Manage statutory induction and training for ECTs, including non-standard and part time inductions</a></p>
   </li>
   <li>
-    <p class="govuk-body-s">- <a class="govuk-link" href="#report-if-something-changes-for-an-ECT-or-mentor">Report if something changes for an ECT or mentor</a></p>
-  </li>   
+    <p class="govuk-body-s govuk-!-margin-bottom-1">— &nbsp;&nbsp;<a class="govuk-link govuk-link--no-underline" href="#report-if-something-changes-for-an-ECT-or-mentor">Report if something changes for an ECT or mentor</a></p>
+  </li>
 </ul>
 
   <h2 id="choose-or-change-the-registered-induction-tutor-for-your-school" class="govuk-heading-m">Choose or change the registered induction tutor for your school</h2>
 
-<p class="govuk-body">Induction tutors <a href="#manage-statutory-induction-and-training-for-ECTs">monitor and support</a> your ECTs. They conduct:</p>      
+<p class="govuk-body">Induction tutors <a href="#manage-statutory-induction-and-training-for-ECTs">monitor and support</a> your ECTs. They conduct:</p>
 
 <ul class="govuk-list govuk-list--bullet">
   <li>regular progress reviews</li>
   <li>2 formal assessment meetings with ECTs during the 2-year induction period - one midway through and one at the end</li>
-</ul>  
+</ul>
 
 <p class="govuk-body">Read about the roles and responsibilities of induction tutors in <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">section 5 of the statutory guidance on induction for ECTs</a>.</p>
 
-<p class="govuk-body">Your school may have several people performing this role, but only one can be registered to report information to the Department for Education (DfE) using the Manage training for early career teachers service.</p>      
-  
-<p class="govuk-body">Find out how to <a href="#report-your-training-information-to-the-DfE">report information to the DfE</a>.</p> 
+<p class="govuk-body">Your school may have several people performing this role, but only one can be registered to report information to the Department for Education (DfE) using the Manage training for early career teachers service.</p>
+
+<p class="govuk-body">Find out how to <a href="#report-your-training-information-to-the-DfE">report information to the DfE</a>.</p>
 
 <h3 class="govuk-heading-s">Who to nominate</h3>
 
@@ -111,44 +117,44 @@
 <ul class="govuk-list govuk-list--bullet">
   <li>holds qualified teacher status (QTS)</li>
   <li>can assess an ECT’s progress against the Teachers’ Standards</li>
-</ul>    
+</ul>
 
-<p class="govuk-body">Schools commonly choose someone in a senior leadership position, such as an assistant head.</p> 
-      
+<p class="govuk-body">Schools commonly choose someone in a senior leadership position, such as an assistant head.</p>
+
 <p class="govuk-body">Try to choose someone who is not also a mentor. The 2 roles have separate and different responsibilities.</p>
 
-<h3 class="govuk-heading-s">Nominate your first registered induction tutor</h3>      
-      
+<h3 class="govuk-heading-s">Nominate your first registered induction tutor</h3>
+
 <p class="govuk-body">Use the <a href="https://manage-training-for-early-career-teachers.education.gov.uk/nominations/resend-email" class="govuk-link">Manage training for early career teachers service</a> to do this.</p>
-    
-<p class="govuk-body">DfE will send an access link to the email address your school provided to the <a href="https://get-information-schools.service.gov.uk/" class="govuk-link">Get Information About Schools (GIAS)</a> register.</p>    
-    
+
+<p class="govuk-body">DfE will send an access link to the email address your school provided to the <a href="https://get-information-schools.service.gov.uk/" class="govuk-link">Get Information About Schools (GIAS)</a> register.</p>
+
 <h3 class="govuk-heading-s">Change your current registered induction tutor</h3>
 
-<p class="govuk-body">If your current induction tutor is leaving your school, or will no longer be acting as your induction tutor, they should follow these steps.</p>  
-      
+<p class="govuk-body">If your current induction tutor is leaving your school, or will no longer be acting as your induction tutor, they should follow these steps.</p>
+
 <ol class="govuk-list govuk-list--number">
   <li>Sign into the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a> using their registered email address.</li>
   <li>Select the ‘Change’ link next to their name.</li>
   <li>Enter the name and email address of the person who will report information to the DfE instead.</li>
-</ol>      
-    
-<h3 class="govuk-heading-s">If your registered induction tutor has left your school, or cannot access the service</h3> 
+</ol>
 
-<p class="govuk-body">If no one at your school can access the Manage training for early career teachers service to change your registered induction tutor, you can <a href="https://manage-training-for-early-career-teachers.education.gov.uk/nominations/resend-email" class="govuk-link">request an access link for your school</a>.</p>       
-      
+<h3 class="govuk-heading-s">If your registered induction tutor has left your school, or cannot access the service</h3>
+
+<p class="govuk-body">If no one at your school can access the Manage training for early career teachers service to change your registered induction tutor, you can <a href="https://manage-training-for-early-career-teachers.education.gov.uk/nominations/resend-email" class="govuk-link">request an access link for your school</a>.</p>
+
 
       <h2 id="choose-or-change-how-to-provide-ECF-based-training-at-your-school" class="govuk-heading-m">Choose or change how to provide ECF-based training at your school</h2>
 
-<p class="govuk-body">ECTs are entitled to 2 years of training based on the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link">early career framework</a> (ECF).</p>       
+<p class="govuk-body">ECTs are entitled to 2 years of training based on the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link">early career framework</a> (ECF).</p>
 
 <h3 class="govuk-heading-s">Option 1: use a lead provider</h3>
 
 <p class="govuk-body">Lead providers work with delivery partners such as trusts, teaching school hubs and universities to deliver training directly to your ECTs and their mentors.</p>
 
-<p class="govuk-body">This is fully funded by the DfE, so there’s no cost for eligible schools. Learn about <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">funding for training based on the early career framework</a>.</p>       
+<p class="govuk-body">This is fully funded by the DfE, so there’s no cost for eligible schools. Learn about <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">funding for training based on the early career framework</a>.</p>
 
-<p class="govuk-body">Providers may need to use face to face sessions as part of their training, so contact them to check where they’re based before signing up.</p> 
+<p class="govuk-body">Providers may need to use face to face sessions as part of their training, so contact them to check where they’re based before signing up.</p>
 
 <p class="govuk-body">To sign up with a lead provider, contact them:</p>
 <ul class="govuk-list govuk-list--bullet">
@@ -158,15 +164,15 @@
   <li><a class="govuk-link" href="https://niot.org.uk/programmes/ECF">National Institute of Teaching, founded by the School-Led Development Trust</a></li>
   <li><a class="govuk-link" href="https://www.teachfirst.org.uk/early-career-framework">Teach First</a></li>
   <li><a class="govuk-link" href="https://www.ucl.ac.uk/ioe/departments-and-centres/departments/learning-and-leadership/early-career-framework">UCL Institute of Education</a></li>
-</ul>      
+</ul>
 
-<p class="govuk-body">If you choose to use a lead provider, your registered induction tutor will need to report this through the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a> each academic year. They do not need to tell us which provider your school will work with. Your lead provider is responsible for reporting this to us directly.</p>       
+<p class="govuk-body">If you choose to use a lead provider, your registered induction tutor will need to report this through the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a> each academic year. They do not need to tell us which provider your school will work with. Your lead provider is responsible for reporting this to us directly.</p>
 
 <h3 class="govuk-heading-s">Option 2: deliver your own training using DfE-accredited materials</h3>
 
-<p class="govuk-body">DfE-accredited materials include mentor session guidelines and self-directed study materials.</p> 
+<p class="govuk-body">DfE-accredited materials include mentor session guidelines and self-directed study materials.</p>
 
-<p class="govuk-body">Create a <a href="https://support-for-early-career-teachers.education.gov.uk/users/sign-up" class="govuk-link">Support for early career teachers</a> account to see what materials are available.</p>       
+<p class="govuk-body">Create a <a href="https://support-for-early-career-teachers.education.gov.uk/users/sign-up" class="govuk-link">Support for early career teachers</a> account to see what materials are available.</p>
 
 <p class="govuk-body">You can choose materials from one of the following suppliers:</p>
 <ul class="govuk-list govuk-list--bullet">
@@ -176,23 +182,23 @@
   <li>UCL Early Career Teacher Consortium</li>
 </ul>
 
-<p class="govuk-body">If you choose to deliver your own training using DfE-accredited materials, your registered induction tutor will need to report this through the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a>.</p> 
+<p class="govuk-body">If you choose to deliver your own training using DfE-accredited materials, your registered induction tutor will need to report this through the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a>.</p>
 
-<p class="govuk-body">Your <a href="#appoint-an-appropriate-body">appropriate body</a> will check your programme to make sure it covers the full depth of the early career framework.</p> 
+<p class="govuk-body">Your <a href="#appoint-an-appropriate-body">appropriate body</a> will check your programme to make sure it covers the full depth of the early career framework.</p>
 
-<h3 class="govuk-heading-s">Option 3: design and deliver your own training</h3> 
+<h3 class="govuk-heading-s">Option 3: design and deliver your own training</h3>
 
-<p class="govuk-body">You can design and deliver your own 2-year training programme covering every ‘learn that’ and ‘learn how to’ statement in the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link">early career framework</a>.</p>       
+<p class="govuk-body">You can design and deliver your own 2-year training programme covering every ‘learn that’ and ‘learn how to’ statement in the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link">early career framework</a>.</p>
 
-<p class="govuk-body">You can use DfE-accredited training materials for reference. These include mentor session guidelines and self-directed study materials.</p> 
+<p class="govuk-body">You can use DfE-accredited training materials for reference. These include mentor session guidelines and self-directed study materials.</p>
 
-<p class="govuk-body">Create a <a href="https://support-for-early-career-teachers.education.gov.uk/users/sign-up" class="govuk-link">Support for early career teachers</a> account to see what materials are available.</p>  
+<p class="govuk-body">Create a <a href="https://support-for-early-career-teachers.education.gov.uk/users/sign-up" class="govuk-link">Support for early career teachers</a> account to see what materials are available.</p>
 
-<p class="govuk-body">Talk to your <a href="#appoint-an-appropriate-body">appropriate body</a> for advice on next steps.</p> 
+<p class="govuk-body">Talk to your <a href="#appoint-an-appropriate-body">appropriate body</a> for advice on next steps.</p>
 
 <p class="govuk-body">Your appropriate body will check your programme to make sure it covers the early career framework.</p>
 
-<p class="govuk-body">Avoid changing your training option partway through induction.</p>    
+<p class="govuk-body">Avoid changing your training option partway through induction.</p>
 
 
   <h2 id="appoint-an-appropriate-body" class="govuk-heading-m">Appoint an appropriate body</h2>
@@ -205,55 +211,55 @@
 <ul class="govuk-list govuk-list--bullet">
   <li>check that your ECTs receive their statutory entitlements, such as <a href="#arrange-mentoring">mentoring</a> throughout their 2-year induction period</li>
   <li>make sure <a href="#manage-statutory-induction-and-training-for-ECTs">formal assessments</a> conducted by your induction tutor are fair and appropriate</li>
-</ul>      
+</ul>
 
-<p class="govuk-body">Unless you use a <a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">training provider</a> to deliver your training, your appropriate body will also check that your training covers the full depth of the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link"early career framework"></a>.</p>       
+<p class="govuk-body">Unless you use a <a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">training provider</a> to deliver your training, your appropriate body will also check that your training covers the full depth of the <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link"early career framework"></a>.</p>
 
-<p class="govuk-body">Your appropriate body can also give advice if your ECTs are <a href="#manage-statutory-induction-and-training-for-ECTs">serving a reduced or part time induction</a>. They’ll need to agree to any reduction to the induction period.</p>  
+<p class="govuk-body">Your appropriate body can also give advice if your ECTs are <a href="#manage-statutory-induction-and-training-for-ECTs">serving a reduced or part time induction</a>. They’ll need to agree to any reduction to the induction period.</p>
 
 <p class="govuk-body">You must provide each ECT with contact information for their appropriate body.</p>
 
 <h3 class="govuk-heading-s">Find an appropriate body</h3>
 
-<p class="govuk-body"><a href="https://www.gov.uk/government/publications/statutory-teacher-induction-appropriate-bodies/find-an-appropriate-body" class="govuk-link">Find an appropriate body</a> and contact them to appoint them.</p>      
+<p class="govuk-body"><a href="https://www.gov.uk/government/publications/statutory-teacher-induction-appropriate-bodies/find-an-appropriate-body" class="govuk-link">Find an appropriate body</a> and contact them to appoint them.</p>
 
 <h3 class="govuk-heading-s">Who you can and cannot appoint</h3>
 
-<p class="govuk-body">You can appoint one appropriate body for all of your ECTs, but you may need or choose to appoint different ones.</p> 
-      
-<p class="govuk-body">You may have previously used a local authority as an appropriate body. From September 2023, you cannot use a local authority for new inductions, so you’ll need to choose another appropriate body for any new ECTs.</p> 
+<p class="govuk-body">You can appoint one appropriate body for all of your ECTs, but you may need or choose to appoint different ones.</p>
 
-<p class="govuk-body">If an ECT did their initial teacher training (ITT) through an accredited ITT provider who is also an appropriate body, you cannot appoint that appropriate body for that teacher.</p> 
+<p class="govuk-body">You may have previously used a local authority as an appropriate body. From September 2023, you cannot use a local authority for new inductions, so you’ll need to choose another appropriate body for any new ECTs.</p>
 
-<p class="govuk-body">ECTs may be serving their induction at an appropriate body. For example, they may work at a teaching school hub that is also an appropriate body. If this is the case, you cannot appoint that appropriate body for that teacher.</p> 
+<p class="govuk-body">If an ECT did their initial teacher training (ITT) through an accredited ITT provider who is also an appropriate body, you cannot appoint that appropriate body for that teacher.</p>
 
-<p class="govuk-body">Learn more about who you can and cannot appoint in section 2 of the <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">statutory guidance on induction for early career teachers</a>.</p> 
+<p class="govuk-body">ECTs may be serving their induction at an appropriate body. For example, they may work at a teaching school hub that is also an appropriate body. If this is the case, you cannot appoint that appropriate body for that teacher.</p>
+
+<p class="govuk-body">Learn more about who you can and cannot appoint in section 2 of the <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">statutory guidance on induction for early career teachers</a>.</p>
 
 
-  <h2 id="arrange-mentoring" class="govuk-heading-m">Arrange mentoring</h2>      
+  <h2 id="arrange-mentoring" class="govuk-heading-m">Arrange mentoring</h2>
 
 <p class="govuk-body">ECTs are entitled to mentor support throughout their 2-year induction period.</p>
 
-<p class="govuk-body">Mentors will only be <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">eligible for funded training and time off timetable</a> once they’re assigned to an ECT in the DfE service. Find out <a href="#register-ECT-and-mentors">how to register and assign mentors</a>.      
-      
-<h3 class="govuk-heading-s">What mentors do</h3> 
+<p class="govuk-body">Mentors will only be <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">eligible for funded training and time off timetable</a> once they’re assigned to an ECT in the DfE service. Find out <a href="#register-ECT-and-mentors">how to register and assign mentors</a>.
+
+<h3 class="govuk-heading-s">What mentors do</h3>
 
 <p class="govuk-body">Mentors make sure that your ECTs receive a high quality induction. They:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>meet regularly with ECTs to provide support and feedback</li>
   <li>take prompt, appropriate action if their ECT is experiencing difficulties</li>
 </ul>
-    
-<p class="govuk-body">If you use a provider to deliver your training, mentors may also be asked to observe your ECTs. This is for professional development purposes and must not be used for formal assessment.</p> 
 
-<p class="govuk-body">Read about the role and responsibilities of mentors in <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">section 5 of the statutory guidance on induction for early career teachers</a>.</p> 
+<p class="govuk-body">If you use a provider to deliver your training, mentors may also be asked to observe your ECTs. This is for professional development purposes and must not be used for formal assessment.</p>
 
-<p class="govuk-body">Share the <a href="https://www.gov.uk/guidance/guidance-for-mentors-how-to-support-ecf-based-training" class="govuk-link">guidance for mentors</a> to help them understand their role.</p> 
+<p class="govuk-body">Read about the role and responsibilities of mentors in <a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">section 5 of the statutory guidance on induction for early career teachers</a>.</p>
 
-<h3 class="govuk-heading-s">Who to choose as a mentor</h3> 
+<p class="govuk-body">Share the <a href="https://www.gov.uk/guidance/guidance-for-mentors-how-to-support-ecf-based-training" class="govuk-link">guidance for mentors</a> to help them understand their role.</p>
 
-<p class="govuk-body">Choose mentors who have the skills to provide mentoring for specific phases and subject areas. This will normally be someone who has qualified teacher status (QTS).</p>       
-      
+<h3 class="govuk-heading-s">Who to choose as a mentor</h3>
+
+<p class="govuk-body">Choose mentors who have the skills to provide mentoring for specific phases and subject areas. This will normally be someone who has qualified teacher status (QTS).</p>
+
 <p class="govuk-body">If you choose someone who does not have qualified teacher status, you should check this decision with your appropriate body.</p>
 
 <p class="govuk-body">Try to choose someone who is not also an induction tutor for your school. The 2 roles have separate and different responsibilities.</p>
@@ -262,14 +268,14 @@
 
 <p class="govuk-body">Timetable mentor sessions during teaching hours wherever possible. Make sure your mentors have enough time to meet with their ECTs regularly.</p>
 
-<p class="govuk-body">Schools receive <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">funding to cover mentor time off timetable</a>.</p>       
+<p class="govuk-body">Schools receive <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">funding to cover mentor time off timetable</a>.</p>
 
-<h3 class="govuk-heading-s">Mentor training</h3>    
+<h3 class="govuk-heading-s">Mentor training</h3>
 
-<p class="govuk-body">If you use a training provider to deliver training for your ECTs, mentors will be given 36 hours of training over 2 years.</p> 
+<p class="govuk-body">If you use a training provider to deliver training for your ECTs, mentors will be given 36 hours of training over 2 years.</p>
 
-<p class="govuk-body">Schools receive funding for 36 hours of mentor time off timetable if mentors attend this training. <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">Learn more about funding</a>.</p>  
-      
+<p class="govuk-body">Schools receive funding for 36 hours of mentor time off timetable if mentors attend this training. <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">Learn more about funding</a>.</p>
+
 <p class="govuk-body">Mentors can only do this training and receive funded time off timetable for this training once. However, they can keep being a mentor as many times as they like.</p>
 
 <p class="govuk-body">Mentors can continue their training even if their ECT leaves your school or withdraws part way through their induction.</p>
@@ -280,15 +286,15 @@
 
 <p class="govuk-body">If a mentor does not have the time or ability to carry out their role effectively, talk to your appropriate body.</p>
 
-  
-      <h2 id="report-your-training-information-to-the-DfE" class="govuk-heading-m">Report your training information to the DfE</h2>      
+
+      <h2 id="report-your-training-information-to-the-DfE" class="govuk-heading-m">Report your training information to the DfE</h2>
 
 <p class="govuk-body">Use the Manage training for early career teachers service to:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>check if ECTs are eligible to serve statutory induction, and receive <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">DfE funding for training and support</a> based on the early career framework (ECF)</li>
   <li>check if mentors working with ECTs are eligible for DfE funding for ECF-based training and time off timetable</li>
   <li>get access to ECF-based training materials for ECTs and their mentors</li>
-</ul>      
+</ul>
 
 <p class="govuk-body">Schools in England must use this service to:</p>
 <ul class="govuk-list govuk-list--bullet">
@@ -297,20 +303,20 @@
   <li>register each ECT and their mentor</li>
   <li>report which mentor each ECT will work with to ensure the correct funding is paid</li>
   <li>report if a registered ECT or mentor <a href="#report-if-something-changes-for-an-ECT-or-mentor">transfers to another school</a> in England during their ECF-based induction or training</li>
-</ul>  
-      
-<p class="govuk-body">Your school will need to provide some of this information to your <a href="#appoint-an-appropriate-body">appropriate body</a> and <a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">training provider</a> too, if you work with one.</p>
+</ul>
 
-<a href="https://manage-training-for-early-career-teachers.education.gov.uk/users/signed-out" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+<p class="govuk-body govuk-!-margin-bottom-8">Your school will need to provide some of this information to your <a href="#appoint-an-appropriate-body">appropriate body</a> and <a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">training provider</a> too, if you work with one.</p>
+
+<a href="/sign-in" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
   Start now
   <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
     <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
   </svg></a>
 
-<p class="govuk-body">If you have problems accessing or using the service, email continuing-professional-development@digital.education.gov.uk for help.</p> 
-      
-  
-      <h2 id="register-ECT-and-mentors" class="govuk-heading-m">Register ECTs and mentors</h2> 
+<p class="govuk-body">If you have problems accessing or using the service, email <a href="mailto:continuing-professional-development@digital.education.gov.uk" class="govuk-link">continuing-professional-development@digital.education.gov.uk</a> for help.</p>
+
+
+      <h2 id="register-ECT-and-mentors" class="govuk-heading-m">Register ECTs and mentors</h2>
 
 <p class="govuk-body">ECTs and mentors taking part in ECF-based training must be registered with the DfE if your school:</p>
 <ul class="govuk-list govuk-list--bullet">
@@ -318,7 +324,7 @@
   <li>delivers your own training using DfE-accredited materials</li>
 </ul>
 
-<p class="govuk-body">We need this information to confirm their <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">eligibility for funding</a>, and arrange access to training and materials.</p> 
+<p class="govuk-body">We need this information to confirm their <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">eligibility for funding</a>, and arrange access to training and materials.</p>
 
 <p class="govuk-body">Your school does not need to register ECTs and mentors with the DfE if you choose to:</p>
 <ul class="govuk-list govuk-list--bullet">
@@ -337,37 +343,37 @@
   <li>date of birth</li>
   <li>email address (personal or school)</li>
   <li>start date at your school, if they’re moving from another school</li>
-</ul>      
+</ul>
 
-<p class="govuk-body">If your school does not have this information, contact the person directly to ask for it.</p>       
-      
+<p class="govuk-body">If your school does not have this information, contact the person directly to ask for it.</p>
+
 <h3 class="govuk-heading-s">Assign each ECT a mentor</h3>
 
 <p class="govuk-body">Your school’s registered induction tutor must also use the <a href="#report-your-training-information-to-the-DfE">Manage training for early career teachers service</a> to tell us which mentor will work with each ECT. This is an important step to make sure that relevant funding is paid.</p>
 
-<p class="govuk-body">Find out <a href="#arrange-mentoring">how mentoring ECTs works</a>.</p>       
-      
-   
-      <h2 id="manage-statutory-induction-and-training-for-ECTs" class="govuk-heading-m">Manage statutory induction and training for ECTs</h2> 
+<p class="govuk-body">Find out <a href="#arrange-mentoring">how mentoring ECTs works</a>.</p>
+
+
+      <h2 id="manage-statutory-induction-and-training-for-ECTs" class="govuk-heading-m">Manage statutory induction and training for ECTs</h2>
 
 <p class="govuk-body">Throughout statutory induction you must:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>arrange for each ECT’s teaching to be observed at regular intervals</li>
   <li>make sure ECTs and mentors have adequate time off timetable to participate fully in ECF-based training and mentoring</li>
   <li>following any other instructions from your <a href="#appoint-an-appropriate-body">appropriate body</a> or <a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">training provider</a></li>
-</ul>      
-      
-<p class="govuk-body">In terms 1, 2, 4 and 5 of a standard 2-year induction, you must arrange progress reviews against the <a href="https://www.gov.uk/government/publications/teachers-standards" class="govuk-link">Teachers’ Standards</a> for each ECT.</p> 
+</ul>
 
-<p class="govuk-body">In terms 3 and 6 of a standard 2-year induction, you must arrange for each ECT to be formally assessed by your school’s induction tutor or headteacher.</p> 
+<p class="govuk-body">In terms 1, 2, 4 and 5 of a standard 2-year induction, you must arrange progress reviews against the <a href="https://www.gov.uk/government/publications/teachers-standards" class="govuk-link">Teachers’ Standards</a> for each ECT.</p>
 
-<p class="govuk-body"><a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">See section 2 of the statutory guidance</a> for information on how to complete these tasks.</p> 
+<p class="govuk-body">In terms 3 and 6 of a standard 2-year induction, you must arrange for each ECT to be formally assessed by your school’s induction tutor or headteacher.</p>
 
-<h3 class="govuk-heading-s">Adapting training and induction for ECTs working part time, or completing a reduced induction</h3> 
+<p class="govuk-body"><a href="https://www.gov.uk/government/publications/induction-for-early-career-teachers-england" class="govuk-link">See section 2 of the statutory guidance</a> for information on how to complete these tasks.</p>
 
-<p class="govuk-body">If any ECTs are serving a reduced or part-time induction at your school, your headteacher and appropriate body should decide on the best ECF-based training, progress review and assessment schedule for them. This must also be shared with your training provider if you work with one.</p> 
+<h3 class="govuk-heading-s">Adapting training and induction for ECTs working part time, or completing a reduced induction</h3>
 
-<p class="govuk-body">See guidance on <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">proportionate funding</a> for these ECTs.</p> 
+<p class="govuk-body">If any ECTs are serving a reduced or part-time induction at your school, your headteacher and appropriate body should decide on the best ECF-based training, progress review and assessment schedule for them. This must also be shared with your training provider if you work with one.</p>
+
+<p class="govuk-body">See guidance on <a href="https://www.gov.uk/guidance/funding-and-eligibility-for-ecf-based-training" class="govuk-link">proportionate funding</a> for these ECTs.</p>
 
 <h3 class="govuk-heading-s">For ECTs completing their induction and ECF-based training</h3>
 
@@ -377,7 +383,7 @@
   <li>any other instructions from your appropriate body or training provider</li>
 </ul>
 
-<p class="govuk-body">You do not need to withdraw or delete their information from the <a href="#report-your-training-information-to-the-DfE">DfE service</a>. Your training provider and appropriate body will confirm that they’ve completed training and induction, and we’ll update their records for you.</p>       
+<p class="govuk-body">You do not need to withdraw or delete their information from the <a href="#report-your-training-information-to-the-DfE">DfE service</a>. Your training provider and appropriate body will confirm that they’ve completed training and induction, and we’ll update their records for you.</p>
 
 <h3 class="govuk-heading-s">For ECTs starting their induction and ECF-based training in the next academic year</h3>
 
@@ -385,13 +391,13 @@
 <ul class="govuk-list govuk-list--bullet">
   <li>appoint an <a href="#appoint-an-appropriate-body">appropriate body</a> for each ECT</li>
   <li>if you want to work with a training provider, contact them to confirm their availability for the next academic year</li>
-</ul>      
+</ul>
 
 <p class="govuk-body">We'll contact your school in the summer term when it’s time to sign in to the DfE service and <a href="#report-your-training-information-to-the-DfE">report your training information</a> for the next academic year.</p>
 
-   
-      <h2 id="report-if-something-changes-for-an-ECT-or-mentor" class="govuk-heading-m">Report if something changes for an ECT or mentor</h2>   
-      
+
+      <h2 id="report-if-something-changes-for-an-ECT-or-mentor" class="govuk-heading-m">Report if something changes for an ECT or mentor</h2>
+
 <p class="govuk-body">Your school’s <a href="#choose-or-change-the-registered-induction-tutor-for-your-school">registered induction tutor</a> should <a href="#report-your-training-information-to-the-DfE">sign in to the DfE service</a> to report if:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>a new ECT or mentor begins their induction or ECF-based training part-way through the year</li>
@@ -409,18 +415,18 @@
   <li>withdraw or defer an ECT or mentor who has left teaching, is taking a break, or takes a teaching job outside of England (for ECTs, you must report this to their appropriate body too)</li>
   <li>you no longer expect any ECTs to start their statutory induction at your school that year</li>
   <li>reinstate an ECT or mentor who was previously withdrawn from training</li>
-</ul>     
+</ul>
 
-<h3 class="govuk-heading-s">When to contact the DfE support team</h3>      
-      
+<h3 class="govuk-heading-s">When to contact the DfE support team</h3>
+
 <p class="govuk-body">Email us if you want to change your:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li><a href="#choose-or-change-how-to-provide-ECF-based-training-at-your-school">ECF-based training option</a></li>
   <li>DfE-accredited training materials</li>
-</ul>     
+</ul>
 
-<p class="govuk-body">Email: continuing-professional-development@digital.education.gov.uk</p> 
-      
+<p class="govuk-body">Email: <a href="mailto:continuing-professional-development@digital.education.gov.uk" class="govuk-link">continuing-professional-development@digital.education.gov.uk</a></p>
+
     </div>
 
     <div class="govuk-grid-column-one-third">
