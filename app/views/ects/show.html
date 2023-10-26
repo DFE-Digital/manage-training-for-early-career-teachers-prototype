@@ -24,7 +24,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
@@ -62,9 +62,34 @@
     <h2 class="govuk-heading-m">Induction</h2>
 
     {% set mentorText %}
-      {% for mentor in ect.mentors %}
-        <a href="/mentors/{{ mentor.mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
-      {% endfor %}
+      {% if ect.mentors | length == 0 %}
+
+      {% elif  ect.mentors | length == 1 %}
+
+
+        {% for mentor in ect.mentors %}
+          <a href="/mentors/{{ mentor.mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
+        {% endfor %}
+
+      {% else %}
+        {% set currentMentor = ect.mentors | last %}
+
+          <a href="/mentors/{{ currentMentor.mentor.id }}" class="govuk-link">{{ currentMentor.mentor.name }}</a>
+
+        <p class="govuk-!-margin-top-5 govuk-body-s">Previously:</p>
+
+        <ul class="govuk-list">
+          {% for mentor in ect.mentors %}
+            {% if mentor.to %}
+              <li class="govuk-body-s"><a href="/mentors/{{ mentor.mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a> – {{ mentor.from | isoDateFromDateInput | govukDate("truncate") }} to {{ mentor.to | isoDateFromDateInput | govukDate("truncate") }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+
+
+
+      {% endif %}
     {% endset %}
 
     {% set statusHtml %}

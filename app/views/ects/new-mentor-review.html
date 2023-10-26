@@ -1,0 +1,93 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set newMentorName %}
+  {% if data.mentor == "other" %}
+    {{ data.otherMentorName }}
+  {% else %}
+    {{ data.mentor }}
+  {% endif %}
+{% endset %}
+
+{% set pageName = "Check your answers" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/ects",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Confirm the new mentor for {{ ect.firstName }} {{ ect.lastName }}.</p>
+
+    {% set mentorText %}
+      {{ newMentorName }}
+    {% endset %}
+
+    {% set startDateHtml %}
+      {% if data.mentorStart == "other" %}
+        {{ (data.startDate | isoDateFromDateInput | govukDate ) }}
+      {% else %}
+        {{ data.mentorStart }}
+      {% endif %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "New mentor"
+          },
+          value: {
+            text: mentorText
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/" + ect.trn + "/new-mentor",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "From"
+          },
+          value: {
+            text: startDateHtml
+          },
+          actions: {
+            items: [
+              {
+                href:  "/ects/" + ect.trn + "/new-mentor-start-date",
+                text: "Change"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <form action="/ects/{{ ect.trn }}/confirm-mentor-change" method="post">
+      {{ govukButton({ text: "Save and continue" }) }}
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

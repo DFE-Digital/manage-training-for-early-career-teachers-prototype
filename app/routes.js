@@ -111,3 +111,65 @@ router.get('/ects/:ectId/new-mentor', (req, res) => {
     ect
   })
 });
+
+router.get('/ects/:ectId/new-mentor-start-date', (req, res) => {
+
+  let ect = req.session.data.ects.find((ect) => ect.trn == req.params.ectId)
+
+  res.render('ects/new-mentor-start-date', {
+    ect
+  })
+});
+
+router.get('/ects/:ectId/new-mentor-review', (req, res) => {
+
+  let ect = req.session.data.ects.find((ect) => ect.trn == req.params.ectId)
+
+  res.render('ects/new-mentor-review', {
+    ect
+  })
+});
+
+router.post('/ects/:ectId/confirm-mentor-change', (req, res) => {
+
+  let ect = req.session.data.ects.find((ect) => ect.trn == req.params.ectId)
+  let data = req.session.data;
+
+  let currentMentor
+
+  if (ect.mentors.length > 0) {
+    currentMentor = ect.mentors.find((mentor) => mentor.to == undefined)
+  }
+
+  let mentorStartDate;
+  if (data.mentorStart == "Start of the Autumn 2023 term") {
+    mentorStartDate = {day: 1, month: 9, year: 2023}
+  } else if (data.mentorStart == "Start of the Spring 2024 term") {
+    mentorStartDate = {day: 3, month: 1, year: 2024}
+  } else if (data.mentorStart == "Start of the Summer 2024 term") {
+    mentorStartDate = {day: 17, month: 4, year: 2024}
+  } else {
+    mentorStartDate = data.startDate
+  }
+
+  if (currentMentor) {
+    currentMentor.to = mentorStartDate
+  }
+
+  let newMentorName;
+  if (data.mentor == "other") {
+    newMentorName = data.otherMentorName
+  } else {
+    newMentorName = data.mentor
+  }
+
+  let newMentor = {
+    from: mentorStartDate,
+    mentor: { name: newMentorName, id: "47547457" }
+  }
+
+  ect.mentors.push(newMentor)
+
+
+  res.redirect("/ects/" + ect.trn + "/show")
+});

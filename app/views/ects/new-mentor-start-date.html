@@ -1,0 +1,108 @@
+{% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
+
+{% set newMentorName %}
+  {% if data.mentor == "other" %}
+    {{ data.otherMentorName }}
+  {% else %}
+    {{ data.mentor }}
+  {% endif %}
+{% endset %}
+
+{% set pageName = "When will " + newMentorName + " start mentoring " + ect.firstName + " " + ect.lastName + "?" %}
+
+{% set activeLinkId = "ects" %}
+{% set navigationItems = [
+  {
+    href: "/ects",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/" + ect.trn + "/change-mentor" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/ects/{{ ect.trn }}/new-mentor-review" method="post">
+
+      {% set someoneElseHtml %}
+        {{ govukDateInput({
+          id: "startDate",
+          fieldset: {
+            legend: {
+              text: "Date they will start mentoring",
+              classes: "govuk-label--s"
+            }
+          },
+          items: [
+            {
+              name: "startDate[day]",
+              label: "Day",
+              value: data.startDate.day,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "startDate[month]",
+              label: "Month",
+              value: data.startDate.month,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "startDate[year]",
+              label: "Year",
+              value: data.startDate.year,
+              classes: "govuk-input--width-4"
+            }
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "mentorStart",
+        value: data.mentorStart,
+        fieldset: {
+          legend: {
+            text: pageName,
+            classes: "govuk-fieldset__legend--l",
+            isPageTitle: true
+          }
+        },
+        items: [
+          {
+            value: "Start of the Spring 2024 term",
+            text: "Start of the Spring 2024 term"
+          },
+          {
+            value: "Start of the Summer 2024 term",
+            text: "Start of the Summer 2024 term"
+          },
+          {
+            divider: "or"
+          },
+          {
+            text: "Another date",
+            value: "other",
+            conditional: {
+              html: someoneElseHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

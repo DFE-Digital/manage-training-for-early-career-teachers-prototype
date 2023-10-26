@@ -25,7 +25,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="/ects/review" method="post">
+    <form action="/ects/{{ ect.trn }}/new-mentor-start-date" method="post">
 
       {% set someoneElseHtml %}
         {{ govukInput({
@@ -61,17 +61,10 @@
           },
           {
             text: "Someone else",
-            value: "Someone else",
+            value: "other",
             conditional: {
               html: someoneElseHtml
             }
-          },
-          {
-            divider: "or"
-          },
-          {
-            text: "I’m not sure yet – I’ll assign a mentor later",
-            value: "not-sure"
           }
         ]
       }) }}
