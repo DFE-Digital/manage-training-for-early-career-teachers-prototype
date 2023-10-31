@@ -1,19 +1,5 @@
 
 <div class="govuk-!-margin-bottom-8">
 
-  <!-- <p class="govuk-body">Sort by:
-    {% if data.sort_by == "mentor" or not data.sort_by %}<b class="govuk-!-margin-left-2">Mentor (A-Z)</b>{% else %}<a href="/participants?show=training&sort_by=mentor" class="govuk-link govuk-!-margin-left-2">Mentor (A-Z)</a>{% endif %}
-
-    {% if data.sort_by == "induction-start-date" %}<b class=" govuk-!-margin-left-2">Induction start date</b>{% else %}<a href="/participants?show=training&sort_by=induction-start-date" class="govuk-link govuk-!-margin-left-2">Induction start date</a>{% endif %}
-  </p> -->
-
-  <!-- {% if data.sort_by == "induction-start-date" %} -->
-
     {% include "_sorted-by-induction-start-date.html" %}
-<!--
-  {% else %}
-
-    {% include "_grouped-by-mentor.html" %}
-
-  {% endif %} -->
 </div>

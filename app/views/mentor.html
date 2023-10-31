@@ -26,6 +26,7 @@
       </ul>
     {% endset %}
 
+    <h2 class="govuk-heading-m">Personal details</h2>
     {{ govukSummaryList({
       rows: [
         {
@@ -77,21 +78,50 @@
               }
             ]
           }
-        },
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Mentoring</h2>
+
+    {% set mentorRows = [] %}
+
+
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Currently mentoring"
+          },
+          value: {
+            html: teachersBeingMentored
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Mentor training</h2>
+
+    {% set mentorTrainingStatusHtml %}
+      {{ govukTag({ text: "Training", classes: "govuk-tag--green" }) }}
+      <p class="govuk-body govuk-!-margin-top-2">Started in Autumn term 2022</p>
+      <p class="govuk-body govuk-!-margin-top-2">Must finish training by end of Summer term 2024</p>
+
+      {{ govukDetails({
+        summaryText: "What happens if they don’t finish by then?",
+        text: "TODO"
+      }) }}
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
         {
           key: {
             text: "Status"
           },
           value: {
-            html: "<p class=\"govuk-body\"><span class=\"govuk-tag govuk-tag--turquoise\">Mentoring</span></p>"
-          }
-        },
-        {
-          key: {
-            text: "Teachers they are mentoring"
-          },
-          value: {
-            html: teachersBeingMentored
+            html: mentorTrainingStatusHtml
           }
         },
         {
@@ -110,7 +140,6 @@
             html: "Bosco LLC"
           }
         }
-
       ]
     }) }}
 

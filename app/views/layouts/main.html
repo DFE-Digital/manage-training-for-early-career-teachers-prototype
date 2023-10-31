@@ -13,6 +13,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
   <div class="govuk-width-container">
     {{ govukPhaseBanner({
+      classes: "app-phase-banner--no-border-bottom",
       tag: {
         text: "Beta"
       },
@@ -24,7 +25,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     classes: "app-primary-navigation--smaller-borders",
     visuallyHiddenTitle: "Navigation",
     items: [{
-      text: "Early career teachers",
+      text: "ECTs",
       href: "/participants",
       current: (currentSection != "mentors")
     }, {
