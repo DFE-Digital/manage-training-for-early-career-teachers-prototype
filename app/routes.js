@@ -63,6 +63,34 @@ router.get('/participants', (req, res) => {
 
 })
 
+router.get('/mentors', (req, res) => {
+
+  let mentors = JSON.parse(JSON.stringify(req.session.data.mentors))
+  let teachers = JSON.parse(JSON.stringify(req.session.data.teachers))
+
+  for (mentor of mentors) {
+    mentor.earlyCareerTeachers = []
+
+    for (teacher of req.session.data.teachers.filter((teacher) =>
+      teacher.mentorId === mentor.id &&
+      !teacher.completedDate &&
+      !teacher.noLongerTraining
+    )) {
+      mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+    }
+  }
+
+  let mentorsCurrentlyMentoring = mentors.filter(mentor => (mentor.earlyCareerTeachers.length > 0))
+
+  let mentorsNotMentoring = mentors.filter(mentor => (mentor.earlyCareerTeachers.length == 0))
+
+  res.render('mentors', {
+    mentorsCurrentlyMentoring,
+    mentorsNotMentoring
+  })
+
+})
+
 router.get('/early-career-teachers/:id', (req, res) => {
   const { id } = req.params
 

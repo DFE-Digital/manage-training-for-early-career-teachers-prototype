@@ -1,0 +1,44 @@
+{% set titleHtml %}
+  <a href="/mentors/{{ mentor.id }}" class="govuk-link">{{ mentor.name }}</a>
+{% endset %}
+
+{% set currentlyMentoringHtml %}
+  <ul class="govuk-list govuk-list--spaced">
+    {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
+      <li><a href="/early-career-teachers/{{ earlyCareerTeacher.id }}" class="govuk-link">{{ earlyCareerTeacher.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+{% set mentorTrainingHtml %}
+  TODO
+{% endset %}
+
+{{ govukSummaryList({
+  classes: "govuk-summary-list--no-border",
+  card: {
+    title: {
+      html: titleHtml
+    }
+  },
+  rows: [
+    {
+      key: {
+        text: "Mentoring"
+      },
+      value: {
+        html: currentlyMentoringHtml
+      }
+    } if mentor.earlyCareerTeachers | length > 0,
+    {
+      key: {
+        text: "Mentor training"
+      },
+      value: {
+        html: mentorTrainingHtml
+      }
+    }
+  ]
+
+
+}) }}

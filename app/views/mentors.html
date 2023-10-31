@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Early career teachers" %}
+{% set pageName="Mentors" %}
+{% set currentSection="mentors" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -13,7 +14,7 @@
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    {{ govukButton({ text: "Add early career teacher", href: "/add-ect/what-we-need" }) }}
+    {{ govukButton({ text: "Add mentor", href: "/add-mentor/what-we-need" }) }}
   </div>
 </div>
 
@@ -21,7 +22,7 @@
   <div class="govuk-grid-column-one-third">
 
   <div class="app-filter">
-    <form method="get" action="/participants">
+    <form method="get" action="/mentors">
       {{ govukRadios({
         name: "show",
         classes: "govuk-radios--small",
@@ -35,16 +36,12 @@
         },
         items: [
           {
-            value: "training",
-            text: "Currently training (" + (ectsBeingTrained | length) + ")"
+            value: "mentoring",
+            text: "Currently mentoring (" + (mentorsCurrentlyMentoring | length) + ")"
           },
           {
-            value: "completed-induction",
-            text: "Completed induction (" + (ectsCompleted | length) + ")"
-          },
-          {
-            value: "no-longer-training",
-            text: "Left the school (" + (ectsNoLongerTraining | length) + ")"
+            value: "not-mentoring",
+            text: "Not mentoring (" + (mentorsNotMentoring | length) + ")"
           }
         ]
       }) }}
@@ -57,12 +54,18 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data.show == "completed-induction" %}
-      {% include "_completed-induction.html" %}
-    {% elseif data.show == "no-longer-training" %}
-      {% include "_no-longer-training.html" %}
+    {% if data.show == "not-mentoring" %}
+
+      {% for mentor in mentorsNotMentoring | sort(false, false, "name") %}
+        {% include "_mentor-card" %}
+      {% endfor %}
+
     {% else %}
-      {% include "_currently-training.html" %}
+
+      {% for mentor in mentorsCurrentlyMentoring | sort(false, false, "name") %}
+        {% include "_mentor-card" %}
+      {% endfor %}
+
     {% endif %}
 
   </div>

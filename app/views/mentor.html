@@ -1,19 +1,12 @@
 {% extends "layouts/main.html" %}
 
 {% set pageName="Home" %}
+{% set currentSection="mentors" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/"
-      },
-      {
-        text: "Manage mentors and ECTs",
-        href: "/participants"
-      }
-    ]
+  {{ govukBackLink({
+    href: "/mentors",
+    text: "Back to mentors"
   }) }}
 {% endblock %}
 

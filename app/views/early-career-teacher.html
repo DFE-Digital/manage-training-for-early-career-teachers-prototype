@@ -3,17 +3,9 @@
 {% set pageName="Home" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/"
-      },
-      {
-        text: "Manage mentors and ECTs",
-        href: "/participants"
-      }
-    ]
+  {{ govukBackLink({
+    href: "/participants",
+    text: "Back to early career teachers"
   }) }}
 {% endblock %}
 
