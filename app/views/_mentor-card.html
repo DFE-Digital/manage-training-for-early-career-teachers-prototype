@@ -5,14 +5,14 @@
 {% set currentlyMentoringHtml %}
   <ul class="govuk-list govuk-list--spaced">
     {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
-      <li>{{ earlyCareerTeacher.name }}</li>
+      <li><a class="govuk-link" href="/early-career-teachers/{{ earlyCareerTeacher.trn }}">{{ earlyCareerTeacher.name }}</a>
+
+      <p class="govuk-body govuk-!-margin-top-1">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+    </li>
     {% endfor %}
   </ul>
 {% endset %}
 
-{% set mentorTrainingHtml %}
-  TODO
-{% endset %}
 
 {{ govukSummaryList({
   classes: "govuk-summary-list--no-border",
@@ -27,17 +27,18 @@
         text: "Mentoring"
       },
       value: {
-        html: currentlyMentoringHtml
+        html: currentlyMentoringHtml,
+        classes: "govuk-!-padding-bottom-0"
       }
     } if mentor.earlyCareerTeachers | length > 0,
     {
       key: {
-        text: "Mentor training"
+        text: "Mentoring"
       },
       value: {
-        html: mentorTrainingHtml
+        text: "Not currently mentoring"
       }
-    }
+    } if mentor.earlyCareerTeachers | length == 0
   ]
 
 
