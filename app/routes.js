@@ -7,7 +7,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 
-router.get('/participants', (req, res) => {
+router.get('/early-career-teachers', (req, res) => {
 
   let mentors = JSON.parse(JSON.stringify(req.session.data.mentors))
   let teachers = JSON.parse(JSON.stringify(req.session.data.teachers))
