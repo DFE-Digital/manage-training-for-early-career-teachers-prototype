@@ -27,7 +27,7 @@
       {% else %}
         <div class="app-summary-list__missing">
           <div class="app-summary-list__missing-heading">No mentor assigned</div>
-          <a href="#" class="govuk-link--no-visited-state">Assign a mentor</a>
+          <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link--no-visited-state">Assign a mentor</a>
         </div>
       {% endif %}
     {% endset %}
@@ -37,8 +37,7 @@
       rows: [
         {
           key: {
-            text: "Status",
-            classes: "xgovuk-!-font-weight-regular"
+            text: "Status"
           },
           value: {
             html: status
@@ -46,8 +45,7 @@
         },
         {
           key: {
-            text: "Mentor",
-            classes: "xgovuk-!-font-weight-regular"
+            text: "Mentor"
           },
           value: {
             html: mentor

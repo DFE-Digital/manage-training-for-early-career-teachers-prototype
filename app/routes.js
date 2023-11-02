@@ -141,6 +141,28 @@ router.get('/early-career-teachers/:id/change-dp-lp', (req, res) => {
   })
 })
 
+router.get('/early-career-teachers/:id/change-mentor', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  res.render('ects/change-mentor', {
+    id,
+    teacher
+  })
+})
+
+router.post('/early-career-teachers/:id/update-mentor', (req, res) => {
+  const { id } = req.params
+
+  const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
+
+  const newMentorId = req.body.newMentorId
+
+  teacher.mentorId = newMentorId
+
+  res.redirect(`/early-career-teachers/${id}`)
+})
 
 router.get('/early-career-teachers/:id/support-contacted', (req, res) => {
   const { id } = req.params

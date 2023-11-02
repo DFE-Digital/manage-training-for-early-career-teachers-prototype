@@ -5,7 +5,7 @@
 {% set currentlyMentoringHtml %}
   <ul class="govuk-list govuk-list--spaced">
     {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
-      <li><a class="govuk-link" href="/early-career-teachers/{{ earlyCareerTeacher.trn }}">{{ earlyCareerTeacher.name }}</a>
+      <li><a class="govuk-link" href="/early-career-teachers/{{ earlyCareerTeacher.id }}">{{ earlyCareerTeacher.name }}</a>
 
       <p class="govuk-body govuk-!-margin-top-1">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
     </li>
