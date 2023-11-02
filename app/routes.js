@@ -53,7 +53,7 @@ router.get('/participants', (req, res) => {
     }
   })
 
-  res.render('participants', {
+  res.render('ects/index', {
     ectsBeingTrained,
     ectsCompleted,
     ectsNoLongerTraining,
