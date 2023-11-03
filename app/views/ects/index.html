@@ -25,7 +25,7 @@
       {{ govukRadios({
         name: "show",
         classes: "govuk-radios--small",
-        value: (data.show or "training"),
+        value: show,
         fieldset: {
           legend: {
             text: "Show",
@@ -57,9 +57,9 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data.show == "completed-induction" %}
+    {% if show == "completed-induction" %}
       {% include "_completed-induction.html" %}
-    {% elseif data.show == "no-longer-training" %}
+    {% elseif show == "no-longer-training" %}
       {% include "_no-longer-training.html" %}
     {% else %}
       {% include "_currently-training.html" %}

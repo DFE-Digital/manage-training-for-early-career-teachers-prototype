@@ -53,7 +53,10 @@ router.get('/early-career-teachers', (req, res) => {
     }
   })
 
+  let show = req.query.show || 'training'
+
   res.render('ects/index', {
+    show,
     ectsBeingTrained,
     ectsCompleted,
     ectsNoLongerTraining,
@@ -84,7 +87,10 @@ router.get('/mentors', (req, res) => {
 
   let mentorsNotMentoring = mentors.filter(mentor => (mentor.earlyCareerTeachers.length == 0))
 
+  let show = req.query.show || 'mentoring'
+
   res.render('mentors', {
+    show,
     mentorsCurrentlyMentoring,
     mentorsNotMentoring
   })
