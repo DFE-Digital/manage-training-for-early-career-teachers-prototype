@@ -52,8 +52,11 @@ module.exports = router => {
         mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
       }
 
+    let justAdded = req.query.justAdded
+
     res.render('mentors/show', {
       id,
+      justAdded,
       mentor
     })
   })
@@ -101,7 +104,14 @@ module.exports = router => {
 
     req.session.data.mentors.push(mentor)
 
-    res.redirect(`/mentors/${mentor.id}`)
+    // Reset the "Add mentor" flow
+    delete data.name
+    delete data.trn
+    delete data.dob
+    delete data.trainingProvider
+    delete data.email
+
+    res.redirect(`/mentors/${mentor.id}?justAdded=true`)
 
   })
 
