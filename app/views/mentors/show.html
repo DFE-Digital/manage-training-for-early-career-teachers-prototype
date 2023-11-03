@@ -95,7 +95,11 @@
       {% set teachersBeingMentored %}
         <ul class="govuk-list">
           {% for teacher in mentor.earlyCareerTeachers %}
-            <li><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></li>
+            <li>
+              <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a>
+
+              <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+            </li>
           {% endfor %}
         </ul>
       {% endset %}
