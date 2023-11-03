@@ -137,17 +137,17 @@
             text: "Lead provider"
           },
           value: {
-            html: "Ambition Institute"
+            html: mentor.training.leadProvider
           }
-        },
+        } if mentor.training.leadProvider,
         {
           key: {
             text: "Delivery partner"
           },
           value: {
-            html: "Bosco LLC"
+            html: mentor.training.deliveryPartner
           }
-        }
+        } if mentor.training.deliveryPartner
       ]
     }) }}
 

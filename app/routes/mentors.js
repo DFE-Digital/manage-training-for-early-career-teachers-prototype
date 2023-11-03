@@ -76,17 +76,32 @@ module.exports = router => {
 
     let dob = new Date(data.dob.year, data.dob.month, data.dob.day).toISOString().slice(0,10)
 
+    let leadProviderName, deliveryPartnerName, training
+
+    if (data.trainingProvider == "ambition-with-selby") {
+      leadProviderName = "Ambition Institute"
+      deliveryPartnerName = "Selby Teaching School Hub"
+    } else if (data.trainingProvider == "niot-with-northamptonshire") {
+      leadProviderName = "National Institute of Teaching"
+      deliveryPartnerName = "Northamptonshire Teaching School Hub"
+    }
+
+
     let mentor = {
       id: randomId.randomId(),
       name: data.name,
       trn: data.trn,
       dateOfBirth: dob,
-      emailAddress: data.email
+      emailAddress: data.email,
+      training: {
+        leadProvider: leadProviderName,
+        deliveryPartner: deliveryPartnerName
+      }
     }
 
     req.session.data.mentors.push(mentor)
 
-    res.redirect('/mentors?show=not-mentoring')
+    res.redirect(`/mentors/${mentor.id}`)
 
   })
 

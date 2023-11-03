@@ -138,7 +138,9 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "jane.thomas@plymouth-primary.sch.uk",
       training: {
-        startedOn: "2022-09-01"
+        startedOn: "2022-09-01",
+        leadProvider: "Ambition Institute",
+        deliveryPartner: "Selby Teaching School Hub"
       }
     },
     {
@@ -148,7 +150,9 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "caiden.hendrix@plymouth-primary.sch.uk",
       training: {
-        startedOn: "2022-09-01"
+        startedOn: "2022-09-01",
+        leadProvider: "Ambition Institute",
+        deliveryPartner: "Selby Teaching School Hub"
       }
     },
     {
@@ -158,7 +162,9 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "corinne.dickerson@plymouth-primary.sch.uk",
       training: {
-        startedOn: "2021-09-01"
+        startedOn: "2021-09-01",
+        leadProvider: "Ambition Institute",
+        deliveryPartner: "Selby Teaching School Hub"
       }
     },
     {
@@ -168,7 +174,9 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "david.boyd@plymouth-primary.sch.uk",
       training: {
-        startedOn: "2021-09-01"
+        startedOn: "2021-09-01",
+        leadProvider: "Ambition Institute",
+        deliveryPartner: "Selby Teaching School Hub"
       }
     },
     {
@@ -179,7 +187,9 @@ module.exports = {
       emailAddress: "jonathan.paul@plymouth-primary.sch.uk",
       training: {
         startedOn: "2021-09-01",
-        completedOn: "2023-07-30"
+        completedOn: "2023-07-30",
+        leadProvider: "National Institute of Teachin",
+        deliveryPartner: "Northamptonshire Teaching School Hub"
       }
     },
     {
@@ -189,6 +199,8 @@ module.exports = {
       dateOfBirth: "1985-11-17",
       emailAddress: "julie.carver@plymouth-primary.sch.uk",
       training: {
+        leadProvider: "Ambition Institute",
+        deliveryPartner: "Selby Teaching School Hub"
       }
     }
   ]
