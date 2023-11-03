@@ -136,35 +136,60 @@ module.exports = {
       name: "Jane Thomas",
       trn: "836472",
       dateOfBirth: "1989-11-13",
-      emailAddress: "jane.thomas@plymouth-primary.sch.uk"
+      emailAddress: "jane.thomas@plymouth-primary.sch.uk",
+      training: {
+        startedOn: "2022-09-01"
+      }
     },
     {
       id: "NDY639",
       name: "Caiden Hendrix",
       trn: "8274738",
       dateOfBirth: "1989-11-13",
-      emailAddress: "caiden.hendrix@plymouth-primary.sch.uk"
+      emailAddress: "caiden.hendrix@plymouth-primary.sch.uk",
+      training: {
+        startedOn: "2022-09-01"
+      }
     },
     {
       id: "NSY835",
       name: "Corinne Dickerson",
       trn: "9485737",
       dateOfBirth: "1989-11-13",
-      emailAddress: "corinne.dickerson@plymouth-primary.sch.uk"
+      emailAddress: "corinne.dickerson@plymouth-primary.sch.uk",
+      training: {
+        startedOn: "2021-09-01"
+      }
     },
     {
       id: "MXP835",
       name: "David Boyd",
       trn: "7362822",
       dateOfBirth: "1989-11-13",
-      emailAddress: "david.boyd@plymouth-primary.sch.uk"
+      emailAddress: "david.boyd@plymouth-primary.sch.uk",
+      training: {
+        startedOn: "2021-09-01"
+      }
     },
     {
       id: "PAD034",
       name: "Elvis Welch",
       trn: "7362623",
       dateOfBirth: "1989-11-13",
-      emailAddress: "jonathan.paul@plymouth-primary.sch.uk"
+      emailAddress: "jonathan.paul@plymouth-primary.sch.uk",
+      training: {
+        startedOn: "2021-09-01",
+        completedOn: "2023-07-30"
+      }
+    },
+    {
+      id: "PFL853",
+      name: "Julie Carver",
+      trn: "8365257",
+      dateOfBirth: "1985-11-17",
+      emailAddress: "julie.carver@plymouth-primary.sch.uk",
+      training: {
+      }
     }
   ]
 }

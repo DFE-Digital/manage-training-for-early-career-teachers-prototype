@@ -18,14 +18,6 @@
     <span class="govuk-caption-l">Mentor</span>
     <h1 class="govuk-heading-l">{{ mentor.name }}</h1>
 
-    {% set teachersBeingMentored %}
-      <ul class="govuk-list">
-        {% for teacher in mentor.earlyCareerTeachers %}
-          <li><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></li>
-        {% endfor %}
-      </ul>
-    {% endset %}
-
     <h2 class="govuk-heading-m">Personal details</h2>
     {{ govukSummaryList({
       rows: [
@@ -84,28 +76,49 @@
 
     <h2 class="govuk-heading-m">Mentoring</h2>
 
-    {% set mentorRows = [] %}
+    {% if mentor.earlyCareerTeachers | length > 0 %}
 
+      {% set teachersBeingMentored %}
+        <ul class="govuk-list">
+          {% for teacher in mentor.earlyCareerTeachers %}
+            <li><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endset %}
 
-
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Currently mentoring"
-          },
-          value: {
-            html: teachersBeingMentored
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Currently mentoring"
+            },
+            value: {
+              html: teachersBeingMentored
+            }
           }
-        }
-      ]
-    }) }}
+        ]
+      }) }}
+
+    {% else %}
+      <p class="govuk-body">Not currently mentoring.</p>
+    {% endif %}
 
     <h2 class="govuk-heading-m">Mentor training</h2>
 
     {% set mentorTrainingStatusHtml %}
-      {{ govukTag({ text: "Training", classes: "govuk-tag--green" }) }}
-      <p class="govuk-body govuk-!-margin-top-2">Started in Autumn term 2022</p>
+
+      {% if mentor.training.completedOn %}
+        {{ govukTag({ text: "Training completed", classes: "govuk-tag--green" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Completed {{ mentor.training.completedOn | termName }}</p>
+      {% elseif mentor.training.startedOn %}
+        {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Started {{ mentor.training.startedOn | termName }}</p>
+      {% else %}
+        {{ govukTag({ text: "Not yet started", classes: "govuk-tag--blue" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Training can begin once they are assigned an ECT to mentor</p>
+
+      {% endif %}
+
 
     {% endset %}
 
