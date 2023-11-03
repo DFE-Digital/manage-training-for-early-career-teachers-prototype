@@ -7,7 +7,9 @@
     {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
       <li><a class="govuk-link" href="/early-career-teachers/{{ earlyCareerTeacher.id }}">{{ earlyCareerTeacher.name }}</a>
 
-      <p class="govuk-body govuk-!-margin-top-1">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+      {% if earlyCareerTeacher.inductionStartDate %}
+        <p class="govuk-body govuk-!-margin-top-1">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>

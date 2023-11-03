@@ -98,7 +98,9 @@
             <li>
               <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a>
 
-              <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+              {% if teacher.inductionStartDate %}
+                <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
