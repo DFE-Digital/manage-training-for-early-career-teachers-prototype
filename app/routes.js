@@ -89,7 +89,7 @@ router.get('/mentors', (req, res) => {
 
   let show = req.query.show || 'mentoring'
 
-  res.render('mentors', {
+  res.render('mentors/index', {
     show,
     mentorsCurrentlyMentoring,
     mentorsNotMentoring
@@ -305,7 +305,7 @@ router.get('/mentors/:id', (req, res) => {
       mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
     }
 
-  res.render('mentor', {
+  res.render('mentors/show', {
     id,
     mentor
   })
