@@ -188,7 +188,7 @@ module.exports = {
       training: {
         startedOn: "2021-09-01",
         completedOn: "2023-07-30",
-        leadProvider: "National Institute of Teachin",
+        leadProvider: "National Institute of Teaching",
         deliveryPartner: "Northamptonshire Teaching School Hub"
       }
     },
