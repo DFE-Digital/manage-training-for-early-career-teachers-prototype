@@ -3,7 +3,7 @@
 {% set pageName = "Who will " + data.name + " do their mentor training with?" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-mentor/email"}) }}
+  {{ govukBackLink({href: "/mentors/add/email"}) }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-mentor/answer-training-provider" method="post">
+    <form action="/mentors/add/answer-training-provider" method="post">
 
     {{ govukRadios({
       name: "trainingProvider",

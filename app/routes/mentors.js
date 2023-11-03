@@ -2,6 +2,8 @@
 
 module.exports = router => {
 
+  let randomId = require('../random-id.js')
+
   router.get('/mentors', (req, res) => {
 
     let mentors = JSON.parse(JSON.stringify(req.session.data.mentors))
@@ -56,15 +58,35 @@ module.exports = router => {
     })
   })
 
-  router.post('/add-mentor/answer-training-provider', (req, res) => {
+  router.post('/mentors/add/answer-training-provider', (req, res) => {
 
     const provider = req.session.data.trainingProvider
 
     if (provider === "other") {
-      res.redirect('/add-mentor/contact-support')
+      res.redirect('/mentors/add/contact-support')
     } else {
-      res.redirect('/add-mentor/check')
+      res.redirect('/mentors/add/check')
     }
+
+  })
+
+  router.post('/mentors/add/confirm', (req, res) => {
+
+    let data = req.session.data
+
+    let dob = new Date(data.dob.year, data.dob.month, data.dob.day).toISOString().slice(0,10)
+
+    let mentor = {
+      id: randomId.randomId(),
+      name: data.name,
+      trn: data.trn,
+      dateOfBirth: dob,
+      emailAddress: data.email
+    }
+
+    req.session.data.mentors.push(mentor)
+
+    res.redirect('/mentors?show=not-mentoring')
 
   })
 

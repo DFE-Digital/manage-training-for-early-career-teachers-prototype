@@ -3,7 +3,7 @@
 {% set pageName="What’s " + data.name + " date of birth?" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-mentor/trn"}) }}
+  {{ govukBackLink({href: "/mentors/add/trn"}) }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-mentor/email" method="post">
+    <form action="/mentors/add/email" method="post">
       {{ govukDateInput({
         name: "dob",
         id: "dob",

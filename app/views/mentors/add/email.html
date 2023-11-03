@@ -1,9 +1,9 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="What’s this mentor’s full name?" %}
+{% set pageName="What’s " + data.name + "’s email address?" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-mentor/what-we-need"}) }}
+  {{ govukBackLink({href: "/mentors/add/dob"}) }}
 {% endblock %}
 
 {% block content %}
@@ -13,18 +13,18 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-mentor/trn" method="post">
+    <form action="/mentors/add/training-provider" method="post">
       {{ govukInput({
-        name: "name",
-        id: "name",
-        value: data.name,
+        name: "email",
+        id: "email",
+        value: data.email,
+        type: "email",
+        autocomplete: "off",
+        spellcheck: false,
         label: {
           text: pageName,
           classes: "govuk-label--l",
           isPageHeading: true
-        },
-        hint: {
-          text: "We just need their first name and last name, not titles like Mr, Mrs, Dr."
         }
 
       }) }}

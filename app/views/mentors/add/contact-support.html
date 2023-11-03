@@ -3,7 +3,7 @@
 {% set pageName="Contact support" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-mentor/training-provider"}) }}
+  {{ govukBackLink({href: "/mentors/add/training-provider"}) }}
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,7 @@
 
     <p class="govuk-body">Tell us which training provider they’ll do their mentor training with.</p>
 
-    <form action="/add-mentor/contact-support" method="post">
+    <form action="/mentors/add/contact-support" method="post">
 
       {{ govukTextarea({
         name: "additionalInformation",
