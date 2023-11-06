@@ -1,4 +1,8 @@
 
+.app-primary-navigation--no-border-bottom {
+  border-bottom-width: 0;
+}
+
 .app-primary-navigation--smaller-borders .x-govuk-primary-navigation__list {
   left: 0;
 }
