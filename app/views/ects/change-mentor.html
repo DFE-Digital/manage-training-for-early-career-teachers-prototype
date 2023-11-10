@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% if teacher.mentorId %}
+{% if teacher.mentors | length > 0 %}
   {% set pageName="Who is the new mentor for " + teacher.name + "?" %}
 {% else %}
   {% set pageName="Who is the mentor for " + teacher.name + "?" %}
@@ -19,16 +19,14 @@
       {% set mentorItems = [] %}
       {% for mentor in data.mentors %}
 
-        {% if mentor.id != teacher.mentorId %}
-          {% set mentorItems = (mentorItems.push({
-            value: mentor.id,
-            text: mentor.name
-          }), mentorItems) %}
+        {% set mentorItems = (mentorItems.push({
+          value: mentor.id,
+          text: mentor.name
+        }), mentorItems) %}
 
-        {% endif %}
       {% endfor %}
 
-      {% if teacher.mentorId %}
+      {% if teacher.mentors | length > 0 %}
         {% set mentorItems = (mentorItems.push({divider: "or"}), mentorItems) %}
 
         {% set mentorItems = (mentorItems.push({

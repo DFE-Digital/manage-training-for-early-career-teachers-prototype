@@ -7,14 +7,16 @@ module.exports = {
       name: "Jason Blue",
       trn: "7473755",
       dateOfBirth: "1989-11-13",
-      emailAddress: "jason.blue@plymouth-primary.sch.uk"
+      emailAddress: "jason.blue@plymouth-primary.sch.uk",
+      mentors: []
     },
     {
       id: "NDY745",
       name: "Violet Brown",
       trn: "937574",
       dateOfBirth: "1989-11-13",
-      emailAddress: "violet.brown@plymouth-primary.sch.uk"
+      emailAddress: "violet.brown@plymouth-primary.sch.uk",
+      mentors: []
     },
     {
       id: "AB5636",
@@ -23,7 +25,12 @@ module.exports = {
       dateOfBirth: "1985-05-06",
       emailAddress: "jonathan.paul@plymouth-primary.sch.uk",
       inductionStartDate: "2023-04-20",
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "ABC123",
+          from: "2023-04-20"
+        }
+      ]
     },
     {
       id: "FI937",
@@ -32,7 +39,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "abney.cartwright@plymouth-primary.sch.uk",
       inductionStartDate: "2023-04-20",
-      mentorId: "MXP835"
+      mentors: [
+        {
+          id: "MXP835",
+          from: "2023-04-20"
+        }
+      ]
     },
     {
       id: "NFY934",
@@ -41,7 +53,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "alaina.lane@plymouth-primary.sch.uk",
       inductionStartDate: "2022-09-20",
-      mentorId: "MXP835"
+      mentors: [
+        {
+          id: "MXP835",
+          from: "2022-09-20"
+        }
+      ]
     },
     {
       id: "NDP0385",
@@ -50,7 +67,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "naomi.yoder@plymouth-primary.sch.uk",
       inductionStartDate: "2022-10-03",
-      mentorId: "PAD034"
+      mentors: [
+        {
+          id: "PAD034",
+          from: "2022-10-03"
+        }
+      ]
     },
     {
       id: "PSF934",
@@ -59,7 +81,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "hadley.dickerson@plymouth-primary.sch.uk",
       inductionStartDate: "2023-04-20",
-      mentorId: "NDY639"
+      mentors: [
+        {
+          id: "NDY639",
+          from: "2023-04-20"
+        }
+      ]
     },
     {
       id: "MAA745",
@@ -68,7 +95,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "elvis.welch@plymouth-primary.sch.uk",
       inductionStartDate: "2023-06-20",
-      mentorId: "NDY639"
+      mentors: [
+        {
+          id: "NDY639",
+          from: "2023-06-20"
+        }
+      ]
     },
     {
       id: "IWE8735",
@@ -78,7 +110,12 @@ module.exports = {
       trn: "7362542",
       dateOfBirth: "1989-11-13",
       emailAddress: "julianne.hart@plymouth-primary.sch.uk",
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "ABC123",
+          from: "2022-09-20"
+        }
+      ]
     },
     {
       id: "NMXY834",
@@ -88,7 +125,12 @@ module.exports = {
       trn: "8264524",
       dateOfBirth: "1989-11-13",
       emailAddress: "christina.vance@plymouth-primary.sch.uk",
-      mentorId: "NDY639"
+      mentors: [
+        {
+          id: "NDY639",
+          from: "2022-09-20"
+        }
+      ]
     },
     {
       id: "DCP634",
@@ -98,7 +140,12 @@ module.exports = {
       trn: "7254724",
       dateOfBirth: "1989-11-13",
       emailAddress: "elvis.welch@plymouth-primary.sch.uk",
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "ABC123",
+          from: "2022-09-12"
+        }
+      ]
     },
     {
       id: "PDR924",
@@ -107,7 +154,12 @@ module.exports = {
       dateOfBirth: "1989-11-13",
       emailAddress: "lillian.solis@plymouth-primary.sch.uk",
       inductionStartDate: "2021-09-03",
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "ABC123",
+          from: "2021-09-03"
+        }
+      ]
     },
     {
       id: "HC95745",
@@ -117,7 +169,12 @@ module.exports = {
       emailAddress: "freya.nineton@plymouth-primary.sch.uk",
       noLongerTraining: true,
       leftSchoolOn: {"year": "2022", "month": "08", "day": "02"},
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "MXP835",
+          from: "2023-04-20"
+        }
+      ]
     },
     {
       id: "82NYFK3",
@@ -127,7 +184,12 @@ module.exports = {
       emailAddress: "muhammed.faisal@plymouth-primary.sch.uk",
       noLongerTraining: true,
       leftSchoolOn: {"year": "2021", "month": "08", "day": "12"},
-      mentorId: "ABC123"
+      mentors: [
+        {
+          id: "MXP835",
+          from: "2023-04-20"
+        }
+      ]
     }
   ],
   mentors: [

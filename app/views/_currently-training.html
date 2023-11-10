@@ -25,8 +25,8 @@
       {% endset %}
 
       {% set mentor %}
-        {% if teacher.mentor %}
-          {{ teacher.mentor.name }}
+        {% if teacher.currentMentor %}
+          {{ teacher.currentMentor.name }}
         {% else %}
           <div class="app-summary-list__missing">
             <div class="app-summary-list__missing-heading">No mentor assigned</div>

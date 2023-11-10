@@ -11,23 +11,16 @@ module.exports = router => {
     let ectsCompleted = teachers.filter((teacher) => teacher.completedDate)
     let ectsNoLongerTraining = teachers.filter((teacher) => teacher.noLongerTraining)
 
-    let teachersWithoutMentors = ectsBeingTrained.filter((teacher) => !teacher.mentorId)
+    let teachersWithoutMentors = ectsBeingTrained.filter((teacher) => !teacher.mentors.find((mentor) => !mentor.to))
 
     for (mentor of mentors) {
       mentor.earlyCareerTeachers = []
 
-      for (teacher of req.session.data.teachers.filter((teacher) =>
-        teacher.mentorId === mentor.id &&
-        !teacher.completedDate &&
-        !teacher.noLongerTraining
-      )) {
-        mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
-      }
-    }
-
-    for (teacher of ectsBeingTrained) {
-      if (teacher.mentorId) {
-        teacher.mentor = JSON.parse(JSON.stringify(mentors.find((mentor) => mentor.id === teacher.mentorId)))
+      for (teacher of ectsBeingTrained) {
+        const currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+        if (currentMentor) {
+          teacher.currentMentor = JSON.parse(JSON.stringify(mentors.find((mentor) => mentor.id === currentMentor.id)))
+        }
       }
     }
 
@@ -69,9 +62,12 @@ module.exports = router => {
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
     let mentor = null
-    if (teacher.mentorId) {
-      mentor = req.session.data.mentors.find((mentor) => mentor.id === teacher.mentorId)
+
+    const currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+    if (currentMentor) {
+      mentor = req.session.data.mentors.find((mentor) => mentor.id === currentMentor.id)
     }
+
 
     res.render('early-career-teacher', {
       id,
@@ -131,7 +127,7 @@ module.exports = router => {
 
     const newMentorId = req.body.newMentorId
 
-    teacher.mentorId = newMentorId
+    teacher.mentors.push({id: newMentorId})
 
     res.redirect(`/early-career-teachers/${id}`)
   })

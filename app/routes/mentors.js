@@ -12,14 +12,18 @@ module.exports = router => {
     for (mentor of mentors) {
       mentor.earlyCareerTeachers = []
 
-      for (teacher of req.session.data.teachers.filter((teacher) =>
-        teacher.mentorId === mentor.id &&
-        !teacher.completedDate &&
-        !teacher.noLongerTraining
-      )) {
-        mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+      for (teacher of req.session.data.teachers) {
+
+        let currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+
+        if (currentMentor && currentMentor.id === mentor.id && !teacher.completedDate &&
+        !teacher.noLongerTraining) {
+
+          mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+        }
       }
     }
+
 
     let mentorsCurrentlyMentoring = mentors.filter(mentor => (mentor.earlyCareerTeachers.length > 0))
 
@@ -44,13 +48,14 @@ module.exports = router => {
 
     mentor.earlyCareerTeachers = []
 
-    for (teacher of req.session.data.teachers.filter((teacher) =>
-        teacher.mentorId === mentor.id &&
-        !teacher.completedDate &&
-        !teacher.noLongerTraining
-      )) {
-        mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+    for (teacher of req.session.data.teachers) {
+      let currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+
+      if (currentMentor && currentMentor.id === mentor.id && !teacher.completedDate &&
+        !teacher.noLongerTraining) {
+          mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
       }
+    }
 
     let justAdded = req.query.justAdded
 
