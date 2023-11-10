@@ -9,6 +9,6 @@
     "@x-govuk/govuk-prototype-components": "^2.0.3",
     "@x-govuk/govuk-prototype-filters": "^1.2.0",
     "govuk-frontend": "4.7.0",
-    "govuk-prototype-kit": "13.13.6"
+    "govuk-prototype-kit": "13.14.1"
   }
 }
