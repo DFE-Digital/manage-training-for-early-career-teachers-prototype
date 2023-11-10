@@ -47,15 +47,30 @@ module.exports = router => {
     })))
 
     mentor.earlyCareerTeachers = []
+    mentor.previouslyMentored = []
+
 
     for (teacher of req.session.data.teachers) {
-      let currentMentor = teacher.mentors.find((mentor) => !mentor.to)
 
-      if (currentMentor && currentMentor.id === mentor.id && !teacher.completedDate &&
-        !teacher.noLongerTraining) {
-          mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+      for (teacherMentor of teacher.mentors) {
+
+        if (mentor.id == teacherMentor.id) {
+
+          if (teacherMentor.to || teacher.completedDate || teacher.noLongerTraining) {
+            mentor.previouslyMentored.push({
+              from: teacherMentor.from,
+              to: teacherMentor.to,
+              teacher: JSON.parse(JSON.stringify(teacher))
+            })
+          } else {
+            mentor.earlyCareerTeachers.push(JSON.parse(JSON.stringify(teacher)))
+          }
+
+        }
+
       }
     }
+
 
     let justAdded = req.query.justAdded
 

@@ -90,9 +90,8 @@
 
     <h2 class="govuk-heading-m">Mentoring</h2>
 
-    {% if mentor.earlyCareerTeachers | length > 0 %}
-
-      {% set teachersBeingMentored %}
+    {% set teachersBeingMentored %}
+      {% if mentor.earlyCareerTeachers | length > 0  %}
         <ul class="govuk-list">
           {% for teacher in mentor.earlyCareerTeachers %}
             <li>
@@ -104,24 +103,47 @@
             </li>
           {% endfor %}
         </ul>
+      {% else %}
+        Not currently mentoring
+      {% endif %}
+    {% endset %}
+
+
+    {% if mentor.previouslyMentored | length > 0  %}
+      {% set teachersPreviouslyMentored %}
+        <ul class="govuk-list">
+          {% for mentoring in mentor.previouslyMentored %}
+            <li>
+              <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ mentoring.teacher.name }}</a>
+
+              <p class="govuk-body govuk-!-margin-top-1">From {{ mentoring.from | govukDate }} to {{ mentoring.to | govukDate }}</p>
+            </li>
+          {% endfor %}
+        </ul>
       {% endset %}
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Currently mentoring"
-            },
-            value: {
-              html: teachersBeingMentored
-            }
-          }
-        ]
-      }) }}
-
-    {% else %}
-      <p class="govuk-body">Not currently mentoring.</p>
     {% endif %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Currently mentoring"
+          },
+          value: {
+            html: teachersBeingMentored
+          }
+        },
+        {
+          key: {
+            text: "Previously mentored"
+          },
+          value: {
+            html: teachersPreviouslyMentored
+          }
+        } if mentor.previouslyMentored | length > 0
+      ]
+    }) }}
+
 
     <h2 class="govuk-heading-m">Mentor training</h2>
 

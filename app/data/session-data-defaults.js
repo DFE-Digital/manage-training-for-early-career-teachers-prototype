@@ -112,8 +112,9 @@ module.exports = {
       emailAddress: "julianne.hart@plymouth-primary.sch.uk",
       mentors: [
         {
-          id: "ABC123",
-          from: "2022-09-20"
+          id: "NSY835",
+          from: "2022-09-20",
+          to: "2023-05-02"
         }
       ]
     },
@@ -128,7 +129,8 @@ module.exports = {
       mentors: [
         {
           id: "NDY639",
-          from: "2022-09-20"
+          from: "2022-09-20",
+          to: "2023-04-08"
         }
       ]
     },
@@ -143,7 +145,8 @@ module.exports = {
       mentors: [
         {
           id: "ABC123",
-          from: "2022-09-12"
+          from: "2022-09-12",
+          to: "2023-03-23"
         }
       ]
     },
