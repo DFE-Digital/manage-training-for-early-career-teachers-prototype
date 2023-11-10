@@ -24,7 +24,6 @@ module.exports = router => {
       }
     }
 
-
     ectsBeingTrained = ectsBeingTrained.sort(function(teacherA, teacherB) {
       if (!teacherA.inductionStartDate) {
         return -1
@@ -68,6 +67,9 @@ module.exports = router => {
       mentor = req.session.data.mentors.find((mentor) => mentor.id === currentMentor.id)
     }
 
+    for (mentor of teacher.mentors) {
+      mentor.mentor =  JSON.parse(JSON.stringify(req.session.data.mentors.find((mentor) => mentor.id === mentor.id)))
+    }
 
     res.render('early-career-teacher', {
       id,

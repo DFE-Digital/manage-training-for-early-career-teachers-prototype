@@ -65,6 +65,20 @@
     {% endif %}
 
 
+    {% set mentorHtml %}
+      {% if teacher.mentors | length > 0 %}
+
+        {% for mentor in teacher.mentors %}
+          <a href="/mentors{{ mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
+        {% endfor %}
+
+      {% else %}
+        <div class="app-summary-list__missing">
+          <div class="app-summary-list__missing-heading">No mentor assigned</div>
+          <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link--no-visited-state">Assign a mentor</a></div>
+      {% endif %}
+    {% endset %}
+
     {{ govukSummaryList({
       rows: [
         {
@@ -144,7 +158,7 @@
             text: "Mentor"
           },
           value: {
-            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "<div class=\"app-summary-list__missing\" ><div class=\"app-summary-list__missing-heading\">No mentor assigned</div><a href=\"/early-career-teachers/" + teacher.id + "/change-mentor\" class=\"govuk-link--no-visited-state\">Assign a mentor</a></div>"
+            html: mentorHtml
           },
           actions: {
             items: [
