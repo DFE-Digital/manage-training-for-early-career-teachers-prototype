@@ -62,13 +62,8 @@ module.exports = router => {
 
     let mentor = null
 
-    const currentMentor = teacher.mentors.find((mentor) => !mentor.to)
-    if (currentMentor) {
-      mentor = req.session.data.mentors.find((mentor) => mentor.id === currentMentor.id)
-    }
-
     for (mentor of teacher.mentors) {
-      mentor.mentor =  JSON.parse(JSON.stringify(req.session.data.mentors.find((mentor) => mentor.id === mentor.id)))
+      mentor.mentor =  JSON.parse(JSON.stringify(req.session.data.mentors.find((m) => m.id === mentor.id)))
     }
 
     res.render('early-career-teacher', {

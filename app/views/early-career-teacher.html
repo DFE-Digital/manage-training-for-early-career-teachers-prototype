@@ -66,10 +66,22 @@
 
 
     {% set mentorHtml %}
-      {% if teacher.mentors | length > 0 %}
+      {% if teacher.mentors | length > 1 %}
+
+        <ul class="govuk-list">
+          {% for mentoring in teacher.mentors %}
+            <li>
+              <a href="/mentors/{{ mentoring.mentor.id }}" class="govuk-link">{{ mentoring.mentor.name }}</a>
+
+              <p class="govuk-body govuk-!-margin-top-1">From {{ mentoring.from | govukDate }} to {{ mentoring.to | govukDate }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+
+      {% elseif teacher.mentors | length == 1 %}
 
         {% for mentor in teacher.mentors %}
-          <a href="/mentors{{ mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
+          <a href="/mentors/{{ mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
         {% endfor %}
 
       {% else %}

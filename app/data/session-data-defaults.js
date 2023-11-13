@@ -114,6 +114,11 @@ module.exports = {
         {
           id: "NSY835",
           from: "2022-09-20",
+          to: "2022-05-02"
+        },
+        {
+          id: "MXP835",
+          from: "2022-05-02",
           to: "2023-05-02"
         }
       ]
@@ -175,7 +180,8 @@ module.exports = {
       mentors: [
         {
           id: "MXP835",
-          from: "2023-04-20"
+          from: "2023-04-20",
+          to: "2022-08-02"
         }
       ]
     },
@@ -185,12 +191,14 @@ module.exports = {
       trn: "9473525",
       dateOfBirth: "1989-11-13",
       emailAddress: "muhammed.faisal@plymouth-primary.sch.uk",
+      inductionStartDate: "2021-09-03",
       noLongerTraining: true,
-      leftSchoolOn: {"year": "2021", "month": "08", "day": "12"},
+      leftSchoolOn: {"year": "2022", "month": "04", "day": "02"},
       mentors: [
         {
           id: "MXP835",
-          from: "2023-04-20"
+          from: "2021-09-03",
+          to: "2022-04-06"
         }
       ]
     }
