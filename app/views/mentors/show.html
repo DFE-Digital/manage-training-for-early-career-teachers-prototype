@@ -115,8 +115,6 @@
           {% for mentoring in mentor.previouslyMentored %}
             <li>
               <a href="/early-career-teachers/{{ mentoring.teacher.id }}" class="govuk-link">{{ mentoring.teacher.name }}</a>
-
-              <p class="govuk-body govuk-!-margin-top-1">From {{ mentoring.from | govukDate }} to {{ mentoring.to | govukDate }}</p>
             </li>
           {% endfor %}
         </ul>

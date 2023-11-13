@@ -17,11 +17,22 @@
 
     <form action="/early-career-teachers/{{ teacher.id }}/update-mentor" method="post">
       {% set mentorItems = [] %}
-      {% for mentor in data.mentors %}
+      {% for mentor in mentors %}
+
+        {% set hintText %}
+          {% if  mentor.currentMentoringCount > 0 %}
+            Currently mentoring {{ mentor.currentMentoringCount }} ECT{{ "s" if  mentor.currentMentoringCount != 1 }}
+          {% else %}
+            Not currently mentoring
+          {% endif %}
+        {% endset %}
 
         {% set mentorItems = (mentorItems.push({
           value: mentor.id,
-          text: mentor.name
+          text: mentor.name,
+          hint: {
+            text: hintText
+          }
         }), mentorItems) %}
 
       {% endfor %}

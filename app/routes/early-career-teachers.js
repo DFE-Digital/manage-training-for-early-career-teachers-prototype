@@ -66,6 +66,9 @@ module.exports = router => {
       mentor.mentor =  JSON.parse(JSON.stringify(req.session.data.mentors.find((m) => m.id === mentor.id)))
     }
 
+    teacher.currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+
+
     res.render('early-career-teacher', {
       id,
       teacher,
@@ -111,20 +114,43 @@ module.exports = router => {
 
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
+    let mentors = JSON.parse(JSON.stringify(req.session.data.mentors));
+
+    for (mentor of mentors) {
+      mentor.currentMentoringCount = req.session.data.teachers.filter(
+        (teacher) => (!teacher.completedDate && !teacher.noLongerTraining)
+      ).filter(
+        (teacher) => (teacher.mentors.filter(
+          (teacherMentor) => (teacherMentor.id == mentor.id)
+          )
+        ).length > 0
+      ).length;
+
+    }
+
     res.render('ects/change-mentor', {
       id,
-      teacher
+      teacher,
+      mentors
     })
   })
 
   router.post('/early-career-teachers/:id/update-mentor', (req, res) => {
     const { id } = req.params
-
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
-
     const newMentorId = req.body.newMentorId
+    const dateToday = new Date().toISOString()
 
-    teacher.mentors.push({id: newMentorId})
+    let currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+
+    if (currentMentor) {
+      currentMentor.to = dateToday;
+    }
+
+    teacher.mentors.push({
+      id: newMentorId,
+      from: dateToday
+    })
 
     res.redirect(`/early-career-teachers/${id}`)
   })
