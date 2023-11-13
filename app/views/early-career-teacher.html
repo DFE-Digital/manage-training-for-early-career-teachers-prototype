@@ -72,7 +72,10 @@
           <a href="/mentors/{{ teacher.currentMentor.mentor.id }}" class="govuk-link">{{ teacher.currentMentor.mentor.name }}</a>
         {% endif %}
 
-        <p class="govuk-body govuk-!-margin-top-4">Previously:</p>
+        {% if teacher.currentMentor %}
+          <p class="govuk-body govuk-!-margin-top-4">Previously:</p>
+        {% endif %}
+
         <ul class="govuk-list">
           {% for mentoring in teacher.mentors %}
 
@@ -186,7 +189,7 @@
                 visuallyHiddenText: "mentor"
               }
             ]
-          } if mentor and not teacher.noLongerTraining
+          } if mentor and not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -212,7 +215,7 @@
                 visuallyHiddenText: "lead provider"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -230,7 +233,7 @@
                 visuallyHiddenText: "delivery partner"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -248,7 +251,7 @@
                 visuallyHiddenText: "contact details"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         }
 
       ]
