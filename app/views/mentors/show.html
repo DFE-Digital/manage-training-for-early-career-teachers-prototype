@@ -95,11 +95,20 @@
         <ul class="govuk-list">
           {% for teacher in mentor.earlyCareerTeachers %}
             <li>
-              <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a>
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a>
 
-              {% if teacher.inductionStartDate %}
-                <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
-              {% endif %}
+                  {% if teacher.inductionStartDate %}
+                    <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+                  {% endif %}
+                </div>
+                <div class="govuk-grid-column-one-third" style="text-align: right;">
+
+                  <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link">Change <span class="govuk-visually-hidden">mentor for {{ mentoring.teacher.name }}</span></a>
+                </div>
+              </div>
+
             </li>
           {% endfor %}
         </ul>
@@ -125,7 +134,8 @@
       rows: [
         {
           key: {
-            text: "Currently mentoring"
+            text: "Currently mentoring",
+            classes: "govuk-summary-list__key--align-top"
           },
           value: {
             html: teachersBeingMentored
