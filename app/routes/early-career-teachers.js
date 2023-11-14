@@ -147,10 +147,12 @@ module.exports = router => {
       currentMentor.to = dateToday;
     }
 
-    teacher.mentors.push({
-      id: newMentorId,
-      from: dateToday
-    })
+    if (newMentorId) {
+      teacher.mentors.push({
+        id: newMentorId,
+        from: dateToday
+      })
+    }
 
     res.redirect(`/early-career-teachers/${id}`)
   })

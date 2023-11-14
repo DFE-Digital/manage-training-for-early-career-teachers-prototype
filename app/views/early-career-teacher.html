@@ -64,17 +64,22 @@
       {% endset %}
     {% endif %}
 
-
+    {% set numberOfMentors = (teacher.mentors | length) %}
     {% set mentorHtml %}
-      {% if teacher.mentors | length > 1 %}
 
-        {% if teacher.currentMentor %}
+      {% if teacher.currentMentor %}
           <a href="/mentors/{{ teacher.currentMentor.mentor.id }}" class="govuk-link">{{ teacher.currentMentor.mentor.name }}</a>
-        {% endif %}
 
-        {% if teacher.currentMentor %}
-          <p class="govuk-body govuk-!-margin-top-4">Previously:</p>
-        {% endif %}
+      {% else %}
+        <div class="app-summary-list__missing">
+          <div class="app-summary-list__missing-heading">No mentor assigned</div>
+          <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link--no-visited-state">Assign a mentor</a></div>
+      {% endif %}
+
+
+      {% if (numberOfMentors > 1) or (numberOfMentors == 1 and not teacher.currentMentor) %}
+
+        <p class="govuk-body govuk-!-margin-top-4">Previously:</p>
 
         <ul class="govuk-list">
           {% for mentoring in teacher.mentors %}
@@ -86,17 +91,6 @@
             {% endif %}
           {% endfor %}
         </ul>
-
-      {% elseif teacher.mentors | length == 1 %}
-
-        {% for mentor in teacher.mentors %}
-          <a href="/mentors/{{ mentor.id }}" class="govuk-link">{{ mentor.mentor.name }}</a>
-        {% endfor %}
-
-      {% else %}
-        <div class="app-summary-list__missing">
-          <div class="app-summary-list__missing-heading">No mentor assigned</div>
-          <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link--no-visited-state">Assign a mentor</a></div>
       {% endif %}
     {% endset %}
 
