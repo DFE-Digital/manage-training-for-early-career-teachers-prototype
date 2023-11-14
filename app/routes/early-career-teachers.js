@@ -25,6 +25,11 @@ module.exports = router => {
     }
 
     ectsBeingTrained = ectsBeingTrained.sort(function(teacherA, teacherB) {
+      // Teachers without mentors should always appear first
+      if (!teacherA.mentors.find((mentor) => !mentor.to)) {
+        return -1
+      }
+
       if (!teacherA.inductionStartDate) {
         return -1
       }
