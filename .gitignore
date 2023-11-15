@@ -10,3 +10,7 @@ usage-data-config.json
 # General ignores
 .DS_Store
 .idea
+
+# Ignore Node version config
+# (allows people to use different versions of Node)
+.nvmrc
