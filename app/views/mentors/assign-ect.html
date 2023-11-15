@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set currentSection="mentors" %}
+
+{% set pageName="Who would you like to assign to " + mentor.name + "?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/mentors/" + mentor.id}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/mentors/{{ mentor.id }}/assign-ect" method="post">
+      {% set ectItems = [] %}
+      {% for ect in teachers %}
+
+        {% set hintText %}
+          {% if ect.currentMentor %}
+            Currently mentored by {{ ect.currentMentor.mentor.name }}
+          {% else %}
+            Not currently being mentored
+          {% endif %}
+        {% endset %}
+
+        {% set ectItems = (ectItems.push({
+          value: ect.id,
+          text: ect.name,
+          hint: {
+            text: hintText
+          }
+        }), ectItems) %}
+
+      {% endfor %}
+
+
+      {{ govukRadios({
+        name: "ectId",
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: ectItems
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

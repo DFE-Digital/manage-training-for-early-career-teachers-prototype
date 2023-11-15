@@ -92,15 +92,15 @@
 
     {% set teachersBeingMentored %}
       {% if mentor.earlyCareerTeachers | length > 0  %}
-        <ul class="govuk-list">
+        <ul class="govuk-list govuk-!-margin-bottom-0">
           {% for teacher in mentor.earlyCareerTeachers %}
             <li>
               <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                  <a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a>
+                  <div class="{{ "govuk-!-margin-bottom-3" if not teacher.inductionStartDate}}"><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></div>
 
                   {% if teacher.inductionStartDate %}
-                    <p class="govuk-body govuk-!-margin-top-1">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-3">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
                   {% endif %}
                 </div>
                 <div class="govuk-grid-column-one-third" style="text-align: right;">
@@ -113,8 +113,11 @@
           {% endfor %}
         </ul>
       {% else %}
-        Not currently mentoring
+        <p class="govuk-body govuk-!-margin-bottom-4">Not currently mentoring</p>
       {% endif %}
+      
+      
+      <p class="govuk-body govuk-!-margin-bottom-3"><a href="/mentors/{{ mentor.id }}/assign-ect" class="govuk-link">Assign {{ "another" if (mentor.earlyCareerTeachers | length) > 0 else "an" }} ECT to this mentor</span></a>
     {% endset %}
 
 

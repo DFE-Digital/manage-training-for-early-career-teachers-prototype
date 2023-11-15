@@ -81,6 +81,55 @@ module.exports = router => {
     })
   })
 
+  router.get('/mentors/:id/assign-ect', (req, res) => {
+    const { id } = req.params
+
+
+    let teachers = JSON.parse(JSON.stringify(req.session.data.teachers))
+
+    let mentor = JSON.parse(JSON.stringify(req.session.data.mentors.find(function(mentor) {
+      return mentor.id === id
+    })))
+
+    teachers = teachers.filter((teacher) => (!teacher.completedDate && !teacher.noLongerTraining))
+
+    for (teacher of teachers) {
+      for (mentoring of teacher.mentors) {
+        mentoring.mentor =  JSON.parse(JSON.stringify(req.session.data.mentors.find((m) => m.id === mentoring.id)))
+      }
+    
+      teacher.currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+    }
+    
+    teachers = teachers.filter((teacher) => (teacher.currentMentor?.id != id))
+
+    res.render('mentors/assign-ect', {
+      mentor,
+      teachers
+    })
+  })
+
+
+  router.post('/mentors/:id/assign-ect', (req, res) => {
+    const { id } = req.params
+    const ectId = req.body.ectId
+    const dateToday = new Date().toISOString()
+    const teacher = req.session.data.teachers.find((teacher) => teacher.id === ectId)
+    
+    let currentMentor = teacher.mentors.find((mentor) => !mentor.to)
+    if (currentMentor) {
+      currentMentor.to = dateToday;
+    }
+
+    teacher.mentors.push({
+      id: id,
+      from: dateToday
+    })
+    
+    
+    res.redirect(`/mentors/${id}`)
+  })
+
   router.post('/mentors/add/answer-training-provider', (req, res) => {
 
     const provider = req.session.data.trainingProvider
