@@ -5,10 +5,10 @@
 {% set currentlyMentoringHtml %}
   <ul class="govuk-list govuk-list--spaced">
     {% for earlyCareerTeacher in mentor.earlyCareerTeachers %}
-      <li><a class="govuk-link" href="/early-career-teachers/{{ earlyCareerTeacher.id }}">{{ earlyCareerTeacher.name }}</a>
+      <li>{{ earlyCareerTeacher.name }}
 
       {% if earlyCareerTeacher.inductionStartDate %}
-        <p class="govuk-body govuk-!-margin-top-1">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
+        <p class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-4">Induction started {{ earlyCareerTeacher.inductionStartDate | govukDate }}</p>
       {% endif %}
     </li>
     {% endfor %}
