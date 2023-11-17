@@ -97,8 +97,12 @@ module.exports = {
       inductionStartDate: "2023-06-20",
       mentors: [
         {
-          id: "NDY639",
+          id: "NSY835",
           from: "2023-06-20"
+        },
+        {
+          id: "NDY639",
+          from: "2023-09-20"
         }
       ]
     },
