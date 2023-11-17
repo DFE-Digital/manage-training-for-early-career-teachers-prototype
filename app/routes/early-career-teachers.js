@@ -76,9 +76,6 @@ module.exports = router => {
     } else {
       teacher.currentMentor = teacher.mentors.find((mentor) => !mentor.to)
     }
-    
-
-
 
     res.render('early-career-teacher', {
       id,

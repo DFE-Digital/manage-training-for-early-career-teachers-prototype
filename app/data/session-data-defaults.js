@@ -98,7 +98,8 @@ module.exports = {
       mentors: [
         {
           id: "NSY835",
-          from: "2023-06-20"
+          from: "2023-06-20",
+          to: "2023-09-20"
         },
         {
           id: "NDY639",
