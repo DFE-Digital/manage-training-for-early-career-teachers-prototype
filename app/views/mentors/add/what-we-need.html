@@ -3,7 +3,7 @@
 {% set pageName="What we need to know about this mentor" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-participant-type"}) }}
+  {{ govukBackLink({href: "/mentors"}) }}
 {% endblock %}
 
 {% block content %}
@@ -41,7 +41,7 @@
 
     {% endcall %}
 
-    {{ govukButton({ text: "Continue", href: "/add-mentor/name" }) }}
+    {{ govukButton({ text: "Continue", href: "/mentors/add/name" }) }}
   </div>
 </div>
 

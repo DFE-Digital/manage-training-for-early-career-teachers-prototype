@@ -28,7 +28,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/name",
+                href:  "/mentors/add/name",
                 text: "Change",
                 visuallyHiddenText: " name"
               }
@@ -45,7 +45,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/trn",
+                href:  "/mentors/add/trn",
                 text: "Change",
                 visuallyHiddenText: " teacher reference number"
               }
@@ -62,7 +62,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/dob",
+                href:  "/mentors/add/dob",
                 text: "Change",
                 visuallyHiddenText: " date of birth"
               }
@@ -79,7 +79,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/email",
+                href:  "/mentors/add/email",
                 text: "Change",
                 visuallyHiddenText: " email address"
               }
@@ -121,7 +121,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/training-provider",
+                href:  "/mentors/add/training-provider",
                 text: "Change",
                 visuallyHiddenText: " training provider"
               }
@@ -138,7 +138,7 @@
           actions: {
             items: [
               {
-                href:  "/add-mentor/training-provider",
+                href:  "/mentors/add/training-provider",
                 text: "Change",
                 visuallyHiddenText: " delivery partner"
               }
@@ -148,8 +148,9 @@
       ]
     }) }}
 
-
-    {{ govukButton({ text: "Confirm and continue", href: "#"}) }}
+    <form action="/mentors/add/confirm" method="post">
+      {{ govukButton({ text: "Confirm and continue" }) }}
+    </form>
 
   </div>
 </div>

@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% if teacher.mentors | length > 0 %}
+  {% set pageName="Who is the new mentor for " + teacher.name + "?" %}
+{% else %}
+  {% set pageName="Who is the mentor for " + teacher.name + "?" %}
+{% endif %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/early-career-teachers/" + id}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/early-career-teachers/{{ teacher.id }}/update-mentor" method="post">
+      {% set mentorItems = [] %}
+      {% for mentor in mentors %}
+
+        {% set hintText %}
+          {% if  mentor.currentMentoringCount > 0 %}
+            Currently mentoring {{ mentor.currentMentoringCount }} ECT{{ "s" if  mentor.currentMentoringCount != 1 }}
+          {% else %}
+            Not currently mentoring
+          {% endif %}
+        {% endset %}
+
+        {% set mentorItems = (mentorItems.push({
+          value: mentor.id,
+          text: mentor.name,
+          hint: {
+            text: hintText
+          }
+        }), mentorItems) %}
+
+      {% endfor %}
+
+      {% if teacher.mentors | length > 0 %}
+        {% set mentorItems = (mentorItems.push({divider: "or"}), mentorItems) %}
+
+        {% set mentorItems = (mentorItems.push({
+          value: "",
+          text: "I’ll assign a new mentor later"
+        }), mentorItems) %}
+      {% endif %}
+
+      {{ govukRadios({
+        name: "newMentorId",
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: mentorItems
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

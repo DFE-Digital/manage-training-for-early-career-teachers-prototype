@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="ECTs" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {{ govukButton({ text: "Add ECT", href: "/add-ect/what-we-need" }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+
+  <div class="app-filter">
+    <form method="get" action="/early-career-teachers">
+      {{ govukRadios({
+        name: "show",
+        classes: "govuk-radios--small",
+        value: show,
+        fieldset: {
+          legend: {
+            text: "Show",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "training",
+            text: "Currently training (" + (ectsBeingTrained | length) + ")"
+          },
+          {
+            value: "completed-induction",
+            text: "Completed induction (" + (ectsCompleted | length) + ")"
+          },
+          {
+            value: "no-longer-training",
+            text: "Left the school (" + (ectsNoLongerTraining | length) + ")"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Apply", classes: "govuk-button--secondary" }) }}
+    </form>
+  </div>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if show == "completed-induction" %}
+      {% include "_completed-induction.html" %}
+    {% elseif show == "no-longer-training" %}
+      {% include "_no-longer-training.html" %}
+    {% else %}
+      {% include "_currently-training.html" %}
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+// Remove the default 1px border at the bottom of the primary nav
+.app-primary-navigation--no-border-bottom {
+  border-bottom-width: 0;
+}
+
+// Remove the default horizontal padding within the navigation items
+.app-primary-navigation--no-horizontal-padding .x-govuk-primary-navigation__item {
+  padding-left: 0;
+  padding-right: 0;
+}

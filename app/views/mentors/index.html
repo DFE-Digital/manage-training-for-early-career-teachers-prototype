@@ -1,16 +1,9 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Manage mentors and ECTs" %}
+{% set pageName="Mentors" %}
+{% set currentSection="mentors" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/"
-      }
-    ]
-  }) }}
 {% endblock %}
 
 {% block content %}
@@ -21,7 +14,7 @@
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    {{ govukButton({ text: "Add ECT or mentor", href: "/add-participant-type" }) }}
+    {{ govukButton({ text: "Add mentor", href: "/mentors/add/what-we-need" }) }}
   </div>
 </div>
 
@@ -29,11 +22,11 @@
   <div class="govuk-grid-column-one-third">
 
   <div class="app-filter">
-    <form method="get" action="/participants">
+    <form method="get" action="/mentors">
       {{ govukRadios({
         name: "show",
         classes: "govuk-radios--small",
-        value: (data.show or "training"),
+        value: show,
         fieldset: {
           legend: {
             text: "Show",
@@ -43,16 +36,12 @@
         },
         items: [
           {
-            value: "training",
-            text: "Currently training (" + (ectsBeingTrained | length) + ")"
+            value: "mentoring",
+            text: "Currently mentoring (" + (mentorsCurrentlyMentoring | length) + ")"
           },
           {
-            value: "completed-induction",
-            text: "Completed induction (" + (ectsCompleted | length) + ")"
-          },
-          {
-            value: "no-longer-training",
-            text: "Left the school (" + (ectsNoLongerTraining | length) + ")"
+            value: "not-mentoring",
+            text: "Not mentoring (" + (mentorsNotMentoring | length) + ")"
           }
         ]
       }) }}
@@ -65,12 +54,18 @@
 
   <div class="govuk-grid-column-two-thirds">
 
-    {% if data.show == "completed-induction" %}
-      {% include "_completed-induction.html" %}
-    {% elseif data.show == "no-longer-training" %}
-      {% include "_no-longer-training.html" %}
+    {% if show == "not-mentoring" %}
+
+      {% for mentor in mentorsNotMentoring | sort(false, false, "name") %}
+        {% include "_mentor-card" %}
+      {% endfor %}
+
     {% else %}
-      {% include "_currently-training.html" %}
+
+      {% for mentor in mentorsCurrentlyMentoring | sort(false, false, "name") %}
+        {% include "_mentor-card" %}
+      {% endfor %}
+
     {% endif %}
 
   </div>

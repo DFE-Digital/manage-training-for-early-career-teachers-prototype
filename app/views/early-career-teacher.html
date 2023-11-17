@@ -3,17 +3,9 @@
 {% set pageName="Home" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "/"
-      },
-      {
-        text: "Manage mentors and ECTs",
-        href: "/participants"
-      }
-    ]
+  {{ govukBackLink({
+    href: "/early-career-teachers",
+    text: "Back to ECTs"
   }) }}
 {% endblock %}
 
@@ -72,6 +64,35 @@
       {% endset %}
     {% endif %}
 
+    {% set numberOfMentors = (teacher.mentors | length) %}
+    {% set mentorHtml %}
+
+      {% if teacher.currentMentor %}
+          <a href="/mentors/{{ teacher.currentMentor.mentor.id }}" class="govuk-link">{{ teacher.currentMentor.mentor.name }}</a>
+
+      {% else %}
+        <div class="app-summary-list__missing">
+          <div class="app-summary-list__missing-heading">No mentor assigned</div>
+          <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link--no-visited-state">Assign a mentor</a></div>
+      {% endif %}
+
+
+      {% if (numberOfMentors > 1) or (numberOfMentors == 1 and not teacher.currentMentor) %}
+
+        <p class="govuk-body govuk-!-margin-top-4">Previously:</p>
+
+        <ul class="govuk-list">
+          {% for mentoring in teacher.mentors %}
+
+            {% if mentoring.mentor.id != teacher.currentMentor.id %}
+              <li>
+                <a href="/mentors/{{ mentoring.mentor.id }}" class="govuk-link">{{ mentoring.mentor.name }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endset %}
 
     {{ govukSummaryList({
       rows: [
@@ -149,21 +170,20 @@
         },
         {
           key: {
-            text: "Mentor"
+            text: "Mentor" + ("s" if teacher.mentors | length > 1)
           },
           value: {
-            html: "<a href=\"/mentors/" + mentor.id + "\" class=\"govuk-link\">" + mentor.name + "</a>" if mentor else "<div class=\"app-summary-list__missing\" ><div class=\"app-summary-list__missing-heading\">No mentor assigned</div><a href=\"#\" class=\"govuk-link--no-visited-state\">Assign a mentor</a></div>"
+            html: mentorHtml
           },
           actions: {
             items: [
               {
-                href: "#",
+                href: "/early-career-teachers/" + teacher.id + "/change-mentor",
                 text: "Change",
-                classes: "govuk-link--no-visited-state",
-                visuallyHiddenText: "contact details"
+                visuallyHiddenText: "mentor"
               }
             ]
-          } if mentor and not teacher.noLongerTraining
+          } if mentor and not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -189,7 +209,7 @@
                 visuallyHiddenText: "lead provider"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -207,7 +227,7 @@
                 visuallyHiddenText: "delivery partner"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         },
         {
           key: {
@@ -225,7 +245,7 @@
                 visuallyHiddenText: "contact details"
               }
             ]
-          } if not teacher.noLongerTraining
+          } if not teacher.noLongerTraining and not teacher.completedDate
         }
 
       ]

@@ -1,0 +1,210 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+{% set currentSection="mentors" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "/mentors",
+    text: "Back to mentors"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if justAdded %}
+      {% set html %}
+        <h3 class="govuk-notification-banner__heading">
+          Mentor added
+        </h3>
+        <p class="govuk-body">You can now assign an ECT to this mentor.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: "success"
+      }) }}
+    {% endif %}
+
+    <span class="govuk-caption-l">Mentor</span>
+    <h1 class="govuk-heading-l">{{ mentor.name }}</h1>
+
+    <h2 class="govuk-heading-m">Personal details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: mentor.name
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "TRN"
+          },
+          value: {
+            text: mentor.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            html: (mentor.dateOfBirth | govukDate)
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: mentor.emailAddress
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Mentoring</h2>
+
+    {% set teachersBeingMentored %}
+      {% if mentor.earlyCareerTeachers | length > 0  %}
+        <ul class="govuk-list govuk-!-margin-bottom-0">
+          {% for teacher in mentor.earlyCareerTeachers %}
+            <li>
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  <div class="{{ "govuk-!-margin-bottom-3" if not teacher.inductionStartDate}}"><a href="/early-career-teachers/{{ teacher.id }}" class="govuk-link">{{ teacher.name }}</a></div>
+
+                  {% if teacher.inductionStartDate %}
+                    <p class="govuk-body govuk-!-margin-top-1 govuk-!-margin-bottom-3">Induction started {{ teacher.inductionStartDate | govukDate }}</p>
+                  {% endif %}
+                </div>
+                <div class="govuk-grid-column-one-third" style="text-align: right;">
+
+                  <a href="/early-career-teachers/{{ teacher.id }}/change-mentor" class="govuk-link">Change <span class="govuk-visually-hidden">mentor for {{ mentoring.teacher.name }}</span></a>
+                </div>
+              </div>
+
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="govuk-body govuk-!-margin-bottom-4">Not currently mentoring</p>
+      {% endif %}
+      
+      
+      <p class="govuk-body govuk-!-margin-bottom-3"><a href="/mentors/{{ mentor.id }}/assign-ect" class="govuk-link">Assign {{ "another" if (mentor.earlyCareerTeachers | length) > 0 else "an" }} ECT to this mentor</span></a>
+    {% endset %}
+
+
+    {% if mentor.previouslyMentored | length > 0  %}
+      {% set teachersPreviouslyMentored %}
+        <ul class="govuk-list">
+          {% for mentoring in mentor.previouslyMentored %}
+            <li>
+              <a href="/early-career-teachers/{{ mentoring.teacher.id }}" class="govuk-link">{{ mentoring.teacher.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+    {% endif %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Currently mentoring",
+            classes: "govuk-summary-list__key--align-top"
+          },
+          value: {
+            html: teachersBeingMentored
+          }
+        },
+        {
+          key: {
+            text: "Previously mentored"
+          },
+          value: {
+            html: teachersPreviouslyMentored
+          }
+        } if mentor.previouslyMentored | length > 0
+      ]
+    }) }}
+
+
+    <h2 class="govuk-heading-m">Mentor training</h2>
+
+    {% set mentorTrainingStatusHtml %}
+
+      {% if mentor.training.completedOn %}
+        {{ govukTag({ text: "Training completed", classes: "govuk-tag--green" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Completed {{ mentor.training.completedOn | termName }}</p>
+      {% elseif mentor.training.startedOn %}
+        {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Started {{ mentor.training.startedOn | termName }}</p>
+      {% else %}
+        {{ govukTag({ text: "Not yet started", classes: "govuk-tag--blue" }) }}
+        <p class="govuk-body govuk-!-margin-top-2">Training can begin once they are assigned an ECT to mentor</p>
+
+      {% endif %}
+
+
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: mentorTrainingStatusHtml
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            html: mentor.training.leadProvider
+          }
+        } if mentor.training.leadProvider,
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            html: mentor.training.deliveryPartner
+          }
+        } if mentor.training.deliveryPartner
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

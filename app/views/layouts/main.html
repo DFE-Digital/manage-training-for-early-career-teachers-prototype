@@ -4,3 +4,34 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+  <div class="govuk-width-container">
+    {{ govukPhaseBanner({
+      classes: "app-phase-banner--no-border-bottom",
+      tag: {
+        text: "Beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+  </div>
+
+  {{ xGovukPrimaryNavigation({
+    classes: "app-primary-navigation--no-horizontal-padding app-primary-navigation--no-border-bottom",
+    visuallyHiddenTitle: "Navigation",
+    items: [{
+      text: "ECTs",
+      href: "/early-career-teachers",
+      current: (currentSection != "mentors")
+    }, {
+      text: "Mentors",
+      href: "/mentors",
+      current: (currentSection == "mentors")
+    }]
+  }) }}
+{% endblock %}
