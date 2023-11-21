@@ -1,0 +1,85 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Registration is open for 23/24" %}
+{% set currentSection="emails" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Email schedule",
+        href: "/admin/emails"
+      }
+    ]
+    
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    
+    {% set senderListHtml %}
+      <p>All school induction tutors</p>
+    {% endset %}
+        
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Subject"
+          },
+          value: {
+            text: "Registration is open for 23/24"
+          }
+        },
+        {
+          key: {
+            text: "Date sent"
+          },
+          value: {
+            text: "3 July 2023"
+          }
+        },
+        {
+          key: {
+            text: "Template"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">6.14 SIT - FIP - Registration open</a> (GOV.UK Notify)'
+          }
+        },
+        {
+          key: {
+            text: "Recipient criteria"
+          },
+          value: {
+            html: senderListHtml
+          }
+        },
+        {
+          key: {
+            text: "Sent to"
+          },
+          value: {
+            html: "18,141 emails"
+          }
+        },
+        {
+          key: {
+            text: "Bounced"
+          },
+          value: {
+            html: "1,131 emails (6%)"
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
