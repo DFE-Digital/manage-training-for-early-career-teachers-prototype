@@ -1,0 +1,65 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Add ECT - Email" %}
+{% set currentSection="performance" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Performance",
+        href: "/admin/performance"
+      },
+      {
+        text: "Validation errors",
+        href: "/admin/performance/errors"
+      }
+    ]
+    
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    
+    <h2 class="govuk-heading-m">Validation errors</h2>
+    
+    {% set errors = [
+      ["Enter an email address in the correct format, like name@example.com", "anna .smith@schoolname.sch.uk", "Alisa Green"],
+      ["Enter an email address in the correct format, like name@example.com", "janebrownschoolname.sch.uk", "Anna Smith"],
+      ["Enter an email address", "", "Bryan Weaver"],
+      ["Enter an email address in the correct format, like name@example.com", "robert.smith@schoolname@sch.uk", "Rob Baker"]
+    ] %}
+    
+    {% for error in errors %}
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title govuk-!-font-weight-regular">Validation error <a href="#" class="govuk-link">#8463{{ loop.index }}</a> – 13 November 2022 at 11:{{ 58 - (loop.index * 9) }} am by user <a href="#">{{ error[2] }}</a></h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <div class="govuk-error-message govuk-!-font-weight-regular">{{ error[0] }}</div>
+                <code class="app-user-input-example">{{ error[1] }}</code>
+                <br>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    {% endfor %}
+    
+    <p>[etc]</p>
+    
+  </div>
+</div>
+
+{% endblock %}

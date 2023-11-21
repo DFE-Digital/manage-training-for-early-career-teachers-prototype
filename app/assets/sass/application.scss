@@ -11,8 +11,14 @@
 @import "_primary-navigation";
 @import "_phase-banner";
 @import "_table";
+@import "_width-container";
 
 
 .app-id {
   color: $govuk-secondary-text-colour;
+}
+
+.app-user-input-example {
+  padding: 4px 8px;
+  background-color: govuk-colour("light-grey");
 }
