@@ -1,0 +1,8 @@
+
+.app-width-container--wide {
+  @media (min-width: 1280px) {
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

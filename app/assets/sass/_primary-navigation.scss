@@ -8,3 +8,24 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+.app-primary-navigation--wide .govuk-width-container {
+  @media (min-width: 1280px) {
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.app-primary-navigation--shorter .x-govuk-primary-navigation__item {
+  height: 40px;
+}
+
+.app-primary-navigation--shorter .x-govuk-primary-navigation__item,
+.app-primary-navigation--shorter .x-govuk-primary-navigation__link {
+  line-height: 40px;
+}
+
+.app-primary-navigation--less-padding .x-govuk-primary-navigation__item {
+  margin-right: 20px;
+}

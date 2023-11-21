@@ -1,0 +1,23 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Performance" %}
+{% set currentSection="performance" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    
+    <ul class="govuk-list">
+      <li><a href="/admin/performance/errors" class="govuk-link">Validation errors</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}

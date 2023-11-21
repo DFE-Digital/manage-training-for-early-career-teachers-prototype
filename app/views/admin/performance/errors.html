@@ -1,0 +1,66 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Validation errors" %}
+{% set currentSection="performance" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Performance",
+        href: "/admin/performance"
+      }
+    ]
+    
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    
+    {% set data = [
+      ["Add mentor - TRN", "Teacher reference number", "Enter the teacher reference number (TRN)", 52],
+      ["Add ECT - Name", "Name", "Enter a full name",28],
+      ["Add ECT - TRN", "Teacher reference number", "Enter the teacher reference number (TRN)", 19],
+      ["Setup cohort - appropriate body", "Have you appointed an appropriate body?", "Select whether you’ve appointed an appropriate body or not", 13],
+      ["Add ECT - DOB", "Date of birth", "Enter a date of birth", 11],
+      ["Add ECT - DOB", "Date of birth", "Enter a valid of birth", 8],
+      ["Setup cohort - teaching school hub", "Teaching school hub", "Select an appropriate body", 8],
+      ["Add ECT - Email", "Email address", "Enter an email address in the correct format, like name@example.com", 6],
+      ["Add ECT - TRN", "Teacher reference number", "Teacher reference number must include at least 5 digits", 2],
+      ["Add ECT - Email", "Email address", "Enter an email address in the correct format, like name@example.com", 6],
+      ["Add mentor - DOB", "Date of birth", "Enter a date of birth", 2]
+    
+    ] %}
+    
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Common errors shown</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Page</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Field</th>
+          <th scope="col" class="govuk-table__header">Error</th>
+          <th scope="col" class="govuk-table__header  govuk-table__header--numeric">Count</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for row in data %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/errors/page" class="govuk-link">{{ row[0] }}</a></th>
+          <td class="govuk-table__cell">{{ row[1] }}</td>
+          <td class="govuk-table__cell">{{ row[2] }}</td>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+
+  </div>
+</div>
+
+{% endblock %}

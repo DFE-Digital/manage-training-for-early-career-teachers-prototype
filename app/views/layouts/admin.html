@@ -1,0 +1,52 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% set containerClasses = "app-width-container--wide" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border app-header--wide",
+    navigation: [
+      {
+        href: "#",
+        text: "Sign out"
+      }
+    ]
+  }) }}
+
+  {{ xGovukPrimaryNavigation({
+    classes: "app-primary-navigation--no-horizontal-padding app-primary-navigation--wide app-primary-navigation--shorter app-primary-navigation--less-padding",
+    visuallyHiddenTitle: "Navigation",
+    items: [{
+      text: "Overview",
+      href: "/admin"
+    }, {
+      text: "Schools",
+      href: "/admin/schools"
+    }, {
+      text: "ECTs",
+      href: "/admin/ects"
+    }, {
+      text: "Mentors",
+      href: "/admin/mentors"
+    }, {
+      text: "Providers",
+      href: "/admin/suppliers"
+    }, {
+      text: "Appropriate bodies",
+      href: "/admin/appropriate-bodies"
+    }, {
+      text: "Performance",
+      href: "/admin/performance",
+      current: (currentSection == "performance")
+    }, {
+      text: "Admin users",
+      href: "/admin/admin-users"
+    }]
+  }) }}
+{% endblock %}
