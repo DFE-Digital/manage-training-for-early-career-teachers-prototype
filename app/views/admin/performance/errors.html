@@ -2,17 +2,10 @@
 
 {% set pageName="Validation errors" %}
 {% set currentSection="performance" %}
+{% set currentSubSection="errors" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Performance",
-        href: "/admin/performance"
-      }
-    ]
-    
-  }) }}
+  {% include "admin/performance/_secondary-nav" %}
 {% endblock %}
 
 {% block content %}

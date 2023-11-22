@@ -1,18 +1,110 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="" %}
+{% set pageName="Performance" %}
+{% set currentSection="performance" %}
+{% set currentSubSection="overview" %}
 
 {% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
 
     <h1 class="govuk-heading-l">Overview</h1>
     
-    <p>[Table of stats]</p>
+    <table class="govuk-table govuk-!-margin-bottom-9">
+      <caption class="govuk-table__caption govuk-table__caption--m">Schools registered for 2023 to 2024</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Training programme</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Schools</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Delivering their training using DfE materials</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">200</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Designing their own programme</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">100</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Using a training provider (full induction programme)</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-regular">12,000</td>
+        </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">Ambition Institute</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">Best Practice Network</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">Education Development Trust</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">National Institute of Teaching</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">Teach First</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">UCL Institute of Education</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">1,000</td>
+          </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-left-5">No provider set up yet</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">200</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Not expecting any early career teachers</th>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">1,000</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Total</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">13,300</td>
+        </tr>
+      </tfoot>
+    </table>
+
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Participants registered for 2023 to 2024</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Participant type</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Registered</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Early career teachers</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">20,000</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Mentors</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">18,00</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Total</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">38,000</td>
+        </tr>
+      </tfoot>
+    </table>
 
   </div>
 </div>

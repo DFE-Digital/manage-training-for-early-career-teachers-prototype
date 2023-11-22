@@ -1,0 +1,10 @@
+<nav class="app-subnav govuk-body govuk-!-margin-top-9 govuk-!-padding-bottom-0" aria-label="Sub navigation">
+  <ul class="app-subnav__list">
+    <li class="app-subnav__list-item {{ "app-subnav__list-item--selected" if currentSubSection == "overview" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/">Overview</a>
+    </li>
+    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "errors" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/performance/errors">Validation errors</a>
+    </li>
+  </ul>
+</nav>
