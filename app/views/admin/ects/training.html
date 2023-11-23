@@ -305,6 +305,34 @@
         }
       ]
     }) }}
+    
+    <h2 class="govuk-heading-m">Cohort</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Cohort via induction record"
+          },
+          value: {
+            html: '2022'
+          }
+        },
+        {
+          key: {
+            text: "Cohort via schedule"
+          },
+          value: {
+            html: '2022'
+          }
+        }
+      ]
+    }) }}
+    
+    {{ govukButton({
+      text: "Change cohort",
+      classes: "govuk-button--secondary"
+    }) }}
 
   </div>
 </div>
