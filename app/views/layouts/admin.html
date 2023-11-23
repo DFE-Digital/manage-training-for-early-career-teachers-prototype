@@ -23,8 +23,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     classes: "app-primary-navigation--no-horizontal-padding app-primary-navigation--wide app-primary-navigation--shorter app-primary-navigation--less-padding",
     visuallyHiddenTitle: "Navigation",
     items: [{
-      text: "Overview",
-      href: "/admin"
+      text: "Performance",
+      href: "/admin",
+      current: (currentSection == "performance")
     }, {
       text: "Schools",
       href: "/admin/schools"
@@ -40,14 +41,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }, {
       text: "ABs",
       href: "/admin/appropriate-bodies"
-    }, {
-      text: "Performance",
-      href: "/admin/performance",
-      current: (currentSection == "performance")
-    }, {
-      text: "Email schedule",
-      href: "/admin/emails",
-      current: (currentSection == "emails")
     }, {
       text: "Admin users",
       href: "/admin/admin-users"

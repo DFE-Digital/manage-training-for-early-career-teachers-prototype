@@ -2,21 +2,12 @@
 
 {% set pageName="Add ECT - Email" %}
 {% set currentSection="performance" %}
+{% set currentSubSection="errors" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Performance",
-        href: "/admin/performance"
-      },
-      {
-        text: "Validation errors",
-        href: "/admin/performance/errors"
-      }
-    ]
-    
-  }) }}
+  {% include "admin/performance/_secondary-nav" %}
+
+  {{ govukBackLink({ text: "Back", href: "/admin/performance/errors" }) }}
 {% endblock %}
 
 {% block content %}
