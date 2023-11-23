@@ -1,0 +1,312 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Rosa Davenport" %}
+{% set currentSection="ects" %}
+{% set currentSubSection="training" %}
+
+{% block beforeContent %}
+  
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-margin-bottom-9",
+    items: [
+      { text: "Schools", href: "/admin/schools" },
+      { text: "Plymouth Primary School", href: "/admin/schools/show" }
+    ]
+  }) }}
+  
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-4">{{ pageName }}</h1>
+  
+  <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-1"><span class="govuk-body govuk-!-font-weight-bold">TRN: </span>2174756</p>
+  <p class="govuk-!-margin-top-1 govuk-!-margin-bottom-3"><span class="govuk-body govuk-!-font-weight-bold">Cohort: </span>2023</p>
+  
+  {% include "admin/ects/_secondary-nav" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      
+    
+    <h2 class="govuk-heading-m">Current training record</h2>
+      
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Cohort"
+          },
+          value: {
+            html: '2022'
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: '<span class="govuk-tag govuk-tag--green">Training</span>'
+          }
+        },
+        {
+          key: {
+            text: "Start date"
+          },
+          value: {
+            html: '23 September 2023'
+          }
+        },
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">Plymouth Primary School</a>'
+          }
+        },
+        {
+          key: {
+            text: "Training programme"
+          },
+          value: {
+            text: "Full induction programme"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            text: "Education Development Trust  "
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            text: "South England Teaching School Hub"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentor"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">Jason Blue</a>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            text: "Independent Schools Teacher Induction Panel (IStip)"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Record ID"
+          },
+          value: {
+            html: '<code class="app-code">c3f4b302-89b2-4cb1-8122-6632243e1a4a</code>'
+          }
+        },
+        {
+          key: {
+            text: "Created at"
+          },
+          value: {
+            html: '24 July 2023, 10:15 am'
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Previous training records</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Cohort"
+          },
+          value: {
+            html: '2022'
+          }
+        },
+        {
+          key: {
+            text: "Status"
+          },
+          value: {
+            html: '<span class="govuk-tag govuk-tag--grey">No longer being trained</span>'
+          }
+        },
+        {
+          key: {
+            text: "Start date"
+          },
+          value: {
+            html: '17 September 2022'
+          }
+        },
+        {
+          key: {
+            text: "End date"
+          },
+          value: {
+            html: '19 June 2023'
+          }
+        },
+        {
+          key: {
+            text: "School"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">Southampton Primary School</a>'
+          }
+        },
+        {
+          key: {
+            text: "Training programme"
+          },
+          value: {
+            text: "Full induction programme"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Lead provider"
+          },
+          value: {
+            text: "Ambition"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Delivery partner"
+          },
+          value: {
+            text: "South England Teaching School Hub"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentor"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">Anna Wright</a>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Appropriate body"
+          },
+          value: {
+            text: "Independent Schools Teacher Induction Panel (IStip)"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Record ID"
+          },
+          value: {
+            html: '<code class="app-code">8374al-89b2-4cb1-8122-6632243e1a4a</code>'
+          }
+        },
+        {
+          key: {
+            text: "Created at"
+          },
+          value: {
+            html: '21 June 2022, 11:32 am'
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

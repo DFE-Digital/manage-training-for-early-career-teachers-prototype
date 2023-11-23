@@ -1,0 +1,17 @@
+<nav class="app-subnav govuk-body govuk-!-margin-top-1 govuk-!-padding-bottom-0" aria-label="Sub navigation">
+  <ul class="app-subnav__list">
+    <li class="app-subnav__list-item {{ "app-subnav__list-item--selected" if currentSubSection == "details" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/show">Details</a>
+    </li>
+    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "training" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/training">Training</a>
+    </li>
+    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "declarations" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/declarations">Declarations</a>
+    </li>
+    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "audit-log" }}">
+      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/audit-log">Audit log</a>
+    </li>
+
+  </ul>
+</nav>
