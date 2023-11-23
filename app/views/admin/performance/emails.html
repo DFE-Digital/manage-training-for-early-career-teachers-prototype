@@ -1,9 +1,11 @@
 {% extends "layouts/admin.html" %}
 
 {% set pageName="Email schedule" %}
-{% set currentSection="emails" %}
+{% set currentSection="performance" %}
+{% set currentSubSection="emails" %}
 
 {% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
 {% endblock %}
 
 {% block content %}
@@ -32,7 +34,7 @@
       <tbody class="govuk-table__body">
         {% for row in upcomingEmails %}
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/emails/show" class="govuk-link">{{ row[0] }}</a></th>
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show" class="govuk-link">{{ row[0] }}</a></th>
           <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
         </tr>
         {% endfor %}
@@ -56,7 +58,7 @@
       <tbody class="govuk-table__body">
         {% for row in recentlySetEmails %}
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/emails/show-sent" class="govuk-link">{{ row[0] }}</a></th>
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show-sent" class="govuk-link">{{ row[0] }}</a></th>
           <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
           <td class="govuk-table__cell govuk-table__cell--numeric">{{ row[2] }} </td>
         </tr>

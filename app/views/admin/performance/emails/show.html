@@ -1,18 +1,12 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="Registration is open for 23/24" %}
+{% set pageName="Contract with a training partner for 23/24" %}
 {% set currentSection="emails" %}
+{% set currentSubSection="emails" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Email schedule",
-        href: "/admin/emails"
-      }
-    ]
-    
-  }) }}
+  {% include "admin/performance/_secondary-nav" %}
+  {{ govukBackLink({ text: "Back", href: "/admin/performance/emails" }) }}
 {% endblock %}
 
 {% block content %}
@@ -23,7 +17,12 @@
     <h1 class="govuk-heading-l"> {{ pageName }}</h1>
     
     {% set senderListHtml %}
-      <p>All school induction tutors</p>
+      <p>School induction tutors who:</p>
+      
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have selected the full induction programme for 2023/24</li>
+          <li>do not yet have a partnership reported</li>
+        </ul>
     {% endset %}
         
     {{ govukSummaryList({
@@ -33,15 +32,15 @@
             text: "Subject"
           },
           value: {
-            text: "Registration is open for 23/24"
+            text: "Contract with a training partner for 23/24"
           }
         },
         {
           key: {
-            text: "Date sent"
+            text: "Date scheduled"
           },
           value: {
-            text: "3 July 2023"
+            text: "23 October 2023"
           }
         },
         {
@@ -49,7 +48,7 @@
             text: "Template"
           },
           value: {
-            html: '<a href="#" class="govuk-link">6.14 SIT - FIP - Registration open</a> (GOV.UK Notify)'
+            html: '<a href="#" class="govuk-link">6.14 SIT - FIP - No partnership received</a> (GOV.UK Notify)'
           }
         },
         {
@@ -62,18 +61,10 @@
         },
         {
           key: {
-            text: "Sent to"
+            text: "Estimated size"
           },
           value: {
-            html: "18,141 emails"
-          }
-        },
-        {
-          key: {
-            text: "Bounced"
-          },
-          value: {
-            html: "1,131 emails (6%)"
+            html: "13,131 emails"
           }
         }
       ]
