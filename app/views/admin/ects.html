@@ -1,0 +1,50 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Early career teachers (ECTs)" %}
+{% set currentSection="ects" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      
+      <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
+        [Search and filter form]
+      </div>
+      
+      {% set names = ["Jaxon Brewer", "Marvin Lawrence", "Dayton Shelton", "Jamarion Acosta", "Addison Mercer", "Rosa Davenport", "Konner Anderson", "Hannah Hunter", "Brooks Castro", "Rodolfo Harmon", "Wyatt Larson", "Maren Christian"] %}
+      
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">TRN</th>
+            <th scope="col" class="govuk-table__header">School</th>
+            <th scope="col" class="govuk-table__header">School URN</th>
+            <th scope="col" class="govuk-table__header">Date added</th>
+            <th scope="col" class="govuk-table__header">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for name in names %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a href="/admin/ects/show" class="govuk-link">{{ name }}</a></th>
+              <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
+              <td class="govuk-table__cell">Plymouth Primary School</td>
+              <td class="govuk-table__cell">724245</td>
+              <td class="govuk-table__cell">12 September 2023</td>
+              <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--green">Training</span></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  </div>
+</div>
+
+{% endblock %}
