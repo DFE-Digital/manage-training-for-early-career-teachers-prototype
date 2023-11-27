@@ -1,0 +1,76 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Contract with a training partner for 23/24" %}
+{% set currentSection="emails" %}
+{% set currentSubSection="emails" %}
+
+{% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
+  {{ govukBackLink({ text: "Back", href: "/admin/performance/emails" }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    
+    {% set senderListHtml %}
+      <p>School induction tutors who:</p>
+      
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have selected the full induction programme for 2023/24</li>
+          <li>do not yet have a partnership reported</li>
+        </ul>
+    {% endset %}
+        
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Subject"
+          },
+          value: {
+            text: "Contract with a training partner for 23/24"
+          }
+        },
+        {
+          key: {
+            text: "Date scheduled"
+          },
+          value: {
+            text: "23 October 2023"
+          }
+        },
+        {
+          key: {
+            text: "Template"
+          },
+          value: {
+            html: '<a href="#" class="govuk-link">6.14 SIT - FIP - No partnership received</a> (GOV.UK Notify)'
+          }
+        },
+        {
+          key: {
+            text: "Recipient criteria"
+          },
+          value: {
+            html: senderListHtml
+          }
+        },
+        {
+          key: {
+            text: "Estimated size"
+          },
+          value: {
+            html: "13,131 emails"
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

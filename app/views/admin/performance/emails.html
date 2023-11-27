@@ -1,0 +1,71 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Email schedule" %}
+{% set currentSection="performance" %}
+{% set currentSubSection="emails" %}
+
+{% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    
+    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+        
+    {% set upcomingEmails = [
+      ["Contract with a training partner for 23/24", "2023-10-23", "12,145"],
+      ["Assign a mentor", "2023-10-31", "3,514"],
+      ["Set up training for 23/24", "2023-10-31", "5,054"],
+      ["Register early career teachers for 23/24", "2023-11-05", "12,536"],
+      ["New term reminder", "2023-01-12", "4,024"]
+    ] %}
+    
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Upcoming emails</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Email subject</th>
+          <th scope="col" class="govuk-table__header">Date scheduled</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for row in upcomingEmails %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show" class="govuk-link">{{ row[0] }}</a></th>
+          <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    {% set recentlySetEmails = [
+      ["Contract with a training partner for 23/24", "2023-07-23", "18,151"],
+      ["Registration is open for 2023/24", "2023-07-21", "31,941"]
+    ] %}
+    
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Recently sent emails</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Email subject</th>
+          <th scope="col" class="govuk-table__header  govuk-!-width-one-quarter">Date sent</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric" style="width: 100px;">Sent to</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for row in recentlySetEmails %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show-sent" class="govuk-link">{{ row[0] }}</a></th>
+          <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{{ row[2] }} </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
