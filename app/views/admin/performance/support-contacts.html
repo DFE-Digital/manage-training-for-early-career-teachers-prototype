@@ -1,0 +1,55 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Support form stats" %}
+{% set currentSection="performance" %}
+{% set currentSubSection="support-contacts" %}
+
+{% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">What were they trying to do?</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Support forms sent</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Number of users</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Change lead provider for an ECT</th>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">14</td>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">10</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Change lead provider for a mentor</th>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">13</td>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">6</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Change date of birth for an ECT</th>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">2</td>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">2</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Change TRN for an ECT</th>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">1</td>
+          <td class="govuk-table__cell  govuk-table__cell--numeric">1</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>
+
+{% endblock %}
