@@ -1,17 +1,27 @@
-<nav class="app-subnav govuk-body govuk-!-margin-top-1 govuk-!-padding-bottom-0" aria-label="Sub navigation">
-  <ul class="app-subnav__list">
-    <li class="app-subnav__list-item {{ "app-subnav__list-item--selected" if currentSubSection == "details" }}">
-      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/show">Details</a>
-    </li>
-    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "training" }}">
-      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/training">Training</a>
-    </li>
-    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "declarations" }}">
-      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/declarations">Declarations</a>
-    </li>
-    <li class="app-subnav__list-item  {{ "app-subnav__list-item--selected" if currentSubSection == "audit-log" }}">
-      <a class="govuk-link app-subnav__link govuk-link--no-visited-state" href="/admin/ects/audit-log">Audit log</a>
-    </li>
+{% from "../../../components/secondary-nav/macro.njk" import appSecondaryNav %}
 
-  </ul>
-</nav>
+{{ appSecondaryNav({
+  classes: "govuk-!-margin-top-1 govuk-!-padding-bottom-0",
+  items: [
+    {
+      text: "Details",
+      href: "/admin/ects/show",
+      selected: (currentSubSection == "details")
+    },
+    {
+      text: "Training",
+      href: "/admin/ects/training",
+      selected: (currentSubSection == "training")
+    },
+    {
+      text: "Declarations",
+      href: "/admin/ects/declarations",
+      selected: (currentSubSection == "declarations")
+    },
+    {
+      text: "Audit log",
+      href: "/admin/ects/audit-log",
+      selected: (currentSubSection == "audit-log")
+    }
+  ]
+ }) }}
