@@ -75,6 +75,7 @@ module.exports = router => {
   });
 
   router.post('/admin/performance/emails/confirm', (req, res) => {
+    const dateToday = new Date();
 
     const email = {
       id: randomId.randomId(),
@@ -82,12 +83,19 @@ module.exports = router => {
       date: req.body.emailDate
     }
 
-    req.session.data.emailSchedule.push(email)
+    const emailDate = new Date(email.date.year, email.date.month - 1, email.date.day, 12, 0)
 
-    delete req.session.data.emailType
-    delete req.session.data.emailDate
+    if (emailDate > dateToday) {
+      req.session.data.emailSchedule.push(email)
 
-    res.redirect(`/admin/performance/emails/${email.id}`)
+      delete req.session.data.emailType
+      delete req.session.data.emailDate
+
+      res.redirect(`/admin/performance/emails/${email.id}`)
+    } else {
+      res.redirect(`/admin/performance/emails/new`)
+    }
+
   });
 
   router.post('/admin/performance/emails/:id/delete', (req, res) => {
@@ -138,13 +146,20 @@ module.exports = router => {
 
   router.post('/admin/performance/emails/:id/update', (req, res) => {
     const { id } = req.params;
+    const dateToday = new Date();
+    const emailDate = new Date(req.body.emailDate.year, req.body.emailDate.month - 1, req.body.emailDate.day, 12, 0)
 
-    const email = req.session.data.emailSchedule.find(function(email) {
-      return email.id === id
-    });
 
-    email.date = req.body.emailDate;
+    if (emailDate > dateToday) {
+      const email = req.session.data.emailSchedule.find(function(email) {
+        return email.id === id
+      });
 
-    res.redirect(`/admin/performance/emails/${id}`)
+      email.date = req.body.emailDate;
+      res.redirect(`/admin/performance/emails/${id}`)
+    } else {
+      res.redirect(`/admin/performance/emails/${id}/edit`)
+    }
+
   });
 }
