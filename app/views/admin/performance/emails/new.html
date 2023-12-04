@@ -1,0 +1,96 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Schedule an email" %}
+{% set currentSection="emails" %}
+{% set currentSubSection="emails" %}
+
+{% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
+  {{ govukBackLink({ text: "Back", href: "/admin/performance/emails" }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form action="/admin/performance/emails/confirm" method="post">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {{ govukRadios({
+        name: "emailType",
+        value: data.emailType,
+        fieldset: {
+          legend: {
+            text: "Type of email",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "contractWithATrainingPartner",
+            text: "Contract with a training partner"
+          },
+          {
+            value: "setUpTraining",
+            text: "Set up training",
+            hint: {
+              text: "Scheduled already for 11 September 2024"
+            }
+          },
+          {
+            value: "registerEarlyCareerTeachers",
+            text: "Register early career teachers and mentors"
+          },
+          {
+            value: "assignAMentor",
+            text: "Assign a mentor"
+          },
+          {
+            value: "newTermReminder",
+            text: "New term reminder",
+            hint: {
+              text: "Scheduled already for 6 January 2024"
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukDateInput({
+        id: "email-date",
+        fieldset: {
+          legend: {
+            text: "When should this be sent?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            name: "emailDate[day]",
+            label: "Day",
+            value: data.emailDate.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "emailDate[month]",
+            label: "Month",
+            value: data.emailDate.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "emailDate[year]",
+            label: "Year",
+            value: data.emailDate.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Schedule email" })}}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

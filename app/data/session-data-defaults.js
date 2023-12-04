@@ -281,5 +281,48 @@ module.exports = {
         deliveryPartner: "Selby Teaching School Hub"
       }
     }
+  ],
+  emailSchedule: [
+    {
+      id: "464643",
+      type: "contractWithATrainingPartner",
+      date: {"year": "2023", "month": "12", "day": "12"}
+    },
+    {
+      id: "879232",
+      type: "assignAMentor",
+      date: {"year": "2024", "month": "1", "day": "8"}
+    },
+    {
+      id: "82561",
+      type: "setUpTraining",
+      date: {"year": "2024", "month": "1", "day": "19"}
+    },
+    {
+      id: "324364",
+      type: "contractWithATrainingPartner",
+      date: {"year": "2023", "month": "10", "day": "16"},
+      sentTo: 10414,
+      bounced: 721
+    },
+    {
+      id: "98438",
+      type: "newTermReminder",
+      date: {"year": "2023", "month": "10", "day": "28"},
+      sentTo: 16014,
+      bounced: 2535
+    },
+    {
+      id: "52785",
+      type: "assignAMentor",
+      date: {"year": "2023", "month": "12", "day": "3"}
+    },
+    {
+      id: "64336",
+      type: "assignAMentor",
+      date: {"year": "2023", "month": "12", "day": "1"},
+      sentTo: 9141,
+      bounced: 105
+    }
   ]
 }
