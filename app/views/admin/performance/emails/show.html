@@ -1,6 +1,6 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="Contract with a training partner for 23/24" %}
+{% set pageName = emailType.subject %}
 {% set currentSection="emails" %}
 {% set currentSubSection="emails" %}
 
@@ -13,18 +13,25 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    
+
     <h1 class="govuk-heading-l"> {{ pageName }}</h1>
-    
+
     {% set senderListHtml %}
-      <p>School induction tutors who:</p>
-      
-        <ul class="govuk-list govuk-list--bullet">
-          <li>have selected the full induction programme for 2023/24</li>
-          <li>do not yet have a partnership reported</li>
-        </ul>
+      {{ emailType.recipientsDescription | govukMarkdown }}
     {% endset %}
-        
+
+    {% set sentToHtml %}
+      {% if email.sentTo %}
+        {{ email.sentTo | numberFormat }} emails
+      {% else %}
+        Sending
+      {% endif %}
+    {% endset %}
+
+    {% set bouncedHtml %}
+      {{ email.bounced | numberFormat }} ({{ ((email.bounced / email.sentTo) * 100) | round }}%)
+    {% endset %}
+
     {{ govukSummaryList({
       rows: [
         {
@@ -32,7 +39,7 @@
             text: "Subject"
           },
           value: {
-            text: "Contract with a training partner for 23/24"
+            text: emailType.subject
           }
         },
         {
@@ -40,15 +47,23 @@
             text: "Date scheduled"
           },
           value: {
-            text: "23 October 2023"
-          }
+            text: (email.date | isoDateFromDateInput | govukDate)
+          },
+          actions: {
+            items: [
+            {
+              href: "/admin/performance/emails/" + email.id + "/edit",
+              text: "Change"
+            } if (emailDate > dateToday)
+          ]
+        }
         },
         {
           key: {
             text: "Template"
           },
           value: {
-            html: '<a href="#" class="govuk-link">6.14 SIT - FIP - No partnership received</a> (GOV.UK Notify)'
+            html: '<a href="#" class="govuk-link">' + emailType.notifyTemplate + '</a> (GOV.UK Notify)'
           }
         },
         {
@@ -66,9 +81,31 @@
           value: {
             html: "13,131 emails"
           }
-        }
+        } if (emailDate > dateToday),
+        {
+          key: {
+            text: "Sent to"
+          },
+          value: {
+            html: sentToHtml
+          }
+        } if (emailDate < dateToday),
+        {
+          key: {
+            text: "Bounced"
+          },
+          value: {
+            html: bouncedHtml
+          }
+        } if (emailDate < dateToday and email.bounced)
       ]
     }) }}
+
+    {% if emailDate > dateToday %}
+      <form action="/admin/performance/emails/{{ email.id }}/delete" method="post">
+        {{ govukButton({ text: "Remove this from the schedule", classes: "govuk-button--warning"})}}
+      </form>
+    {% endif %}
 
   </div>
 </div>

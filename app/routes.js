@@ -9,3 +9,4 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 require('./routes/early-career-teachers')(router)
 require('./routes/mentors')(router)
+require('./routes/admin')(router)

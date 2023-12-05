@@ -15,14 +15,6 @@
 
     <h1 class="govuk-heading-l"> {{ pageName }}</h1>
 
-    {% set upcomingEmails = [
-      ["Contract with a training partner for 23/24", "2023-10-23", "12,145"],
-      ["Assign a mentor", "2023-10-31", "3,514"],
-      ["Set up training for 23/24", "2023-10-31", "5,054"],
-      ["Register early career teachers for 23/24", "2023-11-05", "12,536"],
-      ["New term reminder", "2023-01-12", "4,024"]
-    ] %}
-
     <table class="govuk-table">
       <caption class="govuk-table__caption govuk-table__caption--m">Upcoming emails</caption>
       <thead class="govuk-table__head">
@@ -32,19 +24,18 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        {% for row in upcomingEmails %}
+        {% for email in upcomingEmails %}
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show" class="govuk-link">{{ row[0] }}</a></th>
-          <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/{{ email.id }} " class="govuk-link">{{ emailTypes[email.type].subject }}</a></th>
+          <td class="govuk-table__cell">{{ email.date | isoDateFromDateInput | govukDate }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
 
-    {% set recentlySetEmails = [
-      ["Contract with a training partner for 23/24", "2023-07-23", "18,151"],
-      ["Registration is open for 2023/24", "2023-07-21", "31,941"]
-    ] %}
+
+    {{ govukButton({ text: "Schedule an email", href: "/admin/performance/emails/new", classes: "govuk-button--secondary" }) }}
+
 
     <table class="govuk-table">
       <caption class="govuk-table__caption govuk-table__caption--m">Recently sent emails</caption>
@@ -56,11 +47,13 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        {% for row in recentlySetEmails %}
+        {% for email in sentEmails %}
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/show-sent" class="govuk-link">{{ row[0] }}</a></th>
-          <td class="govuk-table__cell">{{ row[1] | govukDate }}</td>
-          <td class="govuk-table__cell govuk-table__cell--numeric">{{ row[2] }} </td>
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/performance/emails/{{ email.id }} " class="govuk-link">{{ emailTypes[email.type].subject }}</a></th>
+          <td class="govuk-table__cell">
+            {% set daysAgo = (email.date | isoDateFromDateInput | daysAgo) %}
+            {% if daysAgo <= 1 %}Today{% else %}{{ email.date | isoDateFromDateInput | govukDate }}{% endif %}</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">{% if email.sentTo %}{{ email.sentTo | numberFormat }}{% else %}Sending{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

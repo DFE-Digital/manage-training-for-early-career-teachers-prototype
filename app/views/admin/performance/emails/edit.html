@@ -1,0 +1,56 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="When should this email be sent?" %}
+{% set currentSection="emails" %}
+{% set currentSubSection="emails" %}
+
+{% block beforeContent %}
+  {% include "admin/performance/_secondary-nav" %}
+  {{ govukBackLink({ text: "Back", href: "/admin/performance/emails/" + email.id }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form action="/admin/performance/emails/{{ email.id }}/update" method="post">
+
+      <span class="govuk-caption-l">{{ emailType.subject }}</span>
+      {{ govukDateInput({
+        id: "email-date",
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            name: "emailDate[day]",
+            label: "Day",
+            value: email.date.day,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "emailDate[month]",
+            label: "Month",
+            value: email.date.month,
+            classes: "govuk-input--width-2"
+          },
+          {
+            name: "emailDate[year]",
+            label: "Year",
+            value: email.date.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Update scheduled date" })}}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

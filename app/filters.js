@@ -2,6 +2,9 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 
 
+function numberFormat (number) {
+  return Intl.NumberFormat('en-US').format(number)
+}
 
 function includes (array, item) {
   return array.includes(item)
@@ -30,3 +33,4 @@ function termName (dateString) {
 
 addFilter('includes', includes)
 addFilter('termName', termName)
+addFilter('numberFormat', numberFormat)
