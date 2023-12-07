@@ -282,6 +282,19 @@ module.exports = {
       }
     }
   ],
+  schools: [
+    {
+      id: "735242",
+      name: "Abacus Primary School",
+      localAuthority: "Camden",
+      address: {
+        line1: "Jubilee Waterside Centre",
+        line2: "105 Camley Street",
+        town: "London",
+        postalCode: "N1C 4PF"
+      }
+    }
+  ],
   emailSchedule: [
     {
       id: "464643",

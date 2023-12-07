@@ -1,0 +1,26 @@
+{% from "../../../components/secondary-nav/macro.njk" import appSecondaryNav %}
+
+{{ appSecondaryNav({
+  classes: "govuk-!-margin-top-1 govuk-!-padding-bottom-0",
+  items: [
+    {
+      text: "Details",
+      href: "/admin/schools/" + school.id,
+      selected: (currentSubSection == "details")
+    },
+    {
+      text: "ECTs",
+      href: "/admin/schools/" + school.id + "/ects",
+      selected: (currentSubSection == "ects")
+    },
+    {
+      text: "Mentors",
+      href: "/admin/schools/" + school.id + "/mentors",
+      selected: (currentSubSection == "mentors")
+    },
+    {
+      text: "Cohorts",
+      href: "#"
+    }
+  ]
+ }) }}

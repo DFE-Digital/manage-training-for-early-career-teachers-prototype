@@ -1,0 +1,42 @@
+{% extends "layouts/admin.html" %}
+
+{% set pageName="Schools" %}
+{% set currentSection="schools" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
+        [Search and filter form]
+      </div>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">School</th>
+            <th scope="col" class="govuk-table__header">URN</th>
+            <th scope="col" class="govuk-table__header">Induction tutor</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for school in data.schools %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
+              <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
+              <td class="govuk-table__cell">headteacher.name@school-name.sch.uk</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  </div>
+</div>
+
+{% endblock %}
