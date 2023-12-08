@@ -162,4 +162,38 @@ module.exports = router => {
     }
 
   });
+
+
+  router.get('/admin/schools/:id', (req, res) => {
+    const { id } = req.params;
+    const school = req.session.data.schools.find(school => { return school.id === id})
+
+
+    res.render('admin/schools/show', {
+      id,
+      school
+    })
+  });
+
+  router.get('/admin/schools/:id/ects', (req, res) => {
+    const { id } = req.params;
+    const school = req.session.data.schools.find(school => { return school.id === id})
+
+
+    res.render('admin/schools/ects', {
+      id,
+      school
+    })
+  });
+
+  router.get('/admin/schools/:id/mentors', (req, res) => {
+    const { id } = req.params;
+    const school = req.session.data.schools.find(school => { return school.id === id})
+
+
+    res.render('admin/schools/mentors', {
+      id,
+      school
+    })
+  });
 }
