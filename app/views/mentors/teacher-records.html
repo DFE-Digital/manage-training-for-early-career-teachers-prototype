@@ -1,0 +1,56 @@
+{% extends "layouts/logged-in" %}
+
+{% set pageName = "Search results (1)" %}
+
+{% set activeLinkId = "mentors" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/mentors/add" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% set teachers = [{trn: "6282452", dob: (data.dob | isoDateFromDateInput | govukDate), firstName: "James", lastName: data.lastName }] %}
+
+    {% for teacher in teachers %}
+      <div class="app-list__item">
+
+        <h2 class="govuk-heading-s">
+          <a class="govuk-link--no-visited-state" href="/mentors/search-result">{{teacher.firstName}} {{teacher.lastName}}</a>
+        </h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--no-border app-summary-list--compact',
+          rows: [
+            {
+              key: {
+                text: "TRN"
+              },
+              value: {
+                text: teacher.trn
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: teacher.dob
+              }
+            }
+          ]
+        }) }}
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

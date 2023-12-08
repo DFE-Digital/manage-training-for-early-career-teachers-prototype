@@ -1,0 +1,113 @@
+{% extends "layouts/logged-in" %}
+
+{% set teacher = {
+  trn: "7547547",
+  dob: (data.dob | isoDateFromDateInput | govukDate),
+  firstName: "James",
+  lastName: data.lastName,
+  qts: {
+    status: "Qualified",
+    dateAwarded: "6 July 1996"
+  },
+  induction: {
+    completed: "8 June 1997"
+  }
+} %}
+{% set pageName = teacher.firstName + " " + teacher.lastName %}
+
+{% set activeLinkId = "mentors" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/teacher-records" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <form action="/mentors/which-school" method="post">
+      <input type="hidden" name="trn" value="{{ teacher.trn }}">
+      <input type="hidden" name="firstName" value="{{ teacher.firstName }}">
+      {{ govukButton({
+        text: "Add teacher to your organisation as a mentor"
+      }) }}
+    </form>
+
+    <h2 class="govuk-heading-m">
+      Personal details
+    </h2>
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: teacher.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: teacher.dob
+          }
+        }
+      ]
+    }) }}
+
+      <h2 class="govuk-heading-m">
+        Qualified teacher status (QTS)
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "QTS"
+            },
+            value: {
+              text: teacher.qts.status
+            }
+          },
+          {
+            key: {
+              text: "Date awarded"
+            },
+            value: {
+              text: teacher.qts.dateAwarded
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Induction
+      </h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Completed"
+            },
+            value: {
+              text: teacher.induction.completed
+            }
+          }
+        ]
+      }) }}
+
+</div>
+
+{% endblock %}

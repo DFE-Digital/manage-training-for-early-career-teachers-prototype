@@ -1,0 +1,47 @@
+{% extends "layouts/logged-in" %}
+
+{% set pageName = "Who will " + data.firstName + " " + data.lastName + " be mentoring?" %}
+
+{% set activeLinkId = "mentors" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/add" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/mentors/confirm" method="post">
+
+      {% set teacherItems = [] %}
+      {% for ect in data.ects %}
+        {% set teacherItems = (teacherItems.push({value: ect.trn, text: ect.firstName + " " + ect.lastName}), teacherItems) %}
+      {% endfor %}
+      {% set teacherItems = (teacherItems.push({divider: "or"}), teacherItems) %}
+      {% set teacherItems = (teacherItems.push({text: "I’ll decide later"}), teacherItems) %}
+
+
+      {{ govukRadios({
+        name: "mentoring",
+        value: data.mentoring,
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: teacherItems
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

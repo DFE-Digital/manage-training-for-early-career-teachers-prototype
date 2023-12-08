@@ -1,0 +1,62 @@
+{% extends "layouts/logged-in" %}
+
+{% set pageName = "Which of your schools will they be mentoring ECTs at?" %}
+
+{% set activeLinkId = "mentors" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({ href: "/ects/add" }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/mentors/mentoring" method="post">
+      {{ govukRadios({
+        name: "schoolName",
+        value: data.schoolName,
+        fieldset: {
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "Elmstone Primary Academy School",
+            text: "Elmstone Primary Academy School"
+          },
+          {
+            value: "Marley Primary Academy School",
+            text: "Marley Primary Academy School"
+          },
+          {
+            value: "Ripple Primary Academy School",
+            text: "Ripple Primary Academy School"
+          },
+          {
+            value: "West Studdal Primary Academy School",
+            text: "West Studdal Primary Academy School"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "They will be mentoring across schools at Kent Multi-Academy Trust",
+            text: "They will be mentoring across schools at Kent Multi-Academy Trust"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
