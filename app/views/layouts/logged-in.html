@@ -1,3 +1,15 @@
 {% extends "di-govuk-one-login-service-header/layouts/service-header.html" %}
 {%- set oneLoginLink = "/your-services" -%}
 {%- set signOutLink = "/" -%}
+
+{% set navigationItems = [
+  {
+    href: "/ects",
+    text: 'Early career teachers',
+    id: 'ects'
+  },{
+    href: "/mentors",
+    text: 'Mentors',
+    id: 'mentors'
+  }]
+%}

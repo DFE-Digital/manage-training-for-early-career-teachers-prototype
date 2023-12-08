@@ -11,17 +11,7 @@
 {% set pageName = "When will " + newMentorName + " start mentoring " + ect.firstName + " " + ect.lastName + "?" %}
 
 {% set activeLinkId = "ects" %}
-{% set navigationItems = [
-  {
-    href: "/ects",
-    text: 'Early career teachers',
-    id: 'ects'
-  },{
-    href: "/mentors",
-    text: 'Mentors',
-    id: 'mentors'
-  }]
-%}
+
 
 {% block beforeContent %}
   {{ govukBackLink({ href: "/ects/" + ect.trn + "/change-mentor" }) }}
