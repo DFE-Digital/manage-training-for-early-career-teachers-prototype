@@ -1,5 +1,6 @@
 {% extends "layouts/main.html" %}
 
+{% set signedOut = true %}
 {% set pageName="Sign in" %}
 
 {% block beforeContent %}
@@ -13,7 +14,7 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <form action="/check-email" method="post">
+    <form action="/check-email" method="post" novalidate>
 
       {{ govukInput({
         label: {
@@ -22,7 +23,7 @@
         id: "email",
         name: "email",
         type: "email",
-        autocomplete: "email",
+        autocomplete: "off",
         spellcheck: false
       }) }}
 
