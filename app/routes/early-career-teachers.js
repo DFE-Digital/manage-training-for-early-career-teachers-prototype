@@ -47,7 +47,7 @@ module.exports = router => {
 
     let show = req.query.show || 'training'
 
-    res.render('ects/index', {
+    res.render('early-career-teachers/index', {
       show,
       ectsBeingTrained,
       ectsCompleted,
@@ -89,7 +89,7 @@ module.exports = router => {
 
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-    res.render('ects/change-trn', {
+    res.render('early-career-teachers/change-trn', {
       id,
       teacher
     })
@@ -100,7 +100,7 @@ module.exports = router => {
 
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-    res.render('ects/change-dob', {
+    res.render('early-career-teachers/change-dob', {
       id,
       teacher
     })
@@ -111,7 +111,7 @@ module.exports = router => {
 
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-    res.render('ects/change-dp-lp', {
+    res.render('early-career-teachers/change-dp-lp', {
       id,
       teacher
     })
@@ -136,7 +136,7 @@ module.exports = router => {
 
     }
 
-    res.render('ects/change-mentor', {
+    res.render('early-career-teachers/change-mentor', {
       id,
       teacher,
       mentors
@@ -170,7 +170,7 @@ module.exports = router => {
 
     const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
 
-    res.render('ects/support-contacted', {
+    res.render('early-career-teachers/support-contacted', {
       id,
       teacher
     })
