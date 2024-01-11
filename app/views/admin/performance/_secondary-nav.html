@@ -1,12 +1,11 @@
-{% from "../../../components/secondary-nav/macro.njk" import appSecondaryNav %}
-
-{{ appSecondaryNav({
+{{ xGovukSecondaryNavigation({
   classes: "govuk-!-margin-top-9 govuk-!-padding-bottom-0",
+  visuallyHiddenTitle: "Secondary menu",
   items: [
     {
       text: "Overview",
       href: "/admin/",
-      selected: (currentSubSection == "overview")
+      current: (currentSubSection == "overview")
     },
     {
       text: "Validation errors",
@@ -16,12 +15,12 @@
     {
       text: "Email schedule",
       href: "/admin/performance/emails",
-      selected: (currentSubSection == "emails")
+      current: (currentSubSection == "emails")
     },
     {
       text: "Support form stats",
       href: "/admin/performance/support-contacts",
-      selected: (currentSubSection == "support-contacts")
+      current: (currentSubSection == "support-contacts")
     }
   ]
- }) }}
+}) }}
