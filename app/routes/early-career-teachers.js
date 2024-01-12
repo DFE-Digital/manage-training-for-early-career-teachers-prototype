@@ -165,17 +165,6 @@ module.exports = router => {
     res.redirect(`/early-career-teachers/${id}`)
   })
 
-  router.get('/early-career-teachers/:id/support-contacted', (req, res) => {
-    const { id } = req.params
-
-    const teacher = req.session.data.teachers.find((teacher) => teacher.id === id)
-
-    res.render('early-career-teachers/support-contacted', {
-      id,
-      teacher
-    })
-  })
-
   router.get('/early-career-teachers/:id/transfer', (req, res) => {
     const { id } = req.params
 
@@ -285,14 +274,14 @@ module.exports = router => {
 
 
 
-  router.post('/add-ect/answer-new-programme', (req, res) => {
+  router.post('/early-career-teachers/add/answer-new-programme', (req, res) => {
 
     const newProvider = req.session.data.newProvider
 
     if (newProvider === "other") {
-      res.redirect('/add-ect/transfer-contact-support')
+      res.redirect('/early-career-teachers/add/transfer-contact-support')
     } else {
-      res.redirect('/add-ect/check')
+      res.redirect('/early-career-teachers/add/check')
     }
 
   })

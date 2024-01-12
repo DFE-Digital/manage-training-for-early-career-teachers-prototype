@@ -3,7 +3,7 @@
 {% set pageName="Teacher reference number (TRN)" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-ect/name"}) }}
+  {{ govukBackLink({href: "/early-career-teachers/add/name"}) }}
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
 
     <p class="govuk-body">If the teacher does not know their TRN, ask them to use the <a href="https://find-a-lost-trn.education.gov.uk/start" class="govuk-link">Find a lost teacher reference number (TRN)</a> service.</p>
 
-    <form action="/add-ect/dob" method="post">
+    <form action="/early-career-teachers/add/dob" method="post">
 
       {{ govukInput({
         name: "trn",

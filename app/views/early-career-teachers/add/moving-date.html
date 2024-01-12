@@ -3,7 +3,7 @@
 {% set pageName="When is " + data.name + " moving to your school?" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-ect/trn"}) }}
+  {{ govukBackLink({href: "/early-career-teachers/add/trn"}) }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-ect/continuing-programme" method="post">
+    <form action="/early-career-teachers/add/continuing-programme" method="post">
       {{ govukDateInput({
         name: "startingOn",
         id: "startingOn",

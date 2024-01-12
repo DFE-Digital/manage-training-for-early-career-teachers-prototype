@@ -3,7 +3,7 @@
 {% set pageName="New training programme" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({href: "/add-ect/continuing-programme"}) }}
+  {{ govukBackLink({href: "/early-career-teachers/add/continuing-programme"}) }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
 
-    <form action="/add-ect/answer-new-programme" method="post">
+    <form action="/early-career-teachers/add/answer-new-programme" method="post">
 
     {{ govukRadios({
       name: "newProvider",
