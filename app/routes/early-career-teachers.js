@@ -2,6 +2,8 @@
 
 module.exports = router => {
 
+  let randomId = require('../random-id.js')
+
   router.get('/early-career-teachers', (req, res) => {
 
     let mentors = JSON.parse(JSON.stringify(req.session.data.mentors))
@@ -272,6 +274,22 @@ module.exports = router => {
     })
   })
 
+  router.post('/early-career-teachers/add/answer-email', (req, res) => {
+
+    // In the live service, the system will use the DOB, email and TRN
+    // to check whether the ECT has already started their training at
+    // another school, and if so, asks the new school when they are moving.
+    //
+    // In this prototype, you can can test this flow by setting the a date
+    // of birth where the month is January.
+    const dobMonth = req.session.data.dob.month
+    if (dobMonth === "1") {
+      res.redirect('/early-career-teachers/add/moving-date')
+    } else {
+      res.redirect('/early-career-teachers/add/check')
+    }
+
+  })
 
 
   router.post('/early-career-teachers/add/answer-new-programme', (req, res) => {
@@ -283,6 +301,37 @@ module.exports = router => {
     } else {
       res.redirect('/early-career-teachers/add/check')
     }
+
+  })
+
+
+  router.post('/early-career-teachers/add/confirm', (req, res) => {
+
+    let data = req.session.data
+
+    let dob = new Date(data.dob.year, data.dob.month, data.dob.day).toISOString().slice(0,10)
+
+    let ect = {
+      id: randomId.randomId(),
+      name: data.name,
+      trn: data.trn,
+      dateOfBirth: dob,
+      emailAddress: data.email,
+      mentors: []
+    }
+
+    req.session.data.teachers.push(ect)
+
+    // Reset the "Add ECT" flow
+    delete data.name
+    delete data.trn
+    delete data.dob
+    delete data.email
+    delete data.startingOn
+    delete data.continueWithProgramme
+    delete data.newProvider
+
+    res.redirect(`/early-career-teachers/${ect.id}?justAdded=true`)
 
   })
 

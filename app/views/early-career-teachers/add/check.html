@@ -90,87 +90,90 @@
     }) }}
 
 
-    <h2 class="govuk-heading-m">Training details</h2>
+    {% if data.continueWithProgramme %}
+      <h2 class="govuk-heading-m">Training details</h2>
 
-    {% set trainingProviderText %}
-      {% if data.continueWithProgramme == "yes" %}
-        Best Practice Network
-      {% elif data.newProvider === "ambition-with-selby" %}
-        Ambition Institute
-      {% elif data.newProvider === "niot-with-northamptonshire" %}
-        National Institute of Teaching
-      {% endif %}
-    {% endset %}
+      {% set trainingProviderText %}
+        {% if data.continueWithProgramme == "yes" %}
+          Best Practice Network
+        {% elif data.newProvider === "ambition-with-selby" %}
+          Ambition Institute
+        {% elif data.newProvider === "niot-with-northamptonshire" %}
+          National Institute of Teaching
+        {% endif %}
+      {% endset %}
 
-    {% set deliveryPartnerText %}
-      {% if data.continueWithProgramme == "yes" %}
-        West LLC
-      {% elif data.newProvider === "ambition-with-selby" %}
-        Selby Teaching School Hub
-      {% elif data.newProvider === "niot-with-northamptonshire" %}
-        Northamptonshire Teaching School Hub
-      {% endif %}
-    {% endset %}
+      {% set deliveryPartnerText %}
+        {% if data.continueWithProgramme == "yes" %}
+          West LLC
+        {% elif data.newProvider === "ambition-with-selby" %}
+          Selby Teaching School Hub
+        {% elif data.newProvider === "niot-with-northamptonshire" %}
+          Northamptonshire Teaching School Hub
+        {% endif %}
+      {% endset %}
 
-    {{ govukSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      rows: [
-        {
-          key: {
-            text: "Date they are joining your school"
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Date they are joining your school"
+            },
+            value: {
+              text: (data.startingOn | isoDateFromDateInput | govukDate )
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/add/moving-date",
+                  text: "Change",
+                  visuallyHiddenText: " date they are joining your school"
+                }
+              ]
+            }
           },
-          value: {
-            text: (data.startingOn | isoDateFromDateInput | govukDate )
+          {
+            key: {
+              text: "Lead provider"
+            },
+            value: {
+              text: trainingProviderText
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/add/continuing-programme",
+                  text: "Change",
+                  visuallyHiddenText: " training provider"
+                }
+              ]
+            }
           },
-          actions: {
-            items: [
-              {
-                href:  "/early-career-teachers/add/moving-date",
-                text: "Change",
-                visuallyHiddenText: " date they are joining your school"
-              }
-            ]
+          {
+            key: {
+              text: "Delivery partner"
+            },
+            value: {
+              text: deliveryPartnerText
+            },
+            actions: {
+              items: [
+                {
+                  href:  "/early-career-teachers/add/continuing-programme",
+                  text: "Change",
+                  visuallyHiddenText: " delivery partner"
+                }
+              ]
+            }
           }
-        },
-        {
-          key: {
-            text: "Lead provider"
-          },
-          value: {
-            text: trainingProviderText
-          },
-          actions: {
-            items: [
-              {
-                href:  "/early-career-teachers/add/continuing-programme",
-                text: "Change",
-                visuallyHiddenText: " training provider"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Delivery partner"
-          },
-          value: {
-            text: deliveryPartnerText
-          },
-          actions: {
-            items: [
-              {
-                href:  "/early-career-teachers/add/continuing-programme",
-                text: "Change",
-                visuallyHiddenText: " delivery partner"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
+        ]
+      }) }}
+    {% endif %}
 
-
-    {{ govukButton({ text: "Confirm and continue", href: "#"}) }}
+    <form action="/early-career-teachers/add/confirm" method="post">
+      {{ govukButton({ text: "Confirm and continue" }) }}
+    </form>
 
   </div>
 </div>
