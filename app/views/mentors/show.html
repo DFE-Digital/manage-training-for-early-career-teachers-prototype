@@ -120,7 +120,7 @@
       <p class="govuk-body govuk-!-margin-bottom-3"><a href="/mentors/{{ mentor.id }}/assign-ect" class="govuk-link">Assign {{ "another" if (mentor.earlyCareerTeachers | length) > 0 else "an" }} ECT to this mentor</span></a>
     {% endset %}
 
-
+    <!-- The 'previously mentored' section has been hidden, as we’re not sure we have the data for this yet. -->
     {% if mentor.previouslyMentored | length > 0  %}
       {% set teachersPreviouslyMentored %}
         <ul class="govuk-list">
@@ -151,7 +151,7 @@
           value: {
             html: teachersPreviouslyMentored
           }
-        } if mentor.previouslyMentored | length > 0
+        } if (mentor.previouslyMentored | length > 0 and false)
       ]
     }) }}
 
