@@ -162,10 +162,8 @@
 
       {% if mentor.training.completedOn %}
         {{ govukTag({ text: "Training completed", classes: "govuk-tag--green" }) }}
-        <p class="govuk-body govuk-!-margin-top-2">Completed {{ mentor.training.completedOn | termName }}</p>
       {% elseif mentor.training.startedOn %}
         {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
-        <p class="govuk-body govuk-!-margin-top-2">Started {{ mentor.training.startedOn | termName }}</p>
       {% else %}
         {{ govukTag({ text: "Not yet started", classes: "govuk-tag--blue" }) }}
         <p class="govuk-body govuk-!-margin-top-2">Training can begin once they are assigned an ECT to mentor</p>
