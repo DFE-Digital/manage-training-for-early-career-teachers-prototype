@@ -1,0 +1,10 @@
+
+// This is a wider version of the primary navigation, used on the admin
+// interface which uses a wider maximum width.
+.app-primary-navigation--wide .govuk-width-container {
+  @media (min-width: 1280px) {
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
