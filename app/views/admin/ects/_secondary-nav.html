@@ -1,27 +1,26 @@
-{% from "../../../components/secondary-nav/macro.njk" import appSecondaryNav %}
-
-{{ appSecondaryNav({
+{{ xGovukSecondaryNavigation({
   classes: "govuk-!-margin-top-1 govuk-!-padding-bottom-0",
+  visuallyHiddenTitle: "Secondary menu",  
   items: [
     {
       text: "Details",
       href: "/admin/ects/show",
-      selected: (currentSubSection == "details")
+      current: (currentSubSection == "details")
     },
     {
       text: "Training",
       href: "/admin/ects/training",
-      selected: (currentSubSection == "training")
+      current: (currentSubSection == "training")
     },
     {
       text: "Declarations",
       href: "/admin/ects/declarations",
-      selected: (currentSubSection == "declarations")
+      current: (currentSubSection == "declarations")
     },
     {
       text: "Audit log",
       href: "/admin/ects/audit-log",
-      selected: (currentSubSection == "audit-log")
+      current: (currentSubSection == "audit-log")
     }
   ]
  }) }}
