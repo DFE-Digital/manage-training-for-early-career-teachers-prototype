@@ -120,7 +120,7 @@
       <p class="govuk-body govuk-!-margin-bottom-3"><a href="/mentors/{{ mentor.id }}/assign-ect" class="govuk-link">Assign {{ "another" if (mentor.earlyCareerTeachers | length) > 0 else "an" }} ECT to this mentor</span></a>
     {% endset %}
 
-
+    <!-- The 'previously mentored' section has been hidden, as we’re not sure we have the data for this yet. -->
     {% if mentor.previouslyMentored | length > 0  %}
       {% set teachersPreviouslyMentored %}
         <ul class="govuk-list">
@@ -151,7 +151,7 @@
           value: {
             html: teachersPreviouslyMentored
           }
-        } if mentor.previouslyMentored | length > 0
+        } if (mentor.previouslyMentored | length > 0 and false)
       ]
     }) }}
 
@@ -162,10 +162,8 @@
 
       {% if mentor.training.completedOn %}
         {{ govukTag({ text: "Training completed", classes: "govuk-tag--green" }) }}
-        <p class="govuk-body govuk-!-margin-top-2">Completed {{ mentor.training.completedOn | termName }}</p>
       {% elseif mentor.training.startedOn %}
         {{ govukTag({ text: "Training", classes: "govuk-tag--turquoise" }) }}
-        <p class="govuk-body govuk-!-margin-top-2">Started {{ mentor.training.startedOn | termName }}</p>
       {% else %}
         {{ govukTag({ text: "Not yet started", classes: "govuk-tag--blue" }) }}
         <p class="govuk-body govuk-!-margin-top-2">Training can begin once they are assigned an ECT to mentor</p>
@@ -184,7 +182,7 @@
           value: {
             html: mentorTrainingStatusHtml
           }
-        },
+        } if mentor.training.completedOn,
         {
           key: {
             text: "Lead provider"
