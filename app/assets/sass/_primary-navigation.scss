@@ -8,3 +8,18 @@
     margin-right: auto;
   }
 }
+
+.app-primary-navigation--reversed {
+  background-color: $govuk-brand-colour;
+  // border-bottom-color: govuk-colour("white");
+}
+
+.app-primary-navigation--reversed .x-govuk-primary-navigation__item--current {
+  border-bottom-color: govuk-colour("white");
+  border-bottom-width: 6px;
+}
+
+.app-primary-navigation--reversed a,
+.app-primary-navigation--reversed a:visited {
+  color: govuk-colour("white");
+}
