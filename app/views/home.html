@@ -1,0 +1,171 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Manage your training" %}
+{% set currentSection="home" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Plymouth Primary School</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+
+    <h2 class="govuk-heading-m">Summary</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Induction tutor"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "induction tutor"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Mentors"
+          },
+          value: {
+            text: (data.mentors | length)
+          }
+        },
+        {
+          key: {
+            text: "ECTs"
+          },
+          value: {
+            text: (data.teachers | length)
+          }
+        },
+        {
+          key: {
+            text: "ECTs without mentors"
+          },
+          value: {
+            text: ectsWithoutMentors
+          }
+        }
+      ]
+    }) }}
+
+
+<h2 class="govuk-heading-m">Academic year</h2>
+
+{% set thisYearHtml %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Programme"
+      },
+      value: {
+        text: "Use a training provider funded by the DfE"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Appropriate body"
+      },
+      value: {
+        text: "EBQ"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: "Ambition"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Delivery partner"
+      },
+      value: {
+        text: "Devon Teaching School Hub"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% endset -%}
+
+{{ govukTabs({
+  items: [
+    {
+      label: "2023 to 2024",
+      id: "thisYear",
+      panel: {
+        html: thisYearHtml
+      }
+    },
+    {
+      label: "2022 to 2023",
+      id: "lastYear",
+      panel: {
+        html: thisYearHtml
+      }
+    },
+    {
+      label: "2021 to 2022",
+      id: "yearBeforeThat",
+      panel: {
+        html: thisYearHtml
+      }
+    }
+  ]
+}) }}
+
+  </div>
+</div>
+
+
+{% endblock %}

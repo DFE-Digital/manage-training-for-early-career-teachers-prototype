@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set pageName="When is " + data.name + " moving to your school?" %}
+{% set currentSection="ects" %}
 
 {% block beforeContent %}
   {{ govukBackLink({href: "/early-career-teachers/add/trn"}) }}

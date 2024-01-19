@@ -26,9 +26,13 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       classes: "app-primary-navigation--reversed",
       visuallyHiddenTitle: "Navigation",
       items: [{
+        text: "Home",
+        href: "/home",
+        current: (currentSection == "home")
+      },{
         text: "Early career teachers",
         href: "/early-career-teachers",
-        current: (currentSection != "mentors")
+        current: (currentSection == "ects")
       }, {
         text: "Mentors",
         href: "/mentors",

@@ -10,3 +10,12 @@ const router = govukPrototypeKit.requests.setupRouter()
 require('./routes/early-career-teachers')(router)
 require('./routes/mentors')(router)
 require('./routes/admin')(router)
+
+router.get('/home', (req, res) => {
+
+  const ectsWithoutMentors = 4;
+
+  res.render('home', {
+    ectsWithoutMentors
+  })
+});

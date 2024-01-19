@@ -5,6 +5,7 @@
 {% else %}
   {% set pageName="Who is the mentor for " + teacher.name + "?" %}
 {% endif %}
+{% set currentSection="ects" %}
 
 {% block beforeContent %}
   {{ govukBackLink({href: "/early-career-teachers/" + id}) }}

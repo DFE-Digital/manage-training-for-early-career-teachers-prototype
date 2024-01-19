@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set pageName="What’s " + data.name + " date of birth?" %}
+{% set currentSection="ects" %}
 
 {% block beforeContent %}
   {{ govukBackLink({href: "/early-career-teachers/add/trn"}) }}
