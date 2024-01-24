@@ -13,9 +13,9 @@ const generateSchool = () => {
     school.sentDate = faker.date.recent({ days: 21 })
   
     school.status = faker.helpers.arrayElement([
-      'stauts 1 tbc',
-      'stauts 2 tbc',
-      'stauts 3 tbc'
+      'status 1 tbc',
+      'status 2 tbc',
+      'status 3 tbc'
     ])
   
     if(school.status == 'stauts 1 tbc') {
@@ -34,14 +34,8 @@ const generateSchool = () => {
     // School details
     school.details = {}
     school.details.name = faker.company.name()
-    school.details.emailAddress = `${school.details.name.toLowerCase()}}@gmail.com`
+    school.details.emailAddress = `${school.details.name.toLowerCase()}@gmail.com`
     school.details.phoneNumber = faker.helpers.replaceSymbolWithNumber('079## ### ###')
-    school.details.address = {
-      line1: '1 The Avenue',
-      town: 'London',
-      postcode: 'W9 1ST'
-    }
-  
   
     return school
   }

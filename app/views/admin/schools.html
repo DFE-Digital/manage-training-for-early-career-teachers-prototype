@@ -1,7 +1,6 @@
 {% extends "layouts/admin.html" %}
 
 {% set pageName="Schools" %}
-{% set currentSection="schools" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -9,6 +8,8 @@
 {% block content %}
 
   <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+  {{data.schools | log}}
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -22,41 +23,44 @@
       </div>
 
       {% if data.schools.length %}
-        {% for school in data.schools %}
-          <div class="app-list">
-              <div class="app-list__item">
-                <h2 class="govuk-heading-m">
-                  <a href="/admin/schools/{{ schools.id }}" class="govuk-link">{{ schools.name }}</a>
-                </h2>
+        <div class="school-list">
+          {% for school in data.schools %}
+            <div class="school-list__item">
+              <h2 class="govuk-heading-s">
+                <a href="/admin/{{school.id}}">
+                  {{school.details.name}}
+                </a>
+              </h2>
 
-                {{ govukTag({
-                  text: "some bobbins"
-                }) }}
+              {{ govukTag({
+                text: school.status,
+                classes: "govuk-tag--grey"
+              }) }}
 
-                {{ govukSummaryList({
-                  classes: "govuk-summary-list--no-border",
-                  rows: [
-                    {
-                      key: {
-                        text: "URN"
-                      },
-                      value: {
-                        text: "bobbins"
-                      }
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border",
+                rows: [
+                  {
+                    key: {
+                      text: "Email address"
                     },
-                    {
-                      key: {
-                        text: "Induction teacher"
-                      },
-                      value: {
-                        text: "blah blah"
-                      }
+                    value: {
+                      text: school.details.emailAddress
                     }
-                  ]
-                }) }}
-              </div>
-          </div>
-        {% endfor %}
+                  },
+                  {
+                    key: {
+                      text: "Phone Number"
+                    },
+                    value: {
+                      text: school.details.phoneNumber
+                    }
+                  }
+                ]
+              }) }}
+            </div>
+          {% endfor %}
+        </div>
       {% else %}
         <p>There are no results.</p>
       {% endif %}
