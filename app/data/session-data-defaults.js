@@ -7,7 +7,7 @@ module.exports = {
       "status": "stauts 3 tbc",
       "details": {
         "name": "Willow Park Grammar School",
-        "emailAddress": "schuster inc@gmail.com",
+        "emailAddress": "WillowParkGrammarSchool@gmail.com",
         "phoneNumber": "07908 483 910",
         "address": {
           "line1": "1 The Avenue",
@@ -23,7 +23,7 @@ module.exports = {
       "approvedDate": "2024-01-21T23:32:47.148Z",
       "details": {
         "name": "Winters Technical School",
-        "emailAddress": "abbott, hilll and cole@gmail.com",
+        "emailAddress": "WintersTechnicalSchool@gmail.com",
         "phoneNumber": "07985 075 060",
         "address": {
           "line1": "1 The Avenue",
@@ -39,7 +39,7 @@ module.exports = {
       "rejectedDate": "2024-01-22T17:05:32.613Z",
       "details": {
         "name": "Lakewood Academy",
-        "emailAddress": "smitham - gleichner@gmail.com",
+        "emailAddress": "Lakewood.Academy@gmail.com",
         "phoneNumber": "07985 126 317",
         "address": {
           "line1": "1 The Avenue",
@@ -55,7 +55,7 @@ module.exports = {
       "approvedDate": "2024-01-23T12:15:25.574Z",
       "details": {
         "name": "Seal Gulch High School",
-        "emailAddress": "little and sons@gmail.com",
+        "emailAddress": "SealGulchHigh@gmail.com",
         "phoneNumber": "07907 244 364",
         "address": {
           "line1": "1 The Avenue",
@@ -71,7 +71,7 @@ module.exports = {
       "approvedDate": "2024-01-24T14:56:59.750Z",
       "details": {
         "name": "Highland Elementary",
-        "emailAddress": "schroeder and sons@gmail.com",
+        "emailAddress": "HighlandElementary@gmail.com",
         "phoneNumber": "07931 892 035",
         "address": {
           "line1": "1 The Avenue",
@@ -87,11 +87,11 @@ module.exports = {
       "approvedDate": "2024-01-24T14:37:24.287Z",
       "details": {
         "name": "Waterford Academy",
-        "emailAddress": "johnson - padberg@gmail.com",
+        "emailAddress": "WaterfordAcademy@gmail.com",
         "phoneNumber": "07938 110 251",
         "address": {
           "line1": "1 The Avenue",
-          "town": "London",
+          "town": "London", 
           "postcode": "W9 1ST"
         }
       }
@@ -118,7 +118,7 @@ module.exports = {
       "approvedDate": "2024-01-19T21:28:38.797Z",
       "details": {
         "name": "Valley View Middle School",
-        "emailAddress": "stroman - connelly@gmail.com",
+        "emailAddress": "ValleyViewMiddleSchooly@gmail.com",
         "phoneNumber": "07973 258 756",
         "address": {
           "line1": "1 The Avenue",
@@ -133,7 +133,7 @@ module.exports = {
       "status": "stauts 3 tbc",
       "details": {
         "name": "Faraday High School",
-        "emailAddress": "little - zieme@gmail.com",
+        "emailAddress": "FaradayHighSchool@gmail.com",
         "phoneNumber": "07929 063 262",
         "address": {
           "line1": "1 The Avenue",
@@ -149,7 +149,7 @@ module.exports = {
       "approvedDate": "2024-01-22T01:26:26.631Z",
       "details": {
         "name": "Lakewood Academy",
-        "emailAddress": "weimann - ondricka@gmail.com",
+        "emailAddress": "LakewoodAcademy@gmail.com",
         "phoneNumber": "07969 396 264",
         "address": {
           "line1": "1 The Avenue",
