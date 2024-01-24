@@ -1,5 +1,8 @@
+const schools = require('./schools.json')
+
 module.exports = {
 
+  schools,
 
   teachers: [
     {
@@ -279,30 +282,6 @@ module.exports = {
       training: {
         leadProvider: "Ambition Institute",
         deliveryPartner: "Selby Teaching School Hub"
-      }
-    }
-  ],
-  schools: [
-    {
-      id: "123456",
-      name: "BeeBee Secondary School",
-      localAuthority: "Some LA",
-      address: {
-        line1: "Big Office Centre",
-        line2: "22 Some Street",
-        town: "London",
-        postalCode: "LDN XXX"
-      }
-    },
-    {
-      id: "735242",
-      name: "Abacus Primary School",
-      localAuthority: "Camden",
-      address: {
-        line1: "Jubilee Waterside Centre",
-        line2: "105 Camley Street",
-        town: "London",
-        postalCode: "N1C 4PF"
       }
     }
   ],

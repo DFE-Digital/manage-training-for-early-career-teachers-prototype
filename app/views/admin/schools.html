@@ -8,86 +8,63 @@
 
 {% block content %}
 
-  
-
   <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-  {# <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
-    [Search and filter form]
-  </div> #}
-  
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
       {% include "_includes/filter-panel.njk" %}
     </div>
     <div class="app-filter-layout__content">
+
+
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
       </div>
 
-      {# <table class="govuk-table govuk-!-margin-3">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">School</th>
-            <th scope="col" class="govuk-table__header">URN</th>
-            <th scope="col" class="govuk-table__header">Induction tutor</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {% for school in data.schools %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
-              <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
-              <td class="govuk-table__cell">headteacher.name@school-name.sch.uk</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table> #}
-      {% for school in data.schools %}
+      {% if data.schools.length %}
+        {% for school in data.schools %}
+          <div class="app-list">
+              <div class="app-list__item">
+                <h2 class="govuk-heading-m">
+                  <a href="/admin/schools/{{ schools.id }}" class="govuk-link">{{ schools.name }}</a>
+                </h2>
 
-      {{ govukSummaryList({
-        card: {
-          title: {
-            html: '<a href="/admin/schools/' + school.id + 'class="govuk-link">' + school.name + '</a>'
-          }
-        },
-        rows: [
-          {
-            key: {
-              text: "URN"
-            },
-            value: {
-              html: '<p>' + (736524 - loop.index0 * 33438) +  '</p>'
-            }
-          },
-          {
-            key: {
-              text: "Induction teacher"
-            },
-            value: {
-              html: "headteacher.name@school-name.sch.uk"
-            }
-          },
-          {
-            key: {
-              text: "Some other stuff"
-            },
-            value: {
-              html: "blah blah etc etc"
-            }
-          }
-        ]
-      }) }}
-  
-    {% endfor %}
-      
+                {{ govukTag({
+                  text: "some bobbins"
+                }) }}
+
+                {{ govukSummaryList({
+                  classes: "govuk-summary-list--no-border",
+                  rows: [
+                    {
+                      key: {
+                        text: "URN"
+                      },
+                      value: {
+                        text: "bobbins"
+                      }
+                    },
+                    {
+                      key: {
+                        text: "Induction teacher"
+                      },
+                      value: {
+                        text: "blah blah"
+                      }
+                    }
+                  ]
+                }) }}
+              </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
+
+
     </div>
-</div>  
-
-
-
+  </div>
 {% endblock %}
-
 
 {% block scripts %}
   {{super()}}
