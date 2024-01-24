@@ -43,9 +43,45 @@
           {% endfor %}
         </tbody>
       </table> #}
+      {% for school in data.schools %}
 
+      {{ govukSummaryList({
+        card: {
+          title: {
+            html: '<a href="/admin/schools/' + school.id + 'class="govuk-link">' + school.name + '</a>'
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "URN"
+            },
+            value: {
+              html: '<p>' + (736524 - loop.index0 * 33438) +  '</p>'
+            }
+          },
+          {
+            key: {
+              text: "Induction teacher"
+            },
+            value: {
+              html: "headteacher.name@school-name.sch.uk"
+            }
+          },
+          {
+            key: {
+              text: "Some other stuff"
+            },
+            value: {
+              html: "blah blah etc etc"
+            }
+          }
+        ]
+      }) }}
+  
+    {% endfor %}
       
-        </div>
+    </div>
 </div>  
 
 
