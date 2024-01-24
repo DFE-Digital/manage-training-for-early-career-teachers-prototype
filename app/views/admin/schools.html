@@ -8,16 +8,24 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+  
 
-      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+  <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
-        [Search and filter form]
+  {# <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
+    [Search and filter form]
+  </div> #}
+<div class="govuk-grid-row">
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "_includes/filter-panel.njk" %}
+    </div>
+    <div class="app-filter-layout__content">
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
       </div>
 
-      <table class="govuk-table">
+      <table class="govuk-table govuk-!-margin-3">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">School</th>
@@ -35,8 +43,33 @@
           {% endfor %}
         </tbody>
       </table>
-
-  </div>
+    </div>
+</div>  
 </div>
 
+
+{% endblock %}
+
+
+{% block scripts %}
+  {{super()}}
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
 {% endblock %}
