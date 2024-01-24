@@ -1,46 +1,63 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[statuses]",
-    name: "filters[statuses]",
+    idPrefix: "filters[participantType]",
+    name: "filters[participantType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Status",
+        text: "Participant type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Received',
-      text: 'Received'
+      value: 'SIT',
+      text: 'SIT'
     }, {
-      value: 'Approved',
-      text: 'Approved'
-    }, {
-      value: 'Rejected',
-      text: 'Rejected'
+      value: 'Mentor',
+      text: 'Mentor'
     }],
-    values: data.filters.statuses
+    values: data.filters.participantType
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[numberOfBalls]",
-    name: "filters[numberOfBalls]",
+    idPrefix: "filters[orgType]",
+    name: "filters[orgType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Number of balls",
+        text: "Organisation type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: '1 or 2',
-      text: '1 or 2'
+      value: 'School',
+      text: 'School'
     }, {
-      value: '3 or more',
-      text: '3 or more'
+      value: 'MAT',
+      text: 'MAT'
     }],
-    values: data.filters.numberOfBalls
+    values: data.filters.orgType
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[trainingStatus]",
+    name: "filters[trainingStatus]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Training status",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'School',
+      text: 'School'
+    }, {
+      value: 'MAT',
+      text: 'MAT'
+    }],
+    values: data.filters.trainingStatus
   }) }}
 
 {% endset %}
