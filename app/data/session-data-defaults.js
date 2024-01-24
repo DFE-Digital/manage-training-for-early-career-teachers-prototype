@@ -284,6 +284,17 @@ module.exports = {
   ],
   schools: [
     {
+      id: "123456",
+      name: "BeeBee Secondary School",
+      localAuthority: "Some LA",
+      address: {
+        line1: "Big Office Centre",
+        line2: "22 Some Street",
+        town: "London",
+        postalCode: "LDN XXX"
+      }
+    },
+    {
       id: "735242",
       name: "Abacus Primary School",
       localAuthority: "Camden",
