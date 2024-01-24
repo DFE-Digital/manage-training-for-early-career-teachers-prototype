@@ -13,6 +13,11 @@
 @import "_table";
 @import "_width-container";
 
+@import "components/_action-bar";
+@import "components/_filter-layout";
+@import "components/_filter-panel";
+@import "components/_hidden";
+
 
 .app-id {
   color: $govuk-secondary-text-colour;
