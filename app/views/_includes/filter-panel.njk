@@ -1,26 +1,6 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[participantType]",
-    name: "filters[participantType]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Participant type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'SIT',
-      text: 'SIT'
-    }, {
-      value: 'Mentor',
-      text: 'Mentor'
-    }],
-    values: data.filters.participantType
-  }) }}
-
-  {{ govukCheckboxes({
     idPrefix: "filters[orgType]",
     name: "filters[orgType]",
     classes: "govuk-checkboxes--small",
@@ -40,7 +20,31 @@
     values: data.filters.orgType
   }) }}
 
-  {{ govukCheckboxes({
+  
+
+
+  {{ govukRadios({
+  classes: "govuk-radios--inline govuk-radios--small",
+  name: "Actor",
+  fieldset: {
+    legend: {
+      text: "Participant",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Mentor",
+      text: "Mentor"
+    },
+    {
+      value: "ECT",
+      text: "ECT"
+    }
+  ]
+}) }}
+
+{{ govukCheckboxes({
     idPrefix: "filters[trainingStatus]",
     name: "filters[trainingStatus]",
     classes: "govuk-checkboxes--small",
@@ -51,14 +55,38 @@
       }
     },
     items: [{
-      value: 'School',
-      text: 'School'
-    }, {
-      value: 'MAT',
-      text: 'MAT'
+      value: 'Training',
+      text: 'Training'
+    },
+    {
+      value: 'Completed',
+      text: 'Completed'
+    },
+    {
+      value: 'Withdrawn',
+      text: 'Withdrawn'
+    },
+    {
+      value: 'Deferred',
+      text: 'Deferred'
     }],
     values: data.filters.trainingStatus
   }) }}
+
+  {{ govukDateInput({
+  id: "filters[firstRegistered]",
+  namePrefix: "filters[firstRegistered]",
+  fieldset: {
+    legend: {
+      text: "First registerd",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2007"
+  }
+}) }}
+  
 
 {% endset %}
 
