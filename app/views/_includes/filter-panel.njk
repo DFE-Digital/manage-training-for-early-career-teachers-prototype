@@ -45,32 +45,28 @@
 }) }} #}
 
 {{ govukCheckboxes({
-    idPrefix: "filters[trainingStatus]",
-    name: "filters[trainingStatus]",
+    idPrefix: "filters[programmeType]",
+    name: "filters[programmeType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Training status",
+        text: "Programme Type",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Training',
-      text: 'Training'
+      value: 'full induction programme',
+      text: 'full induction programme'
     },
     {
-      value: 'Completed',
-      text: 'Completed'
+      value: 'core induction programme',
+      text: 'core induction programme'
     },
     {
-      value: 'Withdrawn',
-      text: 'Withdrawn'
-    },
-    {
-      value: 'Deferred',
-      text: 'Deferred'
+      value: 'Self directed programme',
+      text: 'Self directed programme'
     }],
-    values: data.filters.trainingStatus
+    values: data.filters.programmeType
   }) }}
 
   {{ govukDateInput({
@@ -78,7 +74,7 @@
   namePrefix: "filters[firstRegistered]",
   fieldset: {
     legend: {
-      text: "First registerd",
+      text: "First registered",
       classes: "govuk-fieldset__legend--s"
     }
   },
