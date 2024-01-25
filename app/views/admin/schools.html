@@ -1,6 +1,7 @@
 {% extends "layouts/admin.html" %}
 
 {% set pageName="Schools" %}
+{% set currentSection="schools" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -27,7 +28,7 @@
           {% for school in data.schools %}
             <div class="school-list__item">
               <h2 class="govuk-heading-s">
-                <a href="/admin/{{school.id}}">
+                <a href="./schools/show">
                   {{school.details.name}}
                 </a>
               </h2>
