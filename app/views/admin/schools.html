@@ -8,35 +8,89 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+  <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+  {{data.schools | log}}
 
-      <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
-        [Search and filter form]
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "_includes/filter-panel.njk" %}
+    </div>
+    <div class="app-filter-layout__content">
+
+      {% include "_includes/search-form.njk" %}
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
       </div>
 
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">School</th>
-            <th scope="col" class="govuk-table__header">URN</th>
-            <th scope="col" class="govuk-table__header">Induction tutor</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
+      {% if data.schools.length %}
+        <div class="school-list">
           {% for school in data.schools %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
-              <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
-              <td class="govuk-table__cell">headteacher.name@school-name.sch.uk</td>
-            </tr>
+            <div class="school-list__item">
+              <h2 class="govuk-heading-s">
+                <a href="./schools/show">
+                  {{school.details.name}}
+                </a>
+              </h2>
+
+              {{ govukTag({
+                text: school.status,
+                classes: "govuk-tag--blue"
+              }) }}
+
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border",
+                rows: [
+                  {
+                    key: {
+                      text: "Email address"
+                    },
+                    value: {
+                      text: school.details.emailAddress
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Phone Number"
+                    },
+                    value: {
+                      text: school.details.phoneNumber
+                    }
+                  }
+                ]
+              }) }}
+            </div>
           {% endfor %}
-        </tbody>
-      </table>
+        </div>
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
 
+
+    </div>
   </div>
-</div>
+{% endblock %}
 
+{% block scripts %}
+  {{super()}}
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
 {% endblock %}
