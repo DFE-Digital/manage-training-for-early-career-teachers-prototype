@@ -24,6 +24,26 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[phase]",
+    name: "filters[phase]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Phase",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Primary',
+      text: 'Primary'
+    }, {
+      value: 'Secondary',
+      text: 'Secondary'
+    }],
+    values: data.filters.phase
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filters[partnership]",
     name: "filters[partnership]",
     classes: "govuk-checkboxes--small",
