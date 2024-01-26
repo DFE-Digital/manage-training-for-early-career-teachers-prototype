@@ -54,9 +54,10 @@
                 </a>
               </h2>
 
+              
               {{ govukTag({
                 text: school.programmeType,
-                classes: "govuk-tag--blue"
+                classes: school.programmeType | statusColour
               }) }}
 
               {{ govukSummaryList({

@@ -45,7 +45,7 @@ module.exports = {
       "name": "Seal Gulch High School",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "School funded FIP",
+      "programmeType": "FIP",
       "inductionTutor": "tutor.SealGulchHigh@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -58,7 +58,7 @@ module.exports = {
       "name": "Highland Elementary",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "DIY",
+      "programmeType": "FIP",
       "inductionTutor": "tutor.HighlandElementary@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -71,7 +71,7 @@ module.exports = {
       "name": "Waterford Academy",
       "localAuthority": "Hertfordshire",
       "status": "stauts 3 tbc",
-      "programmeType": "FIP",
+      "programmeType": "No programme",
       "inductionTutor": "WaterfordAcademy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
