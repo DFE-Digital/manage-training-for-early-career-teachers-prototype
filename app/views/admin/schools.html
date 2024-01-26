@@ -8,7 +8,27 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-l">{{ pageName }}</h1>
+<div class="moj-page-header-actions">
+
+  <div class="moj-page-header-actions__title">
+    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+  </div>
+
+  <div class="moj-page-header-actions__actions">
+
+    <div class="moj-button-menu">
+      <div class="moj-button-menu__wrapper">
+
+        <button type="submit" class="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action" data-module="govuk-button">
+          Download extract
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
   {{data.schools | log}}
 
@@ -29,13 +49,13 @@
           {% for school in data.schools %}
             <div class="school-list__item">
               <h2 class="govuk-heading-s">
-                <a href="./schools/show">
-                  {{school.details.name}}
+                <a href="./schools/{{school.id}}">
+                  {{ school.name }}
                 </a>
               </h2>
 
               {{ govukTag({
-                text: school.status,
+                text: school.programmeType,
                 classes: "govuk-tag--blue"
               }) }}
 
@@ -44,18 +64,26 @@
                 rows: [
                   {
                     key: {
-                      text: "Email address"
+                      text: "URN"
                     },
                     value: {
-                      text: school.details.emailAddress
+                      text: school.id
                     }
                   },
                   {
                     key: {
-                      text: "Phone Number"
+                      text: "Local Authority"
                     },
                     value: {
-                      text: school.details.phoneNumber
+                      text: school.localAuthority
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Induction tutor"
+                    },
+                    value: {
+                      text: school.inductionTutor
                     }
                   }
                 ]

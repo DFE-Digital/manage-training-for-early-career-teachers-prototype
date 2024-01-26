@@ -3,163 +3,84 @@ module.exports = {
   schools: [
     {
       "id": "162480",
-      "sentDate": "2024-01-17T13:30:22.655Z",
+      "name": "Willow Park Grammar School",
+      "localAuthority": "Camden",
       "status": "stauts 3 tbc",
-      "details": {
-        "name": "Willow Park Grammar School",
-        "emailAddress": "WillowParkGrammarSchool@gmail.com",
-        "phoneNumber": "07908 483 910",
-        "address": {
-          "line1": "1 The Avenue",
-          "town": "London",
-          "postcode": "W9 1ST"
-        }
+      "programmeType": "FIP",
+      "inductionTutor": "tutor.WillowPark@gmail.com",
+      "address": {
+        "line1": "1 The Avenue",
+        "town": "London",
+        "postcode": "W9 1ST"
       }
     },
     {
       "id": "295588",
-      "sentDate": "2024-01-17T03:03:32.324Z",
+      "name": "Winters Technical School",
+      "localAuthority": "Southwark",
       "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-21T23:32:47.148Z",
-      "details": {
-        "name": "Winters Technical School",
-        "emailAddress": "WintersTechnicalSchool@gmail.com",
-        "phoneNumber": "07985 075 060",
-        "address": {
+      "programmeType": "CIP",
+      "inductionTutor": "tutor.WintersTechnicalSchool@gmail.com",
+      "address": {
           "line1": "1 The Avenue",
           "town": "London",
           "postcode": "W9 1ST"
-        }
       }
     },
     {
       "id": "579219",
-      "sentDate": "2024-01-04T23:02:18.603Z",
-      "status": "stauts 1 tbc",
-      "rejectedDate": "2024-01-22T17:05:32.613Z",
-      "details": {
-        "name": "Lakewood Academy",
-        "emailAddress": "Lakewood.Academy@gmail.com",
-        "phoneNumber": "07985 126 317",
+      "name": "Lakewood Academy",
+      "localAuthority": "Somerset",
+      "status": "stauts 2 tbc",
+      "programmeType": "DIY",
+      "inductionTutor": "Lakewood.Academy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
           "postcode": "W9 1ST"
-        }
       }
     },
     {
       "id": "896436",
-      "sentDate": "2024-01-06T23:52:53.617Z",
+      "name": "Seal Gulch High School",
+      "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-23T12:15:25.574Z",
-      "details": {
-        "name": "Seal Gulch High School",
-        "emailAddress": "SealGulchHigh@gmail.com",
-        "phoneNumber": "07907 244 364",
+      "programmeType": "School funded FIP",
+      "inductionTutor": "tutor.SealGulchHigh@gmail.com",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
           "postcode": "W9 1ST"
         }
-      }
     },
     {
       "id": "177856",
-      "sentDate": "2024-01-12T22:54:38.722Z",
+      "name": "Highland Elementary",
+      "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-24T14:56:59.750Z",
-      "details": {
-        "name": "Highland Elementary",
-        "emailAddress": "HighlandElementary@gmail.com",
-        "phoneNumber": "07931 892 035",
+      "programmeType": "DIY",
+      "inductionTutor": "tutor.HighlandElementary@gmail.com",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
           "postcode": "W9 1ST"
         }
-      }
     },
     {
       "id": "600213",
-      "sentDate": "2024-01-24T06:45:00.252Z",
-      "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-24T14:37:24.287Z",
-      "details": {
-        "name": "Waterford Academy",
-        "emailAddress": "WaterfordAcademy@gmail.com",
-        "phoneNumber": "07938 110 251",
+      "name": "Waterford Academy",
+      "localAuthority": "Hertfordshire",
+      "status": "stauts 3 tbc",
+      "programmeType": "FIP",
+      "inductionTutor": "WaterfordAcademy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
           "town": "London", 
           "postcode": "W9 1ST"
         }
-      }
-    },
-    {
-      "id": "166380",
-      "sentDate": "2024-01-22T21:38:09.913Z",
-      "status": "stauts 3 tbc",
-      "details": {
-        "name": "Oak Grove High",
-        "emailAddress": "willms - hoeger@gmail.com",
-        "phoneNumber": "07933 003 691",
-        "address": {
-          "line1": "1 The Avenue",
-          "town": "London",
-          "postcode": "W9 1ST"
-        }
-      }
-    },
-    {
-      "id": "529312",
-      "sentDate": "2024-01-17T09:19:55.484Z",
-      "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-19T21:28:38.797Z",
-      "details": {
-        "name": "Valley View Middle School",
-        "emailAddress": "ValleyViewMiddleSchooly@gmail.com",
-        "phoneNumber": "07973 258 756",
-        "address": {
-          "line1": "1 The Avenue",
-          "town": "London",
-          "postcode": "W9 1ST"
-        }
-      }
-    },
-    {
-      "id": "734144",
-      "sentDate": "2024-01-07T20:59:42.453Z",
-      "status": "stauts 3 tbc",
-      "details": {
-        "name": "Faraday High School",
-        "emailAddress": "FaradayHighSchool@gmail.com",
-        "phoneNumber": "07929 063 262",
-        "address": {
-          "line1": "1 The Avenue",
-          "town": "London",
-          "postcode": "W9 1ST"
-        }
-      }
-    },
-    {
-      "id": "456103",
-      "sentDate": "2024-01-13T00:58:15.038Z",
-      "status": "stauts 2 tbc",
-      "approvedDate": "2024-01-22T01:26:26.631Z",
-      "details": {
-        "name": "Lakewood Academy",
-        "emailAddress": "LakewoodAcademy@gmail.com",
-        "phoneNumber": "07969 396 264",
-        "address": {
-          "line1": "1 The Avenue",
-          "town": "London",
-          "postcode": "W9 1ST"
-        }
-      }
     }
+    
   ],
-
   teachers: [
     {
       id: "JDY734",

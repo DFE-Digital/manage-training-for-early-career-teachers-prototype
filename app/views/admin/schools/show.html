@@ -1,6 +1,7 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName = school.name %}
+{% set pageName = "School Name" %}
+
 {% set currentSection="schools" %}
 {% set currentSubSection="details" %}
 
@@ -14,7 +15,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m">Details</h2>
+    <h2 class="govuk-heading-m">{{ pageName }}</h1>
+
+    {{ data.schools | log }}
 
       {{ govukSummaryList({
         rows: [
@@ -31,7 +34,7 @@
               text: "Induction tutor"
             },
             value: {
-              html: 'Jane Smith<br><a href="#">jane.smith@schoolname.sch.uk</a>'
+              html: '<p>Jane Smith<br><a>' + data.schools.details.emailAddress + '</a>'
             },
             actions: {
               items: [
