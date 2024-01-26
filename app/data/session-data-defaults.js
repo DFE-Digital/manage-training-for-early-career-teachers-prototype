@@ -4,6 +4,7 @@ module.exports = {
     {
       "id": "162480",
       "name": "Willow Park Grammar School",
+      "participants": "10",
       "localAuthority": "Camden",
       "status": "stauts 3 tbc",
       "programmeType": "FIP",
@@ -17,6 +18,7 @@ module.exports = {
     {
       "id": "295588",
       "name": "Winters Technical School",
+      "participants": "5",
       "localAuthority": "Southwark",
       "status": "stauts 2 tbc",
       "programmeType": "CIP",
@@ -30,6 +32,7 @@ module.exports = {
     {
       "id": "579219",
       "name": "Lakewood Academy",
+      "participants": "14",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "DIY",
@@ -43,6 +46,7 @@ module.exports = {
     {
       "id": "896436",
       "name": "Seal Gulch High School",
+      "participants": "2",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "FIP",
@@ -56,6 +60,7 @@ module.exports = {
     {
       "id": "177856",
       "name": "Highland Elementary",
+      "participants": "15",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "FIP",
@@ -69,6 +74,7 @@ module.exports = {
     {
       "id": "600213",
       "name": "Waterford Academy",
+      "participants": "2",
       "localAuthority": "Hertfordshire",
       "status": "stauts 3 tbc",
       "programmeType": "No programme",
