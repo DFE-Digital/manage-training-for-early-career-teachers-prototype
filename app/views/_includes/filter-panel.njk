@@ -1,29 +1,69 @@
 {% set filterOptionsHtml %}
 
-  {# {{ govukCheckboxes({
-    idPrefix: "filters[orgType]",
-    name: "filters[orgType]",
+  {{ govukCheckboxes({
+    idPrefix: "filters[cohort]",
+    name: "filters[cohort]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Organisation type",
+        text: "Cohort",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'School',
-      text: 'School'
+      value: '20212022',
+      text: '2021-2022'
     }, {
-      value: 'MAT',
-      text: 'MAT'
+      value: '20222023',
+      text: '2022-2023'
+    }, {
+      value: '20232024',
+      text: '2023-2024'
     }],
-    values: data.filters.orgType
-  }) }} #}
+    values: data.filters.cohort
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[partnership]",
+    name: "filters[partnership]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Partnership",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Ambition Institute',
+      text: 'Ambition Institute'
+    },
+    {
+      value: 'Best practice Network',
+      text: 'Best practice Network'
+    },
+    {
+      value: 'National Institute of Teaching',
+      text: 'National Institute of Teaching'
+    },
+    {
+      value: 'Teacher Development Trust',
+      text: 'Teacher Development Trust'
+    },
+    {
+      value: 'Teach First',
+      text: 'Teach First'
+    },
+    {
+      value: 'UCL',
+      text: 'UCL'
+    }],
+    values: data.filters.partnership
+  }) }}
 
   
 
 
-  {{ govukRadios({
+  {# {{ govukRadios({
   classes: "govuk-radios--inline govuk-radios--small",
   name: "Actor",
   fieldset: {
@@ -42,7 +82,7 @@
       text: "No"
     }
   ]
-}) }}
+}) }} #}
 
 {{ govukCheckboxes({
     idPrefix: "filters[programmeType]",
