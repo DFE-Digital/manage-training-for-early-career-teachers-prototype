@@ -1,6 +1,6 @@
 {% set filterOptionsHtml %}
 
-  {{ govukCheckboxes({
+  {# {{ govukCheckboxes({
     idPrefix: "filters[orgType]",
     name: "filters[orgType]",
     classes: "govuk-checkboxes--small",
@@ -18,31 +18,31 @@
       text: 'MAT'
     }],
     values: data.filters.orgType
-  }) }}
+  }) }} #}
 
   
 
 
-  {# {{ govukRadios({
+  {{ govukRadios({
   classes: "govuk-radios--inline govuk-radios--small",
   name: "Actor",
   fieldset: {
     legend: {
-      text: "Participant",
+      text: "Lead provider",
       classes: "govuk-fieldset__legend--s"
     }
   },
   items: [
     {
-      value: "Mentor",
-      text: "Mentor"
+      value: "Yes",
+      text: "Yes"
     },
     {
-      value: "ECT",
-      text: "ECT"
+      value: "No",
+      text: "No"
     }
   ]
-}) }} #}
+}) }}
 
 {{ govukCheckboxes({
     idPrefix: "filters[programmeType]",
@@ -55,33 +55,25 @@
       }
     },
     items: [{
-      value: 'full induction programme',
-      text: 'full induction programme'
+      value: 'FIP',
+      text: 'FIP'
     },
     {
-      value: 'core induction programme',
-      text: 'core induction programme'
+      value: 'CIP',
+      text: 'CIP'
     },
     {
-      value: 'Self directed programme',
-      text: 'Self directed programme'
+      value: 'DIY',
+      text: 'DIY'
+    },
+    {
+      value: 'Self funded DIY',
+      text: 'Self funded DIY'
     }],
     values: data.filters.programmeType
   }) }}
 
-  {{ govukDateInput({
-  id: "filters[firstRegistered]",
-  namePrefix: "filters[firstRegistered]",
-  fieldset: {
-    legend: {
-      text: "First registered",
-      classes: "govuk-fieldset__legend--s"
-    }
-  },
-  hint: {
-    text: "For example, 27 3 2007"
-  }
-}) }}
+
   
 
 {% endset %}
