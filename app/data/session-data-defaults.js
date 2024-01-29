@@ -7,7 +7,7 @@ module.exports = {
       "participants": "10",
       "localAuthority": "Camden",
       "status": "stauts 3 tbc",
-      "programmeType": "FIP",
+      "programmeType": "Full induction programme",
       "inductionTutor": "tutor.WillowPark@gmail.com",
       "address": {
         "line1": "1 The Avenue",
@@ -21,7 +21,7 @@ module.exports = {
       "participants": "5",
       "localAuthority": "Southwark",
       "status": "stauts 2 tbc",
-      "programmeType": "CIP",
+      "programmeType": "Core induction programme",
       "inductionTutor": "tutor.WintersTechnicalSchool@gmail.com",
       "address": {
           "line1": "1 The Avenue",
@@ -35,7 +35,7 @@ module.exports = {
       "participants": "14",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "DIY",
+      "programmeType": "Do it yourself (DIY)",
       "inductionTutor": "Lakewood.Academy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -49,7 +49,7 @@ module.exports = {
       "participants": "2",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "FIP",
+      "programmeType": "Full induction programme",
       "inductionTutor": "tutor.SealGulchHigh@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -63,7 +63,7 @@ module.exports = {
       "participants": "15",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "FIP",
+      "programmeType": "Self funded DIY",
       "inductionTutor": "tutor.HighlandElementary@gmail.com",
         "address": {
           "line1": "1 The Avenue",

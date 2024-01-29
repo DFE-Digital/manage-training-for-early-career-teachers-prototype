@@ -5,7 +5,7 @@
     border-bottom: 1px solid $govuk-border-colour;
     padding-top: govuk-spacing(3);
     padding-bottom: govuk-spacing(3);
-    position: relative;
+    position: relative;   
   }
 
   h2 {
@@ -16,16 +16,25 @@
     position: absolute;
     top: govuk-spacing(4);
     right: 0;
+    font-size: 1rem;
+    max-width: 200px;
   }
 
-  .govuk-summary-list {
+  .govuk-summary-list-schools {
     margin-bottom: 0;
     @include govuk-font(16);
   }
 
-  .govuk-summary-list__key,
-  .govuk-summary-list__value {
-    padding-bottom: 0;
+  .govuk-summary-list-schools{
+    line-height: 0.3;
   }
+
+  .govuk-summary-list-schools__key,
+  .govuk-summary-list-schools__value {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+
 
 }

@@ -57,11 +57,12 @@
               
               {{ govukTag({
                 text: school.programmeType,
-                classes: school.programmeType | statusColour
+                classes: "govuk-tag-programme",
+                classes: school.programmeType | statusColour 
               }) }}
 
               {{ govukSummaryList({
-                classes: "govuk-summary-list--no-border",
+                classes: "govuk-summary-list--no-border govuk-summary-list-schools",
                 rows: [
                   {
                     key: {
