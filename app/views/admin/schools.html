@@ -3,6 +3,8 @@
 {% set pageName="Schools" %}
 {% set currentSection="schools" %}
 
+{% set numberOfSchools = data.schools.length %}
+
 {% block beforeContent %}
 {% endblock %}
 
@@ -11,7 +13,7 @@
 <div class="moj-page-header-actions">
 
   <div class="moj-page-header-actions__title">
-    <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+    <h1 class="govuk-heading-xl">{{ pageName }} ({{ numberOfSchools }})</h1>
   </div>
 
   <div class="moj-page-header-actions__actions">
