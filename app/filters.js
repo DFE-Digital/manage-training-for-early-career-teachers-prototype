@@ -41,7 +41,7 @@ addFilter('statusColour', status => {
     case 'Do it yourself (DIY)':
       return 'govuk-tag--green'
     case 'Self funded DIY':
-      return 'govuk-tag--green'
+      return 'govuk-tag--purple'
     case 'No programme':
       return 'govuk-tag--grey'
   }
