@@ -8,6 +8,7 @@ module.exports = {
       "localAuthority": "Camden",
       "status": "stauts 3 tbc",
       "programmeType": "FIP",
+      "phase": "Secondary",
       "inductionTutor": "tutor.WillowPark@gmail.com",
       "address": {
         "line1": "1 The Avenue",
@@ -17,12 +18,13 @@ module.exports = {
     },
     {
       "id": "295588",
-      "name": "Winters Technical School",
+      "name": "Winters Primary School",
       "participants": "5",
       "localAuthority": "Southwark",
       "status": "stauts 2 tbc",
       "programmeType": "CIP",
-      "inductionTutor": "tutor.WintersTechnicalSchool@gmail.com",
+      "phase": "Primary",
+      "inductionTutor": "tutor.WintersSchool@gmail.com",
       "address": {
           "line1": "1 The Avenue",
           "town": "London",
@@ -36,6 +38,7 @@ module.exports = {
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "DIY",
+      "phase": "Secondary",
       "inductionTutor": "Lakewood.Academy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -45,11 +48,12 @@ module.exports = {
     },
     {
       "id": "896436",
-      "name": "Seal Gulch High School",
+      "name": "Seal Gulch School",
       "participants": "2",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "FIP",
+      "phase": "Primary",
       "inductionTutor": "tutor.SealGulchHigh@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -64,6 +68,7 @@ module.exports = {
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
       "programmeType": "Self funded DIY",
+      "phase": "Secondary",
       "inductionTutor": "tutor.HighlandElementary@gmail.com",
         "address": {
           "line1": "1 The Avenue",
@@ -78,6 +83,7 @@ module.exports = {
       "localAuthority": "Hertfordshire",
       "status": "stauts 3 tbc",
       "programmeType": "No programme",
+      "phase": "Secondary",
       "inductionTutor": "WaterfordAcademy@gmail.com",
         "address": {
           "line1": "1 The Avenue",
