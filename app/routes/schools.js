@@ -2,7 +2,7 @@ const _ = require('lodash')
 
 module.exports = router => {
 
-  router.get('/schools', (req, res) => {
+  router.get('/admin', (req, res) => {
     let schools = req.session.data.schools
 
     let selectedProgrammeType = _.get(req.session.data.filters, 'programmeType')
@@ -19,7 +19,7 @@ module.exports = router => {
       })
     }
 
-    res.render('schools', {
+    res.render('admin/schools', {
       schools
     })
   })

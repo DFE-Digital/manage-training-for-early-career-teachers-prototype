@@ -49,7 +49,7 @@ module.exports = {
       "participants": "2",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "F",
+      "programmeType": "FIP",
       "inductionTutor": "tutor.SealGulchHigh@gmail.com",
         "address": {
           "line1": "1 The Avenue",

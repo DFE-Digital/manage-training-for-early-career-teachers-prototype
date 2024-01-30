@@ -5,7 +5,7 @@
 
 {% set numberOfSchools = data.schools.length %}
 
-{% set schools = req.session.data.schools %}
+
 
 {% block beforeContent %}
 {% endblock %}
@@ -48,9 +48,9 @@
         <div class="app-action-bar__filter"></div>
       </div>
 
-      {% if data.schools.length %}
+      {% if schools.length %}
         <div class="school-list">
-          {% for school in data.schools %}
+          {% for school in schools %}
             <div class="school-list__item">
               <h2 class="govuk-heading-s">
                 <a href="./schools/{{school.id}}">
