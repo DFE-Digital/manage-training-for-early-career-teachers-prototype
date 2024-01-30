@@ -44,6 +44,36 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[programmeType]",
+    name: "filters[programmeType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Programme Type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'FIP',
+      text: 'Full induction programme (FIP)'
+    },
+    {
+      value: 'CIP',
+      text: 'Core induction programme (CIP)'
+    },
+    {
+      value: 'DIY',
+      text: 'Do it yourself (DIY) programme'
+    },
+    {
+      value: 'Self funded DIY',
+      text: 'Self funded DIY programme'
+    }],
+    values: data.filters.programmeType
+  }) }}
+
+
+  {{ govukCheckboxes({
     idPrefix: "filters[partnership]",
     name: "filters[partnership]",
     classes: "govuk-checkboxes--small",
@@ -82,7 +112,6 @@
 
   
 
-
   {# {{ govukRadios({
   classes: "govuk-radios--inline govuk-radios--small",
   name: "Actor",
@@ -104,34 +133,6 @@
   ]
 }) }} #}
 
-{{ govukCheckboxes({
-    idPrefix: "filters[programmeType]",
-    name: "filters[programmeType]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Programme Type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'FIP',
-      text: 'Full induction programme (FIP)'
-    },
-    {
-      value: 'CIP',
-      text: 'Core induction programme (CIP)'
-    },
-    {
-      value: 'DIY',
-      text: 'Do it yourself (DIY) programme'
-    },
-    {
-      value: 'Self funded DIY',
-      text: 'Self funded DIY programme'
-    }],
-    values: data.filters.programmeType
-  }) }}
 
 
   
