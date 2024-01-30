@@ -34,11 +34,11 @@ function termName (dateString) {
 // Add your filters here
 addFilter('statusColour', status => {
   switch(status) {
-    case 'Full induction programme':
+    case 'FIP':
       return 'govuk-tag--yellow'
-    case 'Core induction programme':
+    case 'CIP':
       return 'govuk-tag--red'
-    case 'Do it yourself (DIY)':
+    case 'DIY':
       return 'govuk-tag--green'
     case 'Self funded DIY':
       return 'govuk-tag--purple'
