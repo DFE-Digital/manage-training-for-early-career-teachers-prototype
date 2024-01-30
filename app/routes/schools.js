@@ -2,10 +2,9 @@ const _ = require('lodash')
 
 module.exports = router => {
 
+  //Add Programme Type filter
   router.get('/admin', (req, res) => {
     let schools = req.session.data.schools
-
-    
 
     let selectedProgrammeType = _.get(req.session.data.filters, 'programmeType')
     let selectedFilters = {
@@ -29,7 +28,7 @@ module.exports = router => {
         items: selectedProgrammeType.map(label => {
           return{
             text: label,
-            href: `/schools/remove-status/${label}` 
+            href: `/admin/remove-status/${label}` 
           }
         })
       })
@@ -41,6 +40,13 @@ module.exports = router => {
     })
   })
 
+  //Clear Programme type filter
+  router.get('/admin/remove-status/:programmeType', (req, res) => {
+    _.set(req, 'session.data.filters.programmeType', _.pull(req.session.data.filters.programmeType, req.params.programmeType))
+    res.redirect('/admin')
+  })
+
+  // PAss school name dynamically to individual school page
   router.get('/schools/:schoolId', (req, res) => {
     let school = req.session.data.schools.find(school => schools.id === req.params.schoolId)
 
