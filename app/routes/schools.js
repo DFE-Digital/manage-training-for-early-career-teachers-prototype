@@ -5,6 +5,7 @@ module.exports = router => {
   router.get('/admin', (req, res) => {
     let schools = req.session.data.schools
 
+
     let selectedProgrammeType = _.get(req.session.data.filters, 'programmeType')
 
     if(_.get(selectedProgrammeType, 'length')){
