@@ -86,6 +86,23 @@ router.get('/ects/:ectId/show', (req, res) => {
   })
 });
 
+router.get('/ects/:ectId/progress-reviews', (req, res) => {
+
+  let ect = req.session.data.ects.find((ect) => ect.trn == req.params.ectId)
+
+  res.render('ects/progress-reviews', {
+    ect
+  })
+});
+
+router.get('/ects/:ectId/progress-reviews/add', (req, res) => {
+
+  let ect = req.session.data.ects.find((ect) => ect.trn == req.params.ectId)
+
+  res.render('ects/add-progress-review', {
+    ect
+  })
+});
 
 router.get('/ects/:ectId/change-mentor', (req, res) => {
 

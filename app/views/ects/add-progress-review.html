@@ -1,0 +1,116 @@
+{% extends "layouts/logged-in" %}
+
+{% set pageName = "Check your answers" %}
+
+{% set activeLinkId = "ects" %}
+{% set subSection = "progressReviews" %}
+
+
+{% set pageName = ect.firstName + " " + ect.lastName %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/ects"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% include "ects/_sub-nav.html" %}
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-6">Add progress review</h1>
+
+    {{ govukInput({
+      label: {
+        text: "Days employed during this term",
+        classes: "govuk-label--s"
+      },
+      classes: "govuk-input--width-10",
+      hint: {
+        text: "Can be approx"
+      },
+      id: "account-number",
+      name: "accountNumber",
+      inputmode: "numeric",
+      spellcheck: false
+    }) }}
+
+    {% set absencesHtml %}
+      {{ govukInput({
+      label: {
+        text: "Days absent",
+        classes: "govuk-label--s"
+      },
+      classes: "govuk-input--width-10",
+      id: "account-number",
+      name: "accountNumber",
+      inputmode: "numeric",
+      spellcheck: false
+    }) }}
+
+    {% endset %}
+
+    {{ govukRadios({
+      name: "contact",
+      fieldset: {
+        legend: {
+          text: "Have they had any absences this term?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "no",
+          text: "No"
+        },
+        {
+          value: "yes",
+          text: "Yes",
+          conditional: {
+            html: absencesHtml
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      name: "blah",
+      fieldset: {
+        legend: {
+          text: "Are they on track to meet the teaching standards?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "no",
+          text: "No, they are not on track"
+        },
+        {
+          value: "yes",
+          text: "Yes, they are on track to meet the standards"
+        }
+      ]
+    }) }}
+
+    {{ govukTextarea({
+      name: "moreDetail",
+      id: "more-detail",
+      label: {
+        text: "Further information",
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "Give brief details of evidence showing they are progressing towards the teaching standard, or where there are any concerns."
+      }
+    }) }}
+
+    {{ govukButton({ text: "Continue" }) }}
+
+  </div>
+</div>
+
+{% endblock %}

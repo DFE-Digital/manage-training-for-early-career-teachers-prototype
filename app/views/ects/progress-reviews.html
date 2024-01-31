@@ -1,0 +1,31 @@
+{% extends "layouts/logged-in" %}
+
+{% set pageName = "Check your answers" %}
+
+{% set activeLinkId = "ects" %}
+{% set subSection = "progressReviews" %}
+
+
+{% set pageName = ect.firstName + " " + ect.lastName %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/ects"}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% include "ects/_sub-nav.html" %}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Progress reviews</h2>
+
+    {{ govukButton({ text: "Add progress review", href: "/ects/" + ect.trn + "/progress-reviews/add" }) }}
+
+  </div>
+</div>
+
+{% endblock %}

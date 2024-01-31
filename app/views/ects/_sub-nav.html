@@ -1,0 +1,12 @@
+{{ xGovukSecondaryNavigation({
+  visuallyHiddenTitle: "Secondary menu",
+  items: [{
+    text: "Overview",
+    href: "/ects/" + ect.trn + "/show",
+    current: (subSection == "overview")
+  }, {
+    text: "Progress reviews",
+    href: "/ects/" + ect.trn + "/progress-reviews",
+    current: (subSection == "progressReviews")
+  }]
+}) }}

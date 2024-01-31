@@ -3,6 +3,7 @@
 {% set pageName = "Check your answers" %}
 
 {% set activeLinkId = "ects" %}
+{% set subSection = "overview" %}
 
 
 {% set pageName = ect.firstName + " " + ect.lastName %}
@@ -18,7 +19,10 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <h2 class="govuk-heading-m">Teacher details</h2>
+    {% include "ects/_sub-nav.html" %}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Teacher details</h2>
+
     {{ govukSummaryList({
       rows: [
         {
