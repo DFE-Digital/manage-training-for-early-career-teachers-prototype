@@ -7,7 +7,6 @@ module.exports = router => {
     let schools = req.session.data.schools
 
 
-
     let selectedProgrammeType = _.get(req.session.data.filters, 'programmeType')
     let selectedFilters = {
       categories: []
@@ -50,9 +49,9 @@ module.exports = router => {
 
   // PAss school name dynamically to individual school page
   router.get('/schools/:schoolId', (req, res) => {
-    let school = req.session.data.schools.find(school => schools.id === req.params.schoolId)
+    let schools = req.session.data.schools.find(schools => schools.id === req.params.schoolId)
 
-    res.render('schools/show', {
+    res.render('/admin/schools/show', {
       schools
     })
   })

@@ -1,6 +1,6 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName = school.name %}
+{% set pageName = schools.name %}
 
 {% set currentSection="schools" %}
 {% set currentSubSection="details" %}
@@ -34,7 +34,7 @@
               text: "Induction tutor"
             },
             value: {
-              html: '<p>Jane Smith<br><a>' + school.inductionTutor + '</a>'
+              html: '<p>Jane Smith<br><a>' + schools.inductionTutor + '</a>'
             },
             actions: {
               items: [
@@ -51,7 +51,7 @@
               text: "Local authority"
             },
             value: {
-              text: school.localAuthority
+              text: schools.localAuthority
             }
           },
           {
@@ -59,7 +59,7 @@
               text: "Address"
             },
             value: {
-              html: school.address.line1 + "<br>" + school.address.line2 + "<br>" + school.address.town + "<br>"
+              html: schools.address.line1 + "<br>" + schools.address.line2 + "<br>" + schools.address.town + "<br>"
             }
           }
         ]
