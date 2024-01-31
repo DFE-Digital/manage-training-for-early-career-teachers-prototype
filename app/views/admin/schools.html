@@ -3,11 +3,11 @@
 {% set pageName="Schools" %}
 {% set currentSection="schools" %}
 
-{% set numberOfSchools = schools.length %}
+{% set numberOfSchools = data.schools.length %}
 
-
-
-
+{% if data.schools.length < 6%}
+  {% set schools = data.schools %}
+{% endif %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -50,12 +50,13 @@
         <div class="app-action-bar__filter"></div>
       </div>
 
+
       {% if schools.length %}
         <div class="school-list">
           {% for school in schools %}
             <div class="school-list__item">
               <h2 class="govuk-heading-s">
-                <a href="./schools/{{school.id}}">
+                <a href="/admin/schools/{{ school.id }}">
                   {{ school.name }}
                 </a>
               </h2>

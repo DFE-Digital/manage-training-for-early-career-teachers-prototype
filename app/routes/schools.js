@@ -2,59 +2,94 @@ const _ = require('lodash')
 
 module.exports = router => {
 
-  //Add Programme Type filter
   router.get('/admin', (req, res) => {
-    let schools = req.session.data.schools
+    let schools = req.session.data.schools  
 
 
-    let selectedProgrammeType = _.get(req.session.data.filters, 'programmeType')
+    let selectedProgrammeFilters = _.get(req.session.data.filters, 'programme')
+    let selectedSchoolTypeFilters = _.get(req.session.data.filters, 'schoolType')
+
+    let hasFilters = _.get(selectedProgrammeFilters, 'length') || _.get(selectedSchoolTypeFilters, 'length')
+
     let selectedFilters = {
       categories: []
     }
 
-
-    if(_.get(selectedProgrammeType, 'length')){
-      schools  = schools.filter(schools => {
+    // the user has selected a status filter
+    if(hasFilters) {
+      schools = schools.filter(school => {
         let matchesProgrammeType = true
+        let matchesSchoolType = true
 
-        if(_.get(selectedProgrammeType, 'length')) {
-          matchesProgrammeType = selectedProgrammeType.includes(schools.programmeType);
+        if(_.get(selectedProgrammeFilters, 'length')) {
+          matchesProgrammeType = selectedProgrammeFilters.includes(school.programmeType);
         }
 
-        return matchesProgrammeType
-      })
+        if(_.get(selectedSchoolTypeFilters, 'length')) {
+          matchesSchoolType = selectedSchoolTypeFilters.includes(school.phase);
+        }
 
+        return matchesProgrammeType && matchesSchoolType
+      })
+    }
+
+    if(_.get(selectedProgrammeFilters, 'length')) {
       selectedFilters.categories.push({
-        heading: {text: 'Programme Type'},
-        items: selectedProgrammeType.map(label => {
-          return{
+        heading: { text: 'Programme type' },
+        items: selectedProgrammeFilters.map(label => {
+          return {
             text: label,
-            href: `/admin/remove-status/${label}` 
+            href: `/admin/remove-programme/${label}`
           }
         })
       })
-      
     }
+
+    if(_.get(selectedSchoolTypeFilters, 'length')) {
+      selectedFilters.categories.push({
+        heading: { text: 'Type of school' },
+        items: selectedSchoolTypeFilters.map(label => {
+          return {
+            text: label,
+            href: `/admin/remove-phase/${label}`
+          }
+        })
+      })
+    }
+
+
     res.render('admin/schools', {
       schools,
       selectedFilters
     })
   })
 
-  //Clear Programme type filter
-  router.get('/admin/remove-status/:programmeType', (req, res) => {
-    _.set(req, 'session.data.filters.programmeType', _.pull(req.session.data.filters.programmeType, req.params.programmeType))
+
+router.get('/admin/remove-programme/:programme', (req, res) => {
+    _.set(req, 'session.data.filters?.programme', _.pull(req.session.data.filters?.programmeType, req.params.programme))
     res.redirect('/admin')
   })
 
-  // PAss school name dynamically to individual school page
-  router.get('/schools/:schoolId', (req, res) => {
-    let schools = req.session.data.schools.find(schools => schools.id === req.params.schoolId)
+  router.get('/admin/remove-phase/:phase', (req, res) => {
+    _.set(req, 'session.data.filters?.phase', _.pull(req.session.data.filters?.phase, req.params.phase))
+    res.redirect('/admin')
+  })
 
-    res.render('/admin/schools/show', {
-      schools
+  router.get('/admin/clear-filters', (req, res) => {
+    _.set(req, 'session.data.filters.st', null)
+    _.set(req, 'session.data.filters.phase', null)
+    res.redirect('/admin')
+  })
+
+  router.get('/schools/:schoolsId', (req, res) => {
+    let schools = req.session.data.schools.find(school => school.id === req.params.schoolsId)
+
+    res.render('schools/show', {
+      school
     })
   })
 
+
+
+
 }
- 

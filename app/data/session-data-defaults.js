@@ -67,7 +67,7 @@ module.exports = {
       "participants": "15",
       "localAuthority": "Somerset",
       "status": "stauts 2 tbc",
-      "programmeType": "Self funded DIY",
+      "programmeType": "Self-funded DIY",
       "phase": "Secondary",
       "inductionTutor": "tutor.HighlandElementary@gmail.com",
         "address": {

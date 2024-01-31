@@ -24,8 +24,8 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
-    name: "filters[phase]",
+    idPrefix: "filters[schoolType]",
+    name: "filters[schoolType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -40,12 +40,12 @@
       value: 'Secondary',
       text: 'Secondary'
     }],
-    values: data.filters.phase
+    values: data.filters.schoolType
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[programmeType]",
-    name: "filters[programmeType]",
+    idPrefix: "filters[programme]",
+    name: "filters[programme]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
@@ -67,9 +67,9 @@
     },
     {
       value: 'Self funded DIY',
-      text: 'Self funded DIY programme'
+      text: 'Self-funded DIY programme'
     }],
-    values: data.filters.programmeType
+    values: data.filters.programme
   }) }}
 
 
