@@ -66,7 +66,10 @@ module.exports = router => {
 
 
 router.get('/admin/remove-programme/:programme', (req, res) => {
-    _.set(req, 'session.data.filters?.programme', _.pull(req.session.data.filters?.programmeType, req.params.programme))
+
+    // console.log(req.session.data.filters.programme)
+
+    _.set(req, 'session.data.filters?.programme', _.pull(req.session.data.filters?.programme, req.params.programme))
     res.redirect('/admin')
   })
 
