@@ -3,17 +3,17 @@
 {% set pageName="Schools" %}
 {% set currentSection="schools" %}
 
-{% set numberOfSchools = data.schools.length %}
+{% set numberOfSchools = schools.length %}
 
-{% if data.schools.length < 6%}
-  {% set schools = data.schools %}
+{% if numberOfSchools < 12 %}
+  {% set numberOfSchools = schools.length %}
 {% endif %}
 
 {% set filters = req.session.data.filters %}
 
 {% block beforeContent %}
 {% endblock %}
-
+ 
 {% block content %}
 
 <div class="moj-page-header-actions">

@@ -6,6 +6,16 @@ module.exports = router => {
     let schools = req.session.data.schools  
 
 
+    let schoolName = _.get(req.session.data.search, 'schoolName')
+
+    if(schoolName) {
+      schools = schools.filter(schools => {
+        return schools.name.indexOf(schoolName) > -1
+      })
+    }
+
+
+
     let selectedProgrammeFilters = _.get(req.session.data.filters, 'programme')
     let selectedSchoolTypeFilters = _.get(req.session.data.filters, 'schoolType')
 
@@ -64,11 +74,14 @@ module.exports = router => {
     })
   })
 
+  router.get('/schools/clear-search', (req, res) => {
+    _.set(req, 'session.data.search.schoolName', '')
+    res.redirect('/admin')
+  })
 
-router.get('/admin/remove-programme/:programme', (req, res) => {
 
+  router.get('/admin/remove-programme/:programme', (req, res) => {
     // console.log(req.session.data.filters.programme)
-
     _.set(req, 'session.data.filters?.programme', _.pull(req.session.data.filters?.programme, req.params.programme))
     res.redirect('/admin')
   })
@@ -85,7 +98,7 @@ router.get('/admin/remove-programme/:programme', (req, res) => {
   })
 
   router.get('/schools/:schoolsId', (req, res) => {
-    let schools = req.session.data.schools.find(school => school.id === req.params.schoolsId)
+    let school = req.session.data.schools.find(school => school.id === req.params.schoolsId)
 
     res.render('schools/show', {
       school
