@@ -34,7 +34,7 @@
               text: "Induction tutor"
             },
             value: {
-              html: '<p>Jane Smith<br><a>' + schools.inductionTutor + '</a>'
+              html: '<p>' + school.inductionTutorName + '</p><a>' + school.inductionTutorEmail + '</a>'
             },
             actions: {
               items: [
@@ -51,7 +51,7 @@
               text: "Local authority"
             },
             value: {
-              text: schools.localAuthority
+              text: school.localAuthority
             }
           },
           {
@@ -59,7 +59,7 @@
               text: "Address"
             },
             value: {
-              html: schools.address.line1 + "<br>" + schools.address.line2 + "<br>" + schools.address.town + "<br>"
+              html: school.address.line1 + "<br>" + school.address.town + "<br>" + school.address.postcode + "<br>"
             }
           }
         ]
