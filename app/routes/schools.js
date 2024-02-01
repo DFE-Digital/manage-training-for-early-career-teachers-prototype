@@ -6,6 +6,7 @@ module.exports = router => {
     let schools = req.session.data.schools  
 
 
+    //Serach bar code here
     let schoolName = _.get(req.session.data.search, 'schoolName')
 
     if(schoolName) {
@@ -16,10 +17,12 @@ module.exports = router => {
 
 
 
+    //Filters code starts here
     let selectedProgrammeFilters = _.get(req.session.data.filters, 'programme')
     let selectedSchoolTypeFilters = _.get(req.session.data.filters, 'schoolType')
+    let selectedCohortFilters = _.get(req.session.data.filters, 'cohort')
 
-    let hasFilters = _.get(selectedProgrammeFilters, 'length') || _.get(selectedSchoolTypeFilters, 'length')
+    let hasFilters = _.get(selectedProgrammeFilters, 'length') || _.get(selectedSchoolTypeFilters, 'length') || _.get(selectedCohortFilters, 'length')
 
     let selectedFilters = {
       categories: []
@@ -30,6 +33,7 @@ module.exports = router => {
       schools = schools.filter(school => {
         let matchesProgrammeType = true
         let matchesSchoolType = true
+        let matchesCohort = true
 
         if(_.get(selectedProgrammeFilters, 'length')) {
           matchesProgrammeType = selectedProgrammeFilters.includes(school.programmeType);
@@ -39,7 +43,11 @@ module.exports = router => {
           matchesSchoolType = selectedSchoolTypeFilters.includes(school.phase);
         }
 
-        return matchesProgrammeType && matchesSchoolType
+        if(_.get(selectedCohortFilters, 'length')) {
+          matchesCohort = selectedCohortFilters.includes(school.cohort);
+        }
+
+        return matchesProgrammeType && matchesSchoolType && matchesCohort
       })
     }
 
@@ -62,6 +70,18 @@ module.exports = router => {
           return {
             text: label,
             href: `/admin/remove-phase/${label}`
+          }
+        })
+      })
+    }
+
+    if(_.get(selectedCohortFilters, 'length')) {
+      selectedFilters.categories.push({
+        heading: { text: 'Cohort' },
+        items: selectedCohortFilters.map(label => {
+          return {
+            text: label,
+            href: `/admin/remove-cohort/${label}`
           }
         })
       })

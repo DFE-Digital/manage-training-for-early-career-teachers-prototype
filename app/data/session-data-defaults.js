@@ -11,6 +11,7 @@ module.exports = {
       "phase": "Primary",
       "inductionTutorName": "Thanh Palmer",
       "inductionTutorEmail": "teachers@sacredheart.com",
+      "cohort" : "2021 to 2022",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -27,6 +28,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Sanford Alvarez",
       "inductionTutorEmail": "office@upperlake.com",
+      "cohort" : "2022 to 2023",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -43,6 +45,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Matilda Gray",
       "inductionTutorEmail": "admin@springhill.com",
+      "cohort" : "2022 to 2023",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -59,6 +62,7 @@ module.exports = {
       "phase": "Primary",
       "inductionTutorName": "Dylan Hill",
       "inductionTutorEmail": "teacher@ravenwood.com",
+      "cohort" : "2022 to 2023",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -75,6 +79,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Hollie Koch",
       "inductionTutorEmail": "teacher@blueRiverSchool.com",
+      "cohort" : "2022 to 2023",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -91,6 +96,7 @@ module.exports = {
       "phase": "Primary",
       "inductionTutorName": "Herbert Velez",
       "inductionTutorEmail": "office@bigPine.com",
+      "cohort" : "2023 to 2024",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -107,6 +113,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Elroy Hester",
       "inductionTutorEmail": "tutor.WillowPark@gmail.com",
+      "cohort" : "2023 to 2024",
       "address": {
         "line1": "1 The Avenue",
         "town": "London",
@@ -123,6 +130,7 @@ module.exports = {
       "phase": "Primary",
       "inductionTutorName": "Imelda Evans",
       "inductionTutorEmail": "tutor.WintersSchool@gmail.com",
+      "cohort" : "2023 to 2024",
       "address": {
           "line1": "1 The Avenue",
           "town": "London",
@@ -139,6 +147,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Annie Hoffman",
       "inductionTutorEmail": "Lakewood.Academy@gmail.com",
+      "cohort" : "2021 to 2022",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
@@ -155,6 +164,7 @@ module.exports = {
       "phase": "Primary",
       "inductionTutorName": "Marcelo Jacobson",
       "inductionTutorEmail": "tutor.SealGulchHigh@gmail.com",
+      "cohort" : "2021 to 2022",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
@@ -171,6 +181,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Jonah Moon",
       "inductionTutorEmail": "tutor.HighlandElementary@gmail.com",
+      "cohort" : "2021 to 2022",
         "address": {
           "line1": "1 The Avenue",
           "town": "London",
@@ -187,6 +198,7 @@ module.exports = {
       "phase": "Secondary",
       "inductionTutorName": "Damien Forbes",
       "inductionTutorEmail": "WaterfordAcademy@gmail.com",
+      "cohort" : "2023 to 2024",
         "address": {
           "line1": "1 The Avenue",
           "town": "London", 
