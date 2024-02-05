@@ -125,7 +125,7 @@ module.exports = router => {
 
   router.get('/schools/:schoolsId', (req, res) => {
     let school = req.session.data.schools.find(school => school.id === req.params.schoolsId)
-
+    // let schools = req.session.data.schools
     res.render('schools/show', {
       school
     })
