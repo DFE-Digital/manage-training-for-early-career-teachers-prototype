@@ -118,8 +118,9 @@ module.exports = router => {
   })
 
   router.get('/admin/clear-filters', (req, res) => {
-    _.set(req, 'session.data.filters.st', null)
-    _.set(req, 'session.data.filters.phase', null)
+    _.set(req, 'session.data.filters.year', null)
+    _.set(req, 'session.data.filters.schoolType', null)
+    _.set(req, 'session.data.filters.programme', null)
     res.redirect('/admin')
   })
 
