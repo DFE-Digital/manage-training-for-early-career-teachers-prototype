@@ -20,9 +20,9 @@ module.exports = router => {
     //Filters code starts here
     let selectedProgrammeFilters = _.get(req.session.data.filters, 'programme')
     let selectedSchoolTypeFilters = _.get(req.session.data.filters, 'schoolType')
-    let selectedCohortFilters = _.get(req.session.data.filters, 'cohort')
+    let selectedYearFilters = _.get(req.session.data.filters, 'year')
 
-    let hasFilters = _.get(selectedProgrammeFilters, 'length') || _.get(selectedSchoolTypeFilters, 'length') || _.get(selectedCohortFilters, 'length')
+    let hasFilters = _.get(selectedProgrammeFilters, 'length') || _.get(selectedSchoolTypeFilters, 'length') || _.get(selectedYearFilters, 'length')
 
     let selectedFilters = {
       categories: []
@@ -33,7 +33,7 @@ module.exports = router => {
       schools = schools.filter(school => {
         let matchesProgrammeType = true
         let matchesSchoolType = true
-        let matchesCohort = true
+        let matchesYear = true
 
         if(_.get(selectedProgrammeFilters, 'length')) {
           matchesProgrammeType = selectedProgrammeFilters.includes(school.programmeType);
@@ -43,11 +43,11 @@ module.exports = router => {
           matchesSchoolType = selectedSchoolTypeFilters.includes(school.phase);
         }
 
-        if(_.get(selectedCohortFilters, 'length')) {
-          matchesCohort = selectedCohortFilters.includes(school.cohort);
+        if(_.get(selectedYearFilters, 'length')) {
+          matchesYear = selectedYearFilters.includes(school.year);
         }
 
-        return matchesProgrammeType && matchesSchoolType && matchesCohort
+        return matchesProgrammeType && matchesSchoolType && matchesYear
       })
     }
 
@@ -75,13 +75,13 @@ module.exports = router => {
       })
     }
 
-    if(_.get(selectedCohortFilters, 'length')) {
+    if(_.get(selectedYearFilters, 'length')) {
       selectedFilters.categories.push({
-        heading: { text: 'Cohort' },
-        items: selectedCohortFilters.map(label => {
+        heading: { text: 'Year' },
+        items: selectedYearFilters.map(label => {
           return {
             text: label,
-            href: `/admin/remove-cohort/${label}`
+            href: `/admin/remove-year/${label}`
           }
         })
       })
@@ -96,6 +96,12 @@ module.exports = router => {
 
   router.get('/schools/clear-search', (req, res) => {
     _.set(req, 'session.data.search.schoolName', '')
+    res.redirect('/admin')
+  })
+
+  router.get('/admin/remove-year/:year', (req, res) => {
+    // console.log(req.session.data.filters.year)
+    _.set(req, 'session.data.filters?.year', _.pull(req.session.data.filters?.year, req.params.year))
     res.redirect('/admin')
   })
 

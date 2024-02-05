@@ -1,12 +1,12 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[cohort]",
-    name: "filters[cohort]",
+    idPrefix: "filters[year]",
+    name: "filters[year]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Cohort",
+        text: "Year",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -20,7 +20,7 @@
       value: '2023 to 2024',
       text: '2023 to 2024'
     }],
-    values: data.filters.cohort
+    values: data.filters.year
   }) }}
 
   {{ govukCheckboxes({
@@ -29,7 +29,7 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "School type",
+        text: "School phase",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -60,14 +60,6 @@
     {
       value: 'CIP',
       text: 'Core induction programme (CIP)'
-    },
-    {
-      value: 'DIY',
-      text: 'Do it yourself (DIY) programme'
-    },
-    {
-      value: 'Self funded DIY',
-      text: 'Self-funded DIY programme'
     }],
     values: data.filters.programme
   }) }}
