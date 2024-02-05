@@ -40,7 +40,7 @@ module.exports = router => {
         }
 
         if(_.get(selectedSchoolTypeFilters, 'length')) {
-          matchesSchoolType = selectedSchoolTypeFilters.includes(school.phase);
+          matchesSchoolType = selectedSchoolTypeFilters.includes(school.schoolType);
         }
 
         if(_.get(selectedYearFilters, 'length')) {
@@ -113,7 +113,7 @@ module.exports = router => {
   })
 
   router.get('/admin/remove-phase/:phase', (req, res) => {
-    _.set(req, 'session.data.filters?.phase', _.pull(req.session.data.filters?.phase, req.params.phase))
+    _.set(req, 'session.data.filters?.schoolType', _.pull(req.session.data.filters?.schoolType, req.params.schoolType))
     res.redirect('/admin')
   })
 
