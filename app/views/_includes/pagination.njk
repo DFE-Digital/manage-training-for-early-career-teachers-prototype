@@ -1,28 +1,13 @@
 {{ govukPagination({
   classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-2",
   previous: {
-    href: "#"
+    href: pagination.previousPage.href
   },
   next: {
-    href: "#"
+    href: pagination.nextPage.href
   },
-  items: [
-    {
-      number: 1,
-      href: "#"
-    },
-    {
-      number: 2,
-      current: true,
-      href: "#"
-    },
-    {
-      number: 3,
-      href: "#"
-    }
-  ]
+  items: pagination.pageItems
 }) }}
 
-<p class="govuk-!-margin-bottom-0">Showing 1 to 20 of 20 results</p>
-
+<p class="govuk-!-margin-bottom-0">Showing {{pagination.firstResultNumber}} to {{pagination.lastResultNumber}} of {{pagination.totalCount}} results</p>
 

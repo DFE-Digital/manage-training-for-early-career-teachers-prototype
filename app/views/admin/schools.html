@@ -3,11 +3,6 @@
 {% set pageName="Schools" %}
 {% set currentSection="schools" %}
 
-{% set numberOfSchools = schools.length %}
-
-{% if numberOfSchools < 12 %}
-  {% set numberOfSchools = schools.length %} 
-{% endif %}
 
 {% set filters = req.session.data.filters %}
 
@@ -19,7 +14,7 @@
 <div class="moj-page-header-actions">
 
   <div class="moj-page-header-actions__title">
-    <h1 class="govuk-heading-xl">{{ pageName }} ({{ numberOfSchools }})</h1>
+    <h1 class="govuk-heading-xl">{{ pageName }} ({{pagination.totalCount}})</h1>
   </div>
 
   <div class="moj-page-header-actions__actions">

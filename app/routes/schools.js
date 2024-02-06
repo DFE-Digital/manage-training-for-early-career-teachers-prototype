@@ -1,5 +1,7 @@
 const _ = require('lodash')
 
+const Pagination  = require('../helpers/pagination')
+
 module.exports = router => {
 
   router.get('/admin', (req, res) => {
@@ -87,10 +89,16 @@ module.exports = router => {
       })
     }
 
+    //Pagination starts here
+    let pageSize = 10
+    let pagination = new Pagination(schools, req.query.page, pageSize)
+    schools = pagination.getData()
+
 
     res.render('admin/schools', {
       schools,
-      selectedFilters
+      selectedFilters,
+      pagination
     })
   })
 
