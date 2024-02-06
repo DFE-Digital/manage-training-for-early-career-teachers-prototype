@@ -89,9 +89,8 @@ module.exports = router => {
       })
     }
 
-    //Fix for persisting filters
     router.get('/admin/schools', (req, res) => {
-      let schools = selectedFilters 
+      let schools = req.session.data.schools  
       res.redirect('/admin')
     })
 
