@@ -89,6 +89,12 @@ module.exports = router => {
       })
     }
 
+    //Fix for persisting filters
+    router.get('/admin/schools', (req, res) => {
+      let schools = selectedFilters 
+      res.redirect('/admin')
+    })
+
     //Pagination starts here
     let pageSize = 10
     let pagination = new Pagination(schools, req.query.page, pageSize)
@@ -139,8 +145,5 @@ module.exports = router => {
       school
     })
   })
-
-
-
 
 }
