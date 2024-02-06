@@ -34,18 +34,27 @@ function termName (dateString) {
 // Add your filters here
 addFilter('statusColour', status => {
   switch(status) {
-    case 'FIP':
+    case 'Primary':
       return 'govuk-tag--yellow'
-    case 'CIP':
-      return 'govuk-tag--red'
-    case 'DIY':
-      return 'govuk-tag--green'
-    case 'Self funded DIY':
-      return 'govuk-tag--purple'
-    case 'No programme':
-      return 'govuk-tag--grey'
+    case 'Secondary':
+      return 'govuk-tag--blue'
   }
 })
+
+// addFilter('statusColour', status => {
+//   switch(status) {
+//     case 'FIP':
+//       return 'govuk-tag--yellow'
+//     case 'CIP':
+//       return 'govuk-tag--red'
+//     case 'DIY':
+//       return 'govuk-tag--green'
+//     case 'Self funded DIY':
+//       return 'govuk-tag--purple'
+//     case 'No programme':
+//       return 'govuk-tag--grey'
+//   }
+// })
 
 addFilter('includes', includes)
 addFilter('termName', termName)

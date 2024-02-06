@@ -1,7 +1,7 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[year]",
+    idPrefix: "filters[userType]",
     name: "filters[year]",
     classes: "govuk-checkboxes--small",
     fieldset: {
@@ -21,6 +21,29 @@
       text: '2019'
     }],
     values: data.filters.year
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[userType]",
+    name: "filters[userType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "User type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Mentor',
+      text: 'Mentor'
+    }, {
+      value: 'Early career teacher',
+      text: 'Early career teacher'
+    }, {
+      value: 'Induction Tutor',
+      text: 'Induction Tutor'
+    }],
+    values: data.filters.userType
   }) }}
 
   {{ govukCheckboxes({

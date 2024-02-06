@@ -63,9 +63,9 @@
 
               
               {{ govukTag({
-                text: school.programmeType,
+                text: school.schoolType,
                 classes: "govuk-tag-programme",
-                classes: school.programmeType | statusColour 
+                classes: school.schoolType | statusColour 
               }) }}
 
               {{ govukSummaryList({
@@ -95,6 +95,8 @@
       {% else %}
         <p>There are no results.</p>
       {% endif %}
+
+      {% include "_includes/pagination.njk" %}
 
 
     </div>

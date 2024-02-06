@@ -1,107 +1,43 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="Schools" %}
+{% set mainClasses = "govuk-main-wrapper--l" %}
 {% set currentSection="schools" %}
+{% set pageName= "Your download is ready" %}
 
-{% set numberOfSchools = schools.length %}
-
-{% if numberOfSchools < 12 %}
-  {% set numberOfSchools = schools.length %} 
-{% endif %}
-
-{% set filters = req.session.data.filters %}
 
 {% block beforeContent %}
 {% endblock %}
- 
+
+
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageName,
+        html: "Some supporting info ?<br><strong>HDJ2123F</strong>"
+      }) }}
 
+      <p class="govuk-body">Generated at 13:29pm on Tuedsay 10 February 2024</p>
 
+      {# <h2 class="govuk-heading-m">What happens next</h2> #}
 
-  
-<h1 class="govuk-heading-xl">{{ pageName }} ({{ numberOfSchools }})</h1>
+      <p class="govuk-body">
+        You can download an Excel/CSV/etc(depending on your browser it will open in a new window or tab, or save you your download folder.<br>
+      </p>
+      <p class="govuk-body">
+        Your file will be available for download for xxx days.
+      </p>
 
-
-
-
-
-
-  {{data.schools | log}}
-
- 
-
-      {% include "_includes/search-form.njk" %}
-
-
-      {% if schools.length %}
-        <div class="school-list">
-          {% for school in schools %}
-            <div class="school-list__item">
-              <h2 class="govuk-heading-s">
-                <a href="/admin/schools/{{ school.id }}">
-                  {{ school.name }}
-                </a>
-              </h2>
-
-              
-              {{ govukTag({
-                text: school.programmeType,
-                classes: "govuk-tag-programme",
-                classes: school.programmeType | statusColour 
-              }) }}
-
-              {{ govukSummaryList({
-                classes: "govuk-summary-list--no-border govuk-summary-list-schools",
-                rows: [
-                  {
-                    key: {
-                      text: "URN"
-                    },
-                    value: {
-                      text: school.id
-                    }
-                  },
-                  {
-                    key: {
-                      text: "Induction tutor email"
-                    },
-                    value: {
-                      text: school.inductionTutorEmail
-                    }
-                  }
-                ]
-              }) }}
-            </div>
-          {% endfor %}
+      <p class="govuk-body">
+        {# <a href="#" class="govuk-link">Download your file</a>
+        <a href="#" class="govuk-link">generate another download</a>. #}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Download your file"
+          }) }}
+          <a class="govuk-link" href="schools.html">Generate another Excel sheet</a>
         </div>
-      {% else %}
-        <p>There are no results.</p>
-      {% endif %}
-
-
-    
-  
-{% endblock %}
-
-{% block scripts %}
-  {{super()}}
-  <script>
-    new AppFrontend.FilterToggleButton({
-      bigModeMediaQuery: '(min-width: 48.063em)',
-      startHidden: false,
-      toggleButton: {
-        container: $('.app-action-bar__filter'),
-        showText: 'Show filter',
-        hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
-      },
-      closeButton: {
-        container: $('.app-filter__header-action'),
-        text: 'Close'
-      },
-      filter: {
-        container: $('.app-filter-layout__filter')
-      }
-    })
-  </script>
+      </p>
+    </div>
+  </div>
 {% endblock %}
