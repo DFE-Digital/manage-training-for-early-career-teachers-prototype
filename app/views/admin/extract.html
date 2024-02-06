@@ -2,7 +2,7 @@
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
 {% set currentSection="schools" %}
-{% set pageName= "Your download is ready" %}
+{% set pageName= " Your results are ready to download" %}
 
 
 {% block beforeContent %}
@@ -14,28 +14,29 @@
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
         titleText: pageName,
-        html: "Some supporting info ?<br><strong>HDJ2123F</strong>"
+        html: "<strong>22 results</strong> at 4:30pm on<br>Tuesday 10 February 2024"
       }) }}
 
-      <p class="govuk-body">Generated at 13:29pm on Tuedsay 10 February 2024</p>
+      {# <p class="govuk-body">[totalCount] results at {{ "now" | govukDateTime }}</p> #}
 
       {# <h2 class="govuk-heading-m">What happens next</h2> #}
 
       <p class="govuk-body">
-        You can download an Excel/CSV/etc(depending on your browser it will open in a new window or tab, or save you your download folder.<br>
+        When you download the file you can choose which format you would like, for example Excel or CSV. Depending on your browser the file might open in a new window, tab or folder.<br>
       </p>
       <p class="govuk-body">
-        Your file will be available for download for xxx days.
+        Your file will be available to download for xx days.
       </p>
+      
 
       <p class="govuk-body">
         {# <a href="#" class="govuk-link">Download your file</a>
         <a href="#" class="govuk-link">generate another download</a>. #}
         <div class="govuk-button-group">
           {{ govukButton({
-            text: "Download your file"
+            text: "Download file"
           }) }}
-          <a class="govuk-link" href="schools.html">Generate another Excel sheet</a>
+          <a class="govuk-link" href="schools.html">Search and download another file</a>
         </div>
       </p>
     </div>
