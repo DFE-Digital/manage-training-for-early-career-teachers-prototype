@@ -33,7 +33,7 @@
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
               <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
-              <td class="govuk-table__cell">headteacher.name@school-name.sch.uk</td>
+              <td class="govuk-table__cell">{{ school.inductionTutorEmail }}</td>
             </tr>
           {% endfor %}
         </tbody>
