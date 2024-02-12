@@ -5,7 +5,7 @@
 {% set currentSubSection="overview" %}
 
 {% block beforeContent %}
-  {% include "admin/performance/_secondary-nav" %}
+  
 {% endblock %}
 
 {% block content %}
@@ -16,6 +16,8 @@
 
 
     <h1 class="govuk-heading-l">Overview</h1>
+
+    {% include "admin/performance/_secondary-nav" %}
     
     <table class="govuk-table govuk-!-margin-bottom-9">
       <caption class="govuk-table__caption govuk-table__caption--m">Schools registered for 2023 to 2024</caption>
