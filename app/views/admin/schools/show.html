@@ -8,7 +8,21 @@
 
 {% block beforeContent %}
   <h1 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-4">{{ pageName }}</h1>
-  {% include "admin/schools/_secondary-nav" %}
+  {# {% include "admin/schools/_secondary-nav" %} #}
+  {{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    items: [{
+      text: "Details",
+      href: "#",
+      current: true
+    }, {
+      text: "Participants",
+      href: "#"
+    }, {
+      text: "Cohorts",
+      href: "#"
+    }]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -21,7 +35,7 @@
     {{ data.schools | log }}
 
       {{ govukSummaryList({
-        rows: [
+        rows: [                     
           {
             key: {
               text: "URN"
