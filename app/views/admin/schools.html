@@ -1,9 +1,8 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="Schools" %}
+{% set pageName="Filter schools" %}
 {% set currentSection="schools" %}
 {% set currentSubSection="filters" %}
-
 
 {% set filters = req.session.data.filters %}
 
@@ -49,7 +48,7 @@
       </div>
 
 
-      {% if schools.length %}
+      {% if data.schools.length %}
         <div class="school-list">
           {% for school in schools %}
             <div class="school-list__item">

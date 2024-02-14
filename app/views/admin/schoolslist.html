@@ -4,6 +4,8 @@
 {% set currentSection="schools" %}
 {% set currentSubSection="schoolslist" %}
 
+{% set schools = req.session.data.schools %}
+
 
 
 
@@ -29,17 +31,20 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          {% for school in data.schools %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
-              <td class="govuk-table__cell">{{ 736524 - (loop.index0 * 33438) }}</td>
-              <td class="govuk-table__cell">{{ school.inductionTutorEmail }}</td>
-            </tr>
-          {% endfor %}
+          
+            {% for school in data.schools %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header govuk-!-font-weight-regular"><a href="/admin/schools/{{ school.id }}" class="govuk-link">{{ school.name }}</a></th>
+                <td class="govuk-table__cell">{{ school.id }}</td>
+                <td class="govuk-table__cell">{{ school.inductionTutorEmail }}</td>
+              </tr>
+            {% endfor %}
+        
         </tbody>
       </table>
-
   </div>
 </div>
+
+
 
 {% endblock %}

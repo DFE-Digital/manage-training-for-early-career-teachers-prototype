@@ -7,6 +7,15 @@
 
 
 {% block beforeContent %}
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+
+
   <h1 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-4">{{ pageName }}</h1>
   {# {% include "admin/schools/_secondary-nav" %} #}
 
