@@ -6,6 +6,12 @@
 
 {% set filters = req.session.data.filters %}
 
+{% set numberOfSchools = data.schools.length %}
+
+{% if numberOfSchools < 20 %}
+  {% set numberOfSchools = data.schools.length %} 
+{% endif %}
+
 
 {% block beforeContent %}
 {% endblock %}
