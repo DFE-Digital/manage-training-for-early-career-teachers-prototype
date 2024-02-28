@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Do you want to change the lead provider for" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+{{ govukButton({
+  text: "Continue",
+  href: "participant/participant-email"
+}) }}
+
+{% endblock %}
+
+
