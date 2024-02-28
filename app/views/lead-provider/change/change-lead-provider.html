@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Do you want to change the lead provider for" %}
+{% set pageName="What do you want to change the lead provider for" %}
 
 {% block header %}
   {{ govukHeader({
@@ -23,12 +23,39 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+{# <h1 class="govuk-heading-l">{{ pageName }}</h1> #}
 
-{{ govukButton({
-  text: "Continue",
-  href: "participant/participant-email"
-}) }}
+<form novalidate method="post">
+  {{ govukRadios({
+    name: "[change][leadProvider]",
+    fieldset: {
+      legend: {
+        text: pageName,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    value: data.new.leadProvider,
+    items: [
+      {
+        value: "Participant",
+        text: "Participant"
+      },
+      {
+        value: "Academic year",
+        text: "Academic year"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
+
+
 
 {% endblock %}
 

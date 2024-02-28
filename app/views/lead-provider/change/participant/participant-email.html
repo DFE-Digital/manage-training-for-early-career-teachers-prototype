@@ -23,12 +23,30 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+{# <h1 class="govuk-heading-l">{{ pageName }}</h1> #}
 
-{{ govukButton({
-  text: "Continue",
-  href: "contacted-lead-provider"
-}) }}
+<form action="post" novalidate>
+  {{ govukInput({
+    id: "[change][participant][email]",
+    name: "[change][participant][email]",
+    label: {
+      text: pageName,
+      isPageHeading: true,
+      classes: "govuk-label--xl"
+    },
+    hint: {
+      text: "Hint text"
+    },
+    value: data.change.participant.email,
+    classes: "govuk-!-width-one-half"
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
 
 {% endblock %}
 

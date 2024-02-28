@@ -12,6 +12,7 @@ require('./routes/mentors')(router)
 require('./routes/admin')(router)
 
 require('./routes/schools')(router)
+require('./routes/lead-provider')(router)
 
 router.get('/home', (req, res) => {
 
