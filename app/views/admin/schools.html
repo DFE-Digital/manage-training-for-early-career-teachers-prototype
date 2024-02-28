@@ -1,10 +1,16 @@
 {% extends "layouts/admin.html" %}
 
-{% set pageName="Schools" %}
+{% set pageName="Filter schools" %}
 {% set currentSection="schools" %}
-
+{% set currentSubSection="filters" %}
 
 {% set filters = req.session.data.filters %}
+
+{# {% set numberOfSchools = req.session.data.schools %}
+
+{% if numberOfSchools < 20 %}
+  {% set numberOfSchools = schools.length %} 
+{% endif %} #}
 
 
 {% block beforeContent %}
@@ -18,12 +24,13 @@
     <h1 class="govuk-heading-xl">{{ pageName }} ({{pagination.totalCount}})</h1>
   </div>
 
+
   <div class="moj-page-header-actions__actions">
 
     <div class="moj-button-menu">
       <div class="moj-button-menu__wrapper">
 
-        <a href="/admin/extract.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action" data-module="govuk-button">Download results</a>
+        <a href="/admin/extract.html" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--primary moj-page-header-actions__action" data-module="govuk-button">Download results</a>
 
       </div>
     </div>
@@ -31,6 +38,8 @@
   </div>
 
 </div>
+
+{% include "admin/schools/_secondary-nav" %}
 
   {{data.schools | log}}
 
@@ -40,14 +49,12 @@
     </div>
     <div class="app-filter-layout__content">
 
-      {% include "_includes/search-form.njk" %}
-
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
       </div>
 
 
-      {% if schools.length %}
+      {% if data.schools.length %}
         <div class="school-list">
           {% for school in schools %}
             <div class="school-list__item">

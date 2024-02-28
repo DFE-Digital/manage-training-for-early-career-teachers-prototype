@@ -11,11 +11,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      <h1 class="govuk-heading-xl">{{ pageName }}</h1>
       
-      <div class="govuk-body govuk-!-padding-4" style="background-color: #f3f2f1; height:100px; text-align: center;">
-        [Search and filter form]
-      </div>
+      {% include "_includes/search-form.njk" %}
       
       {% set names = ["Jaxon Brewer", "Marvin Lawrence", "Dayton Shelton", "Jamarion Acosta", "Addison Mercer", "Rosa Davenport", "Konner Anderson", "Hannah Hunter", "Brooks Castro", "Rodolfo Harmon", "Wyatt Larson", "Maren Christian"] %}
       
