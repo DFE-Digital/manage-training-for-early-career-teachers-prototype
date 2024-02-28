@@ -25,10 +25,42 @@
 
 <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-{{ govukButton({
-  text: "Continue",
-  href: "check-participant"
-}) }}
+<p class="govuk-body">Additional content</p>
+
+<form method="post">
+  {{ govukRadios({
+    name: "[change][newLeadProvider]",
+    value: data.change.newLeadProvider,
+    items: [
+      {
+        value: "Lead provider 1",
+        text: "Lead provider 1"
+      },
+      {
+        value: "Lead provider 2",
+        text: "Lead provider 2"
+      },
+      {
+        value: "Lead provider 3",
+        text: "Lead provider 3"
+      },
+      {
+        value: "Lead provider 4",
+        text: "Lead provider 4"
+      }
+    ,
+    {
+      value: "Lead provider 5",
+      text: "Lead provider 5"
+    }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
 
 {% endblock %}
 

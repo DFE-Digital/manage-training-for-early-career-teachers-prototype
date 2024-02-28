@@ -25,14 +25,14 @@
 
 {# <h1 class="govuk-heading-l">{{ pageName }}</h1> #}
 
-<form action="post" novalidate>
+<form method="post" novalidate>
   {{ govukInput({
     id: "[change][participant][email]",
     name: "[change][participant][email]",
     label: {
       text: pageName,
       isPageHeading: true,
-      classes: "govuk-label--xl"
+      classes: "govuk-label--l"
     },
     hint: {
       text: "Hint text"
