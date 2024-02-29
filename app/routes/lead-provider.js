@@ -1,7 +1,13 @@
 module.exports = router => {
 
+
+
     router.post('/lead-provider/change-lp-for',(req,res) => {
-        res.redirect('/lead-provider/contacted-lead-provider')
+        if (req.body.change.leadProvFor == 'Participant') {
+            res.redirect('/lead-provider/contacted-lead-provider')    
+        } else {
+            res.redirect('/lead-provider/agreed-change-existing-provider')    
+        }
     })
 
     router.post('/lead-provider/participant-email',(req,res) => {
