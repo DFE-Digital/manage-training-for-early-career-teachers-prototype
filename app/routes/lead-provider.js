@@ -1,18 +1,18 @@
 module.exports = router => {
 
-    router.post('/lead-provider/change/change-lead-provider',(req,res) => {
-        res.redirect('participant/participant-email')
+    router.post('/lead-provider/change-lp-for',(req,res) => {
+        res.redirect('/lead-provider/contacted-lead-provider')
     })
 
-    router.post('/lead-provider/change/participant/participant-email',(req,res) => {
+    router.post('/lead-provider/participant-email',(req,res) => {
         res.redirect('contacted-lead-provider')
     })
 
-    router.post('/lead-provider/change/participant/contacted-lead-provider',(req,res) => {
-        res.redirect('new-lead-provider')
+    router.post('/lead-provider/contacted-lead-provider',(req,res) => {
+        res.redirect('/lead-provider/new-lead-provider')
     })
 
-    router.post('/lead-provider/change/participant/new-lead-provider',(req,res) => {
-        res.redirect('check-participant')
+    router.post('/lead-provider/new-lead-provider',(req,res) => {
+        res.redirect('/lead-provider/check-participant')
     })
 }

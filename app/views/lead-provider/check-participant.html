@@ -23,7 +23,7 @@
 
 {% block content %}
 
-
+  {{ data | log }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -33,108 +33,69 @@
       <h2 class="govuk-heading-m">Support request details</h2>
 
       {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
               text: "Name"
             },
             value: {
-              text: "Sarah Philips"
+              text: "[r/only ppt name]"
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: data['participant']['email']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "participant-email",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "email address"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Date of birth"
+              text: "Contact with lead provider over two weeks ago"
             },
             value: {
-              text: "5 January 1978"
+              html: data['contacted']['leadProvider']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "contacted-lead-provider",
                   text: "Change",
-                  visuallyHiddenText: "date of birth"
+                  visuallyHiddenText: "contact with lead provider"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Customer reference"
+              text: "New lead provider"
             },
             value: {
-              text: "Not provided"
+              html: data['new']['leadProvider']
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "new-lead-provider",
                   text: "Change",
-                  visuallyHiddenText: "customer reference"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Contact details"
-            },
-            value: {
-              html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "contact details"
+                  visuallyHiddenText: "new lead provider"
                 }
               ]
             }
           }
         ]
       }) }}
-
-      
-
     
-      <form action="/form-handler" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
-
-        {{ govukButton({
-          text: "Accept and send request"
-        }) }}
-
-      </form>
 
     </div>
   </div>

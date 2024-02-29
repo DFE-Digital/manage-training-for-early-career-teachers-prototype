@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "New lead provider" %}
+{% set pageName="Have you contacted the lead provider more than 2 weeks ago?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -25,34 +25,26 @@
 
 <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<p class="govuk-body">Additional content</p>
+<p class="govuk-body">Additional content to explain why its 2 weeks etc </p>
 
 <form method="post">
+
   {{ govukRadios({
-    name: "[change][newLeadProvider]",
-    value: data.change.newLeadProvider,
+    name: "contacted[leadProvider]",
+    value: data.contacted.leadProvider,
     items: [
       {
-        value: "Lead provider 1",
-        text: "Lead provider 1"
+        value: "Yes",
+        text: "Yes"
       },
       {
-        value: "Lead provider 2",
-        text: "Lead provider 2"
+        value: "No",
+        text: "No"
       },
       {
-        value: "Lead provider 3",
-        text: "Lead provider 3"
-      },
-      {
-        value: "Lead provider 4",
-        text: "Lead provider 4"
+        value: "I don't know",
+        text: "I don't know"
       }
-    ,
-    {
-      value: "Lead provider 5",
-      text: "Lead provider 5"
-    }
     ]
   }) }}
 
@@ -60,6 +52,7 @@
     text: "Continue"
   }) }}
 </form>
+
 
 
 {% endblock %}
