@@ -5,7 +5,13 @@ module.exports = router => {
     })
 
     router.post('/lead-provider/participant-email',(req,res) => {
-        res.redirect('contacted-lead-provider')
+
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        } else {
+            res.redirect('contacted-lead-provider')    
+        }       
+
     })
 
     router.post('/lead-provider/contacted-lead-provider',(req,res) => {
