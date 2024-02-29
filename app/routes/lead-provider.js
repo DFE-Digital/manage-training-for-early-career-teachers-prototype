@@ -11,14 +11,21 @@ module.exports = router => {
         } else {
             res.redirect('contacted-lead-provider')    
         }       
-
     })
 
     router.post('/lead-provider/contacted-lead-provider',(req,res) => {
-        res.redirect('/lead-provider/new-lead-provider')
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        } else {
+            res.redirect('/lead-provider/new-lead-provider')
+        }       
     })
 
     router.post('/lead-provider/new-lead-provider',(req,res) => {
-        res.redirect('/lead-provider/check-participant')
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        } else {
+            res.redirect('/lead-provider/check-participant')
+        }       
     })
 }
