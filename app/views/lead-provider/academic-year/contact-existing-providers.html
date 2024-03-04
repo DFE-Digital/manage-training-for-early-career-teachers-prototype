@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="You need to contact your existing lead providers" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+
+{{ govukInsetText({
+  text: "Rob feel free to chge or remove any components. All just dummy content."
+}) }}
+
+<p class="govuk-body">Some contextual stuff in here</p>
+<p class="govuk-body">...and here and here...</p>
+
+<p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage mentors and ECTs</a></p>
+
+{% endblock %}
+
+

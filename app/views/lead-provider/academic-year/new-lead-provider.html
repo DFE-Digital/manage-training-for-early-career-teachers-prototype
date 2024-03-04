@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Who is the new lead provider?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+<p class="govuk-body">Additional content</p>
+
+<form method="post">
+  {{ govukRadios({
+    name: "new[leadProvider]",
+    fieldset: {
+      legend: {
+        text: "Legend text",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    value: new.leadProvider,
+    items: [
+      {
+        value: "This provider",
+        text: "This provider"
+      },
+      {
+        value: "Another provider",
+        text: "Another provider"
+      },
+      {
+        value: "Some other provider",
+        text: "Some other provider"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
+{% endblock %}
+
+

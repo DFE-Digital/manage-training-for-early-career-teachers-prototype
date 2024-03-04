@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Your support request has been submitted" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+  {{ data | log }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <p class="govuk-body">Our support team will reply by email as soon as possible. They may need more information from you.</p>
+
+      <p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage mentors and ECTs</a></p>
+
+      <p class="govuk-body">FYI Rob - this content 👆 was lifted from an existing page</p>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
