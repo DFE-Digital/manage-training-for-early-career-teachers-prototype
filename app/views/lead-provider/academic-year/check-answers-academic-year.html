@@ -39,7 +39,7 @@
               text: "Name"
             },
             value: {
-              text: "[r/only ppt name]"
+              text: "[SIT name]"
             }
           },
           {
@@ -47,7 +47,7 @@
               text: "Email address"
             },
             value: {
-              text: "[SIT's email address]"
+              html: data['sit']['emailAddress']
             }
           },
           {
@@ -77,7 +77,7 @@
             actions: {
               items: [
                 {
-                  href: "contacted-lead-provider?returnUrl=/lead-provider/academic-year/check-participant",
+                  href: "already-contacted-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
                   text: "Change",
                   visuallyHiddenText: "if you contacted lead provider over two weeks ago"
                 }
@@ -94,7 +94,7 @@
             actions: {
               items: [
                 {
-                  href: "new-lead-provider?returnUrl=/lead-provider/academic-year/check-participant",
+                  href: "new-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
                   text: "Change",
                   visuallyHiddenText: "new lead provider"
                 }

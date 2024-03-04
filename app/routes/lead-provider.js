@@ -22,8 +22,12 @@ module.exports = router => {
     router.post('/lead-provider/participant/contacted-lead-provider',(req,res) => {
         if (req.query.returnUrl) {
             res.redirect(req.query.returnUrl)    
-        } else {
-            res.redirect('new-lead-provider')
+        }
+        else if (req.body.contacted.leadProvider == 'Yes') {
+            res.redirect('new-lead-provider')    
+        }
+        else {
+            res.redirect('what-to-do-next')    
         }       
     })
 
@@ -55,9 +59,13 @@ module.exports = router => {
 
 
     router.post('/lead-provider/academic-year/already-contacted-lead-provider',(req,res) => {
-        if (req.body.contacted.leadProvider == 'Yes') {
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        }
+        else if (req.body.contacted.leadProvider == 'Yes') {
             res.redirect('new-lead-provider')    
-        } else {
+        }
+        else {
             res.redirect('what-to-do-next')    
         }     
     })
