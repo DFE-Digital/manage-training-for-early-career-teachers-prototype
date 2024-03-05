@@ -30,13 +30,6 @@
 <form method="post">
   {{ govukRadios({
     name: "new[leadProvider]",
-    fieldset: {
-      legend: {
-        isPageHeading: false,
-        text: pageName,
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
     value: new.leadProvider,
     items: [
       {
