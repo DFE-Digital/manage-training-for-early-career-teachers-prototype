@@ -25,17 +25,20 @@
 
 <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<p class="govuk-body">Additional content</p>
+<p class="govuk-body">Content - Some additional info to say why these providers are available</p>
 
 <form method="post">
   {{ govukRadios({
     name: "new[leadProvider]",
     fieldset: {
       legend: {
-        text: "Legend text",
         isPageHeading: false,
+        text: pageName,
         classes: "govuk-fieldset__legend--s"
       }
+    },
+    hint: {
+      text: "Hint text to provide additional information about the options."
     },
     value: new.leadProvider,
     items: [
