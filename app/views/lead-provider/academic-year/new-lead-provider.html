@@ -25,25 +25,32 @@
 
 <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<p class="govuk-body">Additional content</p>
+<p class="govuk-body">We only show you providers that are available for the relevant academic year.</p>
 
 <form method="post">
   {{ govukRadios({
     name: "new[leadProvider]",
-    
     value: new.leadProvider,
     items: [
       {
-        value: "This provider",
-        text: "This provider"
+        value: "Best Practice",
+        text: "Best Practice"
       },
       {
-        value: "Another provider",
-        text: "Another provider"
+        value: "Capita",
+        text: "Capita"
       },
       {
-        value: "Some other provider",
-        text: "Some other provider"
+        value: "Education Development Trust",
+        text: "Education Development Trust"
+      },
+      {
+        value: "TeachFirst",
+        text: "TeachFirst"
+      },
+      {
+        value: "UCL Institute of Education",
+        text: "UCL Institute of Education"
       }
     ]
   }) }}
