@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Do you want to request a change to a participant or an academic year?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select partcipant or academic year",
+      href: "#change-lead-provider"
+    }
+  ]
+}) }}
+
+<form method="post" novalidate >
+  {{ govukRadios({
+    id: "change-lead-provider",
+    name: "[change][leadProvFor]",
+    value: data.change.leadProvFor,
+    fieldset: {
+      legend: {
+        text: pageName,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    errorMessage: {
+      text: "Select partcipant or academic year"
+    },
+    items: [
+      {
+        value: "Participant",
+        text: "Participant"
+      },
+      {
+        value: "Academic year",
+        text: "Academic year"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
+
+
+
+{% endblock %}
+
+
