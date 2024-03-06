@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="What to do next" %}
+{% set pageName="What you can do next" %}
 
 {% block header %}
   {{ govukHeader({
@@ -18,16 +18,14 @@
 
 <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-
-{{ govukInsetText({
-  text: "Rob feel free to chge or remove any components. All just dummy content."
-}) }}
-
-<p class="govuk-body">Some contextual stuff in here</p>
-<p class="govuk-body">...and here and here...</p>
+<p class="govuk-body">It can take around 2 weeks for changes made by a lead provider to update on this service.</p>
+<p class="govuk-body">If you haven't contacted the lead provider already, you can</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>wait for the update to happen</li>
+  <li>contact the lead provider again if more than 2 week passes</li>
+</ul>
 
 <p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage mentors and ECTs</a></p>
 
 {% endblock %}
-
 
