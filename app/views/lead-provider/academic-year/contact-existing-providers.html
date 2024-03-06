@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="You need to contact your current and new lead provider" %}
+{% set pageName="Contact your current and new lead providers" %}
 
 {% block header %}
   {{ govukHeader({
@@ -22,17 +22,21 @@
 
 
 {% block content %}
-
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
 
 {{ govukInsetText({
-  text: "Rob feel free to chge or remove any components. All just dummy content."
+  text: "Your current lead provider is Ambition."
 }) }}
 
-<p class="govuk-body">You will have to confirm that the school has agreed the change with both it’s existing and new provider because... </p>
+<p class="govuk-body">If you want to change lead provider for all participants in an academic year you must contact your current and new lead providers.</p>
 
 <p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage mentors and ECTs</a></p>
+  </div>
+</div>
+
 
 {% endblock %}
 

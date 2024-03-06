@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Have you agreed theis change with the existing and new providers?" %}
+{% set pageName="Have you agreed this change with the current and new lead providers?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -23,32 +23,36 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-<p class="govuk-body">Additional content / guidance etc</p>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<form method="post">
+    {# <p class="govuk-body">Additional content / guidance etc</p> #}
 
-  {{ govukRadios({
-    name: "[agreedWith][providers]",
-    value: data.agreedWith.providers,
-    items: [
-      {
-        value: "Yes",
-        text: "Yes"
-      },
-      {
-        value: "No",
-        text: "No"
-      }
-    ]
-  }) }}
+    <form method="post">
 
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-</form>
+      {{ govukRadios({
+        name: "[agreedWith][providers]",
+        value: data.agreedWith.providers,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
 
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>  
 
 
 {% endblock %}

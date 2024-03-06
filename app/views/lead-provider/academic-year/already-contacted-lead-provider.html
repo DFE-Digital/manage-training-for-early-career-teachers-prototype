@@ -23,37 +23,39 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<p class="govuk-body">Additional content to explain why its 2 weeks etc </p>
-
-<form method="post">
-
-  {{ govukRadios({
-    name: "[contacted][leadProvider]",
-    value: data.contacted.leadProvider,
-    items: [
-      {
-        value: "Yes",
-        text: "Yes"
-      },
-      {
-        value: "No",
-        text: "No"
-      },
-      {
-        value: "I don't know",
-        text: "I don't know"
-      }
-    ]
-  }) }}
-
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-</form>
-
-
+    <p class="govuk-body">Additional content to explain why its 2 weeks etc </p>
+    
+    <form method="post">
+    
+      {{ govukRadios({
+        name: "[contacted][leadProvider]",
+        value: data.contacted.leadProvider,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          },
+          {
+            value: "I don't know",
+            text: "I don't know"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>    
+  </div>
+</div>
 
 {% endblock %}
 

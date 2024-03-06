@@ -23,37 +23,39 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ pageName }}</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-<p class="govuk-body">It can take around 2 weeks for a change by a lead provider to show on this service.</p>
-
-<form method="post">
-
-  {{ govukRadios({
-    name: "contacted[leadProvider]",
-    value: data.contacted.leadProvider,
-    items: [
-      {
-        value: "Yes",
-        text: "Yes"
-      },
-      {
-        value: "No",
-        text: "No"
-      },
-      {
-        value: "I don't know",
-        text: "I don't know"
-      }
-    ]
-  }) }}
-
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-</form>
-
-
+    <p class="govuk-body">It can take around 2 weeks for a change by a lead provider to show on this service.</p>
+    
+    <form method="post">
+    
+      {{ govukRadios({
+        name: "contacted[leadProvider]",
+        value: data.contacted.leadProvider,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          },
+          {
+            value: "I don't know",
+            text: "I don't know"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>    
+  </div>
+</div>
 
 {% endblock %}
 
