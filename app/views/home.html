@@ -2,6 +2,7 @@
 
 {% set pageName="Manage your training" %}
 {% set currentSection="home" %}
+{% set indTutName="Mary Bobbins" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -24,7 +25,7 @@
             text: "Induction tutor"
           },
           value: {
-            html: data['sit']['emailAddress']
+            html: indTutName
           },
           actions: {
             items: [

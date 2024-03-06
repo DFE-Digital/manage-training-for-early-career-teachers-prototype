@@ -2,6 +2,8 @@
 
 {% set pageName="Check your answers before you request the change" %}
 
+{% set indTutName="Mary Bobbins" %}
+
 {% block header %}
   {{ govukHeader({
     serviceName: serviceName,
@@ -36,11 +38,10 @@
         rows: [
           {
             key: {
-              text: "Induction tutor
-              "
+              text: "Induction tutor"
             },
             value: {
-              text: "[SIT name]"
+              html: indTutName
             }
           },
           {
