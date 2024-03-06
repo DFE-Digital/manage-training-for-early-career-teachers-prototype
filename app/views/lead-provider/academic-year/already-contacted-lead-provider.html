@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Have you contacted the lead provider more than 2 weeks ago?" %}
+{% set pageName="Have you contacted the lead providers in the last 2 weeks?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -27,12 +27,12 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">Additional content to explain why its 2 weeks etc </p>
+    <p class="govuk-body">It can take around 2 weeks for a change by a lead provider to show on this service.</p>
     
     <form method="post">
     
       {{ govukRadios({
-        name: "[contacted][leadProvider]",
+        name: "contacted[leadProvider]",
         value: data.contacted.leadProvider,
         items: [
           {
