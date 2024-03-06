@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Check your answers" %}
+{% set pageName="Check your answers before you request the change" %}
 
 {% block header %}
   {{ govukHeader({
@@ -30,13 +30,13 @@
 
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <h2 class="govuk-heading-m">Support request details</h2>
+      <h2 class="govuk-heading-m">Change request details</h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Name"
+              text: "Participant"
             },
             value: {
               text: "Sitty McSitter"
@@ -68,7 +68,7 @@
           },
           {
             key: {
-              text: "Email address"
+              text: "Email"
             },
             value: {
               html: data['participant']['email']
@@ -85,7 +85,7 @@
           },
           {
             key: {
-              text: "Contact with lead provider over two weeks ago"
+              text: "Contacted lead provider over 2 weeks ago"
             },
             value: {
               html: data['contacted']['leadProvider']
