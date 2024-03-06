@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What's the participant's email?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter the participant's email",
+      href: "#participant[email]"
+    }
+  ]
+}) }}
+
+
+<form method="post" novalidate>
+  {{ govukInput({
+    id: "participant[email]",
+    name: "participant[email]",
+    label: {
+      text: pageName,
+      isPageHeading: true,
+      classes: "govuk-label--l"
+    },
+    hint: {
+      text: "We'll use this to search for their details"
+    },
+    errorMessage: {
+      text: "Enter the participant's email"
+    },
+    value: data['participant']['email'],
+    classes: "govuk-!-width-one-half"
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+{{ data | log }}
+
+{% endblock %}
+
+
