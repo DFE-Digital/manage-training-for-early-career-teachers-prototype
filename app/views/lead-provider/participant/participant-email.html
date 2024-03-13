@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="What's the participant's email?" %}
+{% set pageName="Is the participant's email correct?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -43,9 +43,12 @@
   }) }}
 
   {{ govukButton({
-    text: "Continue"
+    text: "Yes - this is the correct email"
   }) }}
 </form>
+
+<p class="govuk-body">If the email address is wrong, just change it above.</p>
+
 
 {{ data | log }}
 
