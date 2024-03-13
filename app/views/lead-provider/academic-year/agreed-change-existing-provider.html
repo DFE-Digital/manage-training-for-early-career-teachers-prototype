@@ -35,6 +35,9 @@
       {{ govukRadios({
         name: "[agreedWith][providers]",
         value: data.agreedWith.providers,
+        hint: {
+          text: "Some lead providers prefer schools to contact the delivery partner first."
+        },
         items: [
           {
             value: "Yes",
