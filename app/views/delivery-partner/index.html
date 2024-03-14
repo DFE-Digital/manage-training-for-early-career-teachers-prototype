@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Request a change to a delivery partner" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+
+    <p class="govuk-body"><span class="govuk-!-font-weight-bold">👇 FAO ROB - I reused content from change LP journey as placeholeder 👇</span><br><br>Your school should contact your training providers before we can make a change. Some lead providers prefer you to contact the delivery partner first.</p>
+
+    <p class="govuk-body">A lead provider should withdraw a participant who is no longer training with them.</p>
+    
+    
+    {{ govukInsetText({
+      text: "Mention DPs work with specific LPs   |   Your preferred choice might not be available becuse of that | You need to notify DP and LP of intention to change"
+    }) }}
+    
+    {{ govukButton({
+      text: "Continue",
+      href: "/lead-provider/change-lp-for"
+    }) }}    
+  </div>
+</div>      
+
+
+{% endblock %}
+
+
