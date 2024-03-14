@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Have you contacted the lead provider in the last 2 weeks?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select yes if you contacted the lead provider in the last 2 weeks",
+      href: "#change-lead-provider"
+    }
+  ]
+}) }}
+
+
+<h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+<p class="govuk-body">It can take around 2 weeks for a change by a lead provider to show on this service.</p>
+
+<form method="post">
+
+  {{ govukRadios({
+    name: "contacted[leadProvider]",
+    value: data.contacted.leadProvider,
+    errorMessage: {
+      text: "Select yes if you contacted the lead provider in the last 2 weeks"
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      },
+      {
+        value: "I don't know",
+        text: "I don't know"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
+
+{% endblock %}
+
+

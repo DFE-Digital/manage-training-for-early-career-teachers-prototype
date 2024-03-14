@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your answers before you request the change" %}
+
+{% set indTutName="Mary Bobbins" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  {{ data | log }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <h2 class="govuk-heading-m">Change request details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Induction tutor"
+            },
+            value: {
+              html: indTutName
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              html: data['sit']['emailAddress']
+            }
+          },
+          {
+            key: {
+              text: "School"
+            },
+            value: {
+              html: "Plymouth High School"
+            }
+          },
+          {
+            key: {
+              text: "Academic year"
+            },
+            value: {
+              html: "2023 to 2024"
+            }
+          },
+          {
+            key: {
+              text: "Current lead provider"
+            },
+            value: {
+              html: "Ambition"
+            }
+          },
+          {
+            key: {
+              text: "Change agreed with lead providers"
+            },
+            value: {
+              html: data['agreedWith']['providers']
+            },
+            actions: {
+              items: [
+                {
+                  href: "agreed-change-existing-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "if you agreed changes with the lead provider"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contacted lead providers over 2 weeks ago"
+            },
+            value: {
+              html: data['contacted']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "already-contacted-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "if you contacted lead provider over two weeks ago"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New lead provider"
+            },
+            value: {
+              html: data['new']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "new lead provider"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      
+      {{ govukButton({
+        text: "Accept and send request",
+        href: "request-submitted"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

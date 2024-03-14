@@ -2,6 +2,7 @@
 
 {% set pageName="Manage your training" %}
 {% set currentSection="home" %}
+{% set indTutName="Mary Bobbins" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -9,7 +10,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
@@ -24,13 +25,13 @@
             text: "Induction tutor"
           },
           value: {
-            text: "Sarah Philips"
+            html: indTutName
           },
           actions: {
             items: [
               {
                 href: "#",
-                text: "Change",
+                text: "Request change",
                 visuallyHiddenText: "induction tutor"
               }
             ]
@@ -81,7 +82,7 @@
         items: [
           {
             href: "#",
-            text: "Change"
+            text: "Request change"
           }
         ]
       }
@@ -97,7 +98,7 @@
         items: [
           {
             href: "#",
-            text: "Change"
+            text: "Request change"
           }
         ]
       }
@@ -112,8 +113,8 @@
       actions: {
         items: [
           {
-            href: "/lead-provider/change/support-request-guidance",
-            text: "Change"
+            href: "/lead-provider",
+            text: "Request change"
           }
         ]
       }
@@ -129,7 +130,7 @@
         items: [
           {
             href: "#",
-            text: "Change"
+            text: "Request change"
           }
         ]
       }

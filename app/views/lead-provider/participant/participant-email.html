@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Is this the correct email for Ray Kirby?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<form method="post" novalidate>
+  {{ govukInput({
+    id: "participant[email]",
+    name: "participant[email]",
+    label: {
+      text: pageName,
+      isPageHeading: true,
+      classes: "govuk-label--l"
+    },
+    value: data['participant']['email'],
+    classes: "govuk-!-width-one-half"
+  }) }}
+
+  {{ govukButton({
+    text: "Yes - this is the correct email"
+  }) }}
+</form>
+
+<p class="govuk-body">If the email address is wrong, just change it above.</p>
+
+
+{{ data | log }}
+
+{% endblock %}
+
+

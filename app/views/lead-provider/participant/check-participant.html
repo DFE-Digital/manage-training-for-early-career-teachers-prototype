@@ -1,0 +1,133 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your answers before you request the change" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  {{ data | log }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <h2 class="govuk-heading-m">Change request details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Participant"
+            },
+            value: {
+              text: "Ray Kirby"
+            }
+          },
+          {
+            key: {
+              text: "School"
+            },
+            value: {
+              html: "Plymouth Primary School"
+            }
+          },
+          {
+            key: {
+              text: "Academic year"
+            },
+            value: {
+              html: "2023 to 2024"
+            }
+          },
+          {
+            key: {
+              text: "Current lead provider"
+            },
+            value: {
+              html: "Ambition"
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              html: data['participant']['email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "participant-email?returnUrl=/lead-provider/participant/check-participant",
+                  text: "Change",
+                  visuallyHiddenText: "email address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contacted lead provider over 2 weeks ago"
+            },
+            value: {
+              html: data['contacted']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "contacted-lead-provider?returnUrl=/lead-provider/participant/check-participant",
+                  text: "Change",
+                  visuallyHiddenText: "contact with lead provider"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New lead provider"
+            },
+            value: {
+              html: data['new']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-lead-provider?returnUrl=/lead-provider/participant/check-participant",
+                  text: "Change",
+                  visuallyHiddenText: "new lead provider"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      
+      {{ govukButton({
+        text: "Accept and send request",
+        href: "request-submitted"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
