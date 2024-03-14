@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Which academic year do you want to change delivery partner for?" %}
+{% set pageName="These are your options for new delivery partner" %}
 
 {% block header %}
   {{ govukHeader({
@@ -27,7 +27,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body"><span class="govuk-!-font-weight-bold">👇 FAO ROB - I reused content from change LP journey as placeholeder 👇</span><br><br>It can take around 2 weeks for a change by a lead provider to show on this service.</p>
+    <p class="govuk-body"><span class="govuk-!-font-weight-bold">👇 FAO ROB - I reused content from change LP journey as placeholeder 👇</span><br><br>Bit of info to tell inform users that DPs work with specific LP's so it's not possible to 'swap' to just any other provider. They also might not be available for certain cohorts.<br><br><span class="govuk-!-font-weight-bold">👇Placeholder DPs -  will be dynamic based on ac/yr and current LP👇</span></p>
     
     <form method="post">
     
@@ -36,16 +36,40 @@
         value: data.pick.newDeliveryPartner,
         items: [
           {
-            value: "2023 to 2024",
-            text: "2023 to 2024"
+            value: "Beatty-Mayert",
+            text: "Beatty-Mayert"
           },
           {
-            value: "2022 to 2023",
-            text: "2022 to 2023"
+            value: "Borer-Wintheiser",
+            text: "Borer-Wintheiser"
           },
           {
-            value: "2021 to 2022",
-            text: "2021 to 2022"
+            value: "Brakus-Turcotte",
+            text: "Brakus-Turcotte"
+          },
+          {
+            value: "Connelly-Marquardt",
+            text: "Connelly-Marquardt"
+          },
+          {
+            value: "D'Amore, Blick and O'Hara",
+            text: "D'Amore, Blick and O'Hara"
+          },
+          {
+            value: "Krajcik-Bradtke",
+            text: "Krajcik-Bradtke"
+          },
+          {
+            value: "Labadie, Abshire and Ullrich",
+            text: "Labadie, Abshire and Ullrich"
+          },
+          {
+            value: "O'Reilly, Dooley and Crona",
+            text: "O'Reilly, Dooley and Crona"
+          },
+          {
+            value: "Wiltshire schools alliance",
+            text: "Wiltshire schools alliance"
           }
         ]
       }) }}

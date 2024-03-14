@@ -14,7 +14,15 @@ module.exports = router => {
         }       
     })
 
-    router.post('/delivery-partner/new-delivery-partner',(req,res) => {
+    router.post('/delivery-partner/select-academic-year',(req,res) => {
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        } else {
+            res.redirect('select-new-delivery-partner')
+        }       
+    })
+
+    router.post('/delivery-partner/select-new-delivery-partner',(req,res) => {
         if (req.query.returnUrl) {
             res.redirect(req.query.returnUrl)    
         } else {
