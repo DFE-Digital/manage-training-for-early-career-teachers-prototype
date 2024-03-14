@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Have you notified DP and LP you no longer wish to use them?" %}
+{% set pageName="Which academic year do you want to change delivery partner for?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -33,19 +33,19 @@
     
       {{ govukRadios({
         name: "notified[deliveryAndLeadProvider]",
-        value: data.notified.deliveryAndLeadProvider,
+        value: data.pick.academicYear,
         items: [
           {
-            value: "Yes",
-            text: "Yes"
+            value: "2023 to 2024",
+            text: "2023 to 2024"
           },
           {
-            value: "No",
-            text: "No"
+            value: "2022 to 2023",
+            text: "2022 to 2023"
           },
           {
-            value: "I don't know",
-            text: "I don't know"
+            value: "2021 to 2022",
+            text: "2021 to 2022"
           }
         ]
       }) }}
