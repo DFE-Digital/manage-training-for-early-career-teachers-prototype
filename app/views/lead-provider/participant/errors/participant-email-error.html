@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="What's the participant's email?" %}
+{% set pageName="Is this the correct email for Ray Kirby?" %}
 
 {% block header %}
   {{ govukHeader({
@@ -43,9 +43,6 @@
       text: pageName,
       isPageHeading: true,
       classes: "govuk-label--l"
-    },
-    hint: {
-      text: "We'll use this to search for their details"
     },
     errorMessage: {
       text: "Enter the participant's email"
