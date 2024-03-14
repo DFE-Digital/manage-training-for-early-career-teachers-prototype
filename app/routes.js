@@ -13,6 +13,7 @@ require('./routes/admin')(router)
 
 require('./routes/schools')(router)
 require('./routes/lead-provider')(router)
+require('./routes/delivery-partner')(router)
 
 router.get('/home', (req, res) => {
 

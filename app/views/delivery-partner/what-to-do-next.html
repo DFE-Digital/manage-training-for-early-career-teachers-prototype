@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="You need to notify DP / LP of intent to change" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body"><span class="govuk-!-font-weight-bold">👇 FAO ROB - I reused content from change LP journey as placeholeder 👇</span><br><br>We confirm any changes with providers before we update this service. This may take a few weeks.</p>
+    <p class="govuk-body">If you haven't contacted the lead provider already, you can:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>wait for the update to happen</li>
+      <li>contact your training provider again after a few weeks</li>
+    </ul>
+
+    <p class="govuk-body">A lead provider should withdraw a participant who is no longer training with them.</p>
+
+    <p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage your training</a></p>
+  </div>
+</div>    
+
+
+
+{% endblock %}
+
+
