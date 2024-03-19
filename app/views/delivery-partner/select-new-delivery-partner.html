@@ -27,57 +27,35 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">We only show you delivery partners who work with your current lead provider and are available for the academic year you chose.</p>
-    
-    <form method="post">
-    
-      {{ govukRadios({
-        name: "notified[deliveryAndLeadProvider]",
-        value: data.pick.newDeliveryPartner,
-        items: [
+    {{ govukTable({
+      caption: "Your details",
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+      
+      rows: [
+        [
           {
-            value: "Beatty-Mayert",
-            text: "Beatty-Mayert"
+            text: "Lead provider"
           },
           {
-            value: "Borer-Wintheiser",
-            text: "Borer-Wintheiser"
+            html: data['provider']
+          }
+        ],
+        [
+          {
+            text: "Academic year"
           },
           {
-            value: "Brakus-Turcotte",
-            text: "Brakus-Turcotte"
-          },
-          {
-            value: "Connelly-Marquardt",
-            text: "Connelly-Marquardt"
-          },
-          {
-            value: "D'Amore, Blick and O'Hara",
-            text: "D'Amore, Blick and O'Hara"
-          },
-          {
-            value: "Krajcik-Bradtke",
-            text: "Krajcik-Bradtke"
-          },
-          {
-            value: "Labadie, Abshire and Ullrich",
-            text: "Labadie, Abshire and Ullrich"
-          },
-          {
-            value: "O'Reilly, Dooley and Crona",
-            text: "O'Reilly, Dooley and Crona"
-          },
-          {
-            value: "Wiltshire schools alliance",
-            text: "Wiltshire schools alliance"
+            html: data['pickAcademicYear']
           }
         ]
-      }) }}
+      ]
+    }) }}
+
+    <p class="govuk-body">We only show you delivery partners who work with your current lead provider and are available for the academic year you chose.</p>
+
+    {% include "_includes/delivery-partner-radios.njk" %}
     
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-    </form>    
   </div>
 </div>
 

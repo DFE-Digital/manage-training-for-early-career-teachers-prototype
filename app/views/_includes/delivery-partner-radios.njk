@@ -1,0 +1,94 @@
+{% if data['provider'] == 'Ambition' %}
+  
+  <form method="post">
+      {{ govukRadios({
+        name: "notified[deliveryAndLeadProvider]",
+        value: data.pick.newDeliveryPartner,
+        items: [
+          {
+            value: "Beatty-Mayert",
+            text: "Beatty-Mayert"
+          },
+          {
+            value: "Borer-Wintheiser",
+            text: "Borer-Wintheiser"
+          },
+          {
+            value: "Connelly-Marquardt",
+            text: "Connelly-Marquardt"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>   
+
+
+{% elseif data['provider'] == 'Capita' %}
+  
+
+  <form method="post">
+      {{ govukRadios({
+        name: "notified[deliveryAndLeadProvider]",
+        value: data.pick.newDeliveryPartner,
+        items: [
+          {
+            value: "Brakus-Turcotte",
+            text: "Brakus-Turcotte"
+          },
+          {
+            value: "Krajcik-Bradtke",
+            text: "Krajcik-Bradtke"
+          },
+          {
+            value: "Labadie, Abshire and Ullrich",
+            text: "Labadie, Abshire and Ullrich"
+          },
+          {
+            value: "O'Reilly, Dooley and Crona",
+            text: "O'Reilly, Dooley and Crona"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+{% elseif data['provider'] == 'Best practice' %}
+  
+
+  <form method="post">
+      {{ govukRadios({
+        name: "notified[deliveryAndLeadProvider]",
+        value: data.pick.newDeliveryPartner,
+        items: [
+          {
+            value: "Connelly-Marquardt",
+            text: "Connelly-Marquardt"
+          },
+          {
+            value: "D'Amore, Blick and O'Hara",
+            text: "D'Amore, Blick and O'Hara"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+{% else %}
+
+    {{ govukInsetText({
+      text: "There are no delivery partners that can work with you."
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}    
+  
+{% endif %}
+

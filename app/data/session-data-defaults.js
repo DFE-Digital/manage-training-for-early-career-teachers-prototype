@@ -1,6 +1,6 @@
 module.exports = {
 
-  allProviders: ["Ambition", "Capita", "Best practice"],
+  allProviders: ["Ambition", "Capita", "Best practice", "UCL Institute of Education"],
 
   
   schools: [
