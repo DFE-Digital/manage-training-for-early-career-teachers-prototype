@@ -27,8 +27,10 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
+    <p class="govuk-body">We only show you delivery partners who work with your current lead provider and are available for the academic year you chose.</p>
+
     {{ govukTable({
-      caption: "Your details",
+      caption: "Current details",
       captionClasses: "govuk-table__caption--m",
       firstCellIsHeader: true,
       
@@ -51,9 +53,8 @@
         ]
       ]
     }) }}
-
-    <p class="govuk-body">We only show you delivery partners who work with your current lead provider and are available for the academic year you chose.</p>
-
+    
+    
     {% include "_includes/delivery-partner-radios.njk" %}
     
   </div>
