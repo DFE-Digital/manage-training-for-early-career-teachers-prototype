@@ -1,5 +1,8 @@
 module.exports = {
 
+  allProviders: ["Ambition", "Capita", "Best practice"],
+
+  
   schools: [
     {
       "id": "612835",

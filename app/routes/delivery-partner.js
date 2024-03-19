@@ -30,5 +30,16 @@ module.exports = router => {
         }       
     })
 
+    // Great snippet for random item on clicking a link
+    router.get('/home', function(request, response){
+        
+        var providers = request.session.data['allProviders']
+        var provider = providers[Math.round(Math.random()*2)]
+        response.locals.data.provider = provider
+        request.session.data.provider = provider
+        response.render('home')
+        console.log('test')
+      })
+
 
 }

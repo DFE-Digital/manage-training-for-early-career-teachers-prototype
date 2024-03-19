@@ -108,7 +108,7 @@
         text: "Lead provider"
       },
       value: {
-        text: "Ambition"
+        html: data['provider']
       },
       actions: {
         items: [
@@ -166,6 +166,8 @@
 }) }}
 
   </div>
+
+  {{ data | log }}
 </div>
 
 
