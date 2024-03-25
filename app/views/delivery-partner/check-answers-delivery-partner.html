@@ -81,14 +81,14 @@
               text: "Contacted current providers"
             },
             value: {
-              html: data['agreedWith']['providers']
+              html: data['notifiedDeliveryAndLeadProvider']
             },
             actions: {
               items: [
                 {
-                  href: "agreed-change-existing-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  href: "notified-dp-and-lp?returnUrl=/delivery-partner/check-answers-delivery-partner",
                   text: "Change",
-                  visuallyHiddenText: "if you agreed changes with the lead provider"
+                  visuallyHiddenText: "if you agreed changes with the lead provider and delivery partner"
                 }
               ]
             }
@@ -98,14 +98,14 @@
               text: "New delivery partner"
             },
             value: {
-              html: data['new']['leadProvider']
+              html: data['newDeliveryPartner']
             },
             actions: {
               items: [
                 {
-                  href: "new-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  href: "select-new-delivery-partner?returnUrl=/delivery-partner/check-answers-delivery-partner",
                   text: "Change",
-                  visuallyHiddenText: "new lead provider"
+                  visuallyHiddenText: "new delivery partner"
                 }
               ]
             }

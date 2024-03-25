@@ -6,7 +6,7 @@ module.exports = router => {
         if (req.query.returnUrl) {
             res.redirect(req.query.returnUrl)    
         }
-        else if (req.body.notified.deliveryAndLeadProvider == 'Yes') {
+        else if (req.body.notifiedDeliveryAndLeadProvider == 'Yes') {
             res.redirect('select-academic-year')    
         }
         else {
