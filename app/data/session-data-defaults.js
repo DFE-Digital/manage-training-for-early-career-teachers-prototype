@@ -2,6 +2,13 @@ module.exports = {
 
   allProviders: ["Ambition", "Capita", "Best practice", "UCL Institute of Education"],
 
+  defaultParticipant: [
+    {
+      "name": "Ray Kirby",
+      "email": "ray.kirby@ect-teacher.co.uk"
+    }
+  ],
+
   
   schools: [
     {

@@ -35,7 +35,7 @@
       isPageHeading: true,
       classes: "govuk-label--l"
     },
-    value: data['participant']['email'],
+    value: data['participant']['email'] | default("ray.kirby-ect@hs.com") | safe,
     classes: "govuk-!-width-one-half"
   }) }}
 
