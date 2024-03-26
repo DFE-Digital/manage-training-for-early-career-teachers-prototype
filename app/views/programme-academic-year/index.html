@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Request programme change for an academic year" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">You need to check that the new delivery partner:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>can work with your current lead provider</li>
+      <li>has the capacity to work with your school</li>
+    </ul>
+    <p class="govuk-body">You should also contact your current lead provider and delivery partner before we can make a change.</p>
+    
+    {{ govukInsetText({
+      text: "We’ll confirm the changes with providers and update this service as soon as possible. This may take a few weeks."
+    }) }}
+    
+    {{ govukButton({
+      text: "Continue",
+      href: "/delivery-partner/notified-dp-and-lp"
+    }) }}    
+  </div>
+</div>      
+
+
+{% endblock %}
+
+
