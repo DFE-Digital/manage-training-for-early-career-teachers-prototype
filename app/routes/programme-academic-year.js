@@ -4,9 +4,9 @@ module.exports = router => {
 
     router.post('/programme-academic-year/change-programme-for',(req,res) => {
         if (req.body.change.programmeFor == 'Participant') {
-            res.redirect('/programme-academic-year/agreed-programme-change-with-providers')    
-        } else {
             res.redirect('/programme-academic-year/change-programme-participant')    
+        } else {
+            res.redirect('/programme-academic-year/agreed-programme-change-with-providers') 
         }
     })
 
@@ -15,7 +15,7 @@ module.exports = router => {
             res.redirect(req.query.returnUrl)    
         }
         else if (req.body.agreedWith.providers == 'Yes') {
-            res.redirect('select-new-programme')    
+            res.redirect('select-new-programme')   
         }
         else {
             res.redirect('contact-existing-providers')    
