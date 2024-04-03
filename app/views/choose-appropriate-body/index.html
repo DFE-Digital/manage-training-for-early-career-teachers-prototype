@@ -12,11 +12,18 @@
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">Placeholder for start of journey.</p>
+    <p class="govuk-body"></p>
 
-    {{ govukButton({
-      text: "Continue"
+    
+
+    {{ govukInsetText({
+      text: "Placeholder screen for start of journey. Remove later"
     }) }}
+    
+    {{ govukButton({
+      text: "Continue",
+      href: "/choose-appropriate-body/appointed-appropriate-body"
+    }) }}  
 
   </div>
 </div>
