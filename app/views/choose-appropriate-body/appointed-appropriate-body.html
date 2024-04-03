@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Have you appointed an appropriate body?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: ""}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">We’ve sent an email to <b><a class="govuk-link app-link--hidden" href="home">{{ data['sit']['emailAddress'] }}</a></b>.</p>
+
+    <p class="govuk-body">If it does not arrive within 5 minutes, check your spam or junk folder or <a href="/sign-in" class="govuk-link">try again</a>.</p>
+
+    <p class="govuk-body">If you need help, contact us:
+      <a class="govuk-link govuk-link--no-visited-state" href="mailto:continuing-professional-development@digital.education.gov.uk">continuing-professional-development@digital.education.gov.uk</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

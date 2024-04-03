@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Appropriate body journey" %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Placeholder for start of journey.</p>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
