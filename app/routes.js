@@ -16,6 +16,8 @@ require('./routes/lead-provider')(router)
 require('./routes/delivery-partner')(router)
 require('./routes/programme-academic-year')(router)
 
+require('./routes/choose-appropriate-body')(router)
+
 router.get('/home', (req, res) => {
 
   const ectsWithoutMentors = 4;
