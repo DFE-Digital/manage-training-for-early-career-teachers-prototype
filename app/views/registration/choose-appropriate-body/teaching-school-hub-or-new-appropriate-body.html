@@ -18,27 +18,7 @@
     <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1> 
     
-    <form method="post" novalidate >
-      
-      {{ govukRadios({
-        name: "[iStipOrTeachingSchoolHub]",
-        value: data.iStipOrTeachingSchoolHub,
-        items: [
-          {
-            value: "Yes",
-            text: "Yes"
-          },
-          {
-            value: "No",
-            text: "No"
-          }
-        ]
-      }) }}
-    
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-    </form>   
+
     
     
   </div>
