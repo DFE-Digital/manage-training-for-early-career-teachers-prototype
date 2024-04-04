@@ -19,7 +19,27 @@
     <h1 class="govuk-heading-l">{{ pageName }}</h1> 
     
 
+    <form method="post" novalidate >
+      
+      {{ govukRadios({
+        name: "[britSchoolOverseas]",
+        value: data.britSchoolOverseas,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
     
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>   
     
   </div>
 </div>

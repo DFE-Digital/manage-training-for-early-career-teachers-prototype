@@ -27,4 +27,17 @@ module.exports = router => {
     })
 
 
+    router.post('/registration/choose-appropriate-body/british-school-overseas',(req,res) => {
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        }
+        else if (req.body.britSchoolOverseas == 'Yes') {
+            res.redirect('teaching-school-hub-or-new-appropriate-body')    
+        }
+        else {
+            res.redirect('teaching-school-hub-only')    
+        }   
+    })
+
+
 }
