@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="You've not appointed an appropriate body " %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+ 
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {# <span class="govuk-caption-xl">Cohortless Empty School FIP</span> #}
+    {# <h1 class="govuk-heading-l">{{ pageName }}</h1>  #}
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">{{ pageName }}</h1>
+      <div class="govuk-panel__body govuk-!-font-size-36">
+        You've submitted your training information<br><strong class="govuk-!-font-size-24">Academic year 20XX to 20XX</strong>
+      </div>
+   </div>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">**DO WE NEED TO KEEP THIS SECTION OR CAN WE REWITE/REDUCE/REMOVE** </p> 
+
+
+    <h2 class="govuk-heading-m">What to do next</h2>
+
+    <p class="govuk-body">As soon as possible:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>confirm the change with your new lead provider</li>
+      <li>tell us <a href="independent-school" class="govuk-link">which appropriate body</a> you've appointed for your ECTs</li>
+      <li>add the new <a href="/early-career-teachers" class="govuk-link">ECTs </a>and <a href="/mentors" class="govuk-link">mentors </a>to this service so we can check their eligibility for DfE funding</li>
+      <li>use this service to <a href="/mentors?show=not-mentoring" class="govuk-link">tell us which mentor has been assigned to each ECT</a></li>
+    </ul>
+
+    <p class="govuk-body"><a href="/home" class="govuk-link">Return to manage your training</a></p>
+     
+    
+  </div>
+</div>
+
+{% endblock %}
+
+
