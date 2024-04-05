@@ -19,7 +19,7 @@ module.exports = router => {
             res.redirect(req.query.returnUrl)    
         }
         else if (req.body.iStipOrTeachingSchoolHub == 'Yes') {
-            res.redirect('istip-or-teaching-school-hub')    
+            res.redirect('choose-teaching-school-hub-or-istip.html')    
         }
         else {
             res.redirect('british-school-overseas')    
