@@ -47,10 +47,9 @@ module.exports = router => {
             res.redirect('which-teaching-school-hub')    
         }
         else {
-            res.redirect('which-istip')    
+            res.redirect('check-answers-choose-appropriate-body')    
         }   
     })
 
 
 }
-

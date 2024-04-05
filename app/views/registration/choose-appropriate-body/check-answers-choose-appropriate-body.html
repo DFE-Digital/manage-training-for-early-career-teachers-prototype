@@ -1,8 +1,17 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Check your answers before you request the change" %}
+{% set pageName="Check your answers" %}
 
 {% set indTutName="Mary Bobbins" %}
+
+{% set typeOfAB="" %}
+
+{% if data.whichTSH | length > 0%}
+  typeOfAB == {{ data.whichTSH }}
+{% else %}
+  typeOfAB == {{ data.tshOrIStip }}
+{% endif %} 
+
 
 {% block header %}
   {{ govukHeader({
@@ -70,46 +79,55 @@
           },
           {
             key: {
-              text: "Current lead provider"
+              text: "Appointed appropriate body"
             },
             value: {
-              html: data['provider']
-            }
-          },
-          {
-            key: {
-              text: "Contacted current providers"
-            },
-            value: {
-              html: data['notifiedDeliveryAndLeadProvider']
+              html: data['appointedAB']
             },
             actions: {
               items: [
                 {
-                  href: "notified-dp-and-lp?returnUrl=/delivery-partner/check-answers-delivery-partner",
+                  href: "appointed-appropriate-body?returnUrl=/registration/choose-appropriate-body/check-answers-choose-appropriate-body",
                   text: "Change",
-                  visuallyHiddenText: "if you agreed changes with the lead provider and delivery partner"
+                  visuallyHiddenText: "have you appointed an appropriate body"
                 }
               ]
             }
           },
           {
             key: {
-              text: "New delivery partner"
+              text: "Independent school"
             },
             value: {
-              html: data['newDeliveryPartner']
+              html: data['iStipOrTeachingSchoolHub']
             },
             actions: {
               items: [
                 {
-                  href: "select-new-delivery-partner?returnUrl=/delivery-partner/check-answers-delivery-partner",
+                  href: "independent-school?returnUrl=/registration/choose-appropriate-body/check-answers-choose-appropriate-body",
                   text: "Change",
-                  visuallyHiddenText: "new delivery partner"
+                  visuallyHiddenText: "are you an independent school"
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Appropriate body"
+            },
+            value: {
+              html: data['typeOfAB']
+            },
+            actions: {
+              items: [
+                {
+                  href: "choose-teaching-school-hub-or-istip?returnUrl=/registration/choose-appropriate-body/check-answers-choose-appropriate-body",
+                  text: "Change",
+                  visuallyHiddenText: "are you an independent school"
+                }
+              ]
+            } 
+          } 
         ]
       }) }}
       

@@ -18,21 +18,54 @@
     <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you restister them later.</p>
+    <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
 
-    {{ govukInsetText({
+    {# {{ govukInsetText({
       text: "Remember to contact the appropriate body directly to appoint them for your ECTs"
-    }) }}
+    }) }} #}
     
     <form method="post" novalidate >
       
+      {% set teachingHubHtml %}
+
+      {{ xGovukAutocomplete({
+        id: "whichTSH",
+        name: "[whichTSH]",
+        value: data.whichTSH,
+        allowEmpty: false,
+        label: {
+          classes: "govuk-label--s",
+          isPageHeading: false,
+          text: "Pick a teaching school hub"
+        },
+        items: [
+          { text: "Alpha TSH" },
+          { text: "Bravo TSH" },
+          { text: "Charlie TSH" },
+          { text: "Delta TSH" },
+          { text: "Echo TSH" },
+          { text: "Foxtrot TSH" },
+          { text: "Golf TSH" },
+          { text: "Hotel TSH" },
+          { text: "India TSH" }
+        ]
+      }) }} 
+
+      {% endset -%}
+
       {{ govukRadios({
         name: "[tshOrIStip]",
         value: data.tshOrIStip,
+        hint: {
+          text: "Select one option."
+        },
         items: [
           {
             value: "Teaching school hub (TSH)",
-            text: "Teaching school hub (TSH)"
+            text: "Teaching school hub (TSH)",
+            conditional: {
+              html: teachingHubHtml
+            }
           },
           {
             value: "Independent schools teacher induction panel (iStip)",
