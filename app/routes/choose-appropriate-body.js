@@ -39,5 +39,18 @@ module.exports = router => {
         }   
     })
 
+    router.post('/registration/choose-appropriate-body/choose-teaching-school-hub-or-istip',(req,res) => {
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
+        }
+        else if (req.body.tshOrIStip == 'Teaching school hub (TSH)') {
+            res.redirect('which-teaching-school-hub')    
+        }
+        else {
+            res.redirect('which-istip')    
+        }   
+    })
+
 
 }
+

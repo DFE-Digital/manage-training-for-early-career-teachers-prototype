@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set signedOut = true %}
-{% set pageName="You must choose either Teaching school hub (TSH) or Independent schools teacher induction panel (iStip)" %}
+{% set pageName="Which Independent schools teacher induction panel (iStip) have you appointed?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,20 +20,7 @@
     
     <form method="post" novalidate >
       
-      {{ govukRadios({
-        name: "[tshOrIStip]",
-        value: data.tshOrIStip,
-        items: [
-          {
-            value: "Teaching school hub (TSH)",
-            text: "Teaching school hub (TSH)"
-          },
-          {
-            value: "Independent schools teacher induction panel (iStip)",
-            text: "Independent schools teacher induction panel (iStip)"
-          }
-        ]
-      }) }}
+      
     
       {{ govukButton({
         text: "Continue"
