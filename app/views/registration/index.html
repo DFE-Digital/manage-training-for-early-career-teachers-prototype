@@ -17,13 +17,34 @@
     
 
     {{ govukInsetText({
-      html: "<b>**NOT PART OF THE JOURNEY**</b><br>Placeholder screen which will be removed later."
+      html: "the radios below are only to mimic each of the 3 potential options.<br><b>**NOT PART OF THE JOURNEY**</b>"
     }) }}
     
-    {{ govukButton({
-      text: "Continue",
-      href: "registration/choose-appropriate-body/have-you-appointed-appropriate-body"
-    }) }}  
+    <form method="post" novalidate >
+      
+      {{ govukRadios({
+        name: "[whichABJourney]",
+        value: data.whichABJourney,
+        items: [
+          {
+            value: "Independent school",
+            text: "Independent school"
+          },
+          {
+            value: "British overseas school",
+            text: "British overseas school"
+          },
+          {
+            value: "Neither Independent or British overseas school",
+            text: "Neither Independent or British overseas school"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
 
   </div>
 </div>

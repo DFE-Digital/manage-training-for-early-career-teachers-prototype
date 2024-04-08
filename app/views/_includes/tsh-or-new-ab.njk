@@ -1,0 +1,21 @@
+<form method="post" novalidate >
+
+      {{ govukRadios({
+        name: "[tshOrNewAppBody]",
+        value: data.tshOrNewAppBody,
+        items: [
+          {
+            value: "Teaching school hub (TSH)",
+            text: "Teaching school hub (TSH)"
+          },
+          {
+            value: "New appropriate body (name TBC)",
+            text: "New appropriate body (name TBC)"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+  </form>

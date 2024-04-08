@@ -2,16 +2,27 @@ module.exports = router => {
 
     ///////////////   Choose APPROPRIATE BODY routes  /////////////////////////
 
+    router.post('/registration',(req,res) => {
+        if (req.body.whichABJourney) {
+            res.redirect('/registration/choose-appropriate-body/have-you-appointed-appropriate-body')      
+        }
+                
+    })
+
     router.post('/registration/choose-appropriate-body/have-you-appointed-appropriate-body',(req,res) => {
-        if (req.query.returnUrl) {
-            res.redirect(req.query.returnUrl)    
+        if (req.body.appointedAB == 'Yes') {
+            res.redirect('/registration/choose-appropriate-body/approproate-body-options')      
         }
-        else if (req.body.appointedAB == 'Yes') {
-            res.redirect('independent-school')    
+        else{
+            res.redirect('/registration/choose-appropriate-body/no-appropriate-body')      
         }
-        else {
-            res.redirect('no-appropriate-body')    
-        }   
+                
+    })
+
+    router.post('/registration/choose-appropriate-body/approproate-body-options',(req,res) => {
+        
+            res.redirect('/registration/choose-appropriate-body/check-answers-choose-appropriate-body')      
+                
     })
 
     router.post('/registration/choose-appropriate-body/independent-school',(req,res) => {

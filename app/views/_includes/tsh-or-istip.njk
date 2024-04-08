@@ -1,24 +1,4 @@
-{% extends "layouts/main.html" %}
-
-{% set signedOut = true %}
-{% set pageName="Choose a Teaching school hub" %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
-
-{% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
-    <h1 class="govuk-heading-l">{{ pageName }}</h1>
-
-    <form method="post" novalidate >
+<form method="post" novalidate >
       
       {% set teachingHubHtml %}
 
@@ -49,7 +29,7 @@
 
       {{ govukRadios({
         name: "[tshOrIStip]",
-        value: data.tshOnly,
+        value: data.tshOrIStip,
         items: [
           {
             value: "Teaching school hub (TSH)",
@@ -57,6 +37,10 @@
             conditional: {
               html: teachingHubHtml
             }
+          },
+          {
+            value: "Independent schools teacher induction panel (iStip)",
+            text: "Independent schools teacher induction panel (iStip)"
           }
         ]
       }) }}
@@ -65,13 +49,3 @@
         text: "Continue"
       }) }}
     </form>
-    
-
-    
-    
-  </div>
-</div>
-
-{% endblock %}
-
-

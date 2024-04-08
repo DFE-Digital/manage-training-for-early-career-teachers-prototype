@@ -4,13 +4,14 @@
 
 {% set indTutName="Mary Bobbins" %}
 
-{% set typeOfAB="" %}
 
-{% if data.whichTSH | length > 0%}
-  typeOfAB == {{ data.whichTSH }}
-{% else %}
-  typeOfAB == {{ data.tshOrIStip }}
-{% endif %} 
+
+{% if data['tshOrIStip'] == 'Teaching school hub (TSH)' %}
+  {% set typeOfAB = data['whichTSH'] %}
+{% endif %}
+
+
+
 
 
 {% block header %}
@@ -99,7 +100,7 @@
               text: "Appropriate body"
             },
             value: {
-              html: data['tshOrIStip']
+              html: typeOfAB
             },
             actions: {
               items: [
