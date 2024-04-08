@@ -1,12 +1,42 @@
 <form method="post" novalidate >
+      
+      {% set teachingHubHtml %}
+
+      {{ xGovukAutocomplete({
+        id: "whichTSH",
+        name: "[whichTSH]",
+        value: data.whichTSH,
+        allowEmpty: false,
+        label: {
+          classes: "govuk-label--s",
+          isPageHeading: false,
+          text: "Pick a teaching school hub"
+        },
+        items: [
+          { text: "Alpha TSH" },
+          { text: "Bravo TSH" },
+          { text: "Charlie TSH" },
+          { text: "Delta TSH" },
+          { text: "Echo TSH" },
+          { text: "Foxtrot TSH" },
+          { text: "Golf TSH" },
+          { text: "Hotel TSH" },
+          { text: "India TSH" }
+        ]
+      }) }} 
+
+      {% endset -%}
 
       {{ govukRadios({
-        name: "[tshOrNewAppBody]",
-        value: data.tshOrNewAppBody,
+        name: "[tshOrIStip]",
+        value: data.tshOrIStip,
         items: [
           {
             value: "Teaching school hub (TSH)",
-            text: "Teaching school hub (TSH)"
+            text: "Teaching school hub (TSH)",
+            conditional: {
+              html: teachingHubHtml
+            }
           },
           {
             value: "New appropriate body (name TBC)",
@@ -18,4 +48,4 @@
       {{ govukButton({
         text: "Continue"
       }) }}
-  </form>
+    </form>
