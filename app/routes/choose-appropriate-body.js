@@ -43,8 +43,17 @@ module.exports = router => {
         if (req.query.returnUrl) {
             res.redirect(req.query.returnUrl)    
         }
-        else if (req.body.tshOrIStip == 'Teaching school hub (TSH)') {
+        else if (req.body.tshOnly == 'Teaching school hub (TSH)') {
             res.redirect('which-teaching-school-hub')    
+        }
+        else {
+            res.redirect('check-answers-choose-appropriate-body')    
+        }   
+    })
+
+    router.post('/registration/choose-appropriate-body/teaching-school-hub-only',(req,res) => {
+        if (req.query.returnUrl) {
+            res.redirect(req.query.returnUrl)    
         }
         else {
             res.redirect('check-answers-choose-appropriate-body')    
