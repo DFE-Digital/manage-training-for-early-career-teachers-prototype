@@ -2,7 +2,7 @@ module.exports = router => {
 
     ///////////////   Choose APPROPRIATE BODY routes  /////////////////////////
 
-    router.post('/registration/choose-appropriate-body/appointed-appropriate-body',(req,res) => {
+    router.post('/registration/choose-appropriate-body/have-you-appointed-appropriate-body',(req,res) => {
         if (req.query.returnUrl) {
             res.redirect(req.query.returnUrl)    
         }
