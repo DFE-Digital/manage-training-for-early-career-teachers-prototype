@@ -32,7 +32,7 @@ module.exports = router => {
             res.redirect(req.query.returnUrl)    
         }
         else if (req.body.britSchoolOverseas == 'Yes') {
-            res.redirect('teaching-school-hub-or-new-appropriate-body')    
+            res.redirect('choose-new-ab-or-teaching-school-hub')    
         }
         else {
             res.redirect('teaching-school-hub-only')    
