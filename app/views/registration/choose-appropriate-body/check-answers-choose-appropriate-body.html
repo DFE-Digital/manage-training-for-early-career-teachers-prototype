@@ -40,26 +40,35 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
+      <span class="govuk-caption-l">School name goes here</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <h2 class="govuk-heading-m">Change request details</h2>
+      <h2 class="govuk-heading-m">Registration details</h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Induction tutor"
+              text: "Programme"
             },
             value: {
-              html: indTutName
+              html: "FIP"
             }
           },
           {
             key: {
-              text: "Email"
+              text: "Delivery partner"
             },
             value: {
-              html: data['sit']['emailAddress']
+              html: "Leffler Collins"
+            }
+          },
+          {
+            key: {
+              text: "Lead provider"
+            },
+            value: {
+              html: "Ambition"
             }
           },
           {
@@ -117,7 +126,7 @@
 
       
       {{ govukButton({
-        text: "Confirm and send",
+        text: "Confirm",
         href: "success-submitted-ab-and-training"
       }) }}
 

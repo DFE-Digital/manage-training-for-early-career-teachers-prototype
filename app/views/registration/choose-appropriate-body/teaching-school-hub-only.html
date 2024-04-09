@@ -20,7 +20,7 @@
 
     <form method="post" novalidate >
       
-      {% set teachingHubHtml %}
+      
 
       {{ xGovukAutocomplete({
         id: "whichTSH",
@@ -45,21 +45,9 @@
         ]
       }) }} 
 
-      {% endset -%}
+      
 
-      {{ govukRadios({
-        name: "[tshOrIStip]",
-        value: data.tshOnly,
-        items: [
-          {
-            value: "Teaching school hub (TSH)",
-            text: "Teaching school hub (TSH)",
-            conditional: {
-              html: teachingHubHtml
-            }
-          }
-        ]
-      }) }}
+      
     
       {{ govukButton({
         text: "Continue"
