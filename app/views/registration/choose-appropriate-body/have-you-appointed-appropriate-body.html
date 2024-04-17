@@ -18,9 +18,8 @@
     <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>    
 
-    {{ govukInsetText({
-      text: "Remember to contact the appropriate body directly to appoint them for your ECTs"
-    }) }}
+    
+    <p class="govuk-body">ECTs cannot start their induction until you’ve appointed an appropriate body. <a href="/early-career-teachers" class="govuk-link">Find an appropriate body</a> and contact them to appoint them.</p>
     
     <form method="post" novalidate >
       
@@ -34,7 +33,7 @@
           },
           {
             value: "No",
-            text: "No"
+            text: "No, I will appoint an appropriate body later"
           }
         ]
       }) }}
@@ -44,10 +43,7 @@
       }) }}
     </form>
 
-    {{ govukDetails({
-      summaryText: "Help with appropriate bodies",
-      html: "<b>**Some guidance in here and possibly signpost some links to associated content on ABs.**</b> For example, tell them if they choose 'no',it means they will have to appoint the AB later by contacting a local AB to set up the relationship"
-    }) }}
+    
   </div>
 
   {{ data | log }}
