@@ -5,12 +5,12 @@
   {% set pageName = "Which type of appropriate body have you appointed?" %}      
 {% endif %}
 
-{% if data['whichABJourney'] == 'British overseas school' and data['app ointedAB'] == 'Yes' %}
+{% if data['whichABJourney'] == 'British overseas school' and data['appointedAB'] == 'Yes' %}
   {% set pageName="Which type of appropriate body have you appointed?" %}      
 {% endif %}
 
 {% if data['whichABJourney'] == 'Neither Independent or British overseas school' and data['appointedAB'] == 'Yes' %}
-  {% set pageName="Which type of appropriate body have you appointed?" %}      
+  {% set pageName="Which teaching school hub have you appointed?" %}      
 {% endif %}
 
 {% set signedOut = true %}

@@ -10,7 +10,7 @@
         label: {
           classes: "govuk-label--s",
           isPageHeading: false,
-          text: "Pick a teaching school hub"
+          text: "Which teaching school hub have you appointed?"
         },
         items: [
           { text: "Alpha TSH" },
@@ -33,7 +33,7 @@
         items: [
           {
             value: "Teaching school hub (TSH)",
-            text: "Teaching school hub (TSH)",
+            text: "Teaching school hub",
             conditional: {
               html: teachingHubHtml
             }
@@ -44,6 +44,8 @@
           }
         ]
       }) }}
+
+       <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
     
       {{ govukButton({
         text: "Continue"

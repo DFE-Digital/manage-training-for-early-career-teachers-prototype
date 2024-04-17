@@ -1,15 +1,10 @@
 <form method="post" novalidate >
-      
-     {{ xGovukAutocomplete({
+
+      {{ xGovukAutocomplete({
         id: "whichTSH",
         name: "[whichTSH]",
         value: data.whichTSH,
         allowEmpty: false,
-        label: {
-          classes: "govuk-label--s",
-          isPageHeading: false,
-          text: "Pick a teaching school hub"
-        },
         items: [
           { text: "Alpha TSH" },
           { text: "Bravo TSH" },
@@ -21,9 +16,12 @@
           { text: "Hotel TSH" },
           { text: "India TSH" }
         ]
-      }) }} 
+      }) }}
+
+      <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
     
       {{ govukButton({
         text: "Continue"
       }) }}
+
     </form>
