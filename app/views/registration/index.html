@@ -14,11 +14,17 @@
 
     <p class="govuk-body"></p>
 
-    
+    {% set html %}
+      <p class="govuk-notification-banner__heading">
+        This screen is only a starting point to mimic each of the 3 potential routes.<br>**THIS IS NOT PART OF THE JOURNEY**
+      </p>
+    {% endset %}
 
-    {{ govukInsetText({
-      html: "the radios below are only to mimic each of the 3 potential options.<br><b>**NOT PART OF THE JOURNEY**</b>"
+    {{ govukNotificationBanner({
+      html: html
     }) }}
+
+  
     
     <form method="post" novalidate >
       
