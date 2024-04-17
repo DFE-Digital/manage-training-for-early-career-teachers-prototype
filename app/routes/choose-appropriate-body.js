@@ -21,7 +21,7 @@ module.exports = router => {
 
     router.post('/registration/choose-appropriate-body/approproate-body-options',(req,res) => {
         
-            res.redirect('/registration/choose-appropriate-body/check-answers-choose-appropriate-body')      
+            res.redirect('/registration/choose-appropriate-body/success-submitted-ab-and-training')      
                 
     })
 
