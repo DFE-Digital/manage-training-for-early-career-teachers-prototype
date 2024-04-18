@@ -1,0 +1,27 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Confirm your training programme
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <p class="govuk-body govuk-!-margin-bottom-7">You’ve chosen to use a training provider, funded by the DfE.</p>
+
+    <form method="post">
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Confirm</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

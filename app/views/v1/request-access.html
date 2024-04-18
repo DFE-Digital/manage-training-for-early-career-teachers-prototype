@@ -1,0 +1,33 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+Request access to this service
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <p class="govuk-body">We’ll email an access link to your school. For security, we’ll send a link to the email
+      address held in the Get Information about Schools (GIAS) register.</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-7 govuk-inset-text">
+      You can
+      <a class="govuk-link govuk-link--no-visited-state" href="https://services.signin.education.gov.uk/">use DfE Sign-in</a>
+      to check that your school’s email address is up to date before you start.
+    </p>
+
+    <a class="govuk-button" data-module="govuk-button" href="request-as-school/whats-your-schools-local-authority">Continue</a>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Will any ECTs start their induction at your school in the 2024 to 2025 academic year?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <span class="govuk-caption-l">East Lauretta Grammar School</span>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="schools-cohorts-setup-wizard-expect-any-ects-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {{ title }}
+            </h1>
+          </legend>
+          <div class="govuk-hint" id="schools-cohorts-setup-wizard-expect-any-ects-hint">
+            <p class="govuk-hint">This means teachers who have completed their initial teacher training, but have not started their 2-year induction yet.</p>
+            <p class="govuk-hint">If you do not expect any ECTs, but you do expect mentors to begin training, answer yes.</p>
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-expect-any-ects-yes-field" class="govuk-radios__input" type="radio" value="yes" name="expect-any-ects">
+              <label for="schools-cohorts-setup-wizard-expect-any-ects-yes-field" class="govuk-label govuk-radios__label">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-expect-any-ects-no-field" class="govuk-radios__input" type="radio" value="no" name="expect-any-ects">
+              <label for="schools-cohorts-setup-wizard-expect-any-ects-no-field" class="govuk-label govuk-radios__label">No</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

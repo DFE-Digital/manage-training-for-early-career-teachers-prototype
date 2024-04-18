@@ -1,0 +1,49 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Will any ECTs start their induction at your school in the 2024 to 2025 academic year?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <span class="govuk-caption-l">South Simoneport High School</span>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="nominate-how-to-continue-form-how-to-continue-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {{ title }}
+            </h1>
+          </legend>
+          <div class="govuk-hint" id="nominate-how-to-continue-form-how-to-continue-hint">This means teachers who have completed their initial teacher training, but have not started their 2-year induction yet.</div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input id="nominate-how-to-continue-form-how-to-continue-yes-field" class="govuk-radios__input" type="radio" value="yes" name="nominate-how-to-continue">
+              <label for="nominate-how-to-continue-form-how-to-continue-yes-field" class="govuk-label govuk-radios__label">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="nominate-how-to-continue-form-how-to-continue-no-field" class="govuk-radios__input" type="radio" value="no" name="nominate-how-to-continue">
+              <label for="nominate-how-to-continue-form-how-to-continue-no-field" class="govuk-label govuk-radios__label">No</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="nominate-how-to-continue-form-how-to-continue-we-dont-know-field" class="govuk-radios__input" type="radio" value="we_dont_know" name="nominate-how-to-continue">
+              <label for="nominate-how-to-continue-form-how-to-continue-we-dont-know-field" class="govuk-label govuk-radios__label">We do not know yet</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

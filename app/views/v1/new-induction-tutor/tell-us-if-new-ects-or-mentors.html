@@ -1,0 +1,40 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+What we need to know
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">East Lauretta Grammar School</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <h2 class="govuk-heading-m">Tell us if any new ECTs or mentors will start training at your school in
+      the 2024 to 2025 academic year</h2>
+
+    <p class="govuk-body">We need to know:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>whether or not your school expects any new ECTs</li>
+      <li>which training programme you want to use for any new ECTs</li>
+    </ul>
+
+    <p class="govuk-body">You can tell us this later if you do not know yet. You can also change your answers if you need to.</p>
+
+    <div class="govuk-inset-text">
+      <p class="govuk-body">Do not include ECTs or mentors who started their training in the 2023 to 2024 academic year.</p>
+    </div>
+
+    <form method="post">
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

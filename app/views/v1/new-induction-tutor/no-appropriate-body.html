@@ -1,0 +1,39 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+You've submitted your training information
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">{{ title }}</h1>
+      <div class="govuk-panel__body govuk-!-font-size-36">
+        You still need to appoint an appropriate body<br><strong class="govuk-!-font-size-24">Academic year 2024 to 2025</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">We'll let your current training providers about the changes for the 2024 to 2025 academic year.</p>
+
+    <h2 class="govuk-heading-m">What to do next</h2>
+
+    <p class="govuk-body">As soon as possible, use this service to tell us:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>who your <a href="#" class="govuk-link">appropriate body</a> is, once you've appointed them</li>
+      <li>details of <a href="#" class="govuk-link">new ECTs and mentors</a> so we can check their eligibility for funding</li>
+      <li>which mentor has been assigned to each ECT</li>
+    </ul>
+    <p class="govuk-body"><a href="#" class="govuk-link">Return to manage your training</a></p>
+
+  </div>
+</div>
+{% endblock %}
