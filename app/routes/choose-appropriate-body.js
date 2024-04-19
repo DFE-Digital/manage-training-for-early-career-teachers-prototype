@@ -11,7 +11,7 @@ module.exports = router => {
 
     router.post('/registration/choose-appropriate-body/have-you-appointed-appropriate-body',(req,res) => {
         if (req.body.appointedAB == 'Yes') {
-            res.redirect('/registration/choose-appropriate-body/approproate-body-options')      
+            res.redirect('/registration/choose-appropriate-body/approproate-body-options')
         }
         else{
             res.redirect('/registration/choose-appropriate-body/no-appropriate-body')      
@@ -20,8 +20,12 @@ module.exports = router => {
     })
 
     router.post('/registration/choose-appropriate-body/approproate-body-options',(req,res) => {
-        
-            res.redirect('/registration/choose-appropriate-body/success-submitted-ab-and-training')      
+        if (req.body.tshOrIStip == 'My appropriate body isn\'t listed') {
+            res.redirect('/registration/choose-appropriate-body/ab-not-listed')
+        }
+        else {
+            res.redirect('/registration/choose-appropriate-body/success-submitted-ab-and-training')
+        }
                 
     })
 
