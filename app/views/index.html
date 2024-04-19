@@ -1,15 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/start.html" %}
 
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
-{% endblock %}
-
-{% block beforeContent %}
+  Prototype home
 {% endblock %}
 
 {% block content %}
@@ -17,48 +9,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        {{ serviceName }}
+      <h1 class="govuk-heading-l">
+        Manage training for early career teachers: Prototype home
       </h1>
 
-      <p>Use this service to set up ECF-based training for your early career teachers (ECTs) or tell us about a change at your school.</p>
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
-      <h2 class="govuk-heading-m">Set up and manage your training</h2>
-
-      <p class="govuk-body">Tell us:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>how you want to run your training</li>
-        <li>which accredited materials or training provider you’ll use</li>
-        <li>which ECTs and mentors will take part</li>
+      <h2 class="govuk-heading-m">19th April 2024</h2>
+      <p class="govuk-body-m">Started creating a prototype journey which goes from requesting access through to homepage. This includes changes to appropriate body options when SIT is registering.</p>
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+      <ul class="govuk-list">
+        <li><a href="v1/index">Start page</a></li>
+        <li><a href="v1/new-induction-tutor/not-ind-or-bo">SIT registration for 'normal' school with AB changes</a></li>
+        <li><a href="v1/new-induction-tutor/ind-school">SIT registration for independent school with AB changes</a></li>
+        <li><a href="v1/new-induction-tutor/bo-school">SIT registration for British school overseas with AB changes</a></li>
       </ul>
 
-      <p class="govuk-body">Your school must complete these steps before your ECTs can start their statutory induction programme.</p>
-
-      <h2 class="govuk-heading-m">Tell us about changes at your school</h2>
-
-      <p class="govuk-body">Tell us about any changes, for example, nominating a new induction tutor.</p>
-
-      <div class="govuk-button-group govuk-body govuk-!-margin-top-7">
-         {{ govukButton({
-          text: "Sign in",
-          href: "/sign-in"
-        }) }}
-        <span class="govuk-!-margin-right-2">or</span>
-        <a class="govuk-link govuk-link--no-visited-state" href="/request-access">request access to the service</a>
-      </div>
 
     </div>
 
     <div class="govuk-grid-column-one-third">
-
-      <h2 class="govuk-heading-m">Guidance</h2>
-
-      <p class="govuk-body"><a class="govuk-link" target="_blank" rel="noopener noreferrer" href="/guidance">
-        Find out how to set up training for early career teachers (opens in new tab)
-      </a></p>
-
+      <div class="x-govuk-related-navigation">
+        <nav class="x-govuk-related-navigation__nav-section" role="navigation" aria-labelledby="related-navigation-related-content">
+          <h2 class="x-govuk-related-navigation__main-heading" id="related-navigation-related-content">
+            Other prototypes
+          </h2>
+          <ul class="x-govuk-related-navigation__link-list">
+            <li class="x-govuk-related-navigation__link">
+              <a class="govuk-link x-govuk-related-navigation__section-link x-govuk-related-navigation__section-link--other" href="index-2">Previous prototype homepage</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
+
   </div>
 
 {% endblock %}

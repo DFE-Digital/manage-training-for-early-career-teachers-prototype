@@ -6,6 +6,12 @@ var newInductionTutor = 'new-induction-tutor/'
 
 module.exports = router => {
 
+    // sign in to logged in user
+
+    router.post(v + 'sign-in', (req, res) => {
+        res.redirect(v + 'check-your-email')
+    })
+
     // school sign up *** using folder 'request-as-school'
 
     router.post(v + request + 'whats-your-schools-local-authority', (req, res) => {
@@ -92,7 +98,12 @@ module.exports = router => {
     })
 
     router.post(v + newInductionTutor + 'appropriate-body-options', (req, res) => {
-        res.redirect(v + newInductionTutor + 'success-submitted-ab-and-training')
+        if (req.session.data['typeOfBody'] === "My appropriate body isn't listed"){
+            res.redirect(v + newInductionTutor + 'ab-not-listed')
+        }
+        else {
+            res.redirect(v + newInductionTutor + 'success-submitted-ab-and-training')
+        }
     })
 
     // ignore these for now **** //
