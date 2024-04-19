@@ -89,7 +89,7 @@ module.exports = router => {
     })
 
     router.post(v + newInductionTutor + 'have-you-appointed-appropriate-body', (req, res) => {
-        if (req.session.data['have-you-appointed'] === 'no') {
+        if (req.session.data['have-you-appointed'] === 'No') {
             res.redirect(v + newInductionTutor + 'no-appropriate-body')
         }
         else {
