@@ -88,6 +88,24 @@ module.exports = router => {
         res.redirect(v + newInductionTutor + 'have-you-appointed-appropriate-body')
     })
 
+    router.get(v + newInductionTutor + 'ab-not-ind-or-bo', (req, res) => {
+        req.session.data['programme-choice'] = 'full_induction_programme'
+        req.session.data.schoolType = null
+        res.redirect(v + newInductionTutor + 'have-you-appointed-appropriate-body')
+    })
+
+    router.get(v + newInductionTutor + 'ab-ind-school', (req, res) => {
+        req.session.data['programme-choice'] = 'full_induction_programme'
+        req.session.data.schoolType = 'indSchool'
+        res.redirect(v + newInductionTutor + 'have-you-appointed-appropriate-body')
+    })
+
+    router.get(v + newInductionTutor + 'ab-bo-school', (req, res) => {
+        req.session.data['programme-choice'] = 'full_induction_programme'
+        req.session.data.schoolType = 'boSchool'
+        res.redirect(v + newInductionTutor + 'have-you-appointed-appropriate-body')
+    })
+
     router.post(v + newInductionTutor + 'have-you-appointed-appropriate-body', (req, res) => {
         if (req.session.data['have-you-appointed'] === 'No') {
             res.redirect(v + newInductionTutor + 'no-appropriate-body')
