@@ -4,16 +4,15 @@
 {% set currentSection="performance" %}
 {% set currentSubSection="errors" %}
 
-{% block beforeContent %}
-  {% include "admin/performance/_secondary-nav" %}
-{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     
-    <h1 class="govuk-heading-l"> {{ pageName }}</h1>
+    <h1 class="govuk-heading-xl"> {{ pageName }}</h1>
+
+    {% include "admin/performance/_secondary-nav" %}
     
     {% set data = [
       ["Add mentor - TRN", "Teacher reference number", "Enter the teacher reference number (TRN)", 52],

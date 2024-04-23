@@ -1,0 +1,129 @@
+{% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[userType]",
+    name: "filters[year]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Year",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: '2024',
+      text: '2024'
+    }, {
+      value: '2023',
+      text: '2023'
+    }, {
+      value: '2022',
+      text: '2022'
+    }],
+    values: data.filters.year
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[userType]",
+    name: "filters[userType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "User type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Mentor',
+      text: 'Mentor'
+    }, {
+      value: 'Early career teacher',
+      text: 'Early career teacher'
+    }, {
+      value: 'Induction tutor',
+      text: 'Induction tutor'
+    }],
+    values: data.filters.userType
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[schoolType]",
+    name: "filters[schoolType]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "School phase",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Primary',
+      text: 'Primary'
+    }, {
+      value: 'Secondary',
+      text: 'Secondary'
+    }],
+    values: data.filters.schoolType
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[programme]",
+    name: "filters[programme]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Programme type",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'FIP',
+      text: 'Full induction programme (FIP)'
+    },
+    {
+      value: 'CIP',
+      text: 'Core induction programme (CIP)'
+    }],
+    values: data.filters.programme
+  }) }}
+
+{% endset %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action">
+
+    </div>
+  </div>
+  <div class="app-filter__content">
+    {% if selectedFilters.categories.length %}
+      <div class="app-filter__selected">
+        <div class="app-filter__selected-heading">
+          <div class="app-filter__heading-title">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
+            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/admin/clear-filters">Clear filters</a></p>
+          </div>
+        </div>
+        {% for category in selectedFilters.categories %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
+          <ul class="app-filter-tags">
+            {% for item in category.items %}
+              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="app-filter__options">
+      <form method="get" action="/admin" novalidate>
+        <button class="govuk-button" data-module="govuk-button">
+          Apply filters
+        </button>
+        {{filterOptionsHtml | safe}}
+      </form>
+    </div>
+  </div>
+</div>

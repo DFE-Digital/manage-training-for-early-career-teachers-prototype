@@ -1,0 +1,38 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+What’s {{data['nominate-induction-tutor-full-name']}}’s email address?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">South Simoneport High School</span>
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label for="nominate-induction-tutor-form-email-field" class="govuk-label govuk-label--l">
+              {{ title }}
+            </label>
+          </h1>
+          <div id="nominate-induction-tutor-form-email-supplemental">
+          <p class="govuk-body">We’ll use this address to contact them with more information.</p>
+        </div>
+          <input id="nominate-induction-tutor-form-email-field" class="govuk-input govuk-!-width-two-thirds" aria-describedby="nominate-induction-tutor-form-email-supplemental" type="text" name="nominate-induction-tutor-email">
+        </div>
+      </div>
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

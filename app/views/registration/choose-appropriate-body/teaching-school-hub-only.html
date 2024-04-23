@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Choose a Teaching school hub" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <form method="post" novalidate >
+      
+      
+
+      {{ xGovukAutocomplete({
+        id: "whichTSH",
+        name: "[whichTSH]",
+        value: data.whichTSH,
+        allowEmpty: false,
+        label: {
+          classes: "govuk-label--s",
+          isPageHeading: false,
+          text: "Pick a teaching school hub"
+        },
+        items: [
+          { text: "Alpha TSH" },
+          { text: "Bravo TSH" },
+          { text: "Charlie TSH" },
+          { text: "Delta TSH" },
+          { text: "Echo TSH" },
+          { text: "Foxtrot TSH" },
+          { text: "Golf TSH" },
+          { text: "Hotel TSH" },
+          { text: "India TSH" }
+        ]
+      }) }} 
+
+      
+
+      
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
+
+

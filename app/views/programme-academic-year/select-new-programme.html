@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What programme do you want to change to?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">Your current programme is:</p>
+
+    {{ govukInsetText({
+      text: "Full induction programme (FIP)."
+    }) }}
+
+
+    <form method="post">
+    
+      {{ govukRadios({
+        name: "newProgramme",
+        value: data.newProgramme,
+        items: [
+          {
+            value: "Core induction programme (CIP)",
+            text: "Core induction programme (CIP)"
+          },
+          {
+            value: "Design and deliver your own programme (DIY)",
+            text: "Design and deliver your own programme (DIY)"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>  
+    
+    
+  
+    
+  </div>
+</div>
+
+{% endblock %}
+
+

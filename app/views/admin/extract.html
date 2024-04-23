@@ -1,0 +1,44 @@
+{% extends "layouts/admin.html" %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+{% set currentSection="schools" %}
+{% set pageName= " Your results are ready to download" %}
+
+
+{% block beforeContent %}
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: pageName,
+        html: "<strong>[totalCount] results</strong><br><p style='color: white; font-size: 1.5rem;'>at 4:30pm on Tuesday 10 February 2024</p>"
+      }) }}
+
+      {# <p class="govuk-body">[totalCount] results at {{ "now" | govukDateTime }}</p> #}
+
+      {# <h2 class="govuk-heading-m">What happens next</h2> #}
+
+      <p class="govuk-body">
+        When you download the file you can choose which format you would like, for example Excel or CSV. Depending on your browser the file might open in a new window, tab or folder.<br>
+      </p>
+      {# <p class="govuk-body">
+        Your file will be available to download for xx days.
+      </p> #}
+      
+
+      <p class="govuk-body">
+        {# <a href="#" class="govuk-link">Download your file</a>
+        <a href="#" class="govuk-link">generate another download</a>. #}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Download file"
+          }) }}
+          <a class="govuk-link" href="schools.html">Search and download another file</a>
+        </div>
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="What you can do next" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+<p class="govuk-body">We confirm any changes with providers before we update this service. This may take a few weeks.</p>
+<p class="govuk-body">If you haven't contacted the lead provider already, you can</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>wait for the update to happen</li>
+  <li>contact the lead provider again if more than 2 week passes</li>
+</ul>
+
+<p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage mentors and ECTs</a></p>
+
+{% endblock %}
+

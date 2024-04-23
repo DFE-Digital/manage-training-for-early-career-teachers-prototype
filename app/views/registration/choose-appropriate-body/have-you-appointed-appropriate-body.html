@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Have you appointed an appropriate body?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>    
+
+    
+    <p class="govuk-body">ECTs cannot start their induction until you’ve appointed an appropriate body. <a href="/early-career-teachers" class="govuk-link">Find an appropriate body</a> and contact them to appoint them.</p>
+    
+    <form method="post" novalidate >
+      
+      {{ govukRadios({
+        name: "[appointedAB]",
+        value: data.appointedAB,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No, I will appoint an appropriate body later"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    
+  </div>
+
+  {{ data | log }}
+</div>
+
+{% endblock %}
+
+

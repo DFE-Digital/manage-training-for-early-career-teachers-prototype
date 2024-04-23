@@ -1,0 +1,203 @@
+{% extends "layouts/reg.html" %}
+
+{% if data['schoolType'] == 'indSchool' %}
+  {% set title = "Which type of appropriate body have you appointed?" %}
+{% elif data['schoolType'] == 'boSchool' %}
+  {% set title = "Which type of appropriate body have you appointed?" %}
+{% else %}
+  {% set title = "Which teaching school hub have you appointed?" %}
+{% endif %}
+
+{% block beforeContent %}
+  {{ govukBackLink({ 
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data['schoolType'] == 'indSchool' %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l">Cohortless Empty School FIP</span>
+          <label class="govuk-label govuk-label--l" for="whichTSH">
+            {{ title }}
+          </label>
+        </h1>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="typeOfBody" name="typeOfBody" type="radio" value="Teaching school hub (TSH)" aria-controls="conditional-[tshOrIStip]" aria-expanded="false">
+              <label class="govuk-label govuk-radios__label" for="typeOfBody">
+                Teaching school hub
+              </label>
+
+            </div>
+
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-[tshOrIStip]">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--s" for="whichTSH">
+                  Which teaching school hub have you appointed?
+                </label>
+                <select class="govuk-select" id="whichTSH" name="whichTSH"
+                        data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+                  <option value="" selected disabled>Select an option</option>
+                  <option value="Alpha TSH">Alpha TSH</option>
+                  <option value="Bravo TSH">Bravo TSH</option>
+                  <option value="Charlie TSH">Charlie TSH</option>
+                  <option value="Delta TSH">Delta TSH</option>
+                  <option value="Echo TSH">Echo TSH</option>
+                  <option value="Foxtrot TSH">Foxtrot TSH</option>
+                  <option value="Golf TSH">Golf TSH</option>
+                  <option value="Hotel TSH">Hotel TSH</option>
+                  <option value="India TSH">India TSH</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="typeOfBody-2" name="typeOfBody" type="radio" value="Independent schools teacher induction panel (IStip)">
+              <label class="govuk-label govuk-radios__label" for="typeOfBody-2">
+                Independent Schools Teacher Induction Panel (IStip)
+              </label>
+            </div>
+
+            <div class="govuk-radios__divider">or</div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="typeOfBody-3" name="typeOfBody" type="radio" value="My appropriate body isn't listed">
+              <label class="govuk-label govuk-radios__label" for="typeOfBody-3">
+                My appropriate body isn't listed
+              </label>
+            </div>
+
+          </div>
+      </div>
+      <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+
+{% elif data['schoolType'] == 'boSchool' %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l">Cohortless Empty School FIP</span>
+          <label class="govuk-label govuk-label--l" for="whichTSH">
+            {{ title }}
+          </label>
+        </h1>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="typeOfBody" name="typeOfBody" type="radio" value="Teaching school hub (TSH)" aria-controls="conditional-[tshOrNot]" aria-expanded="false">
+            <label class="govuk-label govuk-radios__label" for="typeOfBody">
+              Teaching school hub
+            </label>
+
+          </div>
+
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-[tshOrNot]">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="whichTSH">
+                Which teaching school hub have you appointed?
+              </label>
+              <select class="govuk-select" id="whichTSH" name="whichTSH"
+                      data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+                <option value="" selected disabled>Select an option</option>
+                <option value="Alpha TSH">Alpha TSH</option>
+                <option value="Bravo TSH">Bravo TSH</option>
+                <option value="Charlie TSH">Charlie TSH</option>
+                <option value="Delta TSH">Delta TSH</option>
+                <option value="Echo TSH">Echo TSH</option>
+                <option value="Foxtrot TSH">Foxtrot TSH</option>
+                <option value="Golf TSH">Golf TSH</option>
+                <option value="Hotel TSH">Hotel TSH</option>
+                <option value="India TSH">India TSH</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="typeOfBody-2" name="typeOfBody" type="radio" value="New appropriate body (name TBC)">
+            <label class="govuk-label govuk-radios__label" for="typeOfBody-2">
+              New appropriate body (name TBC)
+            </label>
+          </div>
+
+          <div class="govuk-radios__divider">or</div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="typeOfBody-3" name="typeOfBody" type="radio" value="My appropriate body isn't listed">
+            <label class="govuk-label govuk-radios__label" for="typeOfBody-3">
+              My appropriate body isn't listed
+            </label>
+          </div>
+
+        </div>
+      </div>
+      <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+
+{% else %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate="">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <span class="govuk-caption-l">Cohortless Empty School FIP</span>
+          <label class="govuk-label govuk-label--l" for="whichTSH">
+            {{ title }}
+          </label>
+        </h1>
+        <select class="govuk-select" id="whichTSH" name="whichTSH"
+                data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+          <option value="" selected disabled>Select an option</option>
+          <option value="Alpha TSH">Alpha TSH</option>
+          <option value="Bravo TSH">Bravo TSH</option>
+          <option value="Charlie TSH">Charlie TSH</option>
+          <option value="Delta TSH">Delta TSH</option>
+          <option value="Echo TSH">Echo TSH</option>
+          <option value="Foxtrot TSH">Foxtrot TSH</option>
+          <option value="Golf TSH">Golf TSH</option>
+          <option value="Hotel TSH">Hotel TSH</option>
+          <option value="India TSH">India TSH</option>
+        </select>
+      </div>
+      <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+    <p><a href="ab-not-listed">My appropriate body isn't listed</a></p>
+
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+

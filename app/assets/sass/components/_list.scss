@@ -1,0 +1,42 @@
+
+.school-list {
+
+  .school-list__item {
+    border-bottom: 1px solid $govuk-border-colour;
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(3);
+    position: relative;   
+  }
+
+  h2 {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .govuk-tag {
+    position: absolute;
+    top: govuk-spacing(4);
+    right: 0;
+    font-size: 1rem;
+    max-width: 200px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .govuk-summary-list-schools {
+    margin-bottom: 0;
+    @include govuk-font(16);
+  }
+
+  .govuk-summary-list-schools{
+    line-height: 0.3;
+  }
+
+  .govuk-summary-list-schools__key,
+  .govuk-summary-list-schools__value {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+
+
+}

@@ -13,6 +13,14 @@
 @import "_table";
 @import "_width-container";
 
+@import "components/_hidden";
+@import "components/_action-bar";
+@import "components/_filter-layout";
+@import "components/_filter-panel";
+@import "components/_list";
+@import "components/_search-form";
+
+
 
 .app-id {
   color: $govuk-secondary-text-colour;
@@ -21,4 +29,75 @@
 .app-user-input-example {
   padding: 4px 8px;
   background-color: govuk-colour("light-grey");
+}
+
+@media (min-width: 40.0625em) {
+  .wrapper-dashboard-v2 .govuk-summary-list__key {
+    padding-right: 10px;
+    width: 31%;
+  }
+  .wrapper-dashboard-v2 .govuk-summary-list__actions {
+    width: 13%;
+  }
+  .wrapper-dashboard-v2 .app-summary-list__missing {
+    border-left: 10px solid #1d70b8;
+    padding-left: 15px;
+  }
+  .wrapper-dashboard-v2 .app-summary-list__missing-heading {
+    margin-bottom: 10px;
+  }
+}
+.wrapper-dashboard-v2 .manage-mentors-ects .govuk-warning-text {
+  margin-bottom: 15px;
+}
+.wrapper-dashboard-v2 .manage-mentors-ects .alert {
+  padding-left: 10px;
+  border-left: 5px solid #d4351c;
+}
+.wrapper-dashboard-v2 h3 {
+  margin-bottom: 0.3em;
+}
+.wrapper-dashboard-v2 .group-card {
+  border: 1px solid #b1b4b6;
+  padding: 10px;
+}
+.wrapper-dashboard-v2 .group-card dl + h3 {
+  margin-top: 1em;
+}
+@media (min-width: 40.0625em) {
+  .wrapper-dashboard-v2 .group-card {
+    padding: 20px;
+  }
+}
+.wrapper-dashboard-v2 .group-card .govuk-summary-list {
+  margin-bottom: 0;
+}
+.wrapper-dashboard-v2 .group-card .govuk-summary-list .govuk-summary-list__actions {
+  width: 40%;
+  text-align: left;
+}
+.wrapper-dashboard-v2 .group-card .govuk-summary-list--no-border .govuk-summary-list__row {
+  margin-bottom: 0;
+}
+.wrapper-dashboard-v2 .group-card .govuk-summary-list--no-border .govuk-summary-list__key,
+.wrapper-dashboard-v2 .group-card .govuk-summary-list--no-border .govuk-summary-list__value,
+.wrapper-dashboard-v2 .group-card .govuk-summary-list--no-border .govuk-summary-list__actions {
+  padding-block: 0.3em;
+}
+.wrapper-dashboard-v2 .govuk-tabs__panel {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+  padding-top: 10px;
+}
+
+.app-filter {
+  border: #f3f2f1 4px solid;
+  background: white;
+  min-width: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.app-filter .govuk-radios__label {
+  padding-right: 5px;
 }

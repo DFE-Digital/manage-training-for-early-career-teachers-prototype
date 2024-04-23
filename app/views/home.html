@@ -2,6 +2,7 @@
 
 {% set pageName="Manage your training" %}
 {% set currentSection="home" %}
+{% set indTutName="Mary Bobbins" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -9,7 +10,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-three-quarters">
 
     <span class="govuk-caption-l">Plymouth Primary School</span>
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
@@ -24,13 +25,13 @@
             text: "Induction tutor"
           },
           value: {
-            text: "Sarah Philips"
+            html: indTutName
           },
           actions: {
             items: [
               {
                 href: "#",
-                text: "Change",
+                text: "Request change",
                 visuallyHiddenText: "induction tutor"
               }
             ]
@@ -80,8 +81,8 @@
       actions: {
         items: [
           {
-            href: "#",
-            text: "Change"
+            href: "/programme-academic-year",
+            text: "Request change"
           }
         ]
       }
@@ -97,7 +98,7 @@
         items: [
           {
             href: "#",
-            text: "Change"
+            text: "Request change"
           }
         ]
       }
@@ -107,13 +108,13 @@
         text: "Lead provider"
       },
       value: {
-        text: "Ambition"
+        html: data['provider']
       },
       actions: {
         items: [
           {
-            href: "#",
-            text: "Change"
+            href: "/lead-provider",
+            text: "Request change"
           }
         ]
       }
@@ -128,15 +129,15 @@
       actions: {
         items: [
           {
-            href: "#",
-            text: "Change"
+            href: "/delivery-partner",
+            text: "Request change"
           }
         ]
       }
     }
   ]
 }) }}
-{% endset -%}
+{% endset %}
 
 {{ govukTabs({
   items: [
@@ -165,6 +166,8 @@
 }) }}
 
   </div>
+
+  {{ data | log }}
 </div>
 
 

@@ -1,0 +1,49 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Are you an independent school?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1> 
+    
+    <form method="post" novalidate >
+      
+      {{ govukRadios({
+        name: "[iStipOrTeachingSchoolHub]",
+        value: data.iStipOrTeachingSchoolHub,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>   
+    
+    
+  </div>
+</div>
+
+{% endblock %}
+
+

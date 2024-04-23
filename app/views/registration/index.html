@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Appropriate body journey" %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body"></p>
+
+    {% set html %}
+      <p class="govuk-notification-banner__heading">
+        This screen is only a starting point to mimic each of the 3 potential routes.<br>**THIS IS NOT PART OF THE JOURNEY**
+      </p>
+    {% endset %}
+
+    {{ govukNotificationBanner({
+      html: html
+    }) }}
+
+  
+    
+    <form method="post" novalidate >
+      
+      {{ govukRadios({
+        name: "[whichABJourney]",
+        value: data.whichABJourney,
+        items: [
+          {
+            value: "Independent school",
+            text: "Independent school"
+          },
+          {
+            value: "British overseas school",
+            text: "British overseas school"
+          },
+          {
+            value: "Neither Independent or British overseas school",
+            text: "Neither Independent or British overseas school"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

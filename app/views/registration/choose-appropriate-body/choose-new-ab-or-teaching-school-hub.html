@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set signedOut = true %}
+{% set pageName="Choose either Teaching school hub (TSH) or Appropriate Body (NAME TBC)" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
+
+    <form method="post" novalidate >
+
+      {{ govukRadios({
+        name: "[tshOrNewAppBody]",
+        value: data.tshOrNewAppBody,
+        items: [
+          {
+            value: "Teaching school hub (TSH)",
+            text: "Teaching school hub (TSH)"
+          },
+          {
+            value: "New appropriate body (name TBC)",
+            text: "New appropriate body (name TBC)"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
+
+

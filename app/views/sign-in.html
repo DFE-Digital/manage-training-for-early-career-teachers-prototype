@@ -16,15 +16,16 @@
 
     <form action="/check-email" method="post" novalidate>
 
+
       {{ govukInput({
+        id: "[sit][emailAddress]",
+        name: "[sit][emailAddress]",
         label: {
-          text: "Email address"
+          text: "Email address",
+          isPageHeading: false,
+          classes: "govuk-label--s"
         },
-        id: "email",
-        name: "email",
-        type: "email",
-        autocomplete: "off",
-        spellcheck: false
+        value: data.sit.emailAddress
       }) }}
 
       {{ govukButton({ text: "Sign in"}) }}

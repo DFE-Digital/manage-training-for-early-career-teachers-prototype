@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+
+{% if data['whichABJourney'] == 'Independent school' and data['appointedAB'] == 'Yes' %}
+  {% set pageName = "Which type of appropriate body have you appointed?" %}      
+{% endif %}
+
+{% if data['whichABJourney'] == 'British overseas school' and data['appointedAB'] == 'Yes' %}
+  {% set pageName="Which type of appropriate body have you appointed?" %}      
+{% endif %}
+
+{% if data['whichABJourney'] == 'Neither Independent or British overseas school' and data['appointedAB'] == 'Yes' %}
+  {% set pageName="Which teaching school hub have you appointed?" %}      
+{% endif %}
+
+{% set signedOut = true %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({ 
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">Cohortless Empty School FIP</span>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <form method="post" novalidate >
+
+      {% if data['whichABJourney'] == 'Independent school' and data['appointedAB'] == 'Yes' %}
+        {% include "_includes/tsh-or-istip.njk" %}
+      {% endif %}
+
+      {% if data['whichABJourney'] == 'British overseas school' and data['appointedAB'] == 'Yes' %}
+        {% include "_includes/tsh-or-new-ab.njk" %}
+      {% endif %}
+
+      {% if data['whichABJourney'] == 'Neither Independent or British overseas school' and data['appointedAB'] == 'Yes' %}
+        {% include "_includes/tsh-only.njk" %}
+      {% endif %}
+
+    </form>
+
+
+    
+  </div>
+</div>
+
+{% endblock %}
+
+

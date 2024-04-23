@@ -1,0 +1,52 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: 'Manage training for early career teachers',
+    classes: "app-header--full-width-blue-border",
+    navigation: [
+    {
+    href: "#1",
+    text: "Sign out"
+    }
+    ]
+  }) }}
+
+<div class="govuk-width-container">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-tag--purple govuk-phase-banner__content__tag">Prototype</strong>
+      <span class="govuk-phase-banner__text">
+      This is a new service – your
+      <a class="govuk-link" target="_blank" rel="noopener noreferrer" href="https://forms.office.com.mcas.ms/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-YkKKgAihPhLr_Bqhw1DVMZUMjlKMU4xRlNCTUk0WEVTVTdOVDNMUDFWWCQlQCN0PWcu">feedback</a>
+      will help us to improve it.
+</span>
+    </p>
+  </div></div>
+<div class="primary-nav-container primary-nav-container--reversed">
+  <div class="govuk-width-container ">
+    <div class="primary-nav">
+      <div class="nav-item">
+        <a class="govuk-link govuk-link--no-visited-state" href="home">
+          Home
+        </a></div>
+      <div class="nav-item">
+        <a class="govuk-link govuk-link--no-visited-state" href="ects">
+          Early career teachers
+        </a></div>
+      <div class="nav-item nav-item__selected">
+        <a class="govuk-link govuk-link--no-visited-state" href="mentors">
+          Mentors
+          <span class="govuk-visually-hidden">Current page</span>
+        </a></div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+

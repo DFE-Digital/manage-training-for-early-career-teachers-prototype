@@ -1,0 +1,40 @@
+<div class="school-list">
+    {% for school in schools %}
+      <div class="school-list__item">
+        <h2 class="govuk-heading-s">
+          <a href="/admin/schools/{{ school.id }}">
+            {{ school.name }}
+          </a>
+        </h2>
+
+        
+        {{ govukTag({
+          text: school.schoolType,
+          classes: "govuk-tag-programme",
+          classes: school.schoolType | statusColour 
+        }) }}
+
+        {{ govukSummaryList({
+          classes: "govuk-summary-list--no-border govuk-summary-list-schools",
+          rows: [
+            {
+              key: {
+                text: "URN"
+              },
+              value: {
+                text: school.id
+              }
+            },
+            {
+              key: {
+                text: "Induction tutor email"
+              },
+              value: {
+                text: school.inductionTutorEmail
+              }
+            }
+          ]
+        }) }}
+      </div>
+    {% endfor %}
+  </div>

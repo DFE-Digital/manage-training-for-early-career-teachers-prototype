@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Contact your current and new lead providers" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+
+{{ govukInsetText({
+  text: "Your current delivery partner is [delivery_partner] and your current lead provider is [lead_provider]."
+}) }}
+
+<p class="govuk-body">If you want to change lead provider for  a participant you must contact your current and new lead providers.</p>
+
+<p class="govuk-body">Some lead providers prefer schools to contact the delivery partner first.</p>
+
+<p class="govuk-body"><a href="/home" class="govuk-link">Return to Manage your training</a></p>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

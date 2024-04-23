@@ -1,25 +1,19 @@
 {{ xGovukSecondaryNavigation({
-  classes: "govuk-!-margin-top-9 govuk-!-padding-bottom-0",
+  classes: "govuk-!-margin-top-0 govuk-!-padding-bottom-6",
   visuallyHiddenTitle: "Secondary menu",
   items: [
     {
-      text: "Details",
-      href: "/admin/schools/" + school.id,
-      current: (currentSubSection == "details")
+      text: "Schools",
+      href: "/admin/schoolslist",
+      current: (currentSubSection == "schoolslist")
     },
     {
-      text: "ECTs",
-      href: "/admin/schools/" + school.id + "/ects",
-      current: (currentSubSection == "ects")
-    },
-    {
-      text: "Mentors",
-      href: "/admin/schools/" + school.id + "/mentors",
-      current: (currentSubSection == "mentors")
-    },
-    {
-      text: "Cohorts",
-      href: "#"
+      text: "Filters",
+      href: "/admin/schools",
+      current: (currentSubSection == "filters")
     }
   ]
 }) }}
+
+
+

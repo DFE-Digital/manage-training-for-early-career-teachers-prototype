@@ -1,12 +1,51 @@
 {% extends "layouts/admin.html" %}
 
 {% set pageName = school.name %}
+
 {% set currentSection="schools" %}
 {% set currentSubSection="details" %}
 
+
 {% block beforeContent %}
-  <h1 class="govuk-heading-l govuk-!-margin-top-7 govuk-!-margin-bottom-4">{{ pageName }}</h1>
-  {% include "admin/schools/_secondary-nav" %}
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+
+
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-7 govuk-!-margin-bottom-4">{{ pageName }}</h1>
+  {# {% include "admin/schools/_secondary-nav" %} #}
+
+  {{ xGovukSecondaryNavigation({
+    classes: "govuk-!-margin-top-9 govuk-!-padding-bottom-0",
+    visuallyHiddenTitle: "Secondary menu",
+    items: [
+      {
+        text: "Details",
+        href: "/admin/schools/" + school.id,
+        current: (currentSubSection == "details")
+      },
+      {
+        text: "ECTs",
+        href: "/admin/schools/" + school.id + "/ects",
+        current: (currentSubSection == "ects")
+      },
+      {
+        text: "Mentors",
+        href: "/admin/schools/" + school.id + "/mentors",
+        current: (currentSubSection == "mentors")
+      },
+      {
+        text: "Cohorts",
+        href: "#"
+      }
+    ]
+  }) }}
+
+
 {% endblock %}
 
 {% block content %}
@@ -14,10 +53,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m">Details</h2>
+    <h2 class="govuk-heading-m">{{ pageName }}</h1>
+
+    {{ data.schools | log }}
 
       {{ govukSummaryList({
-        rows: [
+        rows: [                     
           {
             key: {
               text: "URN"
@@ -31,7 +72,7 @@
               text: "Induction tutor"
             },
             value: {
-              html: 'Jane Smith<br><a href="#">jane.smith@schoolname.sch.uk</a>'
+              html: '<p>' + school.inductionTutorName + '</p><a>' + school.inductionTutorEmail + '</a>'
             },
             actions: {
               items: [
@@ -56,7 +97,7 @@
               text: "Address"
             },
             value: {
-              html: school.address.line1 + "<br>" + school.address.line2 + "<br>" + school.address.town + "<br>" + school.address.postalCode
+              html: school.address.line1 + "<br>" + school.address.town + "<br>" + school.address.postcode + "<br>"
             }
           }
         ]

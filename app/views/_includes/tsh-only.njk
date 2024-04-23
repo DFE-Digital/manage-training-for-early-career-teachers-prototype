@@ -1,0 +1,29 @@
+<form method="post" novalidate >
+
+      {{ xGovukAutocomplete({
+        id: "whichTSH",
+        name: "[whichTSH]",
+        value: data.whichTSH,
+        allowEmpty: false,
+        items: [
+          { text: "Alpha TSH" },
+          { text: "Bravo TSH" },
+          { text: "Charlie TSH" },
+          { text: "Delta TSH" },
+          { text: "Echo TSH" },
+          { text: "Foxtrot TSH" },
+          { text: "Golf TSH" },
+          { text: "Hotel TSH" },
+          { text: "India TSH" }
+        ]
+      }) }}
+
+      <p class="govuk-body">If any of your ECTs will work with a different appropriate body, you can tell us when you register them later.</p>
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      <p><a href="ab-not-listed">My appropriate body isn't listed</a></p>
+
+    </form>

@@ -1,0 +1,25 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "search[schoolName]",
+      name: "search[schoolName]",
+      label: {
+        text: "Search schools",
+        classes: "govuk-label--s app-search-form__label"
+      },
+      hint: {
+        text: "Enter the school’s name, postcode, URN or induction tutor email"
+      },
+      value: data.search.schoolName
+    }) }}
+
+    {{ govukButton({
+      text: "Search",
+      classes: "app-search-form__button"
+    }) }}
+  </form>
+
+  {% if data.search.schoolName %}
+    {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0"><a class="govuk-link--no-visited-state" href="/schools/clear-search">Clear search</a></p> #}
+  {% endif %}
+</div>

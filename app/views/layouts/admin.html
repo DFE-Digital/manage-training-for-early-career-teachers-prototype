@@ -24,11 +24,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     visuallyHiddenTitle: "Navigation",
     items: [{
       text: "Performance",
-      href: "/admin",
+      href: "/admin/overview",
       current: (currentSection == "performance")
     }, {
       text: "Schools",
-      href: "/admin/schools",
+      href: "/admin/schoolslist",
       current: (currentSection == "schools")
     }, {
       text: "ECTs",
@@ -49,3 +49,12 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }]
   }) }}
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    var AppFrontend = {}
+  </script>
+  <script src="/public/javascripts/components/filter-toggle-button.js"></script>
+{% endblock %}
+

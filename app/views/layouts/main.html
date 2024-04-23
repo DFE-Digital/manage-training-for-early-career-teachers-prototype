@@ -15,7 +15,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     {{ govukPhaseBanner({
       classes: "app-phase-banner--no-border-bottom",
       tag: {
-        text: "Beta"
+        text: "PROTOTYPE",
+        classes: "govuk-tag--red"
       },
       html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
     }) }}
@@ -41,3 +42,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }) }}
   {% endif %}
 {% endblock %}
+
+{% block headIcons %}{% endblock %}
+
