@@ -1,0 +1,38 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+What’s the name of your school?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="name-of-school">
+            {{ title }}
+          </label>
+        </h1>
+        <select class="govuk-select" id="name-of-school" name="name-of-school"
+                data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+          <option value="" selected disabled>Select an option</option>
+          <option value="Derby City Council">Abc School (1 East Street, London, SW1A 2AA)</option>
+          <option value="Tower Hamlets Council">Def School (2 South Street, London, E20 1AA)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+Check your email
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <p class="govuk-body">We’ve sent an email to <strong>admin@123.com</strong>.</p>
+
+    <p class="govuk-body">
+      If it does not arrive within 5 minutes, check your spam or junk folder or
+      <a class="govuk-link" href="sign-in">try again</a>
+    </p>
+
+    <p class="govuk-body">If you need help, contact us: <a class="govuk-link govuk-link--no-visited-state" href="mailto:continuing-professional-development@digital.education.gov.uk">continuing-professional-development@digital.education.gov.uk</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+meta: {
+items: [
+{
+href: "sign-in-continue",
+text: "Skip link"
+},
+{
+href: "/manage-prototype",
+text: "Manage your prototype"
+},
+{
+href: "/manage-prototype/clear-data",
+text: "Clear data"
+}
+],
+visuallyHiddenTitle: "Footer links"
+}
+}) }}
+{% endblock %}
