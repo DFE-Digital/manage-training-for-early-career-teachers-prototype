@@ -1,0 +1,41 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+What’s your school’s local authority?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="local-authority">
+            {{ title }}
+          </label>
+        </h1>
+        <div id="local-authority-hint">
+          <p class="govuk-hint">This is the local authority or council in your area.</p>
+        </div>
+        <select class="govuk-select" id="local-authority" name="local-authority"
+                data-module="autocomplete" data-autoselect="" data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+          <option value="" selected disabled>Select an option</option>
+          <option value="Derby City Council">Derby City Council</option>
+          <option value="Tower Hamlets Council">Tower Hamlets Council</option>
+        </select>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

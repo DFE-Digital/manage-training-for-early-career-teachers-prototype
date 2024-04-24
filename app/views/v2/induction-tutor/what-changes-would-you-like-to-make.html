@@ -1,0 +1,51 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+What changes would you like to make?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <span class="govuk-caption-l">School name here</span>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="schools-cohorts-setup-wizard-what-changes-supplemental">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">{{ title }}</h1>
+          </legend>
+          <div id="schools-cohorts-setup-wizard-what-changes-supplemental">
+            <p class="govuk-body">The change will only apply for ECTs and mentors starting in the academic year.</p>
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-what-changes-change-lead-provider-field" class="govuk-radios__input" type="radio" value="change_lead_provider" name="what-changes">
+              <label for="schools-cohorts-setup-wizard-what-changes-change-lead-provider-field" class="govuk-label govuk-radios__label">Form a new partnership</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-what-changes-change-to-core-induction-programme-field" class="govuk-radios__input" type="radio" value="change_to_core_induction_programme" name="what-changes">
+              <label for="schools-cohorts-setup-wizard-what-changes-change-to-core-induction-programme-field" class="govuk-label govuk-radios__label">Deliver your own programme using DfE-accredited materials</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-what-changes-change-to-design-our-own-field" class="govuk-radios__input" type="radio" value="change_to_design_our_own" name="what-changes">
+              <label for="schools-cohorts-setup-wizard-what-changes-change-to-design-our-own-field" class="govuk-label govuk-radios__label">Design and deliver your own programme based on the Early Career Framework (ECF)</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

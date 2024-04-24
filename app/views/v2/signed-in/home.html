@@ -1,0 +1,45 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title %}
+Manage your training
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">Manage your training</h1>
+
+    <div class="wrapper-dashboard-v2">
+      <h2 class="govuk-heading-m">Summary</h2>
+      <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Induction tutor</dt><dd class="govuk-summary-list__value">Margaret Fip</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> induction tutor</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Mentors</dt><dd class="govuk-summary-list__value">0</dd><dd class="govuk-summary-list__actions"></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">ECTs</dt><dd class="govuk-summary-list__value">0</dd><dd class="govuk-summary-list__actions"></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">ECTs without mentors</dt><dd class="govuk-summary-list__value">0</dd><dd class="govuk-summary-list__actions"></dd></div></dl>
+      <br>
+      <h2 class="govuk-heading-m">Academic year</h2>
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">Cohorts</h2>
+        <ul class="govuk-tabs__list" role="tablist">
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected" role="presentation"><a class="govuk-tabs__tab" href="#_2024-to-2025" id="tab__2024-to-2025" role="tab" aria-controls="_2024-to-2025" aria-selected="true" tabindex="0">2024 to 2025</a></li>
+          <li class="govuk-tabs__list-item" role="presentation"><a class="govuk-tabs__tab" href="#_2023-to-2024" id="tab__2023-to-2024" role="tab" aria-controls="_2023-to-2024" aria-selected="false" tabindex="-1">2023 to 2024</a></li>
+        </ul>
+        <div id="_2024-to-2025" class="govuk-tabs__panel" role="tabpanel" aria-labelledby="tab__2024-to-2025">
+
+          <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Programme</dt><dd class="govuk-summary-list__value">Use a training provider funded by the DfE</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> induction programme choice</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Appropriate body</dt><dd class="govuk-summary-list__value">Alpha Teaching School Hub (Colchester County High School for Girls)</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="/schools/000015-cohortless-second-school-2023-fip/cohorts/2024/appropriate-body/change">Change</a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Lead provider</dt><dd class="govuk-summary-list__value">Your lead provider needs to confirm this with us</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> lead provider</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Delivery partner</dt><dd class="govuk-summary-list__value">Your lead provider needs to confirm this with us</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> delivery partner</span></a></dd></div></dl>
+
+        </div>
+        <div id="_2023-to-2024" class="govuk-tabs__panel govuk-tabs__panel--hidden" role="tabpanel" aria-labelledby="tab__2023-to-2024">
+
+          <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Programme</dt><dd class="govuk-summary-list__value">Use a training provider funded by the DfE</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> induction programme choice</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Appropriate body</dt><dd class="govuk-summary-list__value"></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Add</a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Lead provider</dt><dd class="govuk-summary-list__value">Schmitt Inc</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> lead provider</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Delivery partner</dt><dd class="govuk-summary-list__value">Upton-Spinka</dd><dd class="govuk-summary-list__actions"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> delivery partner</span></a></dd></div></dl>
+
+
+        </div>
+      </div>    </div>
+  </div>
+</div>
+{% endblock %}

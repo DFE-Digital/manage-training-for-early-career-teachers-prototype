@@ -1,0 +1,63 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Induction tutor nominated
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-7" data-test="success-panel">
+      <h1 class="govuk-panel__title">{{ title }}</h1>
+    </div>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">This person is now our single point of contact for ECF-based training at your school. They'll use our service to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>report how your school will run training for early career teachers (ECTs)</li>
+      <li>register ECTs and their mentors</li>
+      <li>tell us about any changes your school needs to make</li>
+    </ul>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+meta: {
+items: [
+{
+href: "../new-induction-tutor/not-ind-or-bo",
+text: "Skip link (normal school)"
+},
+{
+href: "../new-induction-tutor/ind-school",
+text: "Skip link (independent school)"
+},
+{
+href: "../new-induction-tutor/bo-school",
+text: "Skip link (British school overseas)"
+},
+{
+href: "/manage-prototype",
+text: "Manage your prototype"
+},
+{
+href: "/manage-prototype/clear-data",
+text: "Clear data"
+}
+],
+visuallyHiddenTitle: "Footer links"
+}
+}) }}
+{% endblock %}

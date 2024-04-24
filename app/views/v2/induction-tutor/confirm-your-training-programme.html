@@ -1,0 +1,50 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Are you sure this is how you want to run your training?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    {% if data['programme-choice'] === 'core_induction_programme' %}
+    <p class="govuk-body">You’ve chosen to deliver your own programme using DfE-accredited materials.</p>
+    <p>You’ll need to:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+      <li>choose your training materials</li>
+      <li>add your ECTs and mentors</li>
+    </ul>
+    {% elif data['programme-choice'] === 'design_our_own' %}
+    <p class="govuk-body">You’re choosing to design and deliver your own programme based on the early career framework (ECF).</p>
+    <p class="govuk-body">You’ll need to design a 2-year programme of support and training that covers every
+      ‘learn that’ and ‘learn how to’ statement in the
+      <a class="govuk-link" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/early-career-framework">early career framework (ECF) (opens in new tab)</a>
+    </p>
+    <p class="govuk-body govuk-!-margin-bottom-7">
+      <a class="govuk-link" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/early-career-framework-reforms-overview/early-career-framework-reforms-overview#schools-designing-and-delivering-their-own-ecf-based-induction">See our statutory guidance (opens in new tab)</a>
+      for information about funding, time off timetable, and roles.
+    </p>
+    {% else %}
+    <p class="govuk-body">You‘ve chosen to use a training provider, funded by DfE.</p>
+    <p>You’ll need to:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+      <li>choose a training provider</li>
+      <li>add your ECTs and mentors</li>
+    </ul>
+    {% endif %}
+    <form method="post">
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Confirm</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,5 +1,8 @@
 module.exports = {
 
+  ['previous-programme']: 'yes-fip',
+  ['programme-choice']: 'full_induction_programme',
+
   allProviders: ["Ambition", "Capita", "Best practice", "UCL Institute of Education"],
 
   defaultParticipant: [

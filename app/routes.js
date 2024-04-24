@@ -21,6 +21,7 @@ require('./routes/choose-appropriate-body')(router)
 // versioning starts here
 
 require('./routes/v1/routes')(router)
+require('./routes/v2/routes')(router)
 
 router.get('/home', (req, res) => {
 
