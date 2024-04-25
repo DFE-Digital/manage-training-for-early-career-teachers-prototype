@@ -117,24 +117,24 @@
 {% endblock %}
 
 {% block pageScripts %}
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to deselect all radio buttons
-    function deselectAllRadios() {
-      const radios = document.querySelectorAll('input[type="radio"]');
-      radios.forEach(radio => {
-        radio.checked = false;
-      });
-    }
+<!--<script>-->
+<!--  document.addEventListener('DOMContentLoaded', function() {-->
+<!--    // Function to deselect all radio buttons-->
+<!--    function deselectAllRadios() {-->
+<!--      const radios = document.querySelectorAll('input[type="radio"]');-->
+<!--      radios.forEach(radio => {-->
+<!--        radio.checked = false;-->
+<!--      });-->
+<!--    }-->
 
-    // Event listener for all radio button clicks
-    document.addEventListener('click', function(event) {
-      // Check if the clicked element is a radio button and not the specific radio button
-      if (event.target.type === 'radio' && event.target.id === 'selectProtoJourney-3' || event.target.id === 'selectProtoJourney-4') {
-        alert('Sorry, this route has not been added to the prototype yet.');
-        deselectAllRadios();
-      }
-    });
-  });
-</script>
+<!--    // Event listener for all radio button clicks-->
+<!--    document.addEventListener('click', function(event) {-->
+<!--      // Check if the clicked element is a radio button and not the specific radio button-->
+<!--      if (event.target.type === 'radio' && event.target.id === 'id-here') {-->
+<!--        alert('Sorry, this route has not been added to the prototype yet.');-->
+<!--        deselectAllRadios();-->
+<!--      }-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
 {% endblock %}
