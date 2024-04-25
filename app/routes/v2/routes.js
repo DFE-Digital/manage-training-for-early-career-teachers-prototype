@@ -53,10 +53,13 @@ module.exports = router => {
         if (req.session.data['previous-programme'] === 'no') {
             res.redirect(v + newInductionTutor + 'privacy-policy')
         }
-        if (req.session.data['previous-programme'] === 'yes-fip') {
+        else if (req.session.data['previous-programme'] === 'yes-fip') {
             res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
         }
-        if (req.session.data['previous-programme'] === 'yes-cip') {
+        else if (req.session.data['previous-programme'] === 'yes-cip') {
+            res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
+        }
+        else if (req.session.data['previous-programme'] === 'yes-diy') {
             res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
         }
         else {
