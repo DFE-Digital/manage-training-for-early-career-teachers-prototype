@@ -53,7 +53,13 @@ module.exports = router => {
         if (req.session.data['previous-programme'] === 'no') {
             res.redirect(v + newInductionTutor + 'privacy-policy')
         }
-        if (req.session.data['previous-programme'] === 'yes-fip') {
+        else if (req.session.data['previous-programme'] === 'yes-fip') {
+            res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
+        }
+        else if (req.session.data['previous-programme'] === 'yes-cip') {
+            res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
+        }
+        else if (req.session.data['previous-programme'] === 'yes-diy') {
             res.redirect(v + inductionTutor + 'tell-us-if-new-ects-or-mentors')
         }
         else {
@@ -187,13 +193,25 @@ module.exports = router => {
             res.redirect(v + inductionTutor + 'your-info-has-been-saved')
         }
         else {
-            if (req.session.data['partner-change'] === 'yes') {
-                res.redirect(v + inductionTutor + 'relationship-between-lp-and-dp-changed')
+            if (req.session.data['previous-programme'] === 'yes-cip') {
+                res.redirect(v + inductionTutor + 'how-do-you-want-to-run-training')
+            }
+            else if (req.session.data['previous-programme'] === 'yes-diy') {
+                res.redirect(v + inductionTutor + 'how-do-you-want-to-run-training')
             }
             else {
-                res.redirect(v + inductionTutor + 'use-same-lp-and-dp')
+                if (req.session.data['partner-change'] === 'yes') {
+                    res.redirect(v + inductionTutor + 'relationship-between-lp-and-dp-changed')
+                }
+                else {
+                    res.redirect(v + inductionTutor + 'use-same-lp-and-dp')
+                }
             }
         }
+    })
+
+    router.post(v + inductionTutor + 'how-do-you-want-to-run-training', (req, res) => {
+        res.redirect(v + inductionTutor + 'confirm-your-training-programme')
     })
 
     router.post(v + inductionTutor + 'relationship-between-lp-and-dp-changed', (req, res) => {
