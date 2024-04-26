@@ -1,0 +1,55 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+What’s {{ data['full-name'] or 'John Doe' }}'s date of birth?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">School name here</span>
+
+    <form accept-charset="UTF-8" method="post">
+      <div class="govuk-form-group" width="three-quarters">
+        <fieldset class="govuk-fieldset" aria-describedby="add-participant-wizard-date-of-birth-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">{{ title }}</h1>
+          </legend>
+          <div class="govuk-hint" id="add-participant-wizard-date-of-birth-hint">For example, 14 7 1990</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="add_participant_wizard_date_of_birth_3i">Day</label>
+                <input id="add_participant_wizard_date_of_birth_3i" class="govuk-input govuk-date-input__input govuk-input--width-2" name="dob-day" type="text" inputmode="numeric" autocomplete="bday-day">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="add_participant_wizard_date_of_birth_2i">Month</label>
+                <input id="add_participant_wizard_date_of_birth_2i" class="govuk-input govuk-date-input__input govuk-input--width-2" name="dob-month" type="text" inputmode="numeric" autocomplete="bday-month">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="add_participant_wizard_date_of_birth_1i">Year</label>
+                <input id="add_participant_wizard_date_of_birth_1i" class="govuk-input govuk-date-input__input govuk-input--width-4" name="dob-year" type="text" inputmode="numeric" autocomplete="bday-year">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
