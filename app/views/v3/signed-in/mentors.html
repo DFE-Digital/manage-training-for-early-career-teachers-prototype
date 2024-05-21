@@ -1,0 +1,40 @@
+{% extends "layouts/signed-in-mentors.html" %}
+
+{% set title %}
+Mentors
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <a class="govuk-button" data-module="govuk-button" no_visited_state="true" href="/schools/000015-cohortless-second-school-2023-fip/participants/who">Add Mentor</a>
+
+  </div>
+</div>
+<div class="govuk-grid-row wrapper-dashboard-v2">
+  <div class="govuk-grid-column-one-third">
+    <div class="app-filter">
+      <form class="new_" id="new_" action="/schools/000015-cohortless-second-school-2023-fip/mentors" accept-charset="UTF-8" method="get">
+        <div class="govuk-form-group"><fieldset class="govuk-fieldset"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s"><h2 class="govuk-fieldset__heading">Show</h2></legend><div class="govuk-radios govuk-radios--small" data-module="govuk-radios"><div class="govuk-radios__item"><input id="filtered-by-currently-mentoring-field" class="govuk-radios__input" type="radio" value="currently_mentoring" checked="checked" name="filtered_by"><label for="filtered-by-currently-mentoring-field" class="govuk-label govuk-radios__label">Currently mentoring (0)</label></div><div class="govuk-radios__item"><input id="filtered-by-not-mentoring-field" class="govuk-radios__input" type="radio" value="not_mentoring" name="filtered_by"><label for="filtered-by-not-mentoring-field" class="govuk-label govuk-radios__label">Not mentoring (0)</label></div></div></fieldset></div>
+        <button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-prevent-double-click="true">Apply</button>
+      </form>      </div>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="manage-mentors-ects govuk-!-margin-bottom-8">
+      <p class="govuk-body">No mentors found</p>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

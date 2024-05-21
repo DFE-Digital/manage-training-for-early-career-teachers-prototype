@@ -1,0 +1,28 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+Request access to this service
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <p class="govuk-body">We send a link to your school's email in the Get Information about Schools (GIAS) register.</p>
+
+    <a class="govuk-button" data-module="govuk-button" href="request-as-school/whats-your-schools-local-authority">Continue</a>
+
+    <p><a class="govuk-link govuk-link--no-visited-state" href="https://services.signin.education.gov.uk/">Check your school's email is up to date</a></p>
+
+  </div>
+</div>
+{% endblock %}

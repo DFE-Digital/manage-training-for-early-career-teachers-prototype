@@ -1,0 +1,49 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Who do you want to add?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <span class="govuk-caption-l">School name here</span>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {{ title }}
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <p class="govuk-body govuk-!-margin-top-4">
+              This could be a new teacher or a teacher transferring from another school where they’ve started ECF-based training or mentoring.
+            </p>
+            <div class="govuk-radios__item">
+              <input id="add-participant-wizard-participant-type-ect-field" class="govuk-radios__input" type="radio" value="ect" name="who-to-add">
+              <label for="add-participant-wizard-participant-type-ect-field" class="govuk-label govuk-radios__label">ECT</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="add-participant-wizard-participant-type-mentor-field" class="govuk-radios__input" type="radio" value="mentor" name="who-to-add">
+              <label for="add-participant-wizard-participant-type-mentor-field" class="govuk-label govuk-radios__label">Mentor</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
