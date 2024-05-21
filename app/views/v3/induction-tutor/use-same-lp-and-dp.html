@@ -1,0 +1,50 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Do you want to use the same lead provider and delivery partner for your new ECTs?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post">
+      <span class="govuk-caption-l">School name here</span>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="schools-cohorts-setup-wizard-keep-providers-supplemental">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">{{ title }}</h1>
+          </legend>
+          <div id="schools-cohorts-setup-wizard-keep-providers-supplemental">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-5">Your DfE-funded lead provider</h2>
+            <p class="govuk-body">Example LP</p>
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Your delivery partner</h2>
+            <p class="govuk-body">Example DP</p>
+            <p class="govuk-body">Visit <a class="govuk-link" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/how-to-set-up-training-for-early-career-teachers">How to set up training for early career teachers (opens in new tab)</a> to learn more about providers.</p>
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-keep-providers-yes-field" class="govuk-radios__input" type="radio" value="yes" name="keep-providers">
+              <label for="schools-cohorts-setup-wizard-keep-providers-yes-field" class="govuk-label govuk-radios__label">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="schools-cohorts-setup-wizard-keep-providers-no-field" class="govuk-radios__input" type="radio" value="no" name="keep-providers">
+              <label for="schools-cohorts-setup-wizard-keep-providers-no-field" class="govuk-label govuk-radios__label">No</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

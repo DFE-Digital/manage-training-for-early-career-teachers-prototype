@@ -1,0 +1,58 @@
+{% extends "layouts/start.html" %}
+
+{% set title %}
+Check your school email
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <p class="govuk-body">
+      We’ve sent an email to
+      <strong>a**********r@abcschool.co.uk</strong> (redacted for privacy reasons).
+    </p>
+
+    <p class="govuk-body">Check the spam or junk folder if the email does not arrive in 5 minutes.</p>
+    <p class="govuk-body">
+      <a class="govuk-link" href="#">Request another link</a>
+    </p>
+    <p class="govuk-body">If you still need help, contact us:
+      <a class="govuk-link govuk-link--no-visited-state" href="#">
+        continuing-professional-development@digital.education.gov.uk
+      </a>
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ govukFooter({
+meta: {
+items: [
+{
+href: "../school-claimed-and-nominate/will-any-ects-start-induction",
+text: "Skip link"
+},
+{
+href: "/manage-prototype",
+text: "Manage your prototype"
+},
+{
+href: "/manage-prototype/clear-data",
+text: "Clear data"
+}
+],
+visuallyHiddenTitle: "Footer links"
+}
+}) }}
+{% endblock %}

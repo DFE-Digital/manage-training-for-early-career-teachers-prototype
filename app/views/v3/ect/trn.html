@@ -1,0 +1,43 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+What’s {{ data['full-name'] or 'John Doe' }}'s teacher reference number (TRN)?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">School name here</span>
+
+    <form accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label for="add-participant-wizard-trn-field" class="govuk-label govuk-label--l govuk-heading-l">{{ title }}</label>
+        </h1>
+        <div id="add-participant-wizard-trn-supplemental">
+          <p class="govuk-body">This unique ID:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>is usually 7 digits long, for example ‘4567814’</li>
+            <li>may include the letters ‘RP’ or a slash ‘/’ symbol, for example ‘RP99/12345’</li>
+            <li>may also be called a QTS, GTC, DfE, DfES or DCSF number</li>
+          </ul>
+        </div>
+        <input id="add-participant-wizard-trn-field" class="govuk-input govuk-!-width-two-thirds" aria-describedby="add-participant-wizard-trn-supplemental" type="text" name="trn">
+      </div>
+      <div class="govuk-button-group">
+        <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

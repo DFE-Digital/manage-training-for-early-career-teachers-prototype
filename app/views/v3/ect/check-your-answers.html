@@ -1,0 +1,71 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Check your answers
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <p class="govuk-body">
+      You cannot change the name, TRN or date of birth as these have already been matched with the Teaching Regulation Agency (TRA) record.
+    </p>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+        <dt class="govuk-summary-list__key">Name</dt>
+        <dd class="govuk-summary-list__value">{{ data['full-name'] or 'John Doe' }}</dd>
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+        <dt class="govuk-summary-list__key">TRN</dt>
+        <dd class="govuk-summary-list__value">{{ data['trn'] or '1234567' }}</dd>
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+        <dt class="govuk-summary-list__key">Date of birth</dt>
+        <dd class="govuk-summary-list__value">1 January 1900</dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Email address</dt>
+        <dd class="govuk-summary-list__value">abc@example.com</dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change
+            <span class="govuk-visually-hidden"> email address</span>
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+        <dt class="govuk-summary-list__key">Mentor</dt>
+        <dd class="govuk-summary-list__value">Add later</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Appropriate body</dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">Appropriate body name here</p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change
+            <span class="govuk-visually-hidden"> mentor</span>
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <form accept-charset="UTF-8" method="post">
+      <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Confirm and add</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Confirm your training programme
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+    {% if data['programme-choice'] === 'core_induction_programme' %}
+    <p class="govuk-body govuk-!-margin-bottom-7">You’ve chosen to deliver your own programme using DfE-accredited materials.</p>
+    {% elif data['programme-choice'] === 'design_our_own' %}
+    <p class="govuk-body govuk-!-margin-bottom-7">You’ve chosen to design and deliver your own programme based on the Early Career Framework (ECF).</p>
+    {% else %}
+    <p class="govuk-body govuk-!-margin-bottom-7">You’ve chosen to use a training provider, funded by the DfE.</p>
+    {% endif %}
+    <form method="post">
+      <button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Confirm</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
