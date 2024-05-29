@@ -1,7 +1,7 @@
 {% extends "layouts/signed-in-home.html" %}
 
 {% set title %}
-You've confirmed who's going to continue training
+You've confirmed who's going to continue or restart training
 {% endset %}
 
 {% block pageTitle %}
@@ -20,10 +20,12 @@ You've confirmed who's going to continue training
                     <strong class="govuk-!-font-size-24">Academic year 2024 to 2025</strong>
               </div>
         </div>
-        <p>Body text</p>
         <h2 class="govuk-heading-m">What happens next</h2>
-        <p>Body text</p>
-        <p><a class="govuk-link govuk-link--no-visited-state" href="#">Return to manage your training</a></p>
+        <p>We'll contact your training provider to let them know.</p>
+
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Add a new ECT</a></p>
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Add a new mentor</a></p>
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Return to manage your training</a></p>
   </div>
 </div>
 {% endblock %}

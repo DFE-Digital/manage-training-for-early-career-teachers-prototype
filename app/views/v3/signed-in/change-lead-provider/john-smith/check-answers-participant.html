@@ -1,0 +1,123 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="Check your answers before you request the change" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  {{ data | log }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <h2 class="govuk-heading-m">Change request details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Participant name"
+            },
+            value: {
+              html: "John Smith"
+            }
+          },
+          {
+            key: {
+              text: "School"
+            },
+            value: {
+              html: "School name here"
+            }
+          },
+          {
+            key: {
+              text: "Academic year"
+            },
+            value: {
+              html: "2024 to 2025"
+            }
+          },
+          {
+          key: {
+          text: "Participant email address"
+          },
+          value: {
+          html: "123@example.com"
+          },
+          actions: {
+          items: [
+          {
+          href: "participant-email",
+          text: "Change",
+          visuallyHiddenText: "participant email address"
+          }
+          ]
+          }
+          },
+          {
+            key: {
+              text: "Current lead provider"
+            },
+            value: {
+              html: "Schmitt Inc"
+            }
+          },
+          {
+            key: {
+              text: "Contacted lead providers over 2 weeks ago"
+            },
+            value: {
+              html: data['contacted']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "already-contacted-lead-provider?returnUrl=/lead-provider/john-smith/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "if you contacted lead provider over two weeks ago"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "New lead provider"
+            },
+            value: {
+              html: data['new']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-lead-provider?returnUrl=/lead-provider/john-smith/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "new lead provider"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post">
+      {{ govukButton({
+        text: "Accept and send request"
+      }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

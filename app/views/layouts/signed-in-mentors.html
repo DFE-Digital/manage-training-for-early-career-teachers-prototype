@@ -32,15 +32,15 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   <div class="govuk-width-container ">
     <div class="primary-nav">
       <div class="nav-item">
-        <a class="govuk-link govuk-link--no-visited-state" href="home">
+        <a class="govuk-link govuk-link--no-visited-state" href="" id="home">
           Home
         </a></div>
       <div class="nav-item">
-        <a class="govuk-link govuk-link--no-visited-state" href="ects">
+        <a class="govuk-link govuk-link--no-visited-state" href="" id="ects">
           Early career teachers
         </a></div>
       <div class="nav-item nav-item__selected">
-        <a class="govuk-link govuk-link--no-visited-state" href="mentors">
+        <a class="govuk-link govuk-link--no-visited-state" href="" id="mentors">
           Mentors
           <span class="govuk-visually-hidden">Current page</span>
         </a></div>
@@ -50,3 +50,21 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 </div>
 {% endblock %}
 
+{% block bodyEnd %}
+{% block scripts %}
+{% include "govuk-prototype-kit/includes/scripts.njk" %}
+<script>
+  // Get the current URL
+  const url = window.location.href;
+
+  // Use the match() method to find the value in the URL
+  const currentV = url.match(/v\d+/);
+
+  // Set the value as the href attribute of the link
+  document.getElementById("home").href = "/" + currentV + "/signed-in/home"
+  document.getElementById("ects").href = "/" + currentV + "/signed-in/ects"
+  document.getElementById("mentors").href = "/" + currentV + "/signed-in/mentors"
+</script>
+{% block pageScripts %}{% endblock %}
+{% endblock %}
+{% endblock %}
