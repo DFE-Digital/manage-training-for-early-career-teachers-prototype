@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Have you contacted the lead provider recently?" %}
+
+{% block header %}
+  {{ govukHeader({
+    serviceName: serviceName,
+    classes: "app-header--full-width-blue-border"
+  }) }}
+
+{% include "_includes/proto-phase-banner.njk" %}
+
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    <p class="govuk-body">It may take a few weeks a change by a lead provider to show on this service.</p>
+    
+    <form method="post">
+    
+      {{ govukRadios({
+        name: "contacted[leadProvider]",
+        value: data.contacted.leadProvider,
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          },
+          {
+            value: "I don't know",
+            text: "I don't know"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>    
+  </div>
+</div>
+
+{% endblock %}
+
+

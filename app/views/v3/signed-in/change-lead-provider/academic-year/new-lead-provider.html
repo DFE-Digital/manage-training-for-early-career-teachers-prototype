@@ -1,0 +1,55 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title = "Who is the new lead provider?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ title }}</h1>
+
+<p class="govuk-body">We only show you providers that are available for the relevant academic year.</p>
+
+<form method="post">
+  {{ govukRadios({
+    name: "new[leadProvider]",
+    value: new.leadProvider,
+    items: [
+      {
+        value: "Best Practice",
+        text: "Best Practice"
+      },
+      {
+        value: "Capita",
+        text: "Capita"
+      },
+      {
+        value: "Education Development Trust",
+        text: "Education Development Trust"
+      },
+      {
+        value: "TeachFirst",
+        text: "TeachFirst"
+      },
+      {
+        value: "UCL Institute of Education",
+        text: "UCL Institute of Education"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+
+{% endblock %}
+
+

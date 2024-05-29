@@ -6,7 +6,8 @@ var newInductionTutor = 'new-induction-tutor/'
 var inductionTutor = 'induction-tutor/'
 var signedIn = 'signed-in/'
 var confirmParticipantsStillTraining = 'confirm-participants-still-training/'
-
+var changeLeadProvider = 'change-lead-provider/'
+var changeDeliveryPartner = 'change-delivery-partner/'
 
 module.exports = router => {
 
@@ -280,6 +281,10 @@ module.exports = router => {
 
     // start of post-reg confirm 2021 cohort journey
 
+    router.post(v + signedIn + confirmParticipantsStillTraining + 'guidance', (req, res) => {
+        res.redirect(v + signedIn + confirmParticipantsStillTraining + 'choose-ects')
+    })
+
     router.post(v + signedIn + confirmParticipantsStillTraining + 'choose-ects', (req, res) => {
         res.redirect(v + signedIn + confirmParticipantsStillTraining + 'choose-mentors')
     })
@@ -290,6 +295,102 @@ module.exports = router => {
 
     router.post(v + signedIn + confirmParticipantsStillTraining + 'check-your-answers', (req, res) => {
         res.redirect(v + signedIn + confirmParticipantsStillTraining + 'confirmation')
+    })
+
+    // change lead provider for academic year
+
+    router.post(v + signedIn + changeLeadProvider + 'index', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'academic-year/agreed-change-existing-provider')
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'academic-year/agreed-change-existing-provider', (req, res) => {
+        if (req.session.data['agreedWith']['providers'] === 'Yes') {
+            res.redirect(v + signedIn + changeLeadProvider + 'academic-year/already-contacted-lead-provider')
+        }
+        else if (req.session.data['agreedWith']['providers'] === 'No') {
+            res.redirect(v + signedIn + changeLeadProvider + 'academic-year/contact-existing-providers')
+
+        }
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'academic-year/already-contacted-lead-provider', (req, res) => {
+        if (req.session.data['contacted']['leadProvider'] === 'Yes') {
+            res.redirect(v + signedIn + changeLeadProvider + 'academic-year/new-lead-provider')
+        }
+        else if (req.session.data['contacted']['leadProvider'] === 'No') {
+            res.redirect(v + signedIn + changeLeadProvider + 'academic-year/what-to-do-next')
+        }
+        else if (req.session.data['contacted']['leadProvider'] === "I don't know") {
+            res.redirect(v + signedIn + changeLeadProvider + 'academic-year/what-to-do-next')
+        }
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'academic-year/new-lead-provider', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'academic-year/check-answers-academic-year')
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'academic-year/check-answers-academic-year', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'academic-year/request-submitted')
+    })
+
+    // change lead provider for participant
+
+    router.post(v + signedIn + changeLeadProvider + 'john-smith/index', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'john-smith/participant-email')
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'john-smith/participant-email', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'john-smith/already-contacted-lead-provider')
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'john-smith/already-contacted-lead-provider', (req, res) => {
+        if (req.session.data['contacted']['leadProvider'] === 'Yes') {
+            res.redirect(v + signedIn + changeLeadProvider + 'john-smith/new-lead-provider')
+        }
+        else if (req.session.data['contacted']['leadProvider'] === 'No') {
+            res.redirect(v + signedIn + changeLeadProvider + 'john-smith/what-to-do-next')
+        }
+        else if (req.session.data['contacted']['leadProvider'] === "I don't know") {
+            res.redirect(v + signedIn + changeLeadProvider + 'john-smith/what-to-do-next')
+        }
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'john-smith/new-lead-provider', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'john-smith/check-answers-participant')
+    })
+
+    router.post(v + signedIn + changeLeadProvider + 'john-smith/check-answers-participant', (req, res) => {
+        res.redirect(v + signedIn + changeLeadProvider + 'john-smith/request-submitted')
+    })
+
+    // change delivery partner for academic year
+
+    router.post(v + signedIn + changeDeliveryPartner + 'index', (req, res) => {
+        res.redirect(v + signedIn + changeDeliveryPartner + 'notified-dp-and-lp')
+    })
+
+    router.post(v + signedIn + changeDeliveryPartner + 'notified-dp-and-lp', (req, res) => {
+        if (req.session.data['notifiedDeliveryAndLeadProvider'] === 'Yes') {
+            res.redirect(v + signedIn + changeDeliveryPartner + 'select-academic-year')
+        }
+        else if (req.session.data['notifiedDeliveryAndLeadProvider'] === 'No') {
+            res.redirect(v + signedIn + changeDeliveryPartner + 'what-to-do-next')
+        }
+        else if (req.session.data['notifiedDeliveryAndLeadProvider'] === "I don't know") {
+            res.redirect(v + signedIn + changeDeliveryPartner + 'what-to-do-next')
+        }
+    })
+
+    router.post(v + signedIn + changeDeliveryPartner + 'select-academic-year', (req, res) => {
+        res.redirect(v + signedIn + changeDeliveryPartner + 'select-new-delivery-partner')
+    })
+
+    router.post(v + signedIn + changeDeliveryPartner + 'select-new-delivery-partner', (req, res) => {
+        res.redirect(v + signedIn + changeDeliveryPartner + 'check-answers-delivery-partner')
+    })
+
+    router.post(v + signedIn + changeDeliveryPartner + 'check-answers-delivery-partner', (req, res) => {
+        res.redirect(v + signedIn + changeDeliveryPartner + 'request-submitted')
     })
 
 }
