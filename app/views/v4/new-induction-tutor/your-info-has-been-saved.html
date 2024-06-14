@@ -1,0 +1,35 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Your information has been saved
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-7">
+      <h1 class="govuk-panel__title">
+        {{ title }}
+      </h1>
+      <div class="govuk-panel__body">
+      Academic year
+      <br>
+        <strong>2024 to 2025</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">What happens next</h2>
+    <p class="govuk-body">We’ll contact East Lauretta Grammar School in the next academic year.</p>
+    <p class="govuk-body">If you do employ ECTs later this academic year, you can sign in to this service to let us know.</p>
+    <a class="govuk-link govuk-link--no-visited-state" href="#">Return to manage your training</a>
+
+  </div>
+</div>
+{% endblock %}

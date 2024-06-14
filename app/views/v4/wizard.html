@@ -1,0 +1,121 @@
+{% extends "layouts/start.html" %}
+
+{% block pageTitle %}
+  Start prototype journey – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if error === 'yes' %}
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+    {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: [
+    {
+    text: "Select a prototype journey",
+    href: "#selectProtoJourney"
+    }
+    ]
+    }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">Start prototype journey</h1>
+    <form method="post">
+    {% set previousFIPPartnerChange %}
+    {{ govukRadios({
+    name: "previousFIPPartnerChange",
+    fieldset: {
+    legend: {
+    text: "Relationship between provider and delivery partner reported as changed?"
+    }
+    },
+    items: [
+    {
+    value: "yes",
+    text: "Yes"
+    },
+    {
+    value: "no",
+    text: "No"
+    }
+    ]
+    }) }}
+    {% endset %}
+
+    {{ govukRadios({
+    id: "selectProtoJourney",
+    name: "selectProtoJourney",
+    validate: {
+    presence: {
+    message: "Enter your full name"
+    }
+    },
+    fieldset: {
+    legend: {
+    text: "Select a prototype journey"
+    }
+    },
+    items: [
+    {
+    value: "newUser",
+    text: "New user (requesting access) or signing in as school with no previous programme"
+    },
+    {
+    value: "existingUserPreviousFIP",
+    text: "Existing user - new programme year - with previous FIP programme",
+      conditional: {
+      html: previousFIPPartnerChange
+      }
+    },
+    {
+    value: "existingUserPreviousCIP",
+    text: "Existing user - new programme year - with previous CIP programme"
+    },
+    {
+    value: "existingUserPreviousDIY",
+    text: "Existing user - new programme year - with previous DIY programme"
+    }
+    ]
+    }) }}
+
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+      {{ govukSelect({
+      id: "school-type",
+      name: "schoolType",
+      label: {
+      text: "School type"
+      },
+      items: [
+      {
+      value: "normal",
+      text: "'Normal' school",
+      selected: true
+      },
+      {
+      value: "indSchool",
+      text: "Independent school"
+      },
+      {
+      value: "boSchool",
+      text: "British school overseas"
+      }
+      ]
+      }) }}
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}

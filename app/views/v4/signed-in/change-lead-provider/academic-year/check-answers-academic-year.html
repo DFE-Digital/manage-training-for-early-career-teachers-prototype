@@ -1,0 +1,99 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="Check your answers before you request the change" %}
+
+{% set indTutName="Tutor name" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  {{ data | log }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <h2 class="govuk-heading-m">Change request details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Induction tutor name"
+            },
+            value: {
+              html: indTutName
+            }
+          },
+          {
+            key: {
+              text: "Induction tutor email address"
+            },
+            value: {
+              html: "tutor@email.com"
+            }
+          },
+          {
+            key: {
+              text: "School"
+            },
+            value: {
+              html: "School name here"
+            }
+          },
+          {
+            key: {
+              text: "Academic year"
+            },
+            value: {
+              html: "2024 to 2025"
+            }
+          },
+          {
+            key: {
+              text: "Current lead provider"
+            },
+            value: {
+              html: "Schmitt Inc"
+            }
+          },
+          {
+            key: {
+              text: "New lead provider"
+            },
+            value: {
+              html: data['new']['leadProvider']
+            },
+            actions: {
+              items: [
+                {
+                  href: "new-lead-provider?returnUrl=/lead-provider/academic-year/check-answers-academic-year",
+                  text: "Change",
+                  visuallyHiddenText: "new lead provider"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post">
+      {{ govukButton({
+        text: "Accept and send request"
+      }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+

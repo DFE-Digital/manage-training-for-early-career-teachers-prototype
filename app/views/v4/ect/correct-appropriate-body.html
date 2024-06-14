@@ -1,0 +1,32 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+Is this the correct appropriate body for {{ data['full-name'] or 'John Doe' }}'s induction?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">School name here</span>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <div class="govuk-inset-text">Approriate body name here</div>
+
+    <p><a class="govuk-link" href=#>They have a different appropriate body</a></p>
+
+    <form accept-charset="UTF-8" method="post">
+      <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true" classes="govuk-!-margin-top-6">Confirm</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

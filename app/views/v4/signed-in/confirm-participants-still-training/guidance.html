@@ -1,0 +1,30 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title %}
+Confirm who is going to continue or restart training
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <p>You need to confirm whether a participant who started training in the 2021 to 2022 academic year is going to continue or restart their training in the 2024 to 2025 academic year.</p>
+      <p>This is so we can let your training provider know.</p>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+How do you want to run your training in 2024 to 2025?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">School name here</span>
+
+    <form method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="induction-choice-form-programme-choice-supplemental">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {{ title }}
+            </h1>
+          </legend>
+          <div id="induction-choice-form-programme-choice-supplemental">
+            <p class="govuk-body">To learn more about your training options, visit
+              <a class="govuk-link govuk-link--no-visited-state" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/how-to-set-up-training-for-early-career-teachers">How to set up training for early career teachers (opens in new tab)</a>
+            </p>
+            <p class="govuk-body">You can also contact your
+              <a class="govuk-link govuk-link--no-visited-state" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/guidance/teaching-school-hubs">local teaching school hub (opens in a new tab)</a>
+              or
+              <a class="govuk-link govuk-link--no-visited-state" target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/appropriate-bodies-guidance-induction-and-the-early-career-framework">appropriate body (opens in new tab)</a>.
+            </p>
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input id="induction-choice-form-programme-choice-full-induction-programme-field" class="govuk-radios__input" type="radio" value="full_induction_programme" name="programme-choice">
+              <label for="induction-choice-form-programme-choice-full-induction-programme-field" class="govuk-label govuk-radios__label">Use a training provider, funded by the DfE (full induction programme)</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="induction-choice-form-programme-choice-core-induction-programme-field" class="govuk-radios__input" type="radio" value="core_induction_programme" name="programme-choice">
+              <label for="induction-choice-form-programme-choice-core-induction-programme-field" class="govuk-label govuk-radios__label">Deliver your own programme using DfE accredited materials</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input id="induction-choice-form-programme-choice-design-our-own-field" class="govuk-radios__input" type="radio" value="design_our_own" name="programme-choice">
+              <label for="induction-choice-form-programme-choice-design-our-own-field" class="govuk-label govuk-radios__label">Design and deliver your own programme based on the Early Career Framework (ECF)</label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input id="induction-choice-form-programme-choice-no-early-career-teachers-field" class="govuk-radios__input" type="radio" value="no_early_career_teachers" name="programme-choice">
+              <label for="induction-choice-form-programme-choice-no-early-career-teachers-field" class="govuk-label govuk-radios__label">We do not expect any early career teachers to join</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to deselect all radio buttons
+    function deselectAllRadios() {
+      const radios = document.querySelectorAll('input[type="radio"]');
+      radios.forEach(radio => {
+        radio.checked = false;
+      });
+    }
+
+    // Event listener for all radio button clicks
+    document.addEventListener('click', function(event) {
+      // Check if the clicked element is a radio button and not the specific radio button
+      if (event.target.type === 'radio' && event.target.id === 'induction-choice-form-programme-choice-no-early-career-teachers-field') {
+        alert('Sorry, this route has not been added to the prototype yet.');
+        deselectAllRadios();
+      }
+    });
+  });
+</script>
+{% endblock %}

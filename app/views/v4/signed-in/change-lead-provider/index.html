@@ -1,0 +1,37 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="How to change your lead provider for the 2024 to 2025 academic year" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+
+    <p class="govuk-body">If you want to <a href="https://www.gov.uk/guidance/how-to-manage-early-career-teacher-training#change-lead-provider" target="_blank" class="govuk-link govuk-link--no-visited-state">change your lead provider (opens in a new window or tab)</a> you need to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>contact your current provider to let them know you want to end the partnership</li>
+      <li>sign up with your new lead provider</li>
+    </ul>
+
+    <p class="govuk-body">Your new provider will then report the change to us.</p>
+
+    <h2 class="govuk-heading-m">If you've already contacted your providers</h2>
+
+    <p>If you contacted your current and new lead provider more than 2 weeks ago, and the change has still not been made, <a href="academic-year/agreed-change-existing-provider" class="govuk-link govuk-link--no-visited-state">contact us</a>.</p>
+
+  </div>
+</div>      
+
+
+{% endblock %}
+
+

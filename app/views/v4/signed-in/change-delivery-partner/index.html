@@ -1,0 +1,35 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="How to change your delivery provider for the 2024 to 2025 academic year" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <p class="govuk-body">If you want to <a href="https://www.gov.uk/guidance/how-to-manage-early-career-teacher-training#change-delivery-partner" target="_blank" class="govuk-link govuk-link--no-visited-state">change your delivery partner (opens in a new window or tab)</a> you need to confirm the change with your lead provider.</p>
+
+    <p class="govuk-body">Your lead provider will then report the change to us.</p>
+
+    <h2 class="govuk-heading-m">If you've already contacted your providers</h2>
+
+    <p>If you contacted your lead provider more than 2 weeks ago, and the change has still not been made, <a href="notified-dp-and-lp" class="govuk-link govuk-link--no-visited-state">contact us</a>.</p>
+
+
+  </div>
+</div>      
+
+
+{% endblock %}
+
+

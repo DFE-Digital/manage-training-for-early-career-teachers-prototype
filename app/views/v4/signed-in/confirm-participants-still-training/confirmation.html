@@ -1,0 +1,31 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title %}
+You've confirmed who's going to continue or restart training
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">{{ title }}</h1>
+              <div class="govuk-panel__body">
+                    <strong class="govuk-!-font-size-24">Academic year 2024 to 2025</strong>
+              </div>
+        </div>
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p>We'll contact your training provider to let them know.</p>
+
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Add a new ECT</a></p>
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Add a new mentor</a></p>
+        <p><a class="govuk-link govuk-link--no-visited-state" href="../home">Return to manage your training</a></p>
+  </div>
+</div>
+{% endblock %}

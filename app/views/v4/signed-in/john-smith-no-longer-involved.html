@@ -1,0 +1,147 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title %}
+John Smith
+{% endset %}
+
+{% block pageTitle %}
+  ECT details – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back to ECTs</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">School name here</span>
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+
+      <h2 class="govuk-heading-m">Early career teacher</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-7">
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  John Smith
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style="">name</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  TRN
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  0000001
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style="">TRN</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Date of birth
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  01 January 1980
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style="">date of birth</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  123@example.com
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style="">email address</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Mentor
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <a class="govuk-link" href="">Paul Smith</a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style="">mentor</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--orange">No longer involved</strong>
+                  <p class="govuk-body">You've told us that this participant is no longer involved in training.</p>
+              </dd>
+              <dd class="govuk-summary-list__actions"></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Lead provider
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  Provider name
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="change-lead-provider/john-smith/index">
+                      Change <span class="govuk-visually-hidden" style=""> Lead provider</span>
+                  </a>
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+              <dt class="govuk-summary-list__key">
+                  Delivery partner
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  Partner name
+              </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                  Appropriate body
+              </dt>
+              <dd class="govuk-summary-list__value">
+                  Teaching school hub
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="">
+                      Change <span class="govuk-visually-hidden" style=""> Appropriate body</span>
+                  </a>
+              </dd>
+          </div>
+      </dl>
+
+      <h3 class="govuk-heading-m">Continue training?</h3>
+
+      <p class="govuk-body">
+          Tell us if <a class="govuk-link" href="john-smith/confirm-continuing">John Smith is going to continue or restart training</a>
+      </p>
+
+      <p class="govuk-body">
+          <a class="govuk-link" href="">Remove John Smith</a>
+      </p>
+
+  </div>
+</div>
+{% endblock %}
