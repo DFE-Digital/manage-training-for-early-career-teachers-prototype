@@ -1,0 +1,69 @@
+{% extends "layouts/reg.html" %}
+
+{% set title %}
+{% if data['programme-choice'] === 'design_our_own' %}
+You’ve submitted your training information
+{% else %}
+You've submitted information about your training and appropriate body
+{% endif %}
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">{{ title }}</h1>
+      <div class="govuk-panel__body">
+        Academic year
+        <br><strong>2024 to 2025</strong>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m">What to do next</h2>
+
+    {% if data['programme-choice'] === 'design_our_own' %}
+      <p class="govuk-body">
+        You need to design a 2-year programme of support and training that covers every ‘learn that’ and ‘learn how to’
+        statement in the
+        <a href="https://www.gov.uk/government/publications/early-career-framework" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">Early
+          Career Framework (ECF) (opens in new tab)</a>.
+      </p>
+      <p class="govuk-body">Contact your appropriate body to find out what evidence is needed to demonstrate that your
+        programme:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>is based on the ECF</li>
+        <li>meets the statutory requirements</li>
+      </ul>
+      <p class="govuk-body">You do not need to add information about your ECTs and mentors to this service.</p>
+      <p class="govuk-body">
+        <a class="govuk-link" href="https://www.gov.uk/government/collections/induction-training-and-support-for-early-career-teachers-ects" rel="noreferrer noopener" target="_blank">
+          See our guidance collection (opens in new tab)
+        </a>
+        for more information about induction, training and support for ECTs.
+      </p>
+    <p><a class="govuk-link" href="../signed-in/home">Continue to manage your training</a></p>
+    {% else %}
+
+    <p class="govuk-body">As soon as possible, use this service to tell us:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      {% if data['programme-choice'] === 'core_induction_programme' %}
+      <li>choose the DfE-accredited materials you want to use</li>
+      {% endif %}
+      <li>details of new <a href="../signed-in/ects" class="govuk-link">ECTs</a> and <a href="../signed-in/mentors" class="govuk-link">mentors</a></li>
+      <li>which mentor has been assigned to each ECT</li>
+    </ul>
+
+    <p class="govuk-body"><a href="../signed-in/home" class="govuk-link">Return to manage your training</a></p>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

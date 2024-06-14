@@ -1,0 +1,75 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="Who is the new delivery partner?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <p class="govuk-body">We only show you delivery partners who work with your current lead provider and are available for the academic year you chose.</p>
+
+    {# {{ govukTable({
+      caption: "Current details",
+      captionClasses: "govuk-table__caption--m",
+      firstCellIsHeader: true,
+
+      rows: [
+        [
+          {
+            text: "Lead provider"
+          },
+          {
+            html: "Ambition"
+          }
+        ],
+        [
+          {
+            text: "Academic year"
+          },
+          {
+            html: "2024-2025"
+          }
+        ]
+      ]
+    }) }} #}
+
+    <form method="post">
+      {{ govukRadios({
+      name: "newDeliveryPartner",
+      value: data['newDeliveryPartner'],
+      items: [
+      {
+      value: "Beatty-Mayert",
+      text: "Beatty-Mayert"
+      },
+      {
+      value: "Borer-Wintheiser",
+      text: "Borer-Wintheiser"
+      },
+      {
+      value: "Connelly-Marquardt",
+      text: "Connelly-Marquardt"
+      }
+      ]
+      }) }}
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+

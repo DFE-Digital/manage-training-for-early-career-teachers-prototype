@@ -1,0 +1,62 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title %}
+Which ECTs are going to continue their training in the 2024 to 2025 academic year?
+{% endset %}
+
+{% block pageTitle %}
+  {{ title }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back();">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post">
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+    name: "ects",
+    fieldset: {
+    legend: {
+    text: title,
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l"
+    }
+    },
+    hint: {
+    text: "Select all that apply."
+    },
+    items: [
+    {
+    value: "John Smith",
+    text: "John Smith"
+    },
+    {
+    value: "Jane Doe",
+    text: "Jane Doe"
+    },
+    {
+    value: "Peter Jones",
+    text: "Peter Jones"
+    },
+    {
+    divider: "or"
+    },
+    {
+    value: "None",
+    text: "None",
+    behaviour: "exclusive"
+    }
+    ]
+    }) }}
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

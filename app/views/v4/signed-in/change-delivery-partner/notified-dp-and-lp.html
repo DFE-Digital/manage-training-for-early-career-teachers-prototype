@@ -1,0 +1,49 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="Have you confirmed this change with your lead provider?
+" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <form method="post">
+    
+      {{ govukRadios({
+        name: "notifiedDeliveryAndLeadProvider",
+        value: data['notifiedDeliveryAndLeadProvider'],
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          },
+          {
+            value: "I don't know",
+            text: "I don't know"
+          }
+        ]
+      }) }}
+    
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>    
+  </div>
+</div>
+
+{% endblock %}
+
+

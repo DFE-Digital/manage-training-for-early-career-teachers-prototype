@@ -1,0 +1,30 @@
+{% extends "layouts/signed-in-home.html" %}
+
+{% set title="You've confirmed John Smith is going to continue or restart training" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+     
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">
+          {{ title }}
+        </h1>
+        <div class="govuk-panel__body">
+          Academic year
+          <br><strong>2024 to 2025</strong>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">We'll contact your training provider to let them know.</p>
+
+      <p class="govuk-body"><a href="../home" class="govuk-link">Return to manage your training</a></p>
+    </div>
+  </div>
+{% endblock %}
+
+
+
